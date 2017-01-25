@@ -24,7 +24,7 @@ namespace ImageProcessToolBox
             return meanFilter(_SourceImage,MaskWidth,MaskHeight);
         }
        
-        public Bitmap meanFilter(Bitmap bitmap, int maskWidth, int maskHeight)
+        private Bitmap meanFilter(Bitmap bitmap, int maskWidth, int maskHeight)
         {
             int width = bitmap.Width, height = bitmap.Height;
             Bitmap dstBitmap = new Bitmap(bitmap);

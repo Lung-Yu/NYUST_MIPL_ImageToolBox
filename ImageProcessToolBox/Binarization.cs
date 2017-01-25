@@ -23,7 +23,7 @@ namespace ImageProcessToolBox
             return binarization(_SourceImage, _Value);
         }
 
-        public static Bitmap binarization(Bitmap bitmap, int value)
+        private static Bitmap binarization(Bitmap bitmap, int value)
         {
             int width = bitmap.Width;
             int height = bitmap.Height;

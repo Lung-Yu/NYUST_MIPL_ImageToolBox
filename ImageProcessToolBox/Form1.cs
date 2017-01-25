@@ -474,7 +474,7 @@ namespace ImageProcessToolBox
             int iterationLevel = int.Parse(txtIterationLevel.Text);
 
             Bitmap bitmap = bitmapFromSource();
-            Bitmap resBitmap = execute(new K_Means(k, iterationLevel, bitmap), "K Means");
+            Bitmap resBitmap = execute(new MachineLearing_KMeans(k, iterationLevel, bitmap), "K Means");
             setResultBitmap(resBitmap);
         }
         #endregion

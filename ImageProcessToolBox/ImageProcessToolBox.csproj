@@ -63,7 +63,6 @@
     <Compile Include="Binarization.cs" />
     <Compile Include="BitOf8PlaneSlicing.cs" />
     <Compile Include="Grayscale.cs" />
-    <Compile Include="K_Means.cs" />
     <Compile Include="MorphologyClosing.cs" />
     <Compile Include="ColorRGBModel.cs" />
     <Compile Include="MorphologyDilation.cs" />
@@ -80,7 +79,7 @@
     <Compile Include="HistogramEqualization.cs" />
     <Compile Include="IDistance.cs" />
     <Compile Include="IImageProcess.cs" />
-    <Compile Include="ImageClusteringAlgorithms.cs" />
+    <Compile Include="MachineLearing_KMeans.cs" />
     <Compile Include="ImageExtract.cs" />
     <Compile Include="ImagePretreatment.cs" />
     <Compile Include="Laplacian.cs" />

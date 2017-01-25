@@ -24,7 +24,7 @@ namespace ImageProcessToolBox
             return bitOf8_PlaneSlicing(_SourceImage, _BitNumber);
         }
 
-        public static Bitmap bitOf8_PlaneSlicing(Bitmap bitmap, int bitNumber)
+        private static Bitmap bitOf8_PlaneSlicing(Bitmap bitmap, int bitNumber)
         {
             int width = bitmap.Width;
             int height = bitmap.Height;
