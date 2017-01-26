@@ -108,6 +108,7 @@
             this.panel14 = new System.Windows.Forms.Panel();
             this.label9 = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
+            this.btnMosaic = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numeric8BitPlaneSlicing)).BeginInit();
@@ -477,6 +478,7 @@
             // 
             // panel13
             // 
+            this.panel13.Controls.Add(this.btnMosaic);
             this.panel13.Controls.Add(this.label6);
             this.panel13.Controls.Add(this.btnFourierTransform);
             this.panel13.Controls.Add(this.btnMeanFilter);
@@ -930,6 +932,16 @@
             this.panel6.Size = new System.Drawing.Size(842, 766);
             this.panel6.TabIndex = 14;
             // 
+            // btnMosaic
+            // 
+            this.btnMosaic.Location = new System.Drawing.Point(183, 115);
+            this.btnMosaic.Name = "btnMosaic";
+            this.btnMosaic.Size = new System.Drawing.Size(75, 23);
+            this.btnMosaic.TabIndex = 27;
+            this.btnMosaic.Text = "Mosaic ";
+            this.btnMosaic.UseVisualStyleBackColor = true;
+            this.btnMosaic.Click += new System.EventHandler(this.btnMosaic_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1052,6 +1064,7 @@
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.Button btnColouring;
         private System.Windows.Forms.Button btnColorFunction;
+        private System.Windows.Forms.Button btnMosaic;
     }
 }
 

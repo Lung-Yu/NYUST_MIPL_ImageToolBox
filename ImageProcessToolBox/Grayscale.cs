@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ImageProcessToolBox
 {
-    class Grayscale
+    class Grayscale : IImageProcess
     {
         private Bitmap _SourceImage;
         public Grayscale(Bitmap bitmap)

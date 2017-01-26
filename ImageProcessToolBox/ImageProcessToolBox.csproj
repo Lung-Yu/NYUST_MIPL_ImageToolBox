@@ -87,6 +87,7 @@
     <Compile Include="MeanFilter.cs" />
     <Compile Include="MedianFilter.cs" />
     <Compile Include="MorphologyOpening.cs" />
+    <Compile Include="Mosaic.cs" />
     <Compile Include="MyColorFunction.cs" />
     <Compile Include="MyColouring.cs" />
     <Compile Include="Negative.cs" />

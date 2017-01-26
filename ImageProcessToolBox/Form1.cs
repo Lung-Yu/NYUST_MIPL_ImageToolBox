@@ -300,7 +300,7 @@ namespace ImageProcessToolBox
         private void btnGrayscale_Click(object sender, EventArgs e)
         {
             Bitmap bitmap = bitmapFromSource();
-            Bitmap resBitmap = execute(new MeanFilter(bitmap), "Grayscale");
+            Bitmap resBitmap = execute(new Grayscale(bitmap), "Grayscale");
             setResultBitmap(resBitmap);
         }
 
@@ -417,6 +417,13 @@ namespace ImageProcessToolBox
             Bitmap resBitmap = execute(new HistogramEqualization(bitmap), "Histogram Equalization");
             setResultBitmap(resBitmap);
         }
+
+        private void btnMosaic_Click(object sender, EventArgs e)
+        {
+            Bitmap bitmap = bitmapFromSource();
+            Bitmap resBitmap = execute(new Mosaic(bitmap), "Mosaic");
+            setResultBitmap(resBitmap);
+        }
         #endregion
 
         #region 空間轉換 Space filter
@@ -478,6 +485,8 @@ namespace ImageProcessToolBox
             setResultBitmap(resBitmap);
         }
         #endregion
+
+        
 
     }
 }
