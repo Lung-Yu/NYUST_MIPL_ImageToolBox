@@ -93,6 +93,7 @@
     <Compile Include="MyColorFunction.cs" />
     <Compile Include="MyColouring.cs" />
     <Compile Include="Negative.cs" />
+    <Compile Include="PointTemplate.cs" />
     <Compile Include="RippleEffect.cs" />
     <Compile Include="TransformPowerLaw.cs" />
     <Compile Include="Program.cs" />

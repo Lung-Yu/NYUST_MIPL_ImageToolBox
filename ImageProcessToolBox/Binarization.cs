@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ImageProcessToolBox
 {
-    class Binarization : IImageProcess
+    class Binarization : PointTemplate, IImageProcess
     {
         private Bitmap _SourceImage;
         private int _Value;
@@ -20,7 +20,8 @@ namespace ImageProcessToolBox
 
         public Bitmap Process()
         {
-            return binarization(_SourceImage, _Value);
+            //return binarization(_SourceImage, _Value);
+            return base.process(_SourceImage);
         }
 
         private static Bitmap binarization(Bitmap bitmap, int value)
@@ -38,7 +39,7 @@ namespace ImageProcessToolBox
                 byte* dstP = (byte*)dstScan;
                 int srcOffset = srcBmData.Stride - width * 3;
                 int dstOffset = dstBmData.Stride - width * 3;
-                byte MAX = 255, MIN = 0;
+                
 
                 for (int y = 0; y < height; y++)
                 {
@@ -57,6 +58,22 @@ namespace ImageProcessToolBox
             dstBitmap.UnlockBits(dstBmData);
 
             return dstBitmap;
+        }
+
+        readonly static byte MAX = 255, MIN = 0;
+        protected override byte processColorR(byte r, byte g, byte b)
+        {
+            return (r > _Value) ? MAX : MIN;
+        }
+
+        protected override byte processColorG(byte r, byte g, byte b)
+        {
+            return (g > _Value) ? MAX : MIN;
+        }
+
+        protected override byte processColorB(byte r, byte g, byte b)
+        {
+            return (b > _Value) ? MAX : MIN;
         }
     }
 }

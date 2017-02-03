@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ImageProcessToolBox
 {
-    class TransformByLog : IImageProcess
+    class TransformByLog :PointTemplate, IImageProcess
     {
         private Bitmap _SourceImage;
         private int _C = 100;
@@ -24,7 +24,8 @@ namespace ImageProcessToolBox
 
         public Bitmap Process()
         {
-            return log(_SourceImage, _C);
+            //return log(_SourceImage, _C);
+            return base.process(_SourceImage);
         }
 
         private static Bitmap log(Bitmap bitmap, int c)
@@ -62,6 +63,21 @@ namespace ImageProcessToolBox
             dstBitmap.UnlockBits(dstBmData);
 
             return dstBitmap;
+        }
+
+        protected override byte processColorR(byte r, byte g, byte b)
+        {
+           return (byte)(_C * Math.Log(r + 1, 10));
+        }
+
+        protected override byte processColorG(byte r, byte g, byte b)
+        {
+            return (byte)(_C * Math.Log(g + 1, 10));
+        }
+
+        protected override byte processColorB(byte r, byte g, byte b)
+        {
+            return (byte)(_C * Math.Log(b + 1, 10));
         }
     }
 }

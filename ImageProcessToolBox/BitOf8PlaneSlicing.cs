@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ImageProcessToolBox
 {
-    class BitOf8PlaneSlicing :IImageProcess
+    class BitOf8PlaneSlicing :PointTemplate, IImageProcess
     {
         private static readonly byte[] planes = { 1, 2, 4, 8, 16, 32, 64, 128 };
         private Bitmap _SourceImage;
@@ -21,7 +21,8 @@ namespace ImageProcessToolBox
 
         public Bitmap Process()
         {
-            return bitOf8_PlaneSlicing(_SourceImage, _BitNumber);
+            //return bitOf8_PlaneSlicing(_SourceImage, _BitNumber);
+            return base.process(_SourceImage);
         }
 
         private static Bitmap bitOf8_PlaneSlicing(Bitmap bitmap, int bitNumber)
@@ -61,6 +62,24 @@ namespace ImageProcessToolBox
             dstBitmap.UnlockBits(dstBmData);
 
             return dstBitmap;
+        }
+
+        protected override byte processColorR(byte r, byte g, byte b)
+        {
+            double n = planes[_BitNumber - 1];
+            return (byte)(((((int)n & ((int)r)) == (int)n)) ? 255 : 0);
+        }
+
+        protected override byte processColorG(byte r, byte g, byte b)
+        {
+            double n = planes[_BitNumber - 1];
+            return (byte)(((((int)n & ((int)g)) == (int)n)) ? 255 : 0);
+        }
+
+        protected override byte processColorB(byte r, byte g, byte b)
+        {
+            double n = planes[_BitNumber - 1];
+            return (byte)(((((int)n & ((int)b)) == (int)n)) ? 255 : 0);
         }
     }
 }

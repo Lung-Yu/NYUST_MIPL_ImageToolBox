@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ImageProcessToolBox
 {
-    class TransformPowerLaw : IImageProcess
+    class TransformPowerLaw :PointTemplate, IImageProcess
     {
         private Bitmap _SourceImage;
         private double _C = 1.5;
@@ -23,7 +23,8 @@ namespace ImageProcessToolBox
         }
         public Bitmap Process()
         {
-            return powLaw(_SourceImage,_C);
+           // return powLaw(_SourceImage,_C);
+           return base.process(_SourceImage);
         }
 
         private static Bitmap powLaw(Bitmap bitmap, double pow)
@@ -64,6 +65,24 @@ namespace ImageProcessToolBox
             dstBitmap.UnlockBits(dstBmData);
 
             return dstBitmap;
+        }
+
+        protected override byte processColorR(byte r, byte g, byte b)
+        {
+            double value = Math.Pow(r, _C);
+            return (byte)((value > 255) ? 255 : value);
+        }
+
+        protected override byte processColorG(byte r, byte g, byte b)
+        {
+            double value = Math.Pow(g, _C);
+            return (byte)((value > 255) ? 255 : value);
+        }
+
+        protected override byte processColorB(byte r, byte g, byte b)
+        {
+            double value = Math.Pow(b, _C);
+            return (byte)((value > 255) ? 255 : value);
         }
     }
 }

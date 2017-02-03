@@ -8,22 +8,9 @@ using System.Threading.Tasks;
 
 namespace ImageProcessToolBox
 {
-    class Negative : PointTemplate, IImageProcess
+    abstract class PointTemplate
     {
-        private Bitmap _SourceImage;
-        private readonly static int COLOR_SIZE_RANGE = 256;
-
-        public Negative(Bitmap bitmap)
-        {
-            _SourceImage = bitmap;
-        }
-
-        public Bitmap Process()
-        {
-            return base.process(_SourceImage);
-        }
-
-        private static Bitmap negative(Bitmap srcBitmap)
+        public Bitmap process(Bitmap srcBitmap)
         {
             int width = srcBitmap.Width;
             int height = srcBitmap.Height;
@@ -44,9 +31,9 @@ namespace ImageProcessToolBox
                 {
                     for (int x = 0; x < width; x++, srcP += 3, dstP += 3)
                     {
-                        *dstP = (byte)(COLOR_SIZE_RANGE - srcP[0]);  //blue
-                        *(dstP + 1) = (byte)(COLOR_SIZE_RANGE - srcP[1]);  //green
-                        *(dstP + 2) = (byte)(COLOR_SIZE_RANGE - srcP[2]);  //red
+                        *(dstP + ImageExtract.COLOR_R) = processColorR(srcP[ImageExtract.COLOR_R], srcP[ImageExtract.COLOR_G], srcP[ImageExtract.COLOR_B]);
+                        *(dstP + ImageExtract.COLOR_G) = processColorG(srcP[ImageExtract.COLOR_R], srcP[ImageExtract.COLOR_G], srcP[ImageExtract.COLOR_B]);
+                        *(dstP + ImageExtract.COLOR_B) = processColorB(srcP[ImageExtract.COLOR_R], srcP[ImageExtract.COLOR_G], srcP[ImageExtract.COLOR_B]);
                     }
                     srcP += srcOffset;
                     dstP += dstOffset;
@@ -58,19 +45,8 @@ namespace ImageProcessToolBox
             return dstBitmap;
         }
 
-        protected override byte processColorR(byte r, byte g, byte b)
-        {
-            return (byte)(COLOR_SIZE_RANGE - r);
-        }
-
-        protected override byte processColorG(byte r, byte g, byte b)
-        {
-            return (byte)(COLOR_SIZE_RANGE - g);
-        }
-
-        protected override byte processColorB(byte r, byte g, byte b)
-        {
-            return (byte)(COLOR_SIZE_RANGE - b);
-        }
+        protected abstract byte processColorR(byte r,byte g,byte b);
+        protected abstract byte processColorG(byte r, byte g, byte b);
+        protected abstract byte processColorB(byte r, byte g, byte b);
     }
 }

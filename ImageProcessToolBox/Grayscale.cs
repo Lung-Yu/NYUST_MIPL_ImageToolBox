@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ImageProcessToolBox
 {
-    class Grayscale : IImageProcess
+    class Grayscale :PointTemplate, IImageProcess
     {
         private Bitmap _SourceImage;
         public Grayscale(Bitmap bitmap)
@@ -18,7 +18,7 @@ namespace ImageProcessToolBox
 
         public Bitmap Process()
         {
-            return grayscale(_SourceImage);
+            return base.process(_SourceImage);
         }
 
         private static Bitmap grayscale(Bitmap srcBitmap)
@@ -55,6 +55,24 @@ namespace ImageProcessToolBox
             srcBitmap.UnlockBits(srcBmData);
             dstBitmap.UnlockBits(dstBmData);
             return dstBitmap;
+        }
+
+
+        private byte gray = 0;
+        protected override byte processColorR(byte r, byte g, byte b)
+        {
+            gray = (byte)(.299 * r + .587 * g + .114 * b);
+            return gray;
+        }
+
+        protected override byte processColorG(byte r, byte g, byte b)
+        {
+            return gray;
+        }
+
+        protected override byte processColorB(byte r, byte g, byte b)
+        {
+            return gray;
         }
     }
 }
