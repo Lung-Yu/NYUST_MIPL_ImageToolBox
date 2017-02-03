@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -16,7 +16,7 @@ namespace ImageProcessToolBox
             _SourceImage = bitmap;
         }
 
-        public Mosaic(int effectWidth,Bitmap bitmap)
+        public Mosaic(int effectWidth, Bitmap bitmap)
         {
             _SourceImage = bitmap;
             _EffectWidth = effectWidth;
@@ -24,7 +24,57 @@ namespace ImageProcessToolBox
 
         public Bitmap Process()
         {
-            return AdjustTobMosaic(_SourceImage,5);
+            //return AdjustTobMosaic(_SourceImage, 25);
+            return mosaic(_SourceImage, 3);
+        }
+
+        private Bitmap mosaic(Bitmap bitmap, int effect)
+        {
+            int width = bitmap.Width, height = bitmap.Height, count = effect * effect, offset = (effect / 2 )+ (effect%2);
+            Bitmap dstBitmap = new Bitmap(bitmap);
+            
+            byte[,] pix = ImageExtract.getimageArray(bitmap);
+            byte[,] resPix = new byte[3, width * height];
+            for (int y = offset; y < (height - offset); y += effect)
+            {
+                for (int x = offset; x < (width - offset); x += effect)
+                {
+                    //mask
+                    int current = x + y * width;
+                    int[] sum = { 0, 0, 0 };
+                    for (int my = 0; my < effect; my++)
+                        for (int mx = 0; mx < effect; mx++)
+                        {
+                            int pos = current + (mx - 1) + ((my - 1) * width);
+                            sum[0] += pix[0, pos];
+                            sum[1] += pix[1, pos];
+                            sum[2] += pix[2, pos];
+                        }
+
+                    sum[0] = (byte)(sum[0] / count);
+                    sum[1] = (byte)(sum[1] / count);
+                    sum[2] = (byte)(sum[2] / count);
+                    for (int my = 0; my < effect; my++)
+                        for (int mx = 0; mx < effect; mx++)
+                        {
+                            int pos = current + (mx - 1) + ((my - 1) * width);
+                            resPix[0, pos] =(byte) sum[0];
+                            resPix[1, pos] = (byte)sum[1];
+                            resPix[2, pos] = (byte)sum[2];
+                        }
+                }
+            }
+
+            ImageExtract.writeImageByArray(resPix, dstBitmap);
+            return dstBitmap;
+        }
+
+        private static byte calcMeans(byte[] mask)
+        {
+            int sum = 0, size = mask.Length;
+            for (int i = 0; i < size; i++)
+                sum += mask[i];
+            return (byte)(sum / size);
         }
 
         private Bitmap AdjustTobMosaic(Bitmap bitmap, int effectWidth)

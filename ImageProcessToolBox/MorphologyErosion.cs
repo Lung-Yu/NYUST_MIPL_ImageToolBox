@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ImageProcessToolBox
 {
-    class MorphologyErosion : IImageProcess
+    class MorphologyErosion : FilterTemplate, IImageProcess
     {
         private Bitmap _SourceImage;
         public MorphologyErosion(Bitmap bitmap)
@@ -17,7 +17,7 @@ namespace ImageProcessToolBox
 
         public Bitmap Process()
         {
-            return erosion(_SourceImage);
+            return base.filter(_SourceImage, 3, 3);
         }
 
         private static Bitmap erosion(Bitmap bitmap)
@@ -26,7 +26,7 @@ namespace ImageProcessToolBox
             int w = 3, h = 3;
             Bitmap dstBitmap = new Bitmap(bitmap);
 
-            byte[,] pix =ImageExtract.getimageArray(bitmap);
+            byte[,] pix = ImageExtract.getimageArray(bitmap);
             byte[,] resPix = new byte[3, width * height];
 
             for (int y = 1; y < (height - 1); y++)
@@ -63,6 +63,11 @@ namespace ImageProcessToolBox
                     Is = false;    //如果不是黑色則將其填白
 
             return (byte)((Is) ? 255 : 0);
+        }
+
+        protected override byte maskFilter(byte[] gate)
+        {
+            return erosionMask33(gate);
         }
     }
 }

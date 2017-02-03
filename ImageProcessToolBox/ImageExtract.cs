@@ -43,10 +43,40 @@ namespace ImageProcessToolBox
             bitmap.UnlockBits(srcBmData);
             return result;
         }
-        public static void writeImageByArray(byte[,] pix, Bitmap dstBitmap)
+
+        public static byte[, ,] getimageMartix(Bitmap bitmap)
+        {
+            int width = bitmap.Width, height = bitmap.Height;
+
+            System.IntPtr srcScan;
+            BitmapData srcBmData;
+
+            InitPonitMethod(bitmap, width, height, out srcScan, out srcBmData);
+
+            byte[, ,] result = new byte[3, width, height];
+            unsafe
+            {
+                byte* srcP = (byte*)srcScan;
+                int srcOffset = srcBmData.Stride - width * 3;
+
+                for (int y = 0; y < height; y++)
+                {
+                    for (int x = 0; x < width; x++, srcP += 3)
+                    {
+                        result[COLOR_B, x, y] = *(srcP + COLOR_B);
+                        result[COLOR_G, x, y] = *(srcP + COLOR_G);
+                        result[COLOR_R, x, y] = *(srcP + COLOR_R);
+                    }
+                }
+            }
+
+            bitmap.UnlockBits(srcBmData);
+            return result;
+        }
+
+        public static void writeImageByMartix(byte[, ,] pix, Bitmap dstBitmap)
         {
             int width = dstBitmap.Width, height = dstBitmap.Height;
-
             System.IntPtr srcScan;
             BitmapData srcBmData;
 
@@ -61,9 +91,37 @@ namespace ImageProcessToolBox
                 {
                     for (int x = 0; x < width; x++, srcP += 3)
                     {
-                        *srcP = pix[COLOR_B, x + y * width];
-                        *(srcP + 1) = pix[COLOR_G, x + y * width];
-                        *(srcP + 2) = pix[COLOR_R, x + y * width];
+                        *srcP = pix[COLOR_B, x, y];
+                        *(srcP + 1) = pix[COLOR_G, x, y];
+                        *(srcP + 2) = pix[COLOR_R, x, y];
+                    }
+                }
+            }
+
+            dstBitmap.UnlockBits(srcBmData);
+        }
+
+        public static void writeImageByArray(byte[,] pix, Bitmap dstBitmap)
+        {
+            int width = dstBitmap.Width, height = dstBitmap.Height;
+            System.IntPtr srcScan;
+            BitmapData srcBmData;
+
+            InitPonitMethod(dstBitmap, width, height, out srcScan, out srcBmData);
+            int pos = 0;
+            unsafe
+            {
+                byte* srcP = (byte*)srcScan;
+                int srcOffset = srcBmData.Stride - width * 3;
+
+                for (int y = 0; y < height; y++)
+                {
+                    for (int x = 0; x < width; x++, srcP += 3)
+                    {
+                        pos = x + y * width;
+                        *(srcP + COLOR_B) = pix[COLOR_B, pos];
+                        *(srcP + COLOR_G) = pix[COLOR_G, pos];
+                        *(srcP + COLOR_R) = pix[COLOR_R, pos];
                     }
                 }
             }
@@ -106,6 +164,14 @@ namespace ImageProcessToolBox
             srcScan = srcBmData.Scan0;
         }
 
-        
+
+        public static Bitmap extract(Bitmap bitmap, out byte[,] pix,out byte[,] resPix)
+        {
+            int width = bitmap.Width, height = bitmap.Height;
+            Bitmap dstBitmap = new Bitmap(bitmap);
+            pix = ImageExtract.getimageArray(bitmap);
+            resPix = new byte[3, width * height];
+            return dstBitmap;
+        }
     }
 }

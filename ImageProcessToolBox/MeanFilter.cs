@@ -7,49 +7,57 @@ using System.Threading.Tasks;
 
 namespace ImageProcessToolBox
 {
-    class MeanFilter : IImageProcess
+    class MeanFilter : FilterTemplate, IImageProcess
     {
         private Bitmap _SourceImage;
         private int _MaskWidth = 3;
         private int _MaskHeight = 3;
 
-       
+
         public MeanFilter(Bitmap bitmap)
         {
             _SourceImage = bitmap;
         }
-      
+        public MeanFilter(Bitmap bitmap,int w,int h)
+        {
+            _SourceImage = bitmap;
+            _MaskWidth = w;
+            _MaskHeight = h;
+        }
+
         public Bitmap Process()
         {
-            return meanFilter(_SourceImage,MaskWidth,MaskHeight);
+            return base.filter(_SourceImage, _MaskWidth, _MaskHeight);
+            //return filter(_SourceImage, _MaskWidth, _MaskHeight);
         }
-       
-        private Bitmap meanFilter(Bitmap bitmap, int maskWidth, int maskHeight)
+
+        private Bitmap _filter(Bitmap bitmap, int maskWidth, int maskHeight)
         {
-            int width = bitmap.Width, height = bitmap.Height;
-            Bitmap dstBitmap = new Bitmap(bitmap);
+            byte[,] pix, resPix;
+            int width = bitmap.Width, height = bitmap.Height, pos, count = maskWidth * maskHeight, current;
+            Bitmap dstBitmap = ImageExtract.extract(bitmap, out pix, out resPix);
 
-            byte[,] pix = ImageExtract.getimageArray(bitmap);
-            byte[,] resPix = new byte[3, width * height];
-
-            for (int y = 1; y < (height - 1); y++)
+            for (int y = 0; y < height; y++)
             {
-                for (int x = 1; x < (width - 1); x++)
+                for (int x = 0; x < width; x++)
                 {
-                    //b,g,r 
-                    for (int c = 0; c < 3; c++)
+                    pos = x + y * width;
+                    if (!ImageProcess.IsFilterOnSide(ref pix, ref resPix, width, height,1,1, x, y, pos))
                     {
-                        //mask
-                        int current = x + y * width;
-                        byte[] mask = new byte[maskWidth * maskHeight];
+                        current = x + y * width;
+                        int[] sum = { 0, 0, 0 };
                         for (int my = 0; my < maskHeight; my++)
                             for (int mx = 0; mx < maskWidth; mx++)
                             {
-                                int pos = current + (mx - 1) + ((my - 1) * width);
-                                mask[mx + my * maskWidth] = pix[c, pos];
+                                pos = current + (mx - 1) + ((my - 1) * width);
+                                sum[0] += pix[0, pos];
+                                sum[1] += pix[1, pos];
+                                sum[2] += pix[2, pos];
                             }
 
-                        resPix[c, current] = calcMeans(mask);
+                        resPix[0, current] = (byte)(sum[0] / count);
+                        resPix[1, current] = (byte)(sum[1] / count);
+                        resPix[2, current] = (byte)(sum[2] / count);
                     }
                 }
             }
@@ -58,23 +66,24 @@ namespace ImageProcessToolBox
             return dstBitmap;
         }
 
-        private static byte calcMeans(byte[] mask)
-        {
-            int sum = 0, size = mask.Length;
-            for (int i = 0; i < size; i++)
-                sum += mask[i];
-            return (byte)(sum / size);
-        }
-                
         public int MaskWidth
         {
             get { return _MaskWidth; }
             set { _MaskWidth = value; }
         }
+        
         public int MaskHeight
         {
             get { return _MaskHeight; }
             set { _MaskHeight = value; }
+        }
+
+        protected override byte maskFilter(byte[] gate)
+        {
+            int sum = 0;
+            foreach (byte val in gate)
+                sum += val;
+            return (byte)(sum/gate.Length);
         }
     }
 }

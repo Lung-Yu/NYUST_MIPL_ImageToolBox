@@ -7,55 +7,33 @@ using System.Threading.Tasks;
 
 namespace ImageProcessToolBox
 {
-    class MedianFilter : IImageProcess
+    class MedianFilter : FilterTemplate, IImageProcess
     {
         private Bitmap _ImageSource;
+        private int _MaskWidth=3;
+        private int _MaskHeight=3;
         public MedianFilter(Bitmap bitmap)
         {
             _ImageSource = bitmap;
         }
 
+        public MedianFilter(Bitmap bitmap,int w,int h)
+        {
+            _ImageSource = bitmap;
+            _MaskWidth = w;
+            _MaskHeight = h;
+        }
+
         public Bitmap Process()
         {
-            return Process(_ImageSource);
+            return base.filter(_ImageSource, _MaskWidth, _MaskHeight);
         }
-        private Bitmap Process(Bitmap bitmap)
+        
+        protected override byte maskFilter(byte[] gate)
         {
-            int width = bitmap.Width, height = bitmap.Height;
-            int w = 3, h = 3;
-            //IComparer revComparer = new ReverseComparer();
-            Bitmap dstBitmap = new Bitmap(bitmap);
-
-            byte[,] pix = ImageExtract.getimageArray(bitmap);
-            byte[,] resPix = new byte[3, width * height];
-
-            for (int y = 1; y < (height - 1); y++)
-            {
-                for (int x = 1; x < (width - 1); x++)
-                {
-                    //b,g,r 
-                    for (int c = 0; c < 3; c++)
-                    {
-                        //mask
-                        int current = x + y * width;
-                        byte[] mask = new byte[w * h];
-                        for (int my = 0; my < h; my++)
-                            for (int mx = 0; mx < w; mx++)
-                            {
-                                int pos = current + (mx - 1) + ((my - 1) * width);
-                                mask[mx + my * w] = pix[c, pos];
-                            }
-
-                        Heap heap = new Heap(mask, mask.Length);
-                        heap.heapsort();
-                        resPix[c, current] = (byte)heap.get()[(w * h) / 2];
-                    }
-                }
-            }
-
-
-            ImageExtract.writeImageByArray(resPix, dstBitmap);
-            return dstBitmap;
+            Heap heap = new Heap(gate, gate.Length);
+            heap.heapsort();
+            return (byte)heap.get()[gate.Length / 2];
         }
     }
 }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ImageProcessToolBox
 {
-    class GaussianFilter : IImageProcess
+    class GaussianFilter : FilterTemplate, IImageProcess
     {
         private Bitmap _SourceImage;
         public GaussianFilter(Bitmap bitmap)
@@ -15,10 +15,9 @@ namespace ImageProcessToolBox
             _SourceImage = bitmap;
         }
 
-
         public Bitmap Process()
         {
-            return GaussianFilters(_SourceImage);
+            return base.filter(_SourceImage, 3, 3);
         }
 
         private static Bitmap GaussianFilters(Bitmap bitmap)
@@ -104,5 +103,9 @@ namespace ImageProcessToolBox
             return (byte)(result / 273);
         }
 
+        protected override byte maskFilter(byte[] gate)
+        {
+            return GaussianMask33(gate);
+        }
     }
 }

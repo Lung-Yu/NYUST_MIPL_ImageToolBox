@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ImageProcessToolBox
 {
-    class MorphologyDilation : IImageProcess
+    class MorphologyDilation : FilterTemplate, IImageProcess
     {
 
         private Bitmap _SourceImage;
@@ -18,17 +18,17 @@ namespace ImageProcessToolBox
 
         public Bitmap Process()
         {
-            return dilation(_SourceImage);
+            return base.filter(_SourceImage, 3, 3);
         }
 
         public static Bitmap dilation(Bitmap bitmap)
         {
             int width = bitmap.Width, height = bitmap.Height;
             int w = 3, h = 3;
-            
+
             Bitmap dstBitmap = new Bitmap(bitmap);
 
-            byte[,] pix =ImageExtract.getimageArray(bitmap);
+            byte[,] pix = ImageExtract.getimageArray(bitmap);
             byte[,] resPix = new byte[3, width * height];
 
             for (int y = 1; y < (height - 1); y++)
@@ -64,6 +64,11 @@ namespace ImageProcessToolBox
                 if (gate[i] != 0)
                     Is = false;    //如果不是黑色則將其填白
             return (byte)((Is) ? 0 : 255);
+        }
+
+        protected override byte maskFilter(byte[] gate)
+        {
+            return dilationMask33(gate);
         }
     }
 }
