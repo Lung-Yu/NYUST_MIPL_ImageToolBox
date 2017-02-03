@@ -7,9 +7,20 @@ using System.Threading.Tasks;
 
 namespace ImageProcessToolBox
 {
-    class Sobel : IImageProcess
+    class Sobel : FilterTemplate, IImageProcess
     {
         private Bitmap _SourceImage;
+        private static int[] mask1 ={
+                         -1,0,1,
+                         -2,0,2,
+                         -1,0,1
+                    };
+
+        private static int[] mask2 ={
+                       -1,-2,-1,
+                       0,0,0,
+                       1,2,1
+                    };
         public Sobel(Bitmap bitmap)
         {
             _SourceImage = bitmap;
@@ -17,7 +28,19 @@ namespace ImageProcessToolBox
 
         public Bitmap Process()
         {
-            return sobel(_SourceImage);
+            return base.filter(_SourceImage, 3, 3);
+           
+        }
+        protected override byte maskFilter(byte[] gate)
+        {
+            int gay1 = 0, gay2 = 0;
+            for (int i = 0; i < gate.Length; i++)
+            {
+                gay1 += (gate[i] * mask1[i]);
+                gay2 += (gate[i] * mask2[i]);
+            }
+            int value = (int)Math.Pow((gay1 * gay1 + gay2 * gay2), 0.5);
+            return (byte)((value > 255) ? 255 : value);
         }
 
         private static Bitmap sobel(Bitmap bitmap)

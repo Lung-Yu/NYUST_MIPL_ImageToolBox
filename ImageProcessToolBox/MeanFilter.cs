@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ImageProcessToolBox
 {
-    class MeanFilter : IImageProcess
+    class MeanFilter : FilterTemplate, IImageProcess
     {
         private Bitmap _SourceImage;
         private int _MaskWidth = 3;
@@ -18,13 +18,20 @@ namespace ImageProcessToolBox
         {
             _SourceImage = bitmap;
         }
+        public MeanFilter(Bitmap bitmap,int w,int h)
+        {
+            _SourceImage = bitmap;
+            _MaskWidth = w;
+            _MaskHeight = h;
+        }
 
         public Bitmap Process()
         {
-            return filter(_SourceImage, MaskWidth, MaskHeight);
+            return base.filter(_SourceImage, _MaskWidth, _MaskHeight);
+            //return filter(_SourceImage, _MaskWidth, _MaskHeight);
         }
 
-        private Bitmap filter(Bitmap bitmap, int maskWidth, int maskHeight)
+        private Bitmap _filter(Bitmap bitmap, int maskWidth, int maskHeight)
         {
             byte[,] pix, resPix;
             int width = bitmap.Width, height = bitmap.Height, pos, count = maskWidth * maskHeight, current;
@@ -35,7 +42,7 @@ namespace ImageProcessToolBox
                 for (int x = 0; x < width; x++)
                 {
                     pos = x + y * width;
-                    if (!ImageProcess.IsFilterOnSide(ref pix, ref resPix, width, height, x, y, pos))
+                    if (!ImageProcess.IsFilterOnSide(ref pix, ref resPix, width, height,1,1, x, y, pos))
                     {
                         current = x + y * width;
                         int[] sum = { 0, 0, 0 };
@@ -69,6 +76,14 @@ namespace ImageProcessToolBox
         {
             get { return _MaskHeight; }
             set { _MaskHeight = value; }
+        }
+
+        protected override byte maskFilter(byte[] gate)
+        {
+            int sum = 0;
+            foreach (byte val in gate)
+                sum += val;
+            return (byte)(sum/gate.Length);
         }
     }
 }

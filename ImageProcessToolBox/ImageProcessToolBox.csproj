@@ -62,6 +62,7 @@
   <ItemGroup>
     <Compile Include="Binarization.cs" />
     <Compile Include="BitOf8PlaneSlicing.cs" />
+    <Compile Include="FilterTemplate.cs" />
     <Compile Include="Grayscale.cs" />
     <Compile Include="ImageProcess.cs" />
     <Compile Include="MorphologyClosing.cs" />

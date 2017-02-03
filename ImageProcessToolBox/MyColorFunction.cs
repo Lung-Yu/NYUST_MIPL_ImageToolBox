@@ -44,9 +44,7 @@ namespace ImageProcessToolBox
                 {
                     for (int x = 0; x < width; x++, srcP += 3, dstP += 3)
                     {
-
-                        int index = random.Next(0, 3);
-                        int color = srcP[index];
+                        int color = srcP[0];
 
                         *dstP = (byte)(color / 0.3 % COLOR_SIZE_RANGE);
                         *(dstP + 1) = (byte)(color / 0.59 % COLOR_SIZE_RANGE);

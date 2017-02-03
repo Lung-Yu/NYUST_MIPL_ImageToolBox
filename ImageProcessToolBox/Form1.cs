@@ -357,14 +357,14 @@ namespace ImageProcessToolBox
         private void btnMeanFilter_Click(object sender, EventArgs e)
         {
             Bitmap bitmap = bitmapFromSource();
-            Bitmap resBitmap = execute(new MedianFilter(bitmap), "Median Filter");
+            Bitmap resBitmap = execute(new MedianFilter(bitmap, (int)numericUpDownX.Value, (int)numericUpDownY.Value), "Median Filter");
             setResultBitmap(resBitmap);
         }
 
         private void btnAvgFiliter_Click(object sender, EventArgs e)
         {
             Bitmap bitmap = bitmapFromSource();
-            Bitmap resBitmap = execute(new MeanFilter(bitmap), "Mean Filter");
+            Bitmap resBitmap = execute(new MeanFilter(bitmap, (int)numericUpDownX.Value, (int)numericUpDownY.Value), "Mean Filter");
             setResultBitmap(resBitmap);
         }
 
@@ -377,7 +377,6 @@ namespace ImageProcessToolBox
 
         private void btnLowPassFilters_Click(object sender, EventArgs e)
         {
-
             Bitmap bitmap = bitmapFromSource();
             Bitmap resBitmap = execute(new LowPassFilter(bitmap), "Low Pass Filters");
             setResultBitmap(resBitmap);
@@ -392,6 +391,7 @@ namespace ImageProcessToolBox
 
         private void btnFourierTransform_Click(object sender, EventArgs e)
         {
+
         }
 
         private void btnSobel_Click(object sender, EventArgs e)
@@ -495,6 +495,11 @@ namespace ImageProcessToolBox
             setResultBitmap(resBitmap);
         }
         #endregion
+
+        private void numericUpDown1_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
 
         
 

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ImageProcessToolBox
 {
-    class HighPassFilter : IImageProcess
+    class HighPassFilter : FilterTemplate, IImageProcess
     {
         private Bitmap _SourceImage;
         public HighPassFilter(Bitmap bitmap)
@@ -17,65 +17,10 @@ namespace ImageProcessToolBox
 
         public Bitmap Process()
         {
-            return highPassFilters(_SourceImage);
-        }
-       
-        private static Bitmap highPassFilters(Bitmap bitmap)
-        {
-            int width = bitmap.Width, height = bitmap.Height;
-            int w = 3, h = 3;
-            Bitmap dstBitmap = new Bitmap(bitmap);
-
-            byte[,] pix =ImageExtract.getimageArray(bitmap);
-            byte[,] resPix = new byte[3, width * height];
-
-            for (int y = 1; y < (height - 1); y++)
-            {
-                for (int x = 1; x < (width - 1); x++)
-                {
-                    //b,g,r 
-                    for (int c = 0; c < 3; c++)
-                    {
-                        //mask
-                        int current = x + y * width;
-                        byte[] mask = new byte[w * h];
-                        for (int my = 0; my < h; my++)
-                            for (int mx = 0; mx < w; mx++)
-                            {
-                                int pos = current + (mx - 1) + ((my - 1) * width);
-                                mask[mx + my * w] = pix[c, pos];
-                            }
-
-                        resPix[c, current] = HighPassMask33(mask);
-                    }
-                }
-            }
-
-            ImageExtract.writeImageByArray(resPix, dstBitmap);
-            return dstBitmap;
+            return base.filter(_SourceImage, 3, 3);
         }
 
-
-        /// <summary>
-        /// [1/8 1/8 1/8]
-        /// [1/8  0  1/8]
-        /// [1/8 1/8 1/8]
-        /// 
-        /// OR
-        /// [-1 -1 -1]
-        /// [-1 9 -1]
-        /// [-1 -1 -1]
-        /// 
-        /// OR
-        /// 
-        /// [0  -1  0]
-        /// [-1  5 -1]
-        /// [0  -1  0]
-        /// 
-        /// </summary>
-        /// <param name="gate"></param>
-        /// <returns></returns>
-        private static byte HighPassMask33(byte[] gate)
+        protected override byte maskFilter(byte[] gate)
         {
             double[] mask ={
                         -1,-1,-1,

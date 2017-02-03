@@ -63,6 +63,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.panel8 = new System.Windows.Forms.Panel();
             this.panel13 = new System.Windows.Forms.Panel();
+            this.btnRippleEffect = new System.Windows.Forms.Button();
             this.btnMosaic = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.btnFourierTransform = new System.Windows.Forms.Button();
@@ -102,14 +103,16 @@
             this.labelImageSize = new System.Windows.Forms.Label();
             this.panel11 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.panel21 = new System.Windows.Forms.Panel();
             this.btnColorFunction = new System.Windows.Forms.Button();
             this.btnColouring = new System.Windows.Forms.Button();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.panel14 = new System.Windows.Forms.Panel();
             this.label9 = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
-            this.btnRippleEffect = new System.Windows.Forms.Button();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.numericUpDownX = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDownY = new System.Windows.Forms.NumericUpDown();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numeric8BitPlaneSlicing)).BeginInit();
@@ -125,10 +128,11 @@
             this.panel22.SuspendLayout();
             this.panel11.SuspendLayout();
             this.panel2.SuspendLayout();
-            this.panel21.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.panel14.SuspendLayout();
             this.panel6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownX)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownY)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -186,7 +190,10 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.panel3.Controls.Add(this.btnColorFunction);
             this.panel3.Controls.Add(this.btnExp);
+            this.panel3.Controls.Add(this.pictureBox3);
+            this.panel3.Controls.Add(this.btnColouring);
             this.panel3.Controls.Add(this.btnBinarization);
             this.panel3.Controls.Add(this.btnPowerLaw);
             this.panel3.Controls.Add(this.txtBinarization);
@@ -202,12 +209,12 @@
             this.panel3.Controls.Add(this.panel4);
             this.panel3.Location = new System.Drawing.Point(4, 5);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(273, 218);
+            this.panel3.Size = new System.Drawing.Size(273, 292);
             this.panel3.TabIndex = 2;
             // 
             // btnExp
             // 
-            this.btnExp.Location = new System.Drawing.Point(120, 144);
+            this.btnExp.Location = new System.Drawing.Point(118, 161);
             this.btnExp.Name = "btnExp";
             this.btnExp.Size = new System.Drawing.Size(51, 23);
             this.btnExp.TabIndex = 15;
@@ -217,7 +224,7 @@
             // 
             // btnBinarization
             // 
-            this.btnBinarization.Location = new System.Drawing.Point(63, 113);
+            this.btnBinarization.Location = new System.Drawing.Point(61, 130);
             this.btnBinarization.Name = "btnBinarization";
             this.btnBinarization.Size = new System.Drawing.Size(136, 23);
             this.btnBinarization.TabIndex = 14;
@@ -227,7 +234,7 @@
             // 
             // btnPowerLaw
             // 
-            this.btnPowerLaw.Location = new System.Drawing.Point(182, 144);
+            this.btnPowerLaw.Location = new System.Drawing.Point(180, 161);
             this.btnPowerLaw.Name = "btnPowerLaw";
             this.btnPowerLaw.Size = new System.Drawing.Size(75, 23);
             this.btnPowerLaw.TabIndex = 17;
@@ -237,7 +244,7 @@
             // 
             // txtBinarization
             // 
-            this.txtBinarization.Location = new System.Drawing.Point(14, 115);
+            this.txtBinarization.Location = new System.Drawing.Point(12, 132);
             this.txtBinarization.Name = "txtBinarization";
             this.txtBinarization.Size = new System.Drawing.Size(43, 22);
             this.txtBinarization.TabIndex = 13;
@@ -246,7 +253,7 @@
             // labelOtus
             // 
             this.labelOtus.AutoSize = true;
-            this.labelOtus.Location = new System.Drawing.Point(180, 60);
+            this.labelOtus.Location = new System.Drawing.Point(178, 77);
             this.labelOtus.Name = "labelOtus";
             this.labelOtus.Size = new System.Drawing.Size(54, 13);
             this.labelOtus.TabIndex = 12;
@@ -254,7 +261,7 @@
             // 
             // btnOtus
             // 
-            this.btnOtus.Location = new System.Drawing.Point(14, 55);
+            this.btnOtus.Location = new System.Drawing.Point(12, 72);
             this.btnOtus.Name = "btnOtus";
             this.btnOtus.Size = new System.Drawing.Size(157, 23);
             this.btnOtus.TabIndex = 11;
@@ -264,7 +271,7 @@
             // 
             // txtLog
             // 
-            this.txtLog.Location = new System.Drawing.Point(14, 144);
+            this.txtLog.Location = new System.Drawing.Point(12, 161);
             this.txtLog.Name = "txtLog";
             this.txtLog.Size = new System.Drawing.Size(43, 22);
             this.txtLog.TabIndex = 10;
@@ -272,7 +279,7 @@
             // 
             // btn8BitPlaneSlicing
             // 
-            this.btn8BitPlaneSlicing.Location = new System.Drawing.Point(63, 84);
+            this.btn8BitPlaneSlicing.Location = new System.Drawing.Point(61, 101);
             this.btn8BitPlaneSlicing.Name = "btn8BitPlaneSlicing";
             this.btn8BitPlaneSlicing.Size = new System.Drawing.Size(136, 23);
             this.btn8BitPlaneSlicing.TabIndex = 19;
@@ -282,7 +289,7 @@
             // 
             // numeric8BitPlaneSlicing
             // 
-            this.numeric8BitPlaneSlicing.Location = new System.Drawing.Point(14, 84);
+            this.numeric8BitPlaneSlicing.Location = new System.Drawing.Point(12, 101);
             this.numeric8BitPlaneSlicing.Maximum = new decimal(new int[] {
             8,
             0,
@@ -304,7 +311,7 @@
             // 
             // btnLog
             // 
-            this.btnLog.Location = new System.Drawing.Point(63, 144);
+            this.btnLog.Location = new System.Drawing.Point(61, 161);
             this.btnLog.Name = "btnLog";
             this.btnLog.Size = new System.Drawing.Size(51, 23);
             this.btnLog.TabIndex = 9;
@@ -315,16 +322,16 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("新細明體", 12F);
+            this.label5.Font = new System.Drawing.Font("新細明體", 16F);
             this.label5.Location = new System.Drawing.Point(3, 3);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(130, 20);
+            this.label5.Size = new System.Drawing.Size(183, 27);
             this.label5.TabIndex = 8;
             this.label5.Text = "Point Processing";
             // 
             // btnNegative
             // 
-            this.btnNegative.Location = new System.Drawing.Point(102, 24);
+            this.btnNegative.Location = new System.Drawing.Point(100, 41);
             this.btnNegative.Name = "btnNegative";
             this.btnNegative.Size = new System.Drawing.Size(75, 23);
             this.btnNegative.TabIndex = 3;
@@ -334,7 +341,7 @@
             // 
             // btnGrayscale
             // 
-            this.btnGrayscale.Location = new System.Drawing.Point(15, 24);
+            this.btnGrayscale.Location = new System.Drawing.Point(13, 41);
             this.btnGrayscale.Name = "btnGrayscale";
             this.btnGrayscale.Size = new System.Drawing.Size(75, 23);
             this.btnGrayscale.TabIndex = 2;
@@ -474,11 +481,15 @@
             this.panel8.Controls.Add(this.panel9);
             this.panel8.Location = new System.Drawing.Point(3, 303);
             this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(274, 297);
+            this.panel8.Size = new System.Drawing.Size(274, 345);
             this.panel8.TabIndex = 9;
             // 
             // panel13
             // 
+            this.panel13.Controls.Add(this.numericUpDownY);
+            this.panel13.Controls.Add(this.numericUpDownX);
+            this.panel13.Controls.Add(this.label12);
+            this.panel13.Controls.Add(this.label11);
             this.panel13.Controls.Add(this.btnRippleEffect);
             this.panel13.Controls.Add(this.btnMosaic);
             this.panel13.Controls.Add(this.label6);
@@ -494,12 +505,22 @@
             this.panel13.Controls.Add(this.btnLaplacian);
             this.panel13.Location = new System.Drawing.Point(7, 3);
             this.panel13.Name = "panel13";
-            this.panel13.Size = new System.Drawing.Size(264, 191);
+            this.panel13.Size = new System.Drawing.Size(264, 238);
             this.panel13.TabIndex = 15;
+            // 
+            // btnRippleEffect
+            // 
+            this.btnRippleEffect.Location = new System.Drawing.Point(96, 171);
+            this.btnRippleEffect.Name = "btnRippleEffect";
+            this.btnRippleEffect.Size = new System.Drawing.Size(75, 23);
+            this.btnRippleEffect.TabIndex = 28;
+            this.btnRippleEffect.Text = "Ripple Effect";
+            this.btnRippleEffect.UseVisualStyleBackColor = true;
+            this.btnRippleEffect.Click += new System.EventHandler(this.btnRippleEffect_Click);
             // 
             // btnMosaic
             // 
-            this.btnMosaic.Location = new System.Drawing.Point(183, 115);
+            this.btnMosaic.Location = new System.Drawing.Point(12, 171);
             this.btnMosaic.Name = "btnMosaic";
             this.btnMosaic.Size = new System.Drawing.Size(75, 23);
             this.btnMosaic.TabIndex = 27;
@@ -510,16 +531,16 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("新細明體", 12F);
+            this.label6.Font = new System.Drawing.Font("新細明體", 16F);
             this.label6.Location = new System.Drawing.Point(3, 8);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(92, 20);
+            this.label6.Size = new System.Drawing.Size(127, 27);
             this.label6.TabIndex = 8;
             this.label6.Text = "Space filter";
             // 
             // btnFourierTransform
             // 
-            this.btnFourierTransform.Location = new System.Drawing.Point(183, 147);
+            this.btnFourierTransform.Location = new System.Drawing.Point(183, 142);
             this.btnFourierTransform.Name = "btnFourierTransform";
             this.btnFourierTransform.Size = new System.Drawing.Size(75, 23);
             this.btnFourierTransform.TabIndex = 26;
@@ -529,7 +550,7 @@
             // 
             // btnMeanFilter
             // 
-            this.btnMeanFilter.Location = new System.Drawing.Point(12, 28);
+            this.btnMeanFilter.Location = new System.Drawing.Point(12, 54);
             this.btnMeanFilter.Name = "btnMeanFilter";
             this.btnMeanFilter.Size = new System.Drawing.Size(75, 23);
             this.btnMeanFilter.TabIndex = 9;
@@ -539,17 +560,17 @@
             // 
             // btnSpatialFilter
             // 
-            this.btnSpatialFilter.Location = new System.Drawing.Point(96, 87);
+            this.btnSpatialFilter.Location = new System.Drawing.Point(183, 113);
             this.btnSpatialFilter.Name = "btnSpatialFilter";
             this.btnSpatialFilter.Size = new System.Drawing.Size(75, 23);
             this.btnSpatialFilter.TabIndex = 25;
-            this.btnSpatialFilter.Text = "Spatial Filter";
+            this.btnSpatialFilter.Text = "*Spatial Filter";
             this.btnSpatialFilter.UseVisualStyleBackColor = true;
             this.btnSpatialFilter.Click += new System.EventHandler(this.btnSpatialFilter_Click);
             // 
             // btnAvgFiliter
             // 
-            this.btnAvgFiliter.Location = new System.Drawing.Point(96, 28);
+            this.btnAvgFiliter.Location = new System.Drawing.Point(96, 54);
             this.btnAvgFiliter.Name = "btnAvgFiliter";
             this.btnAvgFiliter.Size = new System.Drawing.Size(75, 23);
             this.btnAvgFiliter.TabIndex = 10;
@@ -559,7 +580,7 @@
             // 
             // btnHighPassFilters
             // 
-            this.btnHighPassFilters.Location = new System.Drawing.Point(96, 58);
+            this.btnHighPassFilters.Location = new System.Drawing.Point(96, 84);
             this.btnHighPassFilters.Name = "btnHighPassFilters";
             this.btnHighPassFilters.Size = new System.Drawing.Size(75, 23);
             this.btnHighPassFilters.TabIndex = 24;
@@ -569,9 +590,9 @@
             // 
             // btnHistogramEqualization
             // 
-            this.btnHistogramEqualization.Location = new System.Drawing.Point(12, 116);
+            this.btnHistogramEqualization.Location = new System.Drawing.Point(12, 142);
             this.btnHistogramEqualization.Name = "btnHistogramEqualization";
-            this.btnHistogramEqualization.Size = new System.Drawing.Size(158, 23);
+            this.btnHistogramEqualization.Size = new System.Drawing.Size(159, 23);
             this.btnHistogramEqualization.TabIndex = 11;
             this.btnHistogramEqualization.Text = "histogramEqualization";
             this.btnHistogramEqualization.UseVisualStyleBackColor = true;
@@ -579,7 +600,7 @@
             // 
             // btnLowPassFilters
             // 
-            this.btnLowPassFilters.Location = new System.Drawing.Point(12, 58);
+            this.btnLowPassFilters.Location = new System.Drawing.Point(12, 84);
             this.btnLowPassFilters.Name = "btnLowPassFilters";
             this.btnLowPassFilters.Size = new System.Drawing.Size(75, 23);
             this.btnLowPassFilters.TabIndex = 23;
@@ -589,7 +610,7 @@
             // 
             // btnSobel
             // 
-            this.btnSobel.Location = new System.Drawing.Point(12, 87);
+            this.btnSobel.Location = new System.Drawing.Point(12, 113);
             this.btnSobel.Name = "btnSobel";
             this.btnSobel.Size = new System.Drawing.Size(75, 23);
             this.btnSobel.TabIndex = 16;
@@ -599,7 +620,7 @@
             // 
             // btnGaussianFilter
             // 
-            this.btnGaussianFilter.Location = new System.Drawing.Point(183, 28);
+            this.btnGaussianFilter.Location = new System.Drawing.Point(183, 54);
             this.btnGaussianFilter.Name = "btnGaussianFilter";
             this.btnGaussianFilter.Size = new System.Drawing.Size(75, 23);
             this.btnGaussianFilter.TabIndex = 21;
@@ -609,7 +630,7 @@
             // 
             // btnLaplacian
             // 
-            this.btnLaplacian.Location = new System.Drawing.Point(183, 87);
+            this.btnLaplacian.Location = new System.Drawing.Point(96, 113);
             this.btnLaplacian.Name = "btnLaplacian";
             this.btnLaplacian.Size = new System.Drawing.Size(75, 23);
             this.btnLaplacian.TabIndex = 20;
@@ -624,7 +645,7 @@
             this.panel12.Controls.Add(this.btnErosion);
             this.panel12.Controls.Add(this.btnOpening);
             this.panel12.Controls.Add(this.btnClosing);
-            this.panel12.Location = new System.Drawing.Point(7, 200);
+            this.panel12.Location = new System.Drawing.Point(7, 247);
             this.panel12.Name = "panel12";
             this.panel12.Size = new System.Drawing.Size(264, 92);
             this.panel12.TabIndex = 13;
@@ -642,10 +663,10 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("新細明體", 12F);
-            this.label8.Location = new System.Drawing.Point(5, 9);
+            this.label8.Font = new System.Drawing.Font("新細明體", 16F);
+            this.label8.Location = new System.Drawing.Point(4, 4);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(100, 20);
+            this.label8.Size = new System.Drawing.Size(141, 27);
             this.label8.TabIndex = 11;
             this.label8.Text = "Morphology";
             // 
@@ -864,7 +885,6 @@
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.panel21);
             this.panel2.Controls.Add(this.panel14);
             this.panel2.Controls.Add(this.panel3);
             this.panel2.Controls.Add(this.panel8);
@@ -873,20 +893,9 @@
             this.panel2.Size = new System.Drawing.Size(280, 766);
             this.panel2.TabIndex = 13;
             // 
-            // panel21
-            // 
-            this.panel21.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.panel21.Controls.Add(this.btnColorFunction);
-            this.panel21.Controls.Add(this.btnColouring);
-            this.panel21.Controls.Add(this.pictureBox3);
-            this.panel21.Location = new System.Drawing.Point(4, 229);
-            this.panel21.Name = "panel21";
-            this.panel21.Size = new System.Drawing.Size(273, 68);
-            this.panel21.TabIndex = 16;
-            // 
             // btnColorFunction
             // 
-            this.btnColorFunction.Location = new System.Drawing.Point(11, 32);
+            this.btnColorFunction.Location = new System.Drawing.Point(13, 266);
             this.btnColorFunction.Name = "btnColorFunction";
             this.btnColorFunction.Size = new System.Drawing.Size(94, 23);
             this.btnColorFunction.TabIndex = 4;
@@ -896,7 +905,7 @@
             // 
             // btnColouring
             // 
-            this.btnColouring.Location = new System.Drawing.Point(12, 3);
+            this.btnColouring.Location = new System.Drawing.Point(15, 237);
             this.btnColouring.Name = "btnColouring";
             this.btnColouring.Size = new System.Drawing.Size(94, 23);
             this.btnColouring.TabIndex = 3;
@@ -907,7 +916,7 @@
             // pictureBox3
             // 
             this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
-            this.pictureBox3.Location = new System.Drawing.Point(134, 3);
+            this.pictureBox3.Location = new System.Drawing.Point(118, 237);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(123, 23);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -919,18 +928,18 @@
             this.panel14.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.panel14.Controls.Add(this.label9);
             this.panel14.Controls.Add(this.panel7);
-            this.panel14.Location = new System.Drawing.Point(4, 604);
+            this.panel14.Location = new System.Drawing.Point(4, 654);
             this.panel14.Name = "panel14";
-            this.panel14.Size = new System.Drawing.Size(273, 159);
+            this.panel14.Size = new System.Drawing.Size(273, 108);
             this.panel14.TabIndex = 15;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("新細明體", 12F);
-            this.label9.Location = new System.Drawing.Point(8, 8);
+            this.label9.Font = new System.Drawing.Font("新細明體", 16F);
+            this.label9.Location = new System.Drawing.Point(7, 4);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(96, 20);
+            this.label9.Size = new System.Drawing.Size(134, 27);
             this.label9.TabIndex = 16;
             this.label9.Text = "Segmention";
             // 
@@ -944,15 +953,80 @@
             this.panel6.Size = new System.Drawing.Size(842, 766);
             this.panel6.TabIndex = 14;
             // 
-            // btnRippleEffect
+            // label11
             // 
-            this.btnRippleEffect.Location = new System.Drawing.Point(183, 58);
-            this.btnRippleEffect.Name = "btnRippleEffect";
-            this.btnRippleEffect.Size = new System.Drawing.Size(75, 23);
-            this.btnRippleEffect.TabIndex = 28;
-            this.btnRippleEffect.Text = "Ripple Effect";
-            this.btnRippleEffect.UseVisualStyleBackColor = true;
-            this.btnRippleEffect.Click += new System.EventHandler(this.btnRippleEffect_Click);
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("新細明體", 10F);
+            this.label11.Location = new System.Drawing.Point(139, 13);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(16, 17);
+            this.label11.TabIndex = 30;
+            this.label11.Text = "x";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("新細明體", 10F);
+            this.label12.Location = new System.Drawing.Point(199, 13);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(16, 17);
+            this.label12.TabIndex = 31;
+            this.label12.Text = "y";
+            // 
+            // numericUpDownX
+            // 
+            this.numericUpDownX.Increment = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
+            this.numericUpDownX.Location = new System.Drawing.Point(159, 12);
+            this.numericUpDownX.Maximum = new decimal(new int[] {
+            99,
+            0,
+            0,
+            0});
+            this.numericUpDownX.Minimum = new decimal(new int[] {
+            3,
+            0,
+            0,
+            0});
+            this.numericUpDownX.Name = "numericUpDownX";
+            this.numericUpDownX.Size = new System.Drawing.Size(34, 22);
+            this.numericUpDownX.TabIndex = 32;
+            this.numericUpDownX.Value = new decimal(new int[] {
+            3,
+            0,
+            0,
+            0});
+            this.numericUpDownX.ValueChanged += new System.EventHandler(this.numericUpDown1_ValueChanged);
+            // 
+            // numericUpDownY
+            // 
+            this.numericUpDownY.Increment = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
+            this.numericUpDownY.Location = new System.Drawing.Point(219, 12);
+            this.numericUpDownY.Maximum = new decimal(new int[] {
+            99,
+            0,
+            0,
+            0});
+            this.numericUpDownY.Minimum = new decimal(new int[] {
+            3,
+            0,
+            0,
+            0});
+            this.numericUpDownY.Name = "numericUpDownY";
+            this.numericUpDownY.Size = new System.Drawing.Size(34, 22);
+            this.numericUpDownY.TabIndex = 33;
+            this.numericUpDownY.Value = new decimal(new int[] {
+            3,
+            0,
+            0,
+            0});
             // 
             // Form1
             // 
@@ -986,11 +1060,12 @@
             this.panel11.ResumeLayout(false);
             this.panel11.PerformLayout();
             this.panel2.ResumeLayout(false);
-            this.panel21.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.panel14.ResumeLayout(false);
             this.panel14.PerformLayout();
             this.panel6.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownX)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownY)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1069,7 +1144,6 @@
         private System.Windows.Forms.Panel ResultGraphicsR;
         private System.Windows.Forms.Button btnDrawSource;
         private System.Windows.Forms.Label labelImageSize;
-        private System.Windows.Forms.Panel panel21;
         private System.Windows.Forms.Label resultImageSize;
         private System.Windows.Forms.Panel panel22;
         private System.Windows.Forms.Panel panel23;
@@ -1078,6 +1152,10 @@
         private System.Windows.Forms.Button btnColorFunction;
         private System.Windows.Forms.Button btnMosaic;
         private System.Windows.Forms.Button btnRippleEffect;
+        private System.Windows.Forms.NumericUpDown numericUpDownY;
+        private System.Windows.Forms.NumericUpDown numericUpDownX;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label11;
     }
 }
 
