@@ -50,6 +50,8 @@ namespace ImageProcessToolBox
                                 btnSpatialFilter,
                                 btnLaplacian,
                                 btnHistogramEqualization,
+                                btnMosaic,
+                                btnRippleEffect,
                                 
                                 //morphology
                                 btnErosion,
@@ -424,6 +426,14 @@ namespace ImageProcessToolBox
             Bitmap resBitmap = execute(new Mosaic(bitmap), "Mosaic");
             setResultBitmap(resBitmap);
         }
+
+        private void btnRippleEffect_Click(object sender, EventArgs e)
+        {
+            Bitmap bitmap = bitmapFromSource();
+            Bitmap resBitmap = execute(new RippleEffect(bitmap), "Ripple Effect");
+            setResultBitmap(resBitmap);
+        }
+
         #endregion
 
         #region 空間轉換 Space filter
@@ -485,6 +495,8 @@ namespace ImageProcessToolBox
             setResultBitmap(resBitmap);
         }
         #endregion
+
+        
 
         
 

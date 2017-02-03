@@ -63,6 +63,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.panel8 = new System.Windows.Forms.Panel();
             this.panel13 = new System.Windows.Forms.Panel();
+            this.btnMosaic = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.btnFourierTransform = new System.Windows.Forms.Button();
             this.btnMeanFilter = new System.Windows.Forms.Button();
@@ -108,7 +109,7 @@
             this.panel14 = new System.Windows.Forms.Panel();
             this.label9 = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
-            this.btnMosaic = new System.Windows.Forms.Button();
+            this.btnRippleEffect = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numeric8BitPlaneSlicing)).BeginInit();
@@ -247,7 +248,7 @@
             this.labelOtus.AutoSize = true;
             this.labelOtus.Location = new System.Drawing.Point(180, 60);
             this.labelOtus.Name = "labelOtus";
-            this.labelOtus.Size = new System.Drawing.Size(52, 12);
+            this.labelOtus.Size = new System.Drawing.Size(54, 13);
             this.labelOtus.TabIndex = 12;
             this.labelOtus.Text = "__none__";
             // 
@@ -317,7 +318,7 @@
             this.label5.Font = new System.Drawing.Font("新細明體", 12F);
             this.label5.Location = new System.Drawing.Point(3, 3);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(111, 16);
+            this.label5.Size = new System.Drawing.Size(130, 20);
             this.label5.TabIndex = 8;
             this.label5.Text = "Point Processing";
             // 
@@ -385,7 +386,7 @@
             this.labelconsle.Font = new System.Drawing.Font("標楷體", 10F, System.Drawing.FontStyle.Italic);
             this.labelconsle.Location = new System.Drawing.Point(3, 2);
             this.labelconsle.Name = "labelconsle";
-            this.labelconsle.Size = new System.Drawing.Size(0, 14);
+            this.labelconsle.Size = new System.Drawing.Size(0, 17);
             this.labelconsle.TabIndex = 0;
             // 
             // btnK_Means
@@ -416,7 +417,7 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(7, 38);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(73, 12);
+            this.label2.Size = new System.Drawing.Size(75, 13);
             this.label2.TabIndex = 8;
             this.label2.Text = "Iteration Level";
             // 
@@ -425,7 +426,7 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(61, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(13, 12);
+            this.label1.Size = new System.Drawing.Size(16, 13);
             this.label1.TabIndex = 6;
             this.label1.Text = "K";
             // 
@@ -451,7 +452,7 @@
             this.label3.Font = new System.Drawing.Font("新細明體", 14F);
             this.label3.Location = new System.Drawing.Point(4, 7);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(109, 19);
+            this.label3.Size = new System.Drawing.Size(136, 24);
             this.label3.TabIndex = 6;
             this.label3.Text = "Source Image";
             // 
@@ -461,7 +462,7 @@
             this.label4.Font = new System.Drawing.Font("新細明體", 14F);
             this.label4.Location = new System.Drawing.Point(426, 8);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(105, 19);
+            this.label4.Size = new System.Drawing.Size(130, 24);
             this.label4.TabIndex = 7;
             this.label4.Text = "Result Image";
             // 
@@ -478,6 +479,7 @@
             // 
             // panel13
             // 
+            this.panel13.Controls.Add(this.btnRippleEffect);
             this.panel13.Controls.Add(this.btnMosaic);
             this.panel13.Controls.Add(this.label6);
             this.panel13.Controls.Add(this.btnFourierTransform);
@@ -492,8 +494,18 @@
             this.panel13.Controls.Add(this.btnLaplacian);
             this.panel13.Location = new System.Drawing.Point(7, 3);
             this.panel13.Name = "panel13";
-            this.panel13.Size = new System.Drawing.Size(264, 156);
+            this.panel13.Size = new System.Drawing.Size(264, 191);
             this.panel13.TabIndex = 15;
+            // 
+            // btnMosaic
+            // 
+            this.btnMosaic.Location = new System.Drawing.Point(183, 115);
+            this.btnMosaic.Name = "btnMosaic";
+            this.btnMosaic.Size = new System.Drawing.Size(75, 23);
+            this.btnMosaic.TabIndex = 27;
+            this.btnMosaic.Text = "Mosaic ";
+            this.btnMosaic.UseVisualStyleBackColor = true;
+            this.btnMosaic.Click += new System.EventHandler(this.btnMosaic_Click);
             // 
             // label6
             // 
@@ -501,13 +513,13 @@
             this.label6.Font = new System.Drawing.Font("新細明體", 12F);
             this.label6.Location = new System.Drawing.Point(3, 8);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(78, 16);
+            this.label6.Size = new System.Drawing.Size(92, 20);
             this.label6.TabIndex = 8;
             this.label6.Text = "Space filter";
             // 
             // btnFourierTransform
             // 
-            this.btnFourierTransform.Location = new System.Drawing.Point(183, 58);
+            this.btnFourierTransform.Location = new System.Drawing.Point(183, 147);
             this.btnFourierTransform.Name = "btnFourierTransform";
             this.btnFourierTransform.Size = new System.Drawing.Size(75, 23);
             this.btnFourierTransform.TabIndex = 26;
@@ -612,7 +624,7 @@
             this.panel12.Controls.Add(this.btnErosion);
             this.panel12.Controls.Add(this.btnOpening);
             this.panel12.Controls.Add(this.btnClosing);
-            this.panel12.Location = new System.Drawing.Point(7, 165);
+            this.panel12.Location = new System.Drawing.Point(7, 200);
             this.panel12.Name = "panel12";
             this.panel12.Size = new System.Drawing.Size(264, 92);
             this.panel12.TabIndex = 13;
@@ -633,7 +645,7 @@
             this.label8.Font = new System.Drawing.Font("新細明體", 12F);
             this.label8.Location = new System.Drawing.Point(5, 9);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(86, 16);
+            this.label8.Size = new System.Drawing.Size(100, 20);
             this.label8.TabIndex = 11;
             this.label8.Text = "Morphology";
             // 
@@ -680,7 +692,7 @@
             this.label7.Font = new System.Drawing.Font("新細明體", 14F);
             this.label7.Location = new System.Drawing.Point(6, 5);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(98, 19);
+            this.label7.Size = new System.Drawing.Size(120, 24);
             this.label7.TabIndex = 10;
             this.label7.Text = "Log console";
             // 
@@ -827,7 +839,7 @@
             this.resultImageSize.AutoSize = true;
             this.resultImageSize.Location = new System.Drawing.Point(760, 12);
             this.resultImageSize.Name = "resultImageSize";
-            this.resultImageSize.Size = new System.Drawing.Size(53, 12);
+            this.resultImageSize.Size = new System.Drawing.Size(57, 13);
             this.resultImageSize.TabIndex = 20;
             this.resultImageSize.Text = "ImageSize";
             // 
@@ -836,7 +848,7 @@
             this.labelImageSize.AutoSize = true;
             this.labelImageSize.Location = new System.Drawing.Point(344, 12);
             this.labelImageSize.Name = "labelImageSize";
-            this.labelImageSize.Size = new System.Drawing.Size(53, 12);
+            this.labelImageSize.Size = new System.Drawing.Size(57, 13);
             this.labelImageSize.TabIndex = 19;
             this.labelImageSize.Text = "ImageSize";
             // 
@@ -918,7 +930,7 @@
             this.label9.Font = new System.Drawing.Font("新細明體", 12F);
             this.label9.Location = new System.Drawing.Point(8, 8);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(82, 16);
+            this.label9.Size = new System.Drawing.Size(96, 20);
             this.label9.TabIndex = 16;
             this.label9.Text = "Segmention";
             // 
@@ -932,15 +944,15 @@
             this.panel6.Size = new System.Drawing.Size(842, 766);
             this.panel6.TabIndex = 14;
             // 
-            // btnMosaic
+            // btnRippleEffect
             // 
-            this.btnMosaic.Location = new System.Drawing.Point(183, 115);
-            this.btnMosaic.Name = "btnMosaic";
-            this.btnMosaic.Size = new System.Drawing.Size(75, 23);
-            this.btnMosaic.TabIndex = 27;
-            this.btnMosaic.Text = "Mosaic ";
-            this.btnMosaic.UseVisualStyleBackColor = true;
-            this.btnMosaic.Click += new System.EventHandler(this.btnMosaic_Click);
+            this.btnRippleEffect.Location = new System.Drawing.Point(183, 58);
+            this.btnRippleEffect.Name = "btnRippleEffect";
+            this.btnRippleEffect.Size = new System.Drawing.Size(75, 23);
+            this.btnRippleEffect.TabIndex = 28;
+            this.btnRippleEffect.Text = "Ripple Effect";
+            this.btnRippleEffect.UseVisualStyleBackColor = true;
+            this.btnRippleEffect.Click += new System.EventHandler(this.btnRippleEffect_Click);
             // 
             // Form1
             // 
@@ -1065,6 +1077,7 @@
         private System.Windows.Forms.Button btnColouring;
         private System.Windows.Forms.Button btnColorFunction;
         private System.Windows.Forms.Button btnMosaic;
+        private System.Windows.Forms.Button btnRippleEffect;
     }
 }
 
