@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ImageProcessToolBox
 {
-    class ReliefFilter :PointTemplate, IImageProcess
+    class ReliefFilter : IImageProcess
     {
         private Bitmap _SourceImage;
         public ReliefFilter(Bitmap bitmap)
