@@ -35,7 +35,10 @@
             this.btnSaveFile = new System.Windows.Forms.Button();
             this.btnOpenFile = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.btnColorFunction = new System.Windows.Forms.Button();
             this.btnExp = new System.Windows.Forms.Button();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.btnColouring = new System.Windows.Forms.Button();
             this.btnBinarization = new System.Windows.Forms.Button();
             this.btnPowerLaw = new System.Windows.Forms.Button();
             this.txtBinarization = new System.Windows.Forms.TextBox();
@@ -63,6 +66,15 @@
             this.label4 = new System.Windows.Forms.Label();
             this.panel8 = new System.Windows.Forms.Panel();
             this.panel13 = new System.Windows.Forms.Panel();
+            this.btnSwirl = new System.Windows.Forms.Button();
+            this.btnSketch = new System.Windows.Forms.Button();
+            this.btnLomo = new System.Windows.Forms.Button();
+            this.btnInstagram1977 = new System.Windows.Forms.Button();
+            this.btnSpherize = new System.Windows.Forms.Button();
+            this.numericUpDownY = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDownX = new System.Windows.Forms.NumericUpDown();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
             this.btnRippleEffect = new System.Windows.Forms.Button();
             this.btnMosaic = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
@@ -103,18 +115,15 @@
             this.labelImageSize = new System.Windows.Forms.Label();
             this.panel11 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.btnColorFunction = new System.Windows.Forms.Button();
-            this.btnColouring = new System.Windows.Forms.Button();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.panel14 = new System.Windows.Forms.Panel();
             this.label9 = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.numericUpDownX = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDownY = new System.Windows.Forms.NumericUpDown();
+            this.btnOldStyle = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.btnRelief = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numeric8BitPlaneSlicing)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -122,22 +131,22 @@
             this.panel7.SuspendLayout();
             this.panel8.SuspendLayout();
             this.panel13.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownY)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownX)).BeginInit();
             this.panel12.SuspendLayout();
             this.panel10.SuspendLayout();
             this.panel23.SuspendLayout();
             this.panel22.SuspendLayout();
             this.panel11.SuspendLayout();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.panel14.SuspendLayout();
             this.panel6.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownX)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownY)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.btnDrawSource);
             this.panel1.Controls.Add(this.btnReplace);
             this.panel1.Controls.Add(this.btnSaveFile);
@@ -209,8 +218,18 @@
             this.panel3.Controls.Add(this.panel4);
             this.panel3.Location = new System.Drawing.Point(4, 5);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(273, 292);
+            this.panel3.Size = new System.Drawing.Size(273, 247);
             this.panel3.TabIndex = 2;
+            // 
+            // btnColorFunction
+            // 
+            this.btnColorFunction.Location = new System.Drawing.Point(10, 219);
+            this.btnColorFunction.Name = "btnColorFunction";
+            this.btnColorFunction.Size = new System.Drawing.Size(94, 23);
+            this.btnColorFunction.TabIndex = 4;
+            this.btnColorFunction.Text = "ColorFunction";
+            this.btnColorFunction.UseVisualStyleBackColor = true;
+            this.btnColorFunction.Click += new System.EventHandler(this.btnColorFunction_Click);
             // 
             // btnExp
             // 
@@ -221,6 +240,26 @@
             this.btnExp.Text = "EXP Transform";
             this.btnExp.UseVisualStyleBackColor = true;
             this.btnExp.Click += new System.EventHandler(this.btnExp_Click);
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
+            this.pictureBox3.Location = new System.Drawing.Point(115, 190);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(123, 23);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox3.TabIndex = 2;
+            this.pictureBox3.TabStop = false;
+            // 
+            // btnColouring
+            // 
+            this.btnColouring.Location = new System.Drawing.Point(12, 190);
+            this.btnColouring.Name = "btnColouring";
+            this.btnColouring.Size = new System.Drawing.Size(94, 23);
+            this.btnColouring.TabIndex = 3;
+            this.btnColouring.Text = "炫彩";
+            this.btnColouring.UseVisualStyleBackColor = true;
+            this.btnColouring.Click += new System.EventHandler(this.btnColouring_Click);
             // 
             // btnBinarization
             // 
@@ -479,13 +518,20 @@
             this.panel8.Controls.Add(this.panel13);
             this.panel8.Controls.Add(this.panel12);
             this.panel8.Controls.Add(this.panel9);
-            this.panel8.Location = new System.Drawing.Point(3, 303);
+            this.panel8.Location = new System.Drawing.Point(3, 258);
             this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(274, 345);
+            this.panel8.Size = new System.Drawing.Size(274, 390);
             this.panel8.TabIndex = 9;
             // 
             // panel13
             // 
+            this.panel13.Controls.Add(this.btnRelief);
+            this.panel13.Controls.Add(this.btnOldStyle);
+            this.panel13.Controls.Add(this.btnSwirl);
+            this.panel13.Controls.Add(this.btnSketch);
+            this.panel13.Controls.Add(this.btnLomo);
+            this.panel13.Controls.Add(this.btnInstagram1977);
+            this.panel13.Controls.Add(this.btnSpherize);
             this.panel13.Controls.Add(this.numericUpDownY);
             this.panel13.Controls.Add(this.numericUpDownX);
             this.panel13.Controls.Add(this.label12);
@@ -505,8 +551,132 @@
             this.panel13.Controls.Add(this.btnLaplacian);
             this.panel13.Location = new System.Drawing.Point(7, 3);
             this.panel13.Name = "panel13";
-            this.panel13.Size = new System.Drawing.Size(264, 238);
+            this.panel13.Size = new System.Drawing.Size(264, 285);
             this.panel13.TabIndex = 15;
+            // 
+            // btnSwirl
+            // 
+            this.btnSwirl.Location = new System.Drawing.Point(12, 230);
+            this.btnSwirl.Name = "btnSwirl";
+            this.btnSwirl.Size = new System.Drawing.Size(75, 23);
+            this.btnSwirl.TabIndex = 38;
+            this.btnSwirl.Text = "Swirl";
+            this.btnSwirl.UseVisualStyleBackColor = true;
+            this.btnSwirl.Click += new System.EventHandler(this.btnSwirl_Click);
+            // 
+            // btnSketch
+            // 
+            this.btnSketch.Location = new System.Drawing.Point(183, 201);
+            this.btnSketch.Name = "btnSketch";
+            this.btnSketch.Size = new System.Drawing.Size(75, 23);
+            this.btnSketch.TabIndex = 37;
+            this.btnSketch.Text = "Sketch";
+            this.btnSketch.UseVisualStyleBackColor = true;
+            this.btnSketch.Click += new System.EventHandler(this.btnSketch_Click);
+            // 
+            // btnLomo
+            // 
+            this.btnLomo.Location = new System.Drawing.Point(96, 201);
+            this.btnLomo.Name = "btnLomo";
+            this.btnLomo.Size = new System.Drawing.Size(75, 23);
+            this.btnLomo.TabIndex = 36;
+            this.btnLomo.Text = "Lomo";
+            this.btnLomo.UseVisualStyleBackColor = true;
+            this.btnLomo.Click += new System.EventHandler(this.btnLomo_Click);
+            // 
+            // btnInstagram1977
+            // 
+            this.btnInstagram1977.Location = new System.Drawing.Point(12, 201);
+            this.btnInstagram1977.Name = "btnInstagram1977";
+            this.btnInstagram1977.Size = new System.Drawing.Size(75, 23);
+            this.btnInstagram1977.TabIndex = 35;
+            this.btnInstagram1977.Text = "Instagram1977";
+            this.btnInstagram1977.UseVisualStyleBackColor = true;
+            this.btnInstagram1977.Click += new System.EventHandler(this.btnInstagram1977_Click);
+            // 
+            // btnSpherize
+            // 
+            this.btnSpherize.Location = new System.Drawing.Point(183, 171);
+            this.btnSpherize.Name = "btnSpherize";
+            this.btnSpherize.Size = new System.Drawing.Size(75, 23);
+            this.btnSpherize.TabIndex = 34;
+            this.btnSpherize.Text = "Spherize";
+            this.btnSpherize.UseVisualStyleBackColor = true;
+            this.btnSpherize.Click += new System.EventHandler(this.btnSpherize_Click);
+            // 
+            // numericUpDownY
+            // 
+            this.numericUpDownY.Increment = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
+            this.numericUpDownY.Location = new System.Drawing.Point(219, 12);
+            this.numericUpDownY.Maximum = new decimal(new int[] {
+            99,
+            0,
+            0,
+            0});
+            this.numericUpDownY.Minimum = new decimal(new int[] {
+            3,
+            0,
+            0,
+            0});
+            this.numericUpDownY.Name = "numericUpDownY";
+            this.numericUpDownY.Size = new System.Drawing.Size(34, 22);
+            this.numericUpDownY.TabIndex = 33;
+            this.numericUpDownY.Value = new decimal(new int[] {
+            3,
+            0,
+            0,
+            0});
+            // 
+            // numericUpDownX
+            // 
+            this.numericUpDownX.Increment = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
+            this.numericUpDownX.Location = new System.Drawing.Point(159, 12);
+            this.numericUpDownX.Maximum = new decimal(new int[] {
+            99,
+            0,
+            0,
+            0});
+            this.numericUpDownX.Minimum = new decimal(new int[] {
+            3,
+            0,
+            0,
+            0});
+            this.numericUpDownX.Name = "numericUpDownX";
+            this.numericUpDownX.Size = new System.Drawing.Size(34, 22);
+            this.numericUpDownX.TabIndex = 32;
+            this.numericUpDownX.Value = new decimal(new int[] {
+            3,
+            0,
+            0,
+            0});
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("新細明體", 10F);
+            this.label12.Location = new System.Drawing.Point(199, 13);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(16, 17);
+            this.label12.TabIndex = 31;
+            this.label12.Text = "y";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("新細明體", 10F);
+            this.label11.Location = new System.Drawing.Point(139, 13);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(16, 17);
+            this.label11.TabIndex = 30;
+            this.label11.Text = "x";
             // 
             // btnRippleEffect
             // 
@@ -645,7 +815,7 @@
             this.panel12.Controls.Add(this.btnErosion);
             this.panel12.Controls.Add(this.btnOpening);
             this.panel12.Controls.Add(this.btnClosing);
-            this.panel12.Location = new System.Drawing.Point(7, 247);
+            this.panel12.Location = new System.Drawing.Point(7, 294);
             this.panel12.Name = "panel12";
             this.panel12.Size = new System.Drawing.Size(264, 92);
             this.panel12.TabIndex = 13;
@@ -893,36 +1063,6 @@
             this.panel2.Size = new System.Drawing.Size(280, 766);
             this.panel2.TabIndex = 13;
             // 
-            // btnColorFunction
-            // 
-            this.btnColorFunction.Location = new System.Drawing.Point(13, 266);
-            this.btnColorFunction.Name = "btnColorFunction";
-            this.btnColorFunction.Size = new System.Drawing.Size(94, 23);
-            this.btnColorFunction.TabIndex = 4;
-            this.btnColorFunction.Text = "ColorFunction";
-            this.btnColorFunction.UseVisualStyleBackColor = true;
-            this.btnColorFunction.Click += new System.EventHandler(this.btnColorFunction_Click);
-            // 
-            // btnColouring
-            // 
-            this.btnColouring.Location = new System.Drawing.Point(15, 237);
-            this.btnColouring.Name = "btnColouring";
-            this.btnColouring.Size = new System.Drawing.Size(94, 23);
-            this.btnColouring.TabIndex = 3;
-            this.btnColouring.Text = "炫彩";
-            this.btnColouring.UseVisualStyleBackColor = true;
-            this.btnColouring.Click += new System.EventHandler(this.btnColouring_Click);
-            // 
-            // pictureBox3
-            // 
-            this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
-            this.pictureBox3.Location = new System.Drawing.Point(118, 237);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(123, 23);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox3.TabIndex = 2;
-            this.pictureBox3.TabStop = false;
-            // 
             // panel14
             // 
             this.panel14.BackColor = System.Drawing.SystemColors.ActiveBorder;
@@ -953,80 +1093,35 @@
             this.panel6.Size = new System.Drawing.Size(842, 766);
             this.panel6.TabIndex = 14;
             // 
-            // label11
+            // btnOldStyle
             // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("新細明體", 10F);
-            this.label11.Location = new System.Drawing.Point(139, 13);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(16, 17);
-            this.label11.TabIndex = 30;
-            this.label11.Text = "x";
+            this.btnOldStyle.Location = new System.Drawing.Point(96, 230);
+            this.btnOldStyle.Name = "btnOldStyle";
+            this.btnOldStyle.Size = new System.Drawing.Size(75, 23);
+            this.btnOldStyle.TabIndex = 39;
+            this.btnOldStyle.Text = "old Style";
+            this.btnOldStyle.UseVisualStyleBackColor = true;
+            this.btnOldStyle.Click += new System.EventHandler(this.btnOldStyle_Click);
             // 
-            // label12
+            // button1
             // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("新細明體", 10F);
-            this.label12.Location = new System.Drawing.Point(199, 13);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(16, 17);
-            this.label12.TabIndex = 31;
-            this.label12.Text = "y";
+            this.button1.Location = new System.Drawing.Point(410, 4);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 9;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // numericUpDownX
+            // btnRelief
             // 
-            this.numericUpDownX.Increment = new decimal(new int[] {
-            2,
-            0,
-            0,
-            0});
-            this.numericUpDownX.Location = new System.Drawing.Point(159, 12);
-            this.numericUpDownX.Maximum = new decimal(new int[] {
-            99,
-            0,
-            0,
-            0});
-            this.numericUpDownX.Minimum = new decimal(new int[] {
-            3,
-            0,
-            0,
-            0});
-            this.numericUpDownX.Name = "numericUpDownX";
-            this.numericUpDownX.Size = new System.Drawing.Size(34, 22);
-            this.numericUpDownX.TabIndex = 32;
-            this.numericUpDownX.Value = new decimal(new int[] {
-            3,
-            0,
-            0,
-            0});
-            this.numericUpDownX.ValueChanged += new System.EventHandler(this.numericUpDown1_ValueChanged);
-            // 
-            // numericUpDownY
-            // 
-            this.numericUpDownY.Increment = new decimal(new int[] {
-            2,
-            0,
-            0,
-            0});
-            this.numericUpDownY.Location = new System.Drawing.Point(219, 12);
-            this.numericUpDownY.Maximum = new decimal(new int[] {
-            99,
-            0,
-            0,
-            0});
-            this.numericUpDownY.Minimum = new decimal(new int[] {
-            3,
-            0,
-            0,
-            0});
-            this.numericUpDownY.Name = "numericUpDownY";
-            this.numericUpDownY.Size = new System.Drawing.Size(34, 22);
-            this.numericUpDownY.TabIndex = 33;
-            this.numericUpDownY.Value = new decimal(new int[] {
-            3,
-            0,
-            0,
-            0});
+            this.btnRelief.Location = new System.Drawing.Point(183, 230);
+            this.btnRelief.Name = "btnRelief";
+            this.btnRelief.Size = new System.Drawing.Size(75, 23);
+            this.btnRelief.TabIndex = 40;
+            this.btnRelief.Text = "Relief";
+            this.btnRelief.UseVisualStyleBackColor = true;
+            this.btnRelief.Click += new System.EventHandler(this.btnRelief_Click);
             // 
             // Form1
             // 
@@ -1041,6 +1136,7 @@
             this.panel1.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numeric8BitPlaneSlicing)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
@@ -1051,6 +1147,8 @@
             this.panel8.ResumeLayout(false);
             this.panel13.ResumeLayout(false);
             this.panel13.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownY)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownX)).EndInit();
             this.panel12.ResumeLayout(false);
             this.panel12.PerformLayout();
             this.panel10.ResumeLayout(false);
@@ -1060,12 +1158,9 @@
             this.panel11.ResumeLayout(false);
             this.panel11.PerformLayout();
             this.panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.panel14.ResumeLayout(false);
             this.panel14.PerformLayout();
             this.panel6.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownX)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownY)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1156,6 +1251,14 @@
         private System.Windows.Forms.NumericUpDown numericUpDownX;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Button btnSpherize;
+        private System.Windows.Forms.Button btnInstagram1977;
+        private System.Windows.Forms.Button btnLomo;
+        private System.Windows.Forms.Button btnSketch;
+        private System.Windows.Forms.Button btnSwirl;
+        private System.Windows.Forms.Button btnOldStyle;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnRelief;
     }
 }
 

@@ -65,6 +65,8 @@
     <Compile Include="FilterTemplate.cs" />
     <Compile Include="Grayscale.cs" />
     <Compile Include="ImageProcess.cs" />
+    <Compile Include="Instagram1977.cs" />
+    <Compile Include="LomoFilter.cs" />
     <Compile Include="MorphologyClosing.cs" />
     <Compile Include="ColorRGBModel.cs" />
     <Compile Include="MorphologyDilation.cs" />
@@ -93,8 +95,13 @@
     <Compile Include="MyColorFunction.cs" />
     <Compile Include="MyColouring.cs" />
     <Compile Include="Negative.cs" />
+    <Compile Include="OldStyleFilter.cs" />
     <Compile Include="PointTemplate.cs" />
+    <Compile Include="ReliefFilter.cs" />
     <Compile Include="RippleEffect.cs" />
+    <Compile Include="SketchFilter.cs" />
+    <Compile Include="SpherizeFilter.cs" />
+    <Compile Include="SwirlFilter.cs" />
     <Compile Include="TransformPowerLaw.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

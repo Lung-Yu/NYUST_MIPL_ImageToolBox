@@ -52,6 +52,12 @@ namespace ImageProcessToolBox
                                 btnHistogramEqualization,
                                 btnMosaic,
                                 btnRippleEffect,
+                                btnSpatialFilter,
+                                btnInstagram1977,
+                                btnLomo,
+                                btnSketch,
+                                btnSwirl,
+                                btnOldStyle,
                                 
                                 //morphology
                                 btnErosion,
@@ -66,7 +72,7 @@ namespace ImageProcessToolBox
             foreach (Button button in btns)
                 Buttons.Add(button);
         }
-        
+
         #region Menu
         private void btnOpenFile_Click(object sender, EventArgs e)
         {
@@ -234,7 +240,7 @@ namespace ImageProcessToolBox
         private void draw(Graphics[] graphicses, Bitmap bitmap)
         {
             int[,] statistics = MyColouring.Statistics(bitmap);
-            
+
             // find Max value
             int MAX = 0;
             foreach (int value in statistics)
@@ -280,8 +286,8 @@ namespace ImageProcessToolBox
         }
 
         #endregion
-        
-        #region My Colors 
+
+        #region My Colors
         private void btnColouring_Click(object sender, EventArgs e)
         {
             Bitmap bitmap = bitmapFromSource();
@@ -423,14 +429,59 @@ namespace ImageProcessToolBox
         private void btnMosaic_Click(object sender, EventArgs e)
         {
             Bitmap bitmap = bitmapFromSource();
-            Bitmap resBitmap = execute(new Mosaic(bitmap), "Mosaic");
+            Bitmap resBitmap = execute(new Mosaic(bitmap), "Mosaic Filter");
             setResultBitmap(resBitmap);
         }
 
         private void btnRippleEffect_Click(object sender, EventArgs e)
         {
             Bitmap bitmap = bitmapFromSource();
-            Bitmap resBitmap = execute(new RippleEffect(bitmap), "Ripple Effect");
+            Bitmap resBitmap = execute(new RippleEffect(bitmap), "Ripple Effect Filter");
+            setResultBitmap(resBitmap);
+        }
+        private void btnSpherize_Click(object sender, EventArgs e)
+        {
+            Bitmap bitmap = bitmapFromSource();
+            Bitmap resBitmap = execute(new SpherizeFilter(bitmap), "Spherize Filter");
+            setResultBitmap(resBitmap);
+        }
+
+        private void btnInstagram1977_Click(object sender, EventArgs e)
+        {
+            Bitmap bitmap = bitmapFromSource();
+            Bitmap resBitmap = execute(new Instagram1977(bitmap), "Spherize Filter");
+            setResultBitmap(resBitmap);
+        }
+        private void btnLomo_Click(object sender, EventArgs e)
+        {
+            Bitmap bitmap = bitmapFromSource();
+            Bitmap resBitmap = execute(new LomoFilter(bitmap), "Spherize Filter");
+            setResultBitmap(resBitmap);
+        }
+
+        private void btnSketch_Click(object sender, EventArgs e)
+        {
+            Bitmap bitmap = bitmapFromSource();
+            Bitmap resBitmap = execute(new SketchFilter(bitmap), "Sketch Filter");
+            setResultBitmap(resBitmap);
+        }
+        private void btnSwirl_Click(object sender, EventArgs e)
+        {
+            Bitmap bitmap = bitmapFromSource();
+            Bitmap resBitmap = execute(new SwirlFilter(bitmap), "Swirl Filter");
+            setResultBitmap(resBitmap);
+        }
+        private void btnOldStyle_Click(object sender, EventArgs e)
+        {
+            Bitmap bitmap = bitmapFromSource();
+            Bitmap resBitmap = execute(new OldStyleFilter(bitmap), "OldStyle Filter");
+            setResultBitmap(resBitmap);
+        }
+
+        private void btnRelief_Click(object sender, EventArgs e)
+        {
+            Bitmap bitmap = bitmapFromSource();
+            Bitmap resBitmap = execute(new ReliefFilter(bitmap), "Relief Filter");
             setResultBitmap(resBitmap);
         }
 
@@ -496,14 +547,64 @@ namespace ImageProcessToolBox
         }
         #endregion
 
-        private void numericUpDown1_ValueChanged(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
-
+            //以浮雕效果顯示圖像
+            try
+            {
+                int Height = this.pictureBox1.Image.Height;
+                int Width = this.pictureBox1.Image.Width;
+                Bitmap newBitmap = new Bitmap(Width, Height);
+                Bitmap oldBitmap = (Bitmap)this.pictureBox1.Image;
+                Color pixel1, pixel2;
+                for (int x = 0; x < Width - 1; x++)
+                {
+                    for (int y = 0; y < Height - 1; y++)
+                    {
+                        int r = 0, g = 0, b = 0;
+                        pixel1 = oldBitmap.GetPixel(x, y);
+                        pixel2 = oldBitmap.GetPixel(x + 1, y + 1);
+                        r = Math.Abs(pixel1.R - pixel2.R + 128);
+                        g = Math.Abs(pixel1.G - pixel2.G + 128);
+                        b = Math.Abs(pixel1.B - pixel2.B + 128);
+                        if (r > 255)
+                            r = 255;
+                        if (r < 0)
+                            r = 0;
+                        if (g > 255)
+                            g = 255;
+                        if (g < 0)
+                            g = 0;
+                        if (b > 255)
+                            b = 255;
+                        if (b < 0)
+                            b = 0;
+                        newBitmap.SetPixel(x, y, Color.FromArgb(r, g, b));
+                    }
+                }
+                this.pictureBox1.Image = newBitmap;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "信息提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
-        
 
-        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     }
 }
