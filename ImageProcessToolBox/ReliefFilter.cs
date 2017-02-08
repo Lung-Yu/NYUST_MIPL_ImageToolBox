@@ -30,7 +30,7 @@ namespace ImageProcessToolBox
             unsafe
             {
                 // 抓住第一個 Pixel 第一個數值
-                byte* p = (byte*)(void*)bitmapData.Scan0;
+                byte* p = (byte*)(void*)bitmapData.Scan0; 
 
                 // 跨步值 - 寬度 *3 可以算出畸零地 之後跳到下一行
                 int nOffset = bitmapData.Stride - src.Width * 3;

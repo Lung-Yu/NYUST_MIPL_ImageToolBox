@@ -29,7 +29,7 @@ namespace ImageProcessToolBox
         {
             return effectProcess(_ImageSource, _Wave);
         }
-
+         
         private struct FloatPoint
         {
             public int X;
