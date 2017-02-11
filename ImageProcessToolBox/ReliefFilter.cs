@@ -11,11 +11,17 @@ namespace ImageProcessToolBox
     class ReliefFilter : IImageProcess
     {
         private Bitmap _SourceImage;
+
+        public ReliefFilter()
+        {
+
+        }
+
         public ReliefFilter(Bitmap bitmap)
         {
             _SourceImage = bitmap;
         }
-
+        
         public System.Drawing.Bitmap Process()
         {
             return AdjustToStone(_SourceImage);
@@ -74,5 +80,14 @@ namespace ImageProcessToolBox
 
         }
 
+
+
+
+
+
+        public void setResouceImage(Bitmap bitmap)
+        {
+            _SourceImage = bitmap;
+        }
     }
 }

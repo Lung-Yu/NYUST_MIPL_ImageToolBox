@@ -10,6 +10,9 @@ namespace ImageProcessToolBox
     class MorphologyClosing : IImageProcess
     {
         private Bitmap _SourceImage;
+        public MorphologyClosing()
+        {
+        }
         public MorphologyClosing(Bitmap bitmap)
         {
             _SourceImage = bitmap;
@@ -21,6 +24,12 @@ namespace ImageProcessToolBox
             Bitmap dilatBitmap = new MorphologyDilation(erosionBitmap).Process();
             erosionBitmap.Dispose();
             return dilatBitmap;
+        }
+
+
+        public void setResouceImage(Bitmap bitmap)
+        {
+            _SourceImage = bitmap;
         }
     }
 }

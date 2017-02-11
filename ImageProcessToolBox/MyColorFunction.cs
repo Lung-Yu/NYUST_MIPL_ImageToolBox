@@ -12,6 +12,10 @@ namespace ImageProcessToolBox
     {
         private readonly static int COLOR_SIZE_RANGE = 256;
         private Bitmap _SourceImage;
+        public MyColorFunction()
+        {
+        }
+
         public MyColorFunction(Bitmap bitmap)
         {
             _SourceImage = bitmap;
@@ -58,6 +62,12 @@ namespace ImageProcessToolBox
             srcBitmap.UnlockBits(srcBmData);
             dstBitmap.UnlockBits(dstBmData);
             return dstBitmap;
+        }
+
+
+        public void setResouceImage(Bitmap bitmap)
+        {
+            _SourceImage = bitmap;
         }
     }
 }

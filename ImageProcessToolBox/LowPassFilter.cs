@@ -10,6 +10,11 @@ namespace ImageProcessToolBox
     class LowPassFilter :FilterTemplate, IImageProcess
     {
         private Bitmap _SourceImage;
+        public LowPassFilter()
+        {
+           
+        }
+
         public LowPassFilter(Bitmap bitmap)
         {
             _SourceImage = bitmap;
@@ -32,6 +37,12 @@ namespace ImageProcessToolBox
             for (int i = 0; i < gate.Length; i++)
                 result += (gate[i] * mask[i]);
             return (byte)result;
+        }
+
+
+        public void setResouceImage(Bitmap bitmap)
+        {
+            _SourceImage = bitmap;
         }
     }
 }

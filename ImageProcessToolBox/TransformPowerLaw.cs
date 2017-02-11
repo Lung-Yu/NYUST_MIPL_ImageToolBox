@@ -11,7 +11,13 @@ namespace ImageProcessToolBox
     class TransformPowerLaw :PointTemplate, IImageProcess
     {
         private Bitmap _SourceImage;
+
         private double _C = 1.5;
+        public TransformPowerLaw(double c)
+        {
+            _C = c;
+        }
+
         public TransformPowerLaw(double c,Bitmap bitmap)
         {
             _SourceImage = bitmap;
@@ -84,5 +90,13 @@ namespace ImageProcessToolBox
             double value = Math.Pow(b, _C);
             return (byte)((value > 255) ? 255 : value);
         }
+
+
+        public void setResouceImage(Bitmap bitmap)
+        {
+            _SourceImage = bitmap;
+        }
+
+        
     }
 }

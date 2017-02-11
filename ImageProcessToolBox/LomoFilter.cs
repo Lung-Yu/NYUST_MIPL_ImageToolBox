@@ -12,6 +12,11 @@ namespace ImageProcessToolBox
     {
         //https://www.kancloud.cn/trent/hotoimagefilter/102803
         private Bitmap _SourceImage;
+        public LomoFilter()
+        {
+            
+        }
+
         public LomoFilter(Bitmap bitmap)
         {
             _SourceImage = bitmap;
@@ -74,6 +79,12 @@ namespace ImageProcessToolBox
         public Bitmap Process()
         {
             return LOMOFilterProcess(_SourceImage);
+        }
+
+
+        public void setResouceImage(Bitmap bitmap)
+        {
+            _SourceImage = bitmap;
         }
     }
 }

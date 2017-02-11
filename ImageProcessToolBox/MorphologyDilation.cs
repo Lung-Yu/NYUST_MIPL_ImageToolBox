@@ -11,6 +11,11 @@ namespace ImageProcessToolBox
     {
 
         private Bitmap _SourceImage;
+
+        public MorphologyDilation()
+        {
+        }
+
         public MorphologyDilation(Bitmap bitmap)
         {
             _SourceImage = bitmap;
@@ -69,6 +74,12 @@ namespace ImageProcessToolBox
         protected override byte maskFilter(byte[] gate)
         {
             return dilationMask33(gate);
+        }
+
+
+        public void setResouceImage(Bitmap bitmap)
+        {
+            _SourceImage = bitmap;
         }
     }
 }

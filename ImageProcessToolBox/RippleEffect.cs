@@ -14,6 +14,14 @@ namespace ImageProcessToolBox
     {
         private Bitmap _ImageSource;
         private short _Wave = 15;
+        public RippleEffect()
+        {
+          
+        }
+        public RippleEffect(short wave)
+        {
+            _Wave = wave;
+        }
         public RippleEffect(Bitmap bitmap)
         {
             _ImageSource = bitmap;
@@ -98,5 +106,11 @@ namespace ImageProcessToolBox
         }
 
 
+
+
+        public void setResouceImage(Bitmap bitmap)
+        {
+            _ImageSource = bitmap;
+        }
     }
 }

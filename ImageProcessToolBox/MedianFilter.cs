@@ -12,6 +12,16 @@ namespace ImageProcessToolBox
         private Bitmap _ImageSource;
         private int _MaskWidth=3;
         private int _MaskHeight=3;
+
+        public MedianFilter()
+        {
+        }
+        public MedianFilter(int w, int h)
+        {
+            _MaskWidth = w;
+            _MaskHeight = h;
+        }
+
         public MedianFilter(Bitmap bitmap)
         {
             _ImageSource = bitmap;
@@ -34,6 +44,11 @@ namespace ImageProcessToolBox
             Heap heap = new Heap(gate, gate.Length);
             heap.heapsort();
             return (byte)heap.get()[gate.Length / 2];
+        }
+
+        public void setResouceImage(Bitmap bitmap)
+        {
+            _ImageSource = bitmap;
         }
     }
 }

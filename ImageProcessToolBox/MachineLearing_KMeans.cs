@@ -15,6 +15,12 @@ namespace ImageProcessToolBox
         private Bitmap _SourceImage;
         private int _K = 1;
         private int _IterationLevel = 10;
+        public MachineLearing_KMeans(int k, int iterationLevel)
+        {
+            _K = k;
+            _IterationLevel = iterationLevel;
+        }
+
         public MachineLearing_KMeans(int k, int iterationLevel, Bitmap bitmap)
         {
             _K = k;
@@ -297,6 +303,12 @@ namespace ImageProcessToolBox
             int dg = (a.G - b.G) * (a.G - b.G);
 
             return (int)Math.Sqrt(dr + db + dg);
+        }
+
+
+        public void setResouceImage(Bitmap bitmap)
+        {
+            _SourceImage = bitmap;
         }
     }
 

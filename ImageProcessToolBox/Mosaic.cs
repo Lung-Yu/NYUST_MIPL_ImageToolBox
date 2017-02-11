@@ -11,6 +11,11 @@ namespace ImageProcessToolBox
     {
         private Bitmap _SourceImage;
         private int _EffectWidth = 5;
+        public Mosaic()
+        {
+         
+        }
+
         public Mosaic(Bitmap bitmap)
         {
             _SourceImage = bitmap;
@@ -119,6 +124,12 @@ namespace ImageProcessToolBox
                 }
             }
             return bitmap;
+        }
+
+
+        public void setResouceImage(Bitmap bitmap)
+        {
+            _SourceImage = bitmap;
         }
     }
 }

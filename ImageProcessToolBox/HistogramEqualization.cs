@@ -13,6 +13,11 @@ namespace ImageProcessToolBox
         private Bitmap _SourceImage;
         private readonly static int COLOR_SIZE_RANGE = 256;
 
+        public HistogramEqualization()
+        {
+         
+        }
+
         public HistogramEqualization(Bitmap bitmap)
         {
             _SourceImage = bitmap;
@@ -118,6 +123,12 @@ namespace ImageProcessToolBox
             dstBitmap.UnlockBits(dstBmData);
 
             return dstBitmap;
+        }
+
+
+        public void setResouceImage(Bitmap bitmap)
+        {
+            _SourceImage = bitmap;
         }
     }
 }

@@ -20,12 +20,12 @@ namespace ImageProcessToolBox
         public Form1()
         {
             InitializeComponent();
-
             Button[] btns = {
                                 btnOpenFile,
                                 btnSaveFile,
                                 btnReplace,
                                 btnDrawSource,
+
                                 //point
                                 btnGrayscale,
                                 btnNegative,
@@ -58,6 +58,8 @@ namespace ImageProcessToolBox
                                 btnSketch,
                                 btnSwirl,
                                 btnOldStyle,
+                                btnSpherize,
+                                btnRelief,
                                 
                                 //morphology
                                 btnErosion,
@@ -156,12 +158,16 @@ namespace ImageProcessToolBox
         #endregion
 
         #region 共用函數
-        private Bitmap execute(IImageProcess action, String actionString)
+        private void actions(IImageProcess action, String actionString)
         {
+            Bitmap bitmap = bitmapFromSource();
+
             Stopwatch sw = TimeCountStart();
+            action.setResouceImage(bitmap);
             Bitmap resBitmap = action.Process();
+
             UIMessage(actionString, sw);
-            return resBitmap;
+            setResultBitmap(resBitmap);
         }
 
         private void ButtonsEnable()
@@ -290,33 +296,25 @@ namespace ImageProcessToolBox
         #region My Colors
         private void btnColouring_Click(object sender, EventArgs e)
         {
-            Bitmap bitmap = bitmapFromSource();
             Bitmap coluring = new Bitmap(pictureBox3.Image);
-            Bitmap resBitmap = execute(new MyColouring(bitmap, coluring), "MyColouring");
-            setResultBitmap(resBitmap);
+            actions(new MyColouring(coluring), "MyColouring");
         }
 
         private void btnColorFunction_Click(object sender, EventArgs e)
         {
-            Bitmap bitmap = bitmapFromSource();
-            Bitmap resBitmap = execute(new MyColorFunction(bitmap), "MyColorFunction");
-            setResultBitmap(resBitmap);
+            actions(new MyColorFunction(), "MyColorFunction");
         }
         #endregion
 
         #region Point Processing
         private void btnGrayscale_Click(object sender, EventArgs e)
         {
-            Bitmap bitmap = bitmapFromSource();
-            Bitmap resBitmap = execute(new Grayscale(bitmap), "Grayscale");
-            setResultBitmap(resBitmap);
+            actions(new Grayscale(), "Grayscale");
         }
 
         private void btnNegative_Click(object sender, EventArgs e)
         {
-            Bitmap bitmap = bitmapFromSource();
-            Bitmap resBitmap = execute(new Negative(bitmap), "Negative");
-            setResultBitmap(resBitmap);
+            actions(new Negative(), "Negative");
         }
 
         private void btnOtus_Click(object sender, EventArgs e)
@@ -335,26 +333,19 @@ namespace ImageProcessToolBox
         private void btn8BitPlaneSlicing_Click(object sender, EventArgs e)
         {
             int value = (int)numeric8BitPlaneSlicing.Value;
-            Bitmap bitmap = bitmapFromSource();
-            Bitmap resBitmap = execute(new BitOf8PlaneSlicing(value, bitmap), "8 Bit Plane Slicing by " + value);
-            setResultBitmap(resBitmap);
+            actions(new BitOf8PlaneSlicing(value), "8 Bit Plane Slicing by " + value);
         }
 
         private void btnBinarization_Click(object sender, EventArgs e)
         {
             int value = int.Parse(txtBinarization.Text);
-
-            Bitmap bitmap = bitmapFromSource();
-            Bitmap resBitmap = execute(new Binarization(value, bitmap), "binarized Image by " + value);
-            setResultBitmap(resBitmap);
+            actions(new Binarization(value), "binarized Image by " + value);
         }
 
         private void btnPowerLaw_Click(object sender, EventArgs e)
         {
             double c = double.Parse(txtLog.Text);
-            Bitmap bitmap = bitmapFromSource();
-            Bitmap resBitmap = execute(new TransformPowerLaw(c, bitmap), "PowLaw");
-            setResultBitmap(resBitmap);
+            actions(new TransformPowerLaw(c), "PowLaw");
         }
 
         #endregion
@@ -362,37 +353,27 @@ namespace ImageProcessToolBox
         #region 空間轉換 Space filter
         private void btnMeanFilter_Click(object sender, EventArgs e)
         {
-            Bitmap bitmap = bitmapFromSource();
-            Bitmap resBitmap = execute(new MedianFilter(bitmap, (int)numericUpDownX.Value, (int)numericUpDownY.Value), "Median Filter");
-            setResultBitmap(resBitmap);
+            actions(new MedianFilter((int)numericUpDownX.Value, (int)numericUpDownY.Value),"Median Filter");
         }
 
         private void btnAvgFiliter_Click(object sender, EventArgs e)
         {
-            Bitmap bitmap = bitmapFromSource();
-            Bitmap resBitmap = execute(new MeanFilter(bitmap, (int)numericUpDownX.Value, (int)numericUpDownY.Value), "Mean Filter");
-            setResultBitmap(resBitmap);
+            actions(new MeanFilter((int)numericUpDownX.Value, (int)numericUpDownY.Value), "Mean Filter");
         }
 
         private void btnGaussianFilter_Click(object sender, EventArgs e)
         {
-            Bitmap bitmap = bitmapFromSource();
-            Bitmap resBitmap = execute(new GaussianFilter(bitmap), "GaussianFilter");
-            setResultBitmap(resBitmap);
+            actions(new GaussianFilter(), "GaussianFilter");
         }
 
         private void btnLowPassFilters_Click(object sender, EventArgs e)
         {
-            Bitmap bitmap = bitmapFromSource();
-            Bitmap resBitmap = execute(new LowPassFilter(bitmap), "Low Pass Filters");
-            setResultBitmap(resBitmap);
+            actions(new LowPassFilter(), "Low Pass Filters");
         }
 
         private void btnHighPassFilters_Click(object sender, EventArgs e)
         {
-            Bitmap bitmap = bitmapFromSource();
-            Bitmap resBitmap = execute(new HighPassFilter(bitmap), "High Pass Filters");
-            setResultBitmap(resBitmap);
+            actions(new HighPassFilter(), "High Pass Filters");
         }
 
         private void btnFourierTransform_Click(object sender, EventArgs e)
@@ -402,87 +383,63 @@ namespace ImageProcessToolBox
 
         private void btnSobel_Click(object sender, EventArgs e)
         {
-            Bitmap bitmap = bitmapFromSource();
-            Bitmap resBitmap = execute(new Sobel(bitmap), "Sobel");
-            setResultBitmap(resBitmap);
+            actions(new Sobel(), "Sobel");
         }
 
         private void btnSpatialFilter_Click(object sender, EventArgs e)
         {
-
+           
         }
 
         private void btnLaplacian_Click(object sender, EventArgs e)
         {
-            Bitmap bitmap = bitmapFromSource();
-            Bitmap resBitmap = execute(new Sobel(bitmap), "Laplacian");
-            setResultBitmap(resBitmap);
+            actions(new Sobel(), "Laplacian");
         }
 
         private void btnHistogramEqualization_Click(object sender, EventArgs e)
         {
-            Bitmap bitmap = bitmapFromSource();
-            Bitmap resBitmap = execute(new HistogramEqualization(bitmap), "Histogram Equalization");
-            setResultBitmap(resBitmap);
+            actions(new HistogramEqualization(), "Histogram Equalization");
         }
 
         private void btnMosaic_Click(object sender, EventArgs e)
         {
-            Bitmap bitmap = bitmapFromSource();
-            Bitmap resBitmap = execute(new Mosaic(bitmap), "Mosaic Filter");
-            setResultBitmap(resBitmap);
+            actions(new Mosaic(), "Mosaic Filter");
         }
 
         private void btnRippleEffect_Click(object sender, EventArgs e)
         {
-            Bitmap bitmap = bitmapFromSource();
-            Bitmap resBitmap = execute(new RippleEffect(bitmap), "Ripple Effect Filter");
-            setResultBitmap(resBitmap);
+            actions(new RippleEffect(), "Ripple Effect Filter");
         }
         private void btnSpherize_Click(object sender, EventArgs e)
         {
-            Bitmap bitmap = bitmapFromSource();
-            Bitmap resBitmap = execute(new SpherizeFilter(bitmap), "Spherize Filter");
-            setResultBitmap(resBitmap);
+            actions(new SpherizeFilter(), "Spherize Filter");
         }
 
         private void btnInstagram1977_Click(object sender, EventArgs e)
         {
-            Bitmap bitmap = bitmapFromSource();
-            Bitmap resBitmap = execute(new Instagram1977(bitmap), "Spherize Filter");
-            setResultBitmap(resBitmap);
+            actions(new Instagram1977(), "Spherize Filter");
         }
         private void btnLomo_Click(object sender, EventArgs e)
         {
-            Bitmap bitmap = bitmapFromSource();
-            Bitmap resBitmap = execute(new LomoFilter(bitmap), "Spherize Filter");
-            setResultBitmap(resBitmap);
+            actions(new LomoFilter(), "Spherize Filter");
         }
 
         private void btnSketch_Click(object sender, EventArgs e)
         {
-            Bitmap bitmap = bitmapFromSource();
-            Bitmap resBitmap = execute(new SketchFilter(bitmap), "Sketch Filter");
-            setResultBitmap(resBitmap);
+            actions(new SketchFilter(), "Sketch Filter");
         }
         private void btnSwirl_Click(object sender, EventArgs e)
         {
-            Bitmap bitmap = bitmapFromSource();
-            Bitmap resBitmap = execute(new SwirlFilter(bitmap), "Swirl Filter");
-            setResultBitmap(resBitmap);
+            actions(new SwirlFilter(), "Swirl Filter");
         }
         private void btnOldStyle_Click(object sender, EventArgs e)
         {
-            Bitmap bitmap = bitmapFromSource();
-            Bitmap resBitmap = execute(new OldStyleFilter(bitmap), "OldStyle Filter");
-            setResultBitmap(resBitmap);
+            actions(new OldStyleFilter(), "OldStyle Filter");
         }
 
         private void btnRelief_Click(object sender, EventArgs e)
         {
-            Bitmap bitmap = bitmapFromSource();
-            Bitmap resBitmap = execute(new ReliefFilter(bitmap), "Relief Filter");
-            setResultBitmap(resBitmap);
+            actions(new ReliefFilter(), "Relief Filter");
         }
 
         #endregion
@@ -491,46 +448,34 @@ namespace ImageProcessToolBox
 
         private void btnErosion_Click(object sender, EventArgs e)
         {
-            Bitmap bitmap = bitmapFromSource();
-            Bitmap resBitmap = execute(new MeanFilter(bitmap), "Erosion");
-            setResultBitmap(resBitmap);
+            actions(new MeanFilter(), "Erosion");
         }
 
         private void btnSwell_Click(object sender, EventArgs e)
         {
-            Bitmap bitmap = bitmapFromSource();
-            Bitmap resBitmap = execute(new MorphologyDilation(bitmap), "Mean Filter");
-            setResultBitmap(resBitmap);
+            actions(new MorphologyDilation(), "Mean Filter");
         }
 
         private void btnOpening_Click(object sender, EventArgs e)
         {
-            Bitmap bitmap = bitmapFromSource();
-            Bitmap resBitmap = execute(new MorphologyOpening(bitmap), "Opening");
-            setResultBitmap(resBitmap);
+            actions(new MorphologyOpening(), "Opening");
         }
 
         private void btnClosing_Click(object sender, EventArgs e)
         {
-            Bitmap bitmap = bitmapFromSource();
-            Bitmap resBitmap = execute(new MorphologyClosing(bitmap), "Closing");
-            setResultBitmap(resBitmap);
+            actions(new MorphologyClosing(), "Closing");
         }
 
         private void btnLog_Click(object sender, EventArgs e)
         {
             int c = (int)double.Parse(txtLog.Text);
-            Bitmap bitmap = bitmapFromSource();
-            Bitmap resBitmap = execute(new TransformByLog(c, bitmap), "Log Transform");
-            setResultBitmap(resBitmap);
+            actions(new TransformByLog(c), "Log Transform");
         }
 
         private void btnExp_Click(object sender, EventArgs e)
         {
             int c = (int)double.Parse(txtLog.Text);
-            Bitmap bitmap = bitmapFromSource();
-            Bitmap resBitmap = execute(new TransformByExp(c, bitmap), "Exp Transform");
-            setResultBitmap(resBitmap);
+            actions(new TransformByExp(c), "Exp Transform");
         }
 
         #endregion
@@ -540,71 +485,9 @@ namespace ImageProcessToolBox
         {
             int k = int.Parse(txtKValue.Text);
             int iterationLevel = int.Parse(txtIterationLevel.Text);
-
-            Bitmap bitmap = bitmapFromSource();
-            Bitmap resBitmap = execute(new MachineLearing_KMeans(k, iterationLevel, bitmap), "K Means");
-            setResultBitmap(resBitmap);
+            actions(new MachineLearing_KMeans(k, iterationLevel), "K Means");
         }
         #endregion
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            //以浮雕效果顯示圖像
-            try
-            {
-                int Height = this.pictureBox1.Image.Height;
-                int Width = this.pictureBox1.Image.Width;
-                Bitmap newBitmap = new Bitmap(Width, Height);
-                Bitmap oldBitmap = (Bitmap)this.pictureBox1.Image;
-                Color pixel1, pixel2;
-                for (int x = 0; x < Width - 1; x++)
-                {
-                    for (int y = 0; y < Height - 1; y++)
-                    {
-                        int r = 0, g = 0, b = 0;
-                        pixel1 = oldBitmap.GetPixel(x, y);
-                        pixel2 = oldBitmap.GetPixel(x + 1, y + 1);
-                        r = Math.Abs(pixel1.R - pixel2.R + 128);
-                        g = Math.Abs(pixel1.G - pixel2.G + 128);
-                        b = Math.Abs(pixel1.B - pixel2.B + 128);
-                        if (r > 255)
-                            r = 255;
-                        if (r < 0)
-                            r = 0;
-                        if (g > 255)
-                            g = 255;
-                        if (g < 0)
-                            g = 0;
-                        if (b > 255)
-                            b = 255;
-                        if (b < 0)
-                            b = 0;
-                        newBitmap.SetPixel(x, y, Color.FromArgb(r, g, b));
-                    }
-                }
-                this.pictureBox1.Image = newBitmap;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "信息提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-        }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     }
 }

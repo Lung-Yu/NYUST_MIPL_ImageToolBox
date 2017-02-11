@@ -12,6 +12,9 @@ namespace ImageProcessToolBox
     {
         private Bitmap _SourceImage;
         private readonly static int COLOR_SIZE_RANGE = 256;
+        public Negative()
+        {
+        }
 
         public Negative(Bitmap bitmap)
         {
@@ -71,6 +74,12 @@ namespace ImageProcessToolBox
         protected override byte processColorB(byte r, byte g, byte b)
         {
             return (byte)(COLOR_SIZE_RANGE - b);
+        }
+
+
+        public void setResouceImage(Bitmap bitmap)
+        {
+            _SourceImage = bitmap;
         }
     }
 }

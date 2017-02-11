@@ -13,6 +13,15 @@ namespace ImageProcessToolBox
         private int _MaskWidth = 3;
         private int _MaskHeight = 3;
 
+        public MeanFilter()
+        {
+        
+        }
+        public MeanFilter( int w, int h)
+        {
+            _MaskWidth = w;
+            _MaskHeight = h;
+        }
 
         public MeanFilter(Bitmap bitmap)
         {
@@ -84,6 +93,12 @@ namespace ImageProcessToolBox
             foreach (byte val in gate)
                 sum += val;
             return (byte)(sum/gate.Length);
+        }
+
+
+        public void setResouceImage(Bitmap bitmap)
+        {
+            _SourceImage = bitmap;
         }
     }
 }

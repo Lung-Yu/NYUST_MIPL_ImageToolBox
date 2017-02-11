@@ -14,6 +14,10 @@ namespace ImageProcessToolBox
         {
             _SourceImage = bitmap;
         }
+        public HighPassFilter()
+        {
+
+        }
 
         public Bitmap Process()
         {
@@ -32,6 +36,12 @@ namespace ImageProcessToolBox
             for (int i = 0; i < gate.Length; i++)
                 result += (gate[i] * mask[i]);
             return (byte)result;
+        }
+
+
+        public void setResouceImage(Bitmap bitmap)
+        {
+            _SourceImage = bitmap;
         }
     }
 }

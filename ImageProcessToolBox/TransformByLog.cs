@@ -12,6 +12,12 @@ namespace ImageProcessToolBox
     {
         private Bitmap _SourceImage;
         private int _C = 100;
+        public TransformByLog(int c)
+        {
+            _C = c;
+        }
+
+
         public TransformByLog(int c, Bitmap bitmap)
         {
             _SourceImage = bitmap;
@@ -78,6 +84,12 @@ namespace ImageProcessToolBox
         protected override byte processColorB(byte r, byte g, byte b)
         {
             return (byte)(_C * Math.Log(b + 1, 10));
+        }
+
+
+        public void setResouceImage(Bitmap bitmap)
+        {
+            _SourceImage = bitmap;
         }
     }
 }

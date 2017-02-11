@@ -10,6 +10,11 @@ namespace ImageProcessToolBox
     class GaussianFilter : FilterTemplate, IImageProcess
     {
         private Bitmap _SourceImage;
+
+        public GaussianFilter()
+        {
+        }
+
         public GaussianFilter(Bitmap bitmap)
         {
             _SourceImage = bitmap;
@@ -71,6 +76,12 @@ namespace ImageProcessToolBox
         protected override byte maskFilter(byte[] gate)
         {
             return GaussianMask55(gate);
+        }
+
+
+        public void setResouceImage(Bitmap bitmap)
+        {
+            _SourceImage = bitmap;
         }
     }
 }

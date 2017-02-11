@@ -10,6 +10,11 @@ namespace ImageProcessToolBox
     class MorphologyErosion : FilterTemplate, IImageProcess
     {
         private Bitmap _SourceImage;
+
+        public MorphologyErosion()
+        {
+        }
+
         public MorphologyErosion(Bitmap bitmap)
         {
             _SourceImage = bitmap;
@@ -68,6 +73,12 @@ namespace ImageProcessToolBox
         protected override byte maskFilter(byte[] gate)
         {
             return erosionMask33(gate);
+        }
+
+
+        public void setResouceImage(Bitmap bitmap)
+        {
+            _SourceImage = bitmap;
         }
     }
 }

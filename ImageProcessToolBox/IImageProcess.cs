@@ -10,5 +10,8 @@ namespace ImageProcessToolBox
     interface IImageProcess
     {
         Bitmap Process();
+
+        void setResouceImage(Bitmap bitmap);
+
     }
 }

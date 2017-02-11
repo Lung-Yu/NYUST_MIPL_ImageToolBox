@@ -11,6 +11,11 @@ namespace ImageProcessToolBox
     class Grayscale :PointTemplate, IImageProcess
     {
         private Bitmap _SourceImage;
+        public Grayscale()
+        {
+
+        }
+
         public Grayscale(Bitmap bitmap)
         {
             _SourceImage = bitmap;
@@ -73,6 +78,12 @@ namespace ImageProcessToolBox
         protected override byte processColorB(byte r, byte g, byte b)
         {
             return gray;
+        }
+
+
+        public void setResouceImage(Bitmap bitmap)
+        {
+            _SourceImage = bitmap;
         }
     }
 }

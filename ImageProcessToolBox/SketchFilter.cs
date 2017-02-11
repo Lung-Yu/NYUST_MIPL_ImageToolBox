@@ -12,6 +12,10 @@ namespace ImageProcessToolBox
     {
         //https://www.kancloud.cn/trent/hotoimagefilter/102806
         private Bitmap _SourceImage;
+        public SketchFilter()
+        {
+
+        }
 
         public SketchFilter(Bitmap bitmap)
         {
@@ -99,6 +103,12 @@ namespace ImageProcessToolBox
                 gaussBitmap.UnlockBits(edgeData);
             }
             return dst;
+        }
+
+
+        public void setResouceImage(Bitmap bitmap)
+        {
+            _SourceImage = bitmap;
         }
     }
 }

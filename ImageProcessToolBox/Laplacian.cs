@@ -14,6 +14,10 @@ namespace ImageProcessToolBox
         {
             _SourceImage = bitmap;
         }
+        public Laplacian()
+        {
+           
+        }
 
         public Bitmap Process()
         {
@@ -36,6 +40,12 @@ namespace ImageProcessToolBox
             for (int i = 0; i < gate.Length; i++)
                 result += (double)((gate[i] * mask[i]));
             return (byte)((result > 255) ? 255 : (result < 0) ? 0 : result);
+        }
+
+
+        public void setResouceImage(Bitmap bitmap)
+        {
+            _SourceImage = bitmap;
         }
     }
 }

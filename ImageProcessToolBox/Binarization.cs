@@ -12,6 +12,12 @@ namespace ImageProcessToolBox
     {
         private Bitmap _SourceImage;
         private int _Value;
+
+        public Binarization(int value)
+        {
+            _Value = value;
+        }
+
         public Binarization(int value,Bitmap bitmap)
         {
             _SourceImage = bitmap;
@@ -74,6 +80,12 @@ namespace ImageProcessToolBox
         protected override byte processColorB(byte r, byte g, byte b)
         {
             return (b > _Value) ? MAX : MIN;
+        }
+
+
+        public void setResouceImage(Bitmap bitmap)
+        {
+            _SourceImage = bitmap;
         }
     }
 }

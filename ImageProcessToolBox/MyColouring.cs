@@ -14,6 +14,10 @@ namespace ImageProcessToolBox
 
         private Bitmap _SourceImage;
         private Bitmap _Coluring;
+        public MyColouring( Bitmap coluring)
+        {
+            _Coluring = coluring;
+        }
         public MyColouring(Bitmap bitmap, Bitmap coluring)
         {
             _SourceImage = bitmap;
@@ -101,6 +105,12 @@ namespace ImageProcessToolBox
             }
 
             bitmap.UnlockBits(srcBmData);
+        }
+
+
+        public void setResouceImage(Bitmap bitmap)
+        {
+            _SourceImage = bitmap;
         }
     }
 }

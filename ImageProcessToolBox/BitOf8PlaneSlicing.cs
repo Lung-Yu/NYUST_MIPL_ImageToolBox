@@ -12,7 +12,13 @@ namespace ImageProcessToolBox
     {
         private static readonly byte[] planes = { 1, 2, 4, 8, 16, 32, 64, 128 };
         private Bitmap _SourceImage;
+
         private int _BitNumber;
+        public BitOf8PlaneSlicing(int bit)
+        {
+            _BitNumber = bit;
+        }
+
         public BitOf8PlaneSlicing(int bit,Bitmap bitmap)
         {
             _SourceImage = bitmap;
@@ -80,6 +86,12 @@ namespace ImageProcessToolBox
         {
             double n = planes[_BitNumber - 1];
             return (byte)(((((int)n & ((int)b)) == (int)n)) ? 255 : 0);
+        }
+
+
+        public void setResouceImage(Bitmap bitmap)
+        {
+            _SourceImage = bitmap;
         }
     }
 }

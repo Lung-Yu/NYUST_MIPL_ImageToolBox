@@ -21,6 +21,11 @@ namespace ImageProcessToolBox
                        0,0,0,
                        1,2,1
                     };
+
+        public Sobel()
+        {
+           
+        }
         public Sobel(Bitmap bitmap)
         {
             _SourceImage = bitmap;
@@ -102,6 +107,12 @@ namespace ImageProcessToolBox
             }
             int value = (int)Math.Pow((gay1 * gay1 + gay2 * gay2), 0.5);
             return (byte)((value > 255) ? 255 : value);
+        }
+
+
+        public void setResouceImage(Bitmap bitmap)
+        {
+            _SourceImage = bitmap;
         }
     }
 }

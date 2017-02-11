@@ -11,7 +11,10 @@ namespace ImageProcessToolBox
     {
         //https://www.kancloud.cn/trent/hotoimagefilter/102810
         private Bitmap _SourceImage;
+        public SwirlFilter()
+        {
 
+        }
         public SwirlFilter(Bitmap bitmap)
         {
             _SourceImage = bitmap;
@@ -68,6 +71,12 @@ namespace ImageProcessToolBox
                 dst.UnlockBits(dstData);
             }
             return dst;
+        }
+
+
+        public void setResouceImage(Bitmap bitmap)
+        {
+            _SourceImage = bitmap;
         }
     }
 }

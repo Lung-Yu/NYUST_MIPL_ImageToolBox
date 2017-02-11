@@ -10,7 +10,10 @@ namespace ImageProcessToolBox
     class SpherizeFilter : IImageProcess
     {
         private Bitmap _SourceImage;
-
+        public SpherizeFilter()
+        {
+            
+        }
         public SpherizeFilter(Bitmap bitmap)
         {
             _SourceImage = bitmap;
@@ -64,6 +67,12 @@ namespace ImageProcessToolBox
                 dst.UnlockBits(dstData);
             }
             return dst;
+        }
+
+
+        public void setResouceImage(Bitmap bitmap)
+        {
+            _SourceImage = bitmap;
         }
     }
 }

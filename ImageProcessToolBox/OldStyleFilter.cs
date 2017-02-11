@@ -12,6 +12,10 @@ namespace ImageProcessToolBox
         //https://www.kancloud.cn/trent/hotoimagefilter/102798
 
         private Bitmap _SourceImage;
+        public OldStyleFilter()
+        {
+
+        }
         public OldStyleFilter(Bitmap bitmap)
         {
             _SourceImage = bitmap;
@@ -37,6 +41,12 @@ namespace ImageProcessToolBox
         {
             int gray = (272 * r + 534 * g + 131 * b) / 1000; ;
             return (byte)(Math.Min(255, Math.Max(0, gray)));
+        }
+
+
+        public void setResouceImage(Bitmap bitmap)
+        {
+            _SourceImage = bitmap;
         }
     }
 }
