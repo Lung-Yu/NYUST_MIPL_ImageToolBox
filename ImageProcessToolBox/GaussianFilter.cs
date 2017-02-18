@@ -22,7 +22,7 @@ namespace ImageProcessToolBox
 
         public Bitmap Process()
         {
-            return base.filter(_SourceImage, 5, 5);
+            return base.convolute(_SourceImage, 5, 5);
         }
 
         /// <summary>

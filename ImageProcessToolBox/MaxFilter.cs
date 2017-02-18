@@ -7,27 +7,27 @@ using System.Threading.Tasks;
 
 namespace ImageProcessToolBox
 {
-    class MedianFilter : FilterTemplate, IImageProcess
+    class MaxFilter :FilterTemplate, IImageProcess
     {
         private Bitmap _ImageSource;
         private int _MaskWidth=3;
         private int _MaskHeight=3;
 
-        public MedianFilter()
+        public MaxFilter()
         {
         }
-        public MedianFilter(int w, int h)
+        public MaxFilter(int w, int h)
         {
             _MaskWidth = w;
             _MaskHeight = h;
         }
 
-        public MedianFilter(Bitmap bitmap)
+        public MaxFilter(Bitmap bitmap)
         {
             _ImageSource = bitmap;
         }
 
-        public MedianFilter(Bitmap bitmap,int w,int h)
+        public MaxFilter(Bitmap bitmap, int w, int h)
         {
             _ImageSource = bitmap;
             _MaskWidth = w;
@@ -43,7 +43,7 @@ namespace ImageProcessToolBox
         {
             Heap heap = new Heap(gate, gate.Length);
             heap.heapsort();
-            return (byte)heap.get()[gate.Length / 2];
+            return (byte)heap.get()[gate.Length-1];
         }
 
         public void setResouceImage(Bitmap bitmap)

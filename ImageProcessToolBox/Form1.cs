@@ -356,6 +356,16 @@ namespace ImageProcessToolBox
             actions(new MedianFilter((int)numericUpDownX.Value, (int)numericUpDownY.Value),"Median Filter");
         }
 
+        private void btnMinFilter_Click(object sender, EventArgs e)
+        {
+            actions(new MinFilter((int)numericUpDownX.Value, (int)numericUpDownY.Value), "Min Filter");
+        }
+
+        private void btnMaxFilter_Click(object sender, EventArgs e)
+        {
+            actions(new MaxFilter((int)numericUpDownX.Value, (int)numericUpDownY.Value), "Max Filter");
+        }
+
         private void btnAvgFiliter_Click(object sender, EventArgs e)
         {
             actions(new MeanFilter((int)numericUpDownX.Value, (int)numericUpDownY.Value), "Mean Filter");
@@ -488,6 +498,15 @@ namespace ImageProcessToolBox
             actions(new MachineLearing_KMeans(k, iterationLevel), "K Means");
         }
         #endregion
+
+        private void btnTry_Click(object sender, EventArgs e)
+        {
+            actions(new Try(), "Mean Filter");
+        }
+
+       
+
+        
 
     }
 }

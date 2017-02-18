@@ -33,7 +33,7 @@ namespace ImageProcessToolBox
 
         public Bitmap Process()
         {
-            return base.filter(_SourceImage, 3, 3);
+            return base.convolute(_SourceImage, 3, 3);
            
         }
         protected override byte maskFilter(byte[] gate)

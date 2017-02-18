@@ -65,20 +65,17 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.panel8 = new System.Windows.Forms.Panel();
+            this.panel12 = new System.Windows.Forms.Panel();
+            this.btnSwell = new System.Windows.Forms.Button();
+            this.label8 = new System.Windows.Forms.Label();
+            this.btnErosion = new System.Windows.Forms.Button();
+            this.btnOpening = new System.Windows.Forms.Button();
+            this.btnClosing = new System.Windows.Forms.Button();
             this.panel13 = new System.Windows.Forms.Panel();
-            this.btnRelief = new System.Windows.Forms.Button();
-            this.btnOldStyle = new System.Windows.Forms.Button();
-            this.btnSwirl = new System.Windows.Forms.Button();
-            this.btnSketch = new System.Windows.Forms.Button();
-            this.btnLomo = new System.Windows.Forms.Button();
-            this.btnInstagram1977 = new System.Windows.Forms.Button();
-            this.btnSpherize = new System.Windows.Forms.Button();
             this.numericUpDownY = new System.Windows.Forms.NumericUpDown();
             this.numericUpDownX = new System.Windows.Forms.NumericUpDown();
             this.label12 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.btnRippleEffect = new System.Windows.Forms.Button();
-            this.btnMosaic = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.btnFourierTransform = new System.Windows.Forms.Button();
             this.btnMeanFilter = new System.Windows.Forms.Button();
@@ -90,12 +87,17 @@
             this.btnSobel = new System.Windows.Forms.Button();
             this.btnGaussianFilter = new System.Windows.Forms.Button();
             this.btnLaplacian = new System.Windows.Forms.Button();
-            this.panel12 = new System.Windows.Forms.Panel();
-            this.btnSwell = new System.Windows.Forms.Button();
-            this.label8 = new System.Windows.Forms.Label();
-            this.btnErosion = new System.Windows.Forms.Button();
-            this.btnOpening = new System.Windows.Forms.Button();
-            this.btnClosing = new System.Windows.Forms.Button();
+            this.panel21 = new System.Windows.Forms.Panel();
+            this.label10 = new System.Windows.Forms.Label();
+            this.btnRelief = new System.Windows.Forms.Button();
+            this.btnMosaic = new System.Windows.Forms.Button();
+            this.btnOldStyle = new System.Windows.Forms.Button();
+            this.btnRippleEffect = new System.Windows.Forms.Button();
+            this.btnSwirl = new System.Windows.Forms.Button();
+            this.btnSpherize = new System.Windows.Forms.Button();
+            this.btnSketch = new System.Windows.Forms.Button();
+            this.btnInstagram1977 = new System.Windows.Forms.Button();
+            this.btnLomo = new System.Windows.Forms.Button();
             this.panel9 = new System.Windows.Forms.Panel();
             this.label7 = new System.Windows.Forms.Label();
             this.panel10 = new System.Windows.Forms.Panel();
@@ -117,9 +119,14 @@
             this.labelImageSize = new System.Windows.Forms.Label();
             this.panel11 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.panel24 = new System.Windows.Forms.Panel();
+            this.btnTry = new System.Windows.Forms.Button();
+            this.label13 = new System.Windows.Forms.Label();
             this.panel14 = new System.Windows.Forms.Panel();
             this.label9 = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
+            this.btnMinFilter = new System.Windows.Forms.Button();
+            this.btnMaxFilter = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -129,15 +136,17 @@
             this.panel5.SuspendLayout();
             this.panel7.SuspendLayout();
             this.panel8.SuspendLayout();
+            this.panel12.SuspendLayout();
             this.panel13.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownY)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownX)).BeginInit();
-            this.panel12.SuspendLayout();
+            this.panel21.SuspendLayout();
             this.panel10.SuspendLayout();
             this.panel23.SuspendLayout();
             this.panel22.SuspendLayout();
             this.panel11.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.panel24.SuspendLayout();
             this.panel14.SuspendLayout();
             this.panel6.SuspendLayout();
             this.SuspendLayout();
@@ -216,7 +225,7 @@
             this.panel3.Controls.Add(this.panel4);
             this.panel3.Location = new System.Drawing.Point(4, 5);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(273, 247);
+            this.panel3.Size = new System.Drawing.Size(273, 277);
             this.panel3.TabIndex = 2;
             // 
             // btnColorFunction
@@ -292,7 +301,7 @@
             this.labelOtus.AutoSize = true;
             this.labelOtus.Location = new System.Drawing.Point(178, 77);
             this.labelOtus.Name = "labelOtus";
-            this.labelOtus.Size = new System.Drawing.Size(54, 13);
+            this.labelOtus.Size = new System.Drawing.Size(52, 12);
             this.labelOtus.TabIndex = 12;
             this.labelOtus.Text = "__none__";
             // 
@@ -362,7 +371,7 @@
             this.label5.Font = new System.Drawing.Font("PMingLiU", 16F);
             this.label5.Location = new System.Drawing.Point(3, 3);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(183, 27);
+            this.label5.Size = new System.Drawing.Size(147, 22);
             this.label5.TabIndex = 8;
             this.label5.Text = "Point Processing";
             // 
@@ -430,7 +439,7 @@
             this.labelconsle.Font = new System.Drawing.Font("DFKai-SB", 10F, System.Drawing.FontStyle.Italic);
             this.labelconsle.Location = new System.Drawing.Point(3, 2);
             this.labelconsle.Name = "labelconsle";
-            this.labelconsle.Size = new System.Drawing.Size(0, 17);
+            this.labelconsle.Size = new System.Drawing.Size(0, 14);
             this.labelconsle.TabIndex = 0;
             // 
             // btnK_Means
@@ -461,7 +470,7 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(7, 38);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(75, 13);
+            this.label2.Size = new System.Drawing.Size(73, 12);
             this.label2.TabIndex = 8;
             this.label2.Text = "Iteration Level";
             // 
@@ -470,7 +479,7 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(61, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(16, 13);
+            this.label1.Size = new System.Drawing.Size(13, 12);
             this.label1.TabIndex = 6;
             this.label1.Text = "K";
             // 
@@ -496,7 +505,7 @@
             this.label3.Font = new System.Drawing.Font("PMingLiU", 14F);
             this.label3.Location = new System.Drawing.Point(4, 7);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(136, 24);
+            this.label3.Size = new System.Drawing.Size(109, 19);
             this.label3.TabIndex = 6;
             this.label3.Text = "Source Image";
             // 
@@ -506,36 +515,92 @@
             this.label4.Font = new System.Drawing.Font("PMingLiU", 14F);
             this.label4.Location = new System.Drawing.Point(426, 8);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(130, 24);
+            this.label4.Size = new System.Drawing.Size(105, 19);
             this.label4.TabIndex = 7;
             this.label4.Text = "Result Image";
             // 
             // panel8
             // 
             this.panel8.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.panel8.Controls.Add(this.panel13);
             this.panel8.Controls.Add(this.panel12);
+            this.panel8.Controls.Add(this.panel13);
+            this.panel8.Controls.Add(this.panel21);
             this.panel8.Controls.Add(this.panel9);
-            this.panel8.Location = new System.Drawing.Point(3, 258);
+            this.panel8.Location = new System.Drawing.Point(283, 5);
             this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(274, 390);
+            this.panel8.Size = new System.Drawing.Size(274, 748);
             this.panel8.TabIndex = 9;
+            // 
+            // panel12
+            // 
+            this.panel12.Controls.Add(this.btnSwell);
+            this.panel12.Controls.Add(this.label8);
+            this.panel12.Controls.Add(this.btnErosion);
+            this.panel12.Controls.Add(this.btnOpening);
+            this.panel12.Controls.Add(this.btnClosing);
+            this.panel12.Location = new System.Drawing.Point(6, 641);
+            this.panel12.Name = "panel12";
+            this.panel12.Size = new System.Drawing.Size(264, 92);
+            this.panel12.TabIndex = 13;
+            // 
+            // btnSwell
+            // 
+            this.btnSwell.Location = new System.Drawing.Point(92, 34);
+            this.btnSwell.Name = "btnSwell";
+            this.btnSwell.Size = new System.Drawing.Size(75, 23);
+            this.btnSwell.TabIndex = 13;
+            this.btnSwell.Text = "Dilation";
+            this.btnSwell.UseVisualStyleBackColor = true;
+            this.btnSwell.Click += new System.EventHandler(this.btnSwell_Click);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("PMingLiU", 16F);
+            this.label8.Location = new System.Drawing.Point(4, 4);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(111, 22);
+            this.label8.TabIndex = 11;
+            this.label8.Text = "Morphology";
+            // 
+            // btnErosion
+            // 
+            this.btnErosion.Location = new System.Drawing.Point(11, 35);
+            this.btnErosion.Name = "btnErosion";
+            this.btnErosion.Size = new System.Drawing.Size(75, 23);
+            this.btnErosion.TabIndex = 12;
+            this.btnErosion.Text = "Erosion";
+            this.btnErosion.UseVisualStyleBackColor = true;
+            this.btnErosion.Click += new System.EventHandler(this.btnErosion_Click);
+            // 
+            // btnOpening
+            // 
+            this.btnOpening.Location = new System.Drawing.Point(11, 63);
+            this.btnOpening.Name = "btnOpening";
+            this.btnOpening.Size = new System.Drawing.Size(75, 23);
+            this.btnOpening.TabIndex = 14;
+            this.btnOpening.Text = "Opening";
+            this.btnOpening.UseVisualStyleBackColor = true;
+            this.btnOpening.Click += new System.EventHandler(this.btnOpening_Click);
+            // 
+            // btnClosing
+            // 
+            this.btnClosing.Location = new System.Drawing.Point(92, 63);
+            this.btnClosing.Name = "btnClosing";
+            this.btnClosing.Size = new System.Drawing.Size(75, 23);
+            this.btnClosing.TabIndex = 15;
+            this.btnClosing.Text = "Closing";
+            this.btnClosing.UseVisualStyleBackColor = true;
+            this.btnClosing.Click += new System.EventHandler(this.btnClosing_Click);
             // 
             // panel13
             // 
-            this.panel13.Controls.Add(this.btnRelief);
-            this.panel13.Controls.Add(this.btnOldStyle);
-            this.panel13.Controls.Add(this.btnSwirl);
-            this.panel13.Controls.Add(this.btnSketch);
-            this.panel13.Controls.Add(this.btnLomo);
-            this.panel13.Controls.Add(this.btnInstagram1977);
-            this.panel13.Controls.Add(this.btnSpherize);
+            this.panel13.Controls.Add(this.btnMaxFilter);
+            this.panel13.Controls.Add(this.btnMinFilter);
             this.panel13.Controls.Add(this.numericUpDownY);
             this.panel13.Controls.Add(this.numericUpDownX);
             this.panel13.Controls.Add(this.label12);
             this.panel13.Controls.Add(this.label11);
-            this.panel13.Controls.Add(this.btnRippleEffect);
-            this.panel13.Controls.Add(this.btnMosaic);
             this.panel13.Controls.Add(this.label6);
             this.panel13.Controls.Add(this.btnFourierTransform);
             this.panel13.Controls.Add(this.btnMeanFilter);
@@ -547,80 +612,10 @@
             this.panel13.Controls.Add(this.btnSobel);
             this.panel13.Controls.Add(this.btnGaussianFilter);
             this.panel13.Controls.Add(this.btnLaplacian);
-            this.panel13.Location = new System.Drawing.Point(7, 3);
+            this.panel13.Location = new System.Drawing.Point(6, 0);
             this.panel13.Name = "panel13";
-            this.panel13.Size = new System.Drawing.Size(264, 285);
+            this.panel13.Size = new System.Drawing.Size(264, 261);
             this.panel13.TabIndex = 15;
-            // 
-            // btnRelief
-            // 
-            this.btnRelief.Location = new System.Drawing.Point(183, 230);
-            this.btnRelief.Name = "btnRelief";
-            this.btnRelief.Size = new System.Drawing.Size(75, 23);
-            this.btnRelief.TabIndex = 40;
-            this.btnRelief.Text = "Relief";
-            this.btnRelief.UseVisualStyleBackColor = true;
-            this.btnRelief.Click += new System.EventHandler(this.btnRelief_Click);
-            // 
-            // btnOldStyle
-            // 
-            this.btnOldStyle.Location = new System.Drawing.Point(96, 230);
-            this.btnOldStyle.Name = "btnOldStyle";
-            this.btnOldStyle.Size = new System.Drawing.Size(75, 23);
-            this.btnOldStyle.TabIndex = 39;
-            this.btnOldStyle.Text = "old Style";
-            this.btnOldStyle.UseVisualStyleBackColor = true;
-            this.btnOldStyle.Click += new System.EventHandler(this.btnOldStyle_Click);
-            // 
-            // btnSwirl
-            // 
-            this.btnSwirl.Location = new System.Drawing.Point(12, 230);
-            this.btnSwirl.Name = "btnSwirl";
-            this.btnSwirl.Size = new System.Drawing.Size(75, 23);
-            this.btnSwirl.TabIndex = 38;
-            this.btnSwirl.Text = "Swirl";
-            this.btnSwirl.UseVisualStyleBackColor = true;
-            this.btnSwirl.Click += new System.EventHandler(this.btnSwirl_Click);
-            // 
-            // btnSketch
-            // 
-            this.btnSketch.Location = new System.Drawing.Point(183, 201);
-            this.btnSketch.Name = "btnSketch";
-            this.btnSketch.Size = new System.Drawing.Size(75, 23);
-            this.btnSketch.TabIndex = 37;
-            this.btnSketch.Text = "Sketch";
-            this.btnSketch.UseVisualStyleBackColor = true;
-            this.btnSketch.Click += new System.EventHandler(this.btnSketch_Click);
-            // 
-            // btnLomo
-            // 
-            this.btnLomo.Location = new System.Drawing.Point(96, 201);
-            this.btnLomo.Name = "btnLomo";
-            this.btnLomo.Size = new System.Drawing.Size(75, 23);
-            this.btnLomo.TabIndex = 36;
-            this.btnLomo.Text = "Lomo";
-            this.btnLomo.UseVisualStyleBackColor = true;
-            this.btnLomo.Click += new System.EventHandler(this.btnLomo_Click);
-            // 
-            // btnInstagram1977
-            // 
-            this.btnInstagram1977.Location = new System.Drawing.Point(12, 201);
-            this.btnInstagram1977.Name = "btnInstagram1977";
-            this.btnInstagram1977.Size = new System.Drawing.Size(75, 23);
-            this.btnInstagram1977.TabIndex = 35;
-            this.btnInstagram1977.Text = "Instagram1977";
-            this.btnInstagram1977.UseVisualStyleBackColor = true;
-            this.btnInstagram1977.Click += new System.EventHandler(this.btnInstagram1977_Click);
-            // 
-            // btnSpherize
-            // 
-            this.btnSpherize.Location = new System.Drawing.Point(183, 171);
-            this.btnSpherize.Name = "btnSpherize";
-            this.btnSpherize.Size = new System.Drawing.Size(75, 23);
-            this.btnSpherize.TabIndex = 34;
-            this.btnSpherize.Text = "Spherize";
-            this.btnSpherize.UseVisualStyleBackColor = true;
-            this.btnSpherize.Click += new System.EventHandler(this.btnSpherize_Click);
             // 
             // numericUpDownY
             // 
@@ -682,7 +677,7 @@
             this.label12.Font = new System.Drawing.Font("PMingLiU", 10F);
             this.label12.Location = new System.Drawing.Point(199, 13);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(16, 17);
+            this.label12.Size = new System.Drawing.Size(14, 14);
             this.label12.TabIndex = 31;
             this.label12.Text = "y";
             // 
@@ -692,29 +687,9 @@
             this.label11.Font = new System.Drawing.Font("PMingLiU", 10F);
             this.label11.Location = new System.Drawing.Point(139, 13);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(16, 17);
+            this.label11.Size = new System.Drawing.Size(14, 14);
             this.label11.TabIndex = 30;
             this.label11.Text = "x";
-            // 
-            // btnRippleEffect
-            // 
-            this.btnRippleEffect.Location = new System.Drawing.Point(96, 171);
-            this.btnRippleEffect.Name = "btnRippleEffect";
-            this.btnRippleEffect.Size = new System.Drawing.Size(75, 23);
-            this.btnRippleEffect.TabIndex = 28;
-            this.btnRippleEffect.Text = "Ripple Effect";
-            this.btnRippleEffect.UseVisualStyleBackColor = true;
-            this.btnRippleEffect.Click += new System.EventHandler(this.btnRippleEffect_Click);
-            // 
-            // btnMosaic
-            // 
-            this.btnMosaic.Location = new System.Drawing.Point(12, 171);
-            this.btnMosaic.Name = "btnMosaic";
-            this.btnMosaic.Size = new System.Drawing.Size(75, 23);
-            this.btnMosaic.TabIndex = 27;
-            this.btnMosaic.Text = "Mosaic ";
-            this.btnMosaic.UseVisualStyleBackColor = true;
-            this.btnMosaic.Click += new System.EventHandler(this.btnMosaic_Click);
             // 
             // label6
             // 
@@ -722,13 +697,13 @@
             this.label6.Font = new System.Drawing.Font("PMingLiU", 16F);
             this.label6.Location = new System.Drawing.Point(3, 8);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(127, 27);
+            this.label6.Size = new System.Drawing.Size(105, 22);
             this.label6.TabIndex = 8;
             this.label6.Text = "Space filter";
             // 
             // btnFourierTransform
             // 
-            this.btnFourierTransform.Location = new System.Drawing.Point(183, 142);
+            this.btnFourierTransform.Location = new System.Drawing.Point(183, 188);
             this.btnFourierTransform.Name = "btnFourierTransform";
             this.btnFourierTransform.Size = new System.Drawing.Size(75, 23);
             this.btnFourierTransform.TabIndex = 26;
@@ -738,7 +713,7 @@
             // 
             // btnMeanFilter
             // 
-            this.btnMeanFilter.Location = new System.Drawing.Point(12, 54);
+            this.btnMeanFilter.Location = new System.Drawing.Point(92, 53);
             this.btnMeanFilter.Name = "btnMeanFilter";
             this.btnMeanFilter.Size = new System.Drawing.Size(75, 23);
             this.btnMeanFilter.TabIndex = 9;
@@ -748,7 +723,7 @@
             // 
             // btnSpatialFilter
             // 
-            this.btnSpatialFilter.Location = new System.Drawing.Point(183, 113);
+            this.btnSpatialFilter.Location = new System.Drawing.Point(183, 159);
             this.btnSpatialFilter.Name = "btnSpatialFilter";
             this.btnSpatialFilter.Size = new System.Drawing.Size(75, 23);
             this.btnSpatialFilter.TabIndex = 25;
@@ -758,7 +733,7 @@
             // 
             // btnAvgFiliter
             // 
-            this.btnAvgFiliter.Location = new System.Drawing.Point(96, 54);
+            this.btnAvgFiliter.Location = new System.Drawing.Point(12, 83);
             this.btnAvgFiliter.Name = "btnAvgFiliter";
             this.btnAvgFiliter.Size = new System.Drawing.Size(75, 23);
             this.btnAvgFiliter.TabIndex = 10;
@@ -768,7 +743,7 @@
             // 
             // btnHighPassFilters
             // 
-            this.btnHighPassFilters.Location = new System.Drawing.Point(96, 84);
+            this.btnHighPassFilters.Location = new System.Drawing.Point(96, 130);
             this.btnHighPassFilters.Name = "btnHighPassFilters";
             this.btnHighPassFilters.Size = new System.Drawing.Size(75, 23);
             this.btnHighPassFilters.TabIndex = 24;
@@ -778,7 +753,7 @@
             // 
             // btnHistogramEqualization
             // 
-            this.btnHistogramEqualization.Location = new System.Drawing.Point(12, 142);
+            this.btnHistogramEqualization.Location = new System.Drawing.Point(12, 188);
             this.btnHistogramEqualization.Name = "btnHistogramEqualization";
             this.btnHistogramEqualization.Size = new System.Drawing.Size(159, 23);
             this.btnHistogramEqualization.TabIndex = 11;
@@ -788,7 +763,7 @@
             // 
             // btnLowPassFilters
             // 
-            this.btnLowPassFilters.Location = new System.Drawing.Point(12, 84);
+            this.btnLowPassFilters.Location = new System.Drawing.Point(12, 130);
             this.btnLowPassFilters.Name = "btnLowPassFilters";
             this.btnLowPassFilters.Size = new System.Drawing.Size(75, 23);
             this.btnLowPassFilters.TabIndex = 23;
@@ -798,7 +773,7 @@
             // 
             // btnSobel
             // 
-            this.btnSobel.Location = new System.Drawing.Point(12, 113);
+            this.btnSobel.Location = new System.Drawing.Point(12, 159);
             this.btnSobel.Name = "btnSobel";
             this.btnSobel.Size = new System.Drawing.Size(75, 23);
             this.btnSobel.TabIndex = 16;
@@ -808,7 +783,7 @@
             // 
             // btnGaussianFilter
             // 
-            this.btnGaussianFilter.Location = new System.Drawing.Point(183, 54);
+            this.btnGaussianFilter.Location = new System.Drawing.Point(12, 219);
             this.btnGaussianFilter.Name = "btnGaussianFilter";
             this.btnGaussianFilter.Size = new System.Drawing.Size(75, 23);
             this.btnGaussianFilter.TabIndex = 21;
@@ -818,7 +793,7 @@
             // 
             // btnLaplacian
             // 
-            this.btnLaplacian.Location = new System.Drawing.Point(96, 113);
+            this.btnLaplacian.Location = new System.Drawing.Point(96, 159);
             this.btnLaplacian.Name = "btnLaplacian";
             this.btnLaplacian.Size = new System.Drawing.Size(75, 23);
             this.btnLaplacian.TabIndex = 20;
@@ -826,67 +801,123 @@
             this.btnLaplacian.UseVisualStyleBackColor = true;
             this.btnLaplacian.Click += new System.EventHandler(this.btnLaplacian_Click);
             // 
-            // panel12
+            // panel21
             // 
-            this.panel12.Controls.Add(this.btnSwell);
-            this.panel12.Controls.Add(this.label8);
-            this.panel12.Controls.Add(this.btnErosion);
-            this.panel12.Controls.Add(this.btnOpening);
-            this.panel12.Controls.Add(this.btnClosing);
-            this.panel12.Location = new System.Drawing.Point(7, 294);
-            this.panel12.Name = "panel12";
-            this.panel12.Size = new System.Drawing.Size(264, 92);
-            this.panel12.TabIndex = 13;
+            this.panel21.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.panel21.Controls.Add(this.label10);
+            this.panel21.Controls.Add(this.btnRelief);
+            this.panel21.Controls.Add(this.btnMosaic);
+            this.panel21.Controls.Add(this.btnOldStyle);
+            this.panel21.Controls.Add(this.btnRippleEffect);
+            this.panel21.Controls.Add(this.btnSwirl);
+            this.panel21.Controls.Add(this.btnSpherize);
+            this.panel21.Controls.Add(this.btnSketch);
+            this.panel21.Controls.Add(this.btnInstagram1977);
+            this.panel21.Controls.Add(this.btnLomo);
+            this.panel21.Location = new System.Drawing.Point(6, 267);
+            this.panel21.Name = "panel21";
+            this.panel21.Size = new System.Drawing.Size(265, 240);
+            this.panel21.TabIndex = 16;
             // 
-            // btnSwell
+            // label10
             // 
-            this.btnSwell.Location = new System.Drawing.Point(92, 34);
-            this.btnSwell.Name = "btnSwell";
-            this.btnSwell.Size = new System.Drawing.Size(75, 23);
-            this.btnSwell.TabIndex = 13;
-            this.btnSwell.Text = "Dilation";
-            this.btnSwell.UseVisualStyleBackColor = true;
-            this.btnSwell.Click += new System.EventHandler(this.btnSwell_Click);
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("PMingLiU", 16F);
+            this.label10.Location = new System.Drawing.Point(7, 13);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(153, 22);
+            this.label10.TabIndex = 34;
+            this.label10.Text = "Style Space filter";
             // 
-            // label8
+            // btnRelief
             // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("PMingLiU", 16F);
-            this.label8.Location = new System.Drawing.Point(4, 4);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(141, 27);
-            this.label8.TabIndex = 11;
-            this.label8.Text = "Morphology";
+            this.btnRelief.Location = new System.Drawing.Point(182, 113);
+            this.btnRelief.Name = "btnRelief";
+            this.btnRelief.Size = new System.Drawing.Size(75, 23);
+            this.btnRelief.TabIndex = 49;
+            this.btnRelief.Text = "Relief";
+            this.btnRelief.UseVisualStyleBackColor = true;
+            this.btnRelief.Click += new System.EventHandler(this.btnRelief_Click);
             // 
-            // btnErosion
+            // btnMosaic
             // 
-            this.btnErosion.Location = new System.Drawing.Point(11, 35);
-            this.btnErosion.Name = "btnErosion";
-            this.btnErosion.Size = new System.Drawing.Size(75, 23);
-            this.btnErosion.TabIndex = 12;
-            this.btnErosion.Text = "Erosion";
-            this.btnErosion.UseVisualStyleBackColor = true;
-            this.btnErosion.Click += new System.EventHandler(this.btnErosion_Click);
+            this.btnMosaic.Location = new System.Drawing.Point(11, 54);
+            this.btnMosaic.Name = "btnMosaic";
+            this.btnMosaic.Size = new System.Drawing.Size(75, 23);
+            this.btnMosaic.TabIndex = 41;
+            this.btnMosaic.Text = "Mosaic ";
+            this.btnMosaic.UseVisualStyleBackColor = true;
+            this.btnMosaic.Click += new System.EventHandler(this.btnMosaic_Click);
             // 
-            // btnOpening
+            // btnOldStyle
             // 
-            this.btnOpening.Location = new System.Drawing.Point(11, 63);
-            this.btnOpening.Name = "btnOpening";
-            this.btnOpening.Size = new System.Drawing.Size(75, 23);
-            this.btnOpening.TabIndex = 14;
-            this.btnOpening.Text = "Opening";
-            this.btnOpening.UseVisualStyleBackColor = true;
-            this.btnOpening.Click += new System.EventHandler(this.btnOpening_Click);
+            this.btnOldStyle.Location = new System.Drawing.Point(95, 113);
+            this.btnOldStyle.Name = "btnOldStyle";
+            this.btnOldStyle.Size = new System.Drawing.Size(75, 23);
+            this.btnOldStyle.TabIndex = 48;
+            this.btnOldStyle.Text = "old Style";
+            this.btnOldStyle.UseVisualStyleBackColor = true;
+            this.btnOldStyle.Click += new System.EventHandler(this.btnOldStyle_Click);
             // 
-            // btnClosing
+            // btnRippleEffect
             // 
-            this.btnClosing.Location = new System.Drawing.Point(92, 63);
-            this.btnClosing.Name = "btnClosing";
-            this.btnClosing.Size = new System.Drawing.Size(75, 23);
-            this.btnClosing.TabIndex = 15;
-            this.btnClosing.Text = "Closing";
-            this.btnClosing.UseVisualStyleBackColor = true;
-            this.btnClosing.Click += new System.EventHandler(this.btnClosing_Click);
+            this.btnRippleEffect.Location = new System.Drawing.Point(95, 54);
+            this.btnRippleEffect.Name = "btnRippleEffect";
+            this.btnRippleEffect.Size = new System.Drawing.Size(75, 23);
+            this.btnRippleEffect.TabIndex = 42;
+            this.btnRippleEffect.Text = "Ripple Effect";
+            this.btnRippleEffect.UseVisualStyleBackColor = true;
+            this.btnRippleEffect.Click += new System.EventHandler(this.btnRippleEffect_Click);
+            // 
+            // btnSwirl
+            // 
+            this.btnSwirl.Location = new System.Drawing.Point(11, 113);
+            this.btnSwirl.Name = "btnSwirl";
+            this.btnSwirl.Size = new System.Drawing.Size(75, 23);
+            this.btnSwirl.TabIndex = 47;
+            this.btnSwirl.Text = "Swirl";
+            this.btnSwirl.UseVisualStyleBackColor = true;
+            this.btnSwirl.Click += new System.EventHandler(this.btnSwirl_Click);
+            // 
+            // btnSpherize
+            // 
+            this.btnSpherize.Location = new System.Drawing.Point(182, 54);
+            this.btnSpherize.Name = "btnSpherize";
+            this.btnSpherize.Size = new System.Drawing.Size(75, 23);
+            this.btnSpherize.TabIndex = 43;
+            this.btnSpherize.Text = "Spherize";
+            this.btnSpherize.UseVisualStyleBackColor = true;
+            this.btnSpherize.Click += new System.EventHandler(this.btnSpherize_Click);
+            // 
+            // btnSketch
+            // 
+            this.btnSketch.Location = new System.Drawing.Point(182, 84);
+            this.btnSketch.Name = "btnSketch";
+            this.btnSketch.Size = new System.Drawing.Size(75, 23);
+            this.btnSketch.TabIndex = 46;
+            this.btnSketch.Text = "Sketch";
+            this.btnSketch.UseVisualStyleBackColor = true;
+            this.btnSketch.Click += new System.EventHandler(this.btnSketch_Click);
+            // 
+            // btnInstagram1977
+            // 
+            this.btnInstagram1977.Location = new System.Drawing.Point(11, 84);
+            this.btnInstagram1977.Name = "btnInstagram1977";
+            this.btnInstagram1977.Size = new System.Drawing.Size(75, 23);
+            this.btnInstagram1977.TabIndex = 44;
+            this.btnInstagram1977.Text = "Instagram1977";
+            this.btnInstagram1977.UseVisualStyleBackColor = true;
+            this.btnInstagram1977.Click += new System.EventHandler(this.btnInstagram1977_Click);
+            // 
+            // btnLomo
+            // 
+            this.btnLomo.Location = new System.Drawing.Point(95, 84);
+            this.btnLomo.Name = "btnLomo";
+            this.btnLomo.Size = new System.Drawing.Size(75, 23);
+            this.btnLomo.TabIndex = 45;
+            this.btnLomo.Text = "Lomo";
+            this.btnLomo.UseVisualStyleBackColor = true;
+            this.btnLomo.Click += new System.EventHandler(this.btnLomo_Click);
             // 
             // panel9
             // 
@@ -901,7 +932,7 @@
             this.label7.Font = new System.Drawing.Font("PMingLiU", 14F);
             this.label7.Location = new System.Drawing.Point(6, 5);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(120, 24);
+            this.label7.Size = new System.Drawing.Size(98, 19);
             this.label7.TabIndex = 10;
             this.label7.Text = "Log console";
             // 
@@ -1048,7 +1079,7 @@
             this.resultImageSize.AutoSize = true;
             this.resultImageSize.Location = new System.Drawing.Point(760, 12);
             this.resultImageSize.Name = "resultImageSize";
-            this.resultImageSize.Size = new System.Drawing.Size(57, 13);
+            this.resultImageSize.Size = new System.Drawing.Size(53, 12);
             this.resultImageSize.TabIndex = 20;
             this.resultImageSize.Text = "ImageSize";
             // 
@@ -1057,7 +1088,7 @@
             this.labelImageSize.AutoSize = true;
             this.labelImageSize.Location = new System.Drawing.Point(344, 12);
             this.labelImageSize.Name = "labelImageSize";
-            this.labelImageSize.Size = new System.Drawing.Size(57, 13);
+            this.labelImageSize.Size = new System.Drawing.Size(53, 12);
             this.labelImageSize.TabIndex = 19;
             this.labelImageSize.Text = "ImageSize";
             // 
@@ -1073,20 +1104,51 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.panel24);
             this.panel2.Controls.Add(this.panel14);
             this.panel2.Controls.Add(this.panel3);
             this.panel2.Controls.Add(this.panel8);
             this.panel2.Location = new System.Drawing.Point(860, 12);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(280, 766);
+            this.panel2.Size = new System.Drawing.Size(562, 766);
             this.panel2.TabIndex = 13;
+            // 
+            // panel24
+            // 
+            this.panel24.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.panel24.Controls.Add(this.btnTry);
+            this.panel24.Controls.Add(this.label13);
+            this.panel24.Location = new System.Drawing.Point(4, 403);
+            this.panel24.Name = "panel24";
+            this.panel24.Size = new System.Drawing.Size(273, 350);
+            this.panel24.TabIndex = 16;
+            // 
+            // btnTry
+            // 
+            this.btnTry.Location = new System.Drawing.Point(15, 49);
+            this.btnTry.Name = "btnTry";
+            this.btnTry.Size = new System.Drawing.Size(75, 23);
+            this.btnTry.TabIndex = 51;
+            this.btnTry.Text = "try";
+            this.btnTry.UseVisualStyleBackColor = true;
+            this.btnTry.Click += new System.EventHandler(this.btnTry_Click);
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("PMingLiU", 16F);
+            this.label13.Location = new System.Drawing.Point(9, 10);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(64, 22);
+            this.label13.TabIndex = 50;
+            this.label13.Text = "Detect";
             // 
             // panel14
             // 
             this.panel14.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.panel14.Controls.Add(this.label9);
             this.panel14.Controls.Add(this.panel7);
-            this.panel14.Location = new System.Drawing.Point(4, 654);
+            this.panel14.Location = new System.Drawing.Point(4, 288);
             this.panel14.Name = "panel14";
             this.panel14.Size = new System.Drawing.Size(273, 108);
             this.panel14.TabIndex = 15;
@@ -1097,7 +1159,7 @@
             this.label9.Font = new System.Drawing.Font("PMingLiU", 16F);
             this.label9.Location = new System.Drawing.Point(7, 4);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(134, 27);
+            this.label9.Size = new System.Drawing.Size(107, 22);
             this.label9.TabIndex = 16;
             this.label9.Text = "Segmention";
             // 
@@ -1111,12 +1173,32 @@
             this.panel6.Size = new System.Drawing.Size(842, 766);
             this.panel6.TabIndex = 14;
             // 
+            // btnMinFilter
+            // 
+            this.btnMinFilter.Location = new System.Drawing.Point(12, 53);
+            this.btnMinFilter.Name = "btnMinFilter";
+            this.btnMinFilter.Size = new System.Drawing.Size(75, 23);
+            this.btnMinFilter.TabIndex = 34;
+            this.btnMinFilter.Text = "Min Filter";
+            this.btnMinFilter.UseVisualStyleBackColor = true;
+            this.btnMinFilter.Click += new System.EventHandler(this.btnMinFilter_Click);
+            // 
+            // btnMaxFilter
+            // 
+            this.btnMaxFilter.Location = new System.Drawing.Point(178, 53);
+            this.btnMaxFilter.Name = "btnMaxFilter";
+            this.btnMaxFilter.Size = new System.Drawing.Size(75, 23);
+            this.btnMaxFilter.TabIndex = 35;
+            this.btnMaxFilter.Text = "Max Filter";
+            this.btnMaxFilter.UseVisualStyleBackColor = true;
+            this.btnMaxFilter.Click += new System.EventHandler(this.btnMaxFilter_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.ClientSize = new System.Drawing.Size(1161, 799);
+            this.ClientSize = new System.Drawing.Size(1426, 790);
             this.Controls.Add(this.panel6);
             this.Controls.Add(this.panel2);
             this.Name = "Form1";
@@ -1133,12 +1215,14 @@
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
             this.panel8.ResumeLayout(false);
+            this.panel12.ResumeLayout(false);
+            this.panel12.PerformLayout();
             this.panel13.ResumeLayout(false);
             this.panel13.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownY)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownX)).EndInit();
-            this.panel12.ResumeLayout(false);
-            this.panel12.PerformLayout();
+            this.panel21.ResumeLayout(false);
+            this.panel21.PerformLayout();
             this.panel10.ResumeLayout(false);
             this.panel10.PerformLayout();
             this.panel23.ResumeLayout(false);
@@ -1146,6 +1230,8 @@
             this.panel11.ResumeLayout(false);
             this.panel11.PerformLayout();
             this.panel2.ResumeLayout(false);
+            this.panel24.ResumeLayout(false);
+            this.panel24.PerformLayout();
             this.panel14.ResumeLayout(false);
             this.panel14.PerformLayout();
             this.panel6.ResumeLayout(false);
@@ -1233,19 +1319,26 @@
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.Button btnColouring;
         private System.Windows.Forms.Button btnColorFunction;
-        private System.Windows.Forms.Button btnMosaic;
-        private System.Windows.Forms.Button btnRippleEffect;
         private System.Windows.Forms.NumericUpDown numericUpDownY;
         private System.Windows.Forms.NumericUpDown numericUpDownX;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Panel panel21;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Button btnRelief;
+        private System.Windows.Forms.Button btnMosaic;
+        private System.Windows.Forms.Button btnOldStyle;
+        private System.Windows.Forms.Button btnRippleEffect;
+        private System.Windows.Forms.Button btnSwirl;
         private System.Windows.Forms.Button btnSpherize;
+        private System.Windows.Forms.Button btnSketch;
         private System.Windows.Forms.Button btnInstagram1977;
         private System.Windows.Forms.Button btnLomo;
-        private System.Windows.Forms.Button btnSketch;
-        private System.Windows.Forms.Button btnSwirl;
-        private System.Windows.Forms.Button btnOldStyle;
-        private System.Windows.Forms.Button btnRelief;
+        private System.Windows.Forms.Panel panel24;
+        private System.Windows.Forms.Button btnTry;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Button btnMaxFilter;
+        private System.Windows.Forms.Button btnMinFilter;
     }
 }
 

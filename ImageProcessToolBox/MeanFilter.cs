@@ -36,7 +36,7 @@ namespace ImageProcessToolBox
 
         public Bitmap Process()
         {
-            return base.filter(_SourceImage, _MaskWidth, _MaskHeight);
+            return base.convolute(_SourceImage, _MaskWidth, _MaskHeight);
             //return filter(_SourceImage, _MaskWidth, _MaskHeight);
         }
 

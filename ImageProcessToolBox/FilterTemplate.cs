@@ -11,9 +11,9 @@ namespace ImageProcessToolBox
     {
         protected Bitmap filter(Bitmap bitmap)
         {
-            return filter(bitmap, 3,3);
+            return convolute(bitmap, 3,3);
         }
-        protected Bitmap filter(Bitmap bitmap, int maskWidth, int maskHeight)
+        protected Bitmap convolute(Bitmap bitmap, int maskWidth, int maskHeight)
         {
             byte[,] pix, resPix;
             int width = bitmap.Width, height = bitmap.Height, pos, current;

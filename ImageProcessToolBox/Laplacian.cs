@@ -26,7 +26,7 @@ namespace ImageProcessToolBox
 
         private Bitmap laplacianFilter(Bitmap bitmap)
         {
-            return base.filter(bitmap, 3, 3);
+            return base.convolute(bitmap, 3, 3);
         }
         protected override byte maskFilter(byte[] gate)
         {

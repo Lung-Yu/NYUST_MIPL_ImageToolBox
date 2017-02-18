@@ -67,6 +67,8 @@
     <Compile Include="ImageProcess.cs" />
     <Compile Include="Instagram1977.cs" />
     <Compile Include="LomoFilter.cs" />
+    <Compile Include="MaxFilter.cs" />
+    <Compile Include="MinFilter.cs" />
     <Compile Include="MorphologyClosing.cs" />
     <Compile Include="ColorRGBModel.cs" />
     <Compile Include="MorphologyDilation.cs" />
@@ -108,6 +110,7 @@
     <Compile Include="Sobel.cs" />
     <Compile Include="TransformByExp.cs" />
     <Compile Include="TransformByLog.cs" />
+    <Compile Include="Try.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
