@@ -64,7 +64,8 @@
     <Compile Include="BitOf8PlaneSlicing.cs" />
     <Compile Include="Degree45Filter.cs" />
     <Compile Include="DegreesNegative45Filter.cs" />
-    <Compile Include="FilterTemplate.cs" />
+    <Compile Include="DiscreteWaveletTransformation.cs" />
+    <Compile Include="Template\FilterTemplate.cs" />
     <Compile Include="Grayscale.cs" />
     <Compile Include="HorizontalFilter.cs" />
     <Compile Include="ImageProcess.cs" />
@@ -101,7 +102,8 @@
     <Compile Include="MyColouring.cs" />
     <Compile Include="Negative.cs" />
     <Compile Include="OldStyleFilter.cs" />
-    <Compile Include="PointTemplate.cs" />
+    <Compile Include="Template\PointTemplate.cs" />
+    <Compile Include="PrewittFilter.cs" />
     <Compile Include="ReliefFilter.cs" />
     <Compile Include="RippleEffect.cs" />
     <Compile Include="SketchFilter.cs" />

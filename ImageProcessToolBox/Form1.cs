@@ -519,6 +519,14 @@ namespace ImageProcessToolBox
             actions(new DegreesNegative45Filter(), "-45 degree Filter");
         }
 
-       
+        private void btnPrewittFilter_Click(object sender, EventArgs e)
+        {
+            actions(new PrewittFilter(), "Prewitt Filter");
+        }
+
+        private void btnDWT_Click(object sender, EventArgs e)
+        {
+            actions(new DiscreteWaveletTransformation(), "Discrete Wavelet Transformation");
+        }       
     }
 }

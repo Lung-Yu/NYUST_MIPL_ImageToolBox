@@ -65,6 +65,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.panel8 = new System.Windows.Forms.Panel();
+            this.panel25 = new System.Windows.Forms.Panel();
+            this.btnDWT = new System.Windows.Forms.Button();
             this.panel12 = new System.Windows.Forms.Panel();
             this.btnSwell = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
@@ -72,6 +74,11 @@
             this.btnOpening = new System.Windows.Forms.Button();
             this.btnClosing = new System.Windows.Forms.Button();
             this.panel13 = new System.Windows.Forms.Panel();
+            this.btnPrewittFilter = new System.Windows.Forms.Button();
+            this.btnVertical = new System.Windows.Forms.Button();
+            this.btnN45Degree = new System.Windows.Forms.Button();
+            this.btn45Degree = new System.Windows.Forms.Button();
+            this.btnHorizontal = new System.Windows.Forms.Button();
             this.btnMaxFilter = new System.Windows.Forms.Button();
             this.btnMinFilter = new System.Windows.Forms.Button();
             this.numericUpDownY = new System.Windows.Forms.NumericUpDown();
@@ -126,10 +133,7 @@
             this.panel14 = new System.Windows.Forms.Panel();
             this.label9 = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
-            this.btnHorizontal = new System.Windows.Forms.Button();
-            this.btn45Degree = new System.Windows.Forms.Button();
-            this.btnN45Degree = new System.Windows.Forms.Button();
-            this.btnVertical = new System.Windows.Forms.Button();
+            this.label14 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -139,6 +143,7 @@
             this.panel5.SuspendLayout();
             this.panel7.SuspendLayout();
             this.panel8.SuspendLayout();
+            this.panel25.SuspendLayout();
             this.panel12.SuspendLayout();
             this.panel13.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownY)).BeginInit();
@@ -525,6 +530,7 @@
             // panel8
             // 
             this.panel8.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.panel8.Controls.Add(this.panel25);
             this.panel8.Controls.Add(this.panel12);
             this.panel8.Controls.Add(this.panel13);
             this.panel8.Controls.Add(this.panel21);
@@ -533,6 +539,25 @@
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(274, 748);
             this.panel8.TabIndex = 9;
+            // 
+            // panel25
+            // 
+            this.panel25.Controls.Add(this.label14);
+            this.panel25.Controls.Add(this.btnDWT);
+            this.panel25.Location = new System.Drawing.Point(6, 464);
+            this.panel25.Name = "panel25";
+            this.panel25.Size = new System.Drawing.Size(264, 171);
+            this.panel25.TabIndex = 17;
+            // 
+            // btnDWT
+            // 
+            this.btnDWT.Location = new System.Drawing.Point(12, 44);
+            this.btnDWT.Name = "btnDWT";
+            this.btnDWT.Size = new System.Drawing.Size(241, 23);
+            this.btnDWT.TabIndex = 0;
+            this.btnDWT.Text = "Discrete Wavelet Transformation";
+            this.btnDWT.UseVisualStyleBackColor = true;
+            this.btnDWT.Click += new System.EventHandler(this.btnDWT_Click);
             // 
             // panel12
             // 
@@ -598,6 +623,7 @@
             // 
             // panel13
             // 
+            this.panel13.Controls.Add(this.btnPrewittFilter);
             this.panel13.Controls.Add(this.btnVertical);
             this.panel13.Controls.Add(this.btnN45Degree);
             this.panel13.Controls.Add(this.btn45Degree);
@@ -622,6 +648,56 @@
             this.panel13.Name = "panel13";
             this.panel13.Size = new System.Drawing.Size(264, 261);
             this.panel13.TabIndex = 15;
+            // 
+            // btnPrewittFilter
+            // 
+            this.btnPrewittFilter.Location = new System.Drawing.Point(178, 170);
+            this.btnPrewittFilter.Name = "btnPrewittFilter";
+            this.btnPrewittFilter.Size = new System.Drawing.Size(75, 23);
+            this.btnPrewittFilter.TabIndex = 40;
+            this.btnPrewittFilter.Text = "Prewitt";
+            this.btnPrewittFilter.UseVisualStyleBackColor = true;
+            this.btnPrewittFilter.Click += new System.EventHandler(this.btnPrewittFilter_Click);
+            // 
+            // btnVertical
+            // 
+            this.btnVertical.Location = new System.Drawing.Point(12, 142);
+            this.btnVertical.Name = "btnVertical";
+            this.btnVertical.Size = new System.Drawing.Size(75, 23);
+            this.btnVertical.TabIndex = 39;
+            this.btnVertical.Text = "Vertical";
+            this.btnVertical.UseVisualStyleBackColor = true;
+            this.btnVertical.Click += new System.EventHandler(this.btnVertical_Click);
+            // 
+            // btnN45Degree
+            // 
+            this.btnN45Degree.Location = new System.Drawing.Point(178, 113);
+            this.btnN45Degree.Name = "btnN45Degree";
+            this.btnN45Degree.Size = new System.Drawing.Size(75, 23);
+            this.btnN45Degree.TabIndex = 38;
+            this.btnN45Degree.Text = "-45 Degree";
+            this.btnN45Degree.UseVisualStyleBackColor = true;
+            this.btnN45Degree.Click += new System.EventHandler(this.btnN45Degree_Click);
+            // 
+            // btn45Degree
+            // 
+            this.btn45Degree.Location = new System.Drawing.Point(95, 113);
+            this.btn45Degree.Name = "btn45Degree";
+            this.btn45Degree.Size = new System.Drawing.Size(75, 23);
+            this.btn45Degree.TabIndex = 37;
+            this.btn45Degree.Text = "45 Degree";
+            this.btn45Degree.UseVisualStyleBackColor = true;
+            this.btn45Degree.Click += new System.EventHandler(this.btn45Degree_Click);
+            // 
+            // btnHorizontal
+            // 
+            this.btnHorizontal.Location = new System.Drawing.Point(12, 113);
+            this.btnHorizontal.Name = "btnHorizontal";
+            this.btnHorizontal.Size = new System.Drawing.Size(75, 23);
+            this.btnHorizontal.TabIndex = 36;
+            this.btnHorizontal.Text = "Horizontal";
+            this.btnHorizontal.UseVisualStyleBackColor = true;
+            this.btnHorizontal.Click += new System.EventHandler(this.btnHorizontal_Click);
             // 
             // btnMaxFilter
             // 
@@ -729,7 +805,7 @@
             // 
             // btnFourierTransform
             // 
-            this.btnFourierTransform.Location = new System.Drawing.Point(183, 199);
+            this.btnFourierTransform.Location = new System.Drawing.Point(178, 199);
             this.btnFourierTransform.Name = "btnFourierTransform";
             this.btnFourierTransform.Size = new System.Drawing.Size(75, 23);
             this.btnFourierTransform.TabIndex = 26;
@@ -832,7 +908,7 @@
             this.panel21.Controls.Add(this.btnLomo);
             this.panel21.Location = new System.Drawing.Point(6, 267);
             this.panel21.Name = "panel21";
-            this.panel21.Size = new System.Drawing.Size(265, 240);
+            this.panel21.Size = new System.Drawing.Size(265, 189);
             this.panel21.TabIndex = 16;
             // 
             // label10
@@ -1189,45 +1265,15 @@
             this.panel6.Size = new System.Drawing.Size(842, 766);
             this.panel6.TabIndex = 14;
             // 
-            // btnHorizontal
+            // label14
             // 
-            this.btnHorizontal.Location = new System.Drawing.Point(12, 113);
-            this.btnHorizontal.Name = "btnHorizontal";
-            this.btnHorizontal.Size = new System.Drawing.Size(75, 23);
-            this.btnHorizontal.TabIndex = 36;
-            this.btnHorizontal.Text = "Horizontal";
-            this.btnHorizontal.UseVisualStyleBackColor = true;
-            this.btnHorizontal.Click += new System.EventHandler(this.btnHorizontal_Click);
-            // 
-            // btn45Degree
-            // 
-            this.btn45Degree.Location = new System.Drawing.Point(95, 113);
-            this.btn45Degree.Name = "btn45Degree";
-            this.btn45Degree.Size = new System.Drawing.Size(75, 23);
-            this.btn45Degree.TabIndex = 37;
-            this.btn45Degree.Text = "45 Degree";
-            this.btn45Degree.UseVisualStyleBackColor = true;
-            this.btn45Degree.Click += new System.EventHandler(this.btn45Degree_Click);
-            // 
-            // btnN45Degree
-            // 
-            this.btnN45Degree.Location = new System.Drawing.Point(178, 113);
-            this.btnN45Degree.Name = "btnN45Degree";
-            this.btnN45Degree.Size = new System.Drawing.Size(75, 23);
-            this.btnN45Degree.TabIndex = 38;
-            this.btnN45Degree.Text = "-45 Degree";
-            this.btnN45Degree.UseVisualStyleBackColor = true;
-            this.btnN45Degree.Click += new System.EventHandler(this.btnN45Degree_Click);
-            // 
-            // btnVertical
-            // 
-            this.btnVertical.Location = new System.Drawing.Point(12, 142);
-            this.btnVertical.Name = "btnVertical";
-            this.btnVertical.Size = new System.Drawing.Size(75, 23);
-            this.btnVertical.TabIndex = 39;
-            this.btnVertical.Text = "Vertical";
-            this.btnVertical.UseVisualStyleBackColor = true;
-            this.btnVertical.Click += new System.EventHandler(this.btnVertical_Click);
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("PMingLiU", 16F);
+            this.label14.Location = new System.Drawing.Point(8, 8);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(167, 22);
+            this.label14.TabIndex = 50;
+            this.label14.Text = "Frequency Domain";
             // 
             // Form1
             // 
@@ -1251,6 +1297,8 @@
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
             this.panel8.ResumeLayout(false);
+            this.panel25.ResumeLayout(false);
+            this.panel25.PerformLayout();
             this.panel12.ResumeLayout(false);
             this.panel12.PerformLayout();
             this.panel13.ResumeLayout(false);
@@ -1378,6 +1426,10 @@
         private System.Windows.Forms.Button btnN45Degree;
         private System.Windows.Forms.Button btn45Degree;
         private System.Windows.Forms.Button btnHorizontal;
+        private System.Windows.Forms.Button btnPrewittFilter;
+        private System.Windows.Forms.Panel panel25;
+        private System.Windows.Forms.Button btnDWT;
+        private System.Windows.Forms.Label label14;
     }
 }
 
