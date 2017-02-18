@@ -47,12 +47,10 @@ namespace ImageProcessToolBox
                                 btnHighPassFilters,
                                 btnFourierTransform,
                                 btnSobel,
-                                btnSpatialFilter,
                                 btnLaplacian,
                                 btnHistogramEqualization,
                                 btnMosaic,
                                 btnRippleEffect,
-                                btnSpatialFilter,
                                 btnInstagram1977,
                                 btnLomo,
                                 btnSketch,
@@ -396,10 +394,7 @@ namespace ImageProcessToolBox
             actions(new Sobel(), "Sobel");
         }
 
-        private void btnSpatialFilter_Click(object sender, EventArgs e)
-        {
-           
-        }
+        
 
         private void btnLaplacian_Click(object sender, EventArgs e)
         {
@@ -504,9 +499,26 @@ namespace ImageProcessToolBox
             actions(new Try(), "Mean Filter");
         }
 
+        private void btnVertical_Click(object sender, EventArgs e)
+        {
+            actions(new VerticalFilter(), "Vertical Filter");
+        }
+
+        private void btnHorizontal_Click(object sender, EventArgs e)
+        {
+            actions(new HorizontalFilter(), "Horizontal Filter");
+        }
+
+        private void btn45Degree_Click(object sender, EventArgs e)
+        {
+            actions(new Degree45Filter(), "45 degree Filter");
+        }
+
+        private void btnN45Degree_Click(object sender, EventArgs e)
+        {
+            actions(new DegreesNegative45Filter(), "-45 degree Filter");
+        }
+
        
-
-        
-
     }
 }

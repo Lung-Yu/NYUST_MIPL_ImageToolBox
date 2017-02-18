@@ -62,8 +62,11 @@
   <ItemGroup>
     <Compile Include="Binarization.cs" />
     <Compile Include="BitOf8PlaneSlicing.cs" />
+    <Compile Include="Degree45Filter.cs" />
+    <Compile Include="DegreesNegative45Filter.cs" />
     <Compile Include="FilterTemplate.cs" />
     <Compile Include="Grayscale.cs" />
+    <Compile Include="HorizontalFilter.cs" />
     <Compile Include="ImageProcess.cs" />
     <Compile Include="Instagram1977.cs" />
     <Compile Include="LomoFilter.cs" />
@@ -111,6 +114,7 @@
     <Compile Include="TransformByExp.cs" />
     <Compile Include="TransformByLog.cs" />
     <Compile Include="Try.cs" />
+    <Compile Include="VerticalFilter.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
