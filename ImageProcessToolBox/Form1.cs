@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Fast_Fourier_Transform;
+using ImageProcessToolBox.Feature;
+using ImageProcessToolBox.Interface;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -156,7 +159,7 @@ namespace ImageProcessToolBox
         #endregion
 
         #region 共用函數
-        private void actions(IImageProcess action, String actionString)
+        private IImageProcess actions(IImageProcess action, String actionString)
         {
             Bitmap bitmap = bitmapFromSource();
 
@@ -166,6 +169,8 @@ namespace ImageProcessToolBox
 
             UIMessage(actionString, sw);
             setResultBitmap(resBitmap);
+
+            return action;
         }
 
         private void ButtonsEnable()
@@ -351,7 +356,7 @@ namespace ImageProcessToolBox
         #region 空間轉換 Space filter
         private void btnMeanFilter_Click(object sender, EventArgs e)
         {
-            actions(new MedianFilter((int)numericUpDownX.Value, (int)numericUpDownY.Value),"Median Filter");
+            actions(new MedianFilter((int)numericUpDownX.Value, (int)numericUpDownY.Value), "Median Filter");
         }
 
         private void btnMinFilter_Click(object sender, EventArgs e)
@@ -386,15 +391,20 @@ namespace ImageProcessToolBox
 
         private void btnFourierTransform_Click(object sender, EventArgs e)
         {
+            //1. Create FFT Object
+            FFT ImgFFT = new FFT(new Bitmap(pictureBox1.Image));
 
+            ImgFFT.ForwardFFT();// Finding 2D FFT of Image
+            ImgFFT.FFTShift();
+            ImgFFT.FFTPlot(ImgFFT.FFTShifted);
+            pictureBox2.Image = (Image)ImgFFT.FourierPlot;
+            pictureBox2.Image = (Image)ImgFFT.PhasePlot;
         }
 
         private void btnSobel_Click(object sender, EventArgs e)
         {
             actions(new Sobel(), "Sobel");
         }
-
-        
 
         private void btnLaplacian_Click(object sender, EventArgs e)
         {
@@ -527,6 +537,16 @@ namespace ImageProcessToolBox
         private void btnDWT_Click(object sender, EventArgs e)
         {
             actions(new DiscreteWaveletTransformation(), "Discrete Wavelet Transformation");
-        }       
+        }
+
+        private void btnLBP_Click(object sender, EventArgs e)
+        {
+            Object actionObj = actions(new LocalBinaryPattern(), "Local Binary Pattern");
+            if (actionObj is IFeatureExtract)
+            {
+                IFeatureExtract extractor = (IFeatureExtract)actionObj;
+                //string str =  extractor.getFeaturesString();
+            }
+        }
     }
 }

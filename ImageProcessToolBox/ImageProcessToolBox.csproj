@@ -65,6 +65,9 @@
     <Compile Include="Degree45Filter.cs" />
     <Compile Include="DegreesNegative45Filter.cs" />
     <Compile Include="DiscreteWaveletTransformation.cs" />
+    <Compile Include="Feature\LocalBinaryPattern.cs" />
+    <Compile Include="FFT.cs" />
+    <Compile Include="Interface\IFeatureExtract.cs" />
     <Compile Include="Template\FilterTemplate.cs" />
     <Compile Include="Grayscale.cs" />
     <Compile Include="HorizontalFilter.cs" />
@@ -87,8 +90,8 @@
     <Compile Include="Heap.cs" />
     <Compile Include="HighPassFilter.cs" />
     <Compile Include="HistogramEqualization.cs" />
-    <Compile Include="IDistance.cs" />
-    <Compile Include="IImageProcess.cs" />
+    <Compile Include="Interface\IDistance.cs" />
+    <Compile Include="Interface\IImageProcess.cs" />
     <Compile Include="MachineLearing_KMeans.cs" />
     <Compile Include="ImageExtract.cs" />
     <Compile Include="ImagePretreatment.cs" />
@@ -161,7 +164,7 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="images\colors.png" />
+    <Content Include="Images\colors.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

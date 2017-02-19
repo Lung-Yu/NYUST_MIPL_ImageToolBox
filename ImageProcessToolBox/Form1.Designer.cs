@@ -66,6 +66,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.panel8 = new System.Windows.Forms.Panel();
             this.panel25 = new System.Windows.Forms.Panel();
+            this.label14 = new System.Windows.Forms.Label();
             this.btnDWT = new System.Windows.Forms.Button();
             this.panel12 = new System.Windows.Forms.Panel();
             this.btnSwell = new System.Windows.Forms.Button();
@@ -133,7 +134,7 @@
             this.panel14 = new System.Windows.Forms.Panel();
             this.label9 = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
-            this.label14 = new System.Windows.Forms.Label();
+            this.btnLBP = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -242,7 +243,7 @@
             this.btnColorFunction.Name = "btnColorFunction";
             this.btnColorFunction.Size = new System.Drawing.Size(94, 23);
             this.btnColorFunction.TabIndex = 4;
-            this.btnColorFunction.Text = "ColorFunction";
+            this.btnColorFunction.Text = "Color Function";
             this.btnColorFunction.UseVisualStyleBackColor = true;
             this.btnColorFunction.Click += new System.EventHandler(this.btnColorFunction_Click);
             // 
@@ -548,6 +549,16 @@
             this.panel25.Name = "panel25";
             this.panel25.Size = new System.Drawing.Size(264, 171);
             this.panel25.TabIndex = 17;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("PMingLiU", 16F);
+            this.label14.Location = new System.Drawing.Point(8, 8);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(167, 22);
+            this.label14.TabIndex = 50;
+            this.label14.Text = "Frequency Domain";
             // 
             // btnDWT
             // 
@@ -1208,6 +1219,7 @@
             // panel24
             // 
             this.panel24.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.panel24.Controls.Add(this.btnLBP);
             this.panel24.Controls.Add(this.btnTry);
             this.panel24.Controls.Add(this.label13);
             this.panel24.Location = new System.Drawing.Point(4, 403);
@@ -1217,7 +1229,7 @@
             // 
             // btnTry
             // 
-            this.btnTry.Location = new System.Drawing.Point(15, 49);
+            this.btnTry.Location = new System.Drawing.Point(11, 79);
             this.btnTry.Name = "btnTry";
             this.btnTry.Size = new System.Drawing.Size(75, 23);
             this.btnTry.TabIndex = 51;
@@ -1231,9 +1243,9 @@
             this.label13.Font = new System.Drawing.Font("PMingLiU", 16F);
             this.label13.Location = new System.Drawing.Point(9, 10);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(64, 22);
+            this.label13.Size = new System.Drawing.Size(163, 22);
             this.label13.TabIndex = 50;
-            this.label13.Text = "Detect";
+            this.label13.Text = "Feature Extraction";
             // 
             // panel14
             // 
@@ -1265,15 +1277,15 @@
             this.panel6.Size = new System.Drawing.Size(842, 766);
             this.panel6.TabIndex = 14;
             // 
-            // label14
+            // btnLBP
             // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("PMingLiU", 16F);
-            this.label14.Location = new System.Drawing.Point(8, 8);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(167, 22);
-            this.label14.TabIndex = 50;
-            this.label14.Text = "Frequency Domain";
+            this.btnLBP.Location = new System.Drawing.Point(10, 50);
+            this.btnLBP.Name = "btnLBP";
+            this.btnLBP.Size = new System.Drawing.Size(75, 23);
+            this.btnLBP.TabIndex = 52;
+            this.btnLBP.Text = "LBP";
+            this.btnLBP.UseVisualStyleBackColor = true;
+            this.btnLBP.Click += new System.EventHandler(this.btnLBP_Click);
             // 
             // Form1
             // 
@@ -1430,6 +1442,7 @@
         private System.Windows.Forms.Panel panel25;
         private System.Windows.Forms.Button btnDWT;
         private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Button btnLBP;
     }
 }
 
