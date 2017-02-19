@@ -61,6 +61,13 @@ namespace ImageProcessToolBox
                                 btnOldStyle,
                                 btnSpherize,
                                 btnRelief,
+                                btnMinFilter,
+                                btnN45Degree,
+                                btn45Degree,
+                                btnVertical,
+                                btnHorizontal,
+                                btnPrewittFilter,
+                                btnMaxFilter,
                                 
                                 //morphology
                                 btnErosion,
@@ -69,7 +76,10 @@ namespace ImageProcessToolBox
                                 btnClosing,
 
                                 //segment
-                                btnK_Means
+                                btnK_Means,
+
+                                btnDWT,
+                                btnLBP
                             };
 
             foreach (Button button in btns)

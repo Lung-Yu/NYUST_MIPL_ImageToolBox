@@ -87,7 +87,7 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="GaussianFilter.cs" />
-    <Compile Include="Heap.cs" />
+    <Compile Include="Algorithm\Heap.cs" />
     <Compile Include="HighPassFilter.cs" />
     <Compile Include="HistogramEqualization.cs" />
     <Compile Include="Interface\IDistance.cs" />
