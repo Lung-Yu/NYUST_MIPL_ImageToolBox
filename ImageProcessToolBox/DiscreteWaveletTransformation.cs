@@ -29,9 +29,9 @@ namespace ImageProcessToolBox
             byte[,] result = new byte[3, width * height];
             int x, y, offset;
             int r, g, b, halfWidth = width / 2;
-            for (y = 0; y < height; y++)
+            for (y = 0; y < height - (height%2); y++)
             {
-                for (x = 0; x < width; x += 2)
+                for (x = 0; x < width - (width%2); x += 2)
                 {
                     offset = y * width;
 
@@ -64,9 +64,9 @@ namespace ImageProcessToolBox
             byte[,] result = new byte[3, width * height];
             int x, y, offset, halfOffset, halfHeightOffset, halfHeight = height / 2;
             int r, g, b;
-            for (y = 0; y < height; y += 2)
+            for (y = 0; y < height - (height % 2); y += 2)
             {
-                for (x = 0; x < width; x++)
+                for (x = 0; x < width - (width % 2); x++)
                 {
                     offset = y * width;
                     halfOffset = (y / 2) * width;
@@ -82,9 +82,9 @@ namespace ImageProcessToolBox
 
                     r = pixels[ImageExtract.COLOR_R, x + offset] - pixels[ImageExtract.COLOR_R, x + offset + width];
                     result[ImageExtract.COLOR_R, x + halfOffset + halfHeightOffset] = (byte)((r > 255) ? 255 : (r < 0) ? 0 : r);
-                    g = pixels[ImageExtract.COLOR_G, x + offset ] - pixels[ImageExtract.COLOR_G, x + offset + width];
+                    g = pixels[ImageExtract.COLOR_G, x + offset] - pixels[ImageExtract.COLOR_G, x + offset + width];
                     result[ImageExtract.COLOR_G, x + halfOffset + halfHeightOffset] = (byte)((g > 255) ? 255 : (g < 0) ? 0 : g);
-                    b = pixels[ImageExtract.COLOR_B, x + offset ] - pixels[ImageExtract.COLOR_B, x + offset + width];
+                    b = pixels[ImageExtract.COLOR_B, x + offset] - pixels[ImageExtract.COLOR_B, x + offset + width];
                     result[ImageExtract.COLOR_B, x + halfOffset + halfHeightOffset] = (byte)((b > 255) ? 255 : (b < 0) ? 0 : b);
                 }
             }

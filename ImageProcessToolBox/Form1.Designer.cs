@@ -129,12 +129,12 @@
             this.panel11 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel24 = new System.Windows.Forms.Panel();
+            this.btnLBP = new System.Windows.Forms.Button();
             this.btnTry = new System.Windows.Forms.Button();
             this.label13 = new System.Windows.Forms.Label();
             this.panel14 = new System.Windows.Forms.Panel();
             this.label9 = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
-            this.btnLBP = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -377,7 +377,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("PMingLiU", 16F);
+            this.label5.Font = new System.Drawing.Font("新細明體", 16F);
             this.label5.Location = new System.Drawing.Point(3, 3);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(147, 22);
@@ -436,7 +436,7 @@
             // 
             this.panel5.BackColor = System.Drawing.SystemColors.HighlightText;
             this.panel5.Controls.Add(this.labelconsle);
-            this.panel5.Font = new System.Drawing.Font("DFKai-SB", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.panel5.Font = new System.Drawing.Font("標楷體", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.panel5.Location = new System.Drawing.Point(6, 39);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(824, 107);
@@ -445,7 +445,7 @@
             // labelconsle
             // 
             this.labelconsle.AutoSize = true;
-            this.labelconsle.Font = new System.Drawing.Font("DFKai-SB", 10F, System.Drawing.FontStyle.Italic);
+            this.labelconsle.Font = new System.Drawing.Font("標楷體", 10F, System.Drawing.FontStyle.Italic);
             this.labelconsle.Location = new System.Drawing.Point(3, 2);
             this.labelconsle.Name = "labelconsle";
             this.labelconsle.Size = new System.Drawing.Size(0, 14);
@@ -511,7 +511,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("PMingLiU", 14F);
+            this.label3.Font = new System.Drawing.Font("新細明體", 14F);
             this.label3.Location = new System.Drawing.Point(4, 7);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(109, 19);
@@ -521,7 +521,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("PMingLiU", 14F);
+            this.label4.Font = new System.Drawing.Font("新細明體", 14F);
             this.label4.Location = new System.Drawing.Point(426, 8);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(105, 19);
@@ -553,7 +553,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("PMingLiU", 16F);
+            this.label14.Font = new System.Drawing.Font("新細明體", 16F);
             this.label14.Location = new System.Drawing.Point(8, 8);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(167, 22);
@@ -595,7 +595,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("PMingLiU", 16F);
+            this.label8.Font = new System.Drawing.Font("新細明體", 16F);
             this.label8.Location = new System.Drawing.Point(4, 4);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(111, 22);
@@ -787,7 +787,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("PMingLiU", 10F);
+            this.label12.Font = new System.Drawing.Font("新細明體", 10F);
             this.label12.Location = new System.Drawing.Point(199, 13);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(14, 14);
@@ -797,7 +797,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("PMingLiU", 10F);
+            this.label11.Font = new System.Drawing.Font("新細明體", 10F);
             this.label11.Location = new System.Drawing.Point(139, 13);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(14, 14);
@@ -807,7 +807,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("PMingLiU", 16F);
+            this.label6.Font = new System.Drawing.Font("新細明體", 16F);
             this.label6.Location = new System.Drawing.Point(3, 8);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(105, 22);
@@ -925,7 +925,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("PMingLiU", 16F);
+            this.label10.Font = new System.Drawing.Font("新細明體", 16F);
             this.label10.Location = new System.Drawing.Point(7, 13);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(153, 22);
@@ -1032,7 +1032,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("PMingLiU", 14F);
+            this.label7.Font = new System.Drawing.Font("新細明體", 14F);
             this.label7.Location = new System.Drawing.Point(6, 5);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(98, 19);
@@ -1227,6 +1227,16 @@
             this.panel24.Size = new System.Drawing.Size(273, 350);
             this.panel24.TabIndex = 16;
             // 
+            // btnLBP
+            // 
+            this.btnLBP.Location = new System.Drawing.Point(10, 50);
+            this.btnLBP.Name = "btnLBP";
+            this.btnLBP.Size = new System.Drawing.Size(75, 23);
+            this.btnLBP.TabIndex = 52;
+            this.btnLBP.Text = "LBP";
+            this.btnLBP.UseVisualStyleBackColor = true;
+            this.btnLBP.Click += new System.EventHandler(this.btnLBP_Click);
+            // 
             // btnTry
             // 
             this.btnTry.Location = new System.Drawing.Point(11, 79);
@@ -1240,7 +1250,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("PMingLiU", 16F);
+            this.label13.Font = new System.Drawing.Font("新細明體", 16F);
             this.label13.Location = new System.Drawing.Point(9, 10);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(163, 22);
@@ -1260,7 +1270,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("PMingLiU", 16F);
+            this.label9.Font = new System.Drawing.Font("新細明體", 16F);
             this.label9.Location = new System.Drawing.Point(7, 4);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(107, 22);
@@ -1276,16 +1286,6 @@
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(842, 766);
             this.panel6.TabIndex = 14;
-            // 
-            // btnLBP
-            // 
-            this.btnLBP.Location = new System.Drawing.Point(10, 50);
-            this.btnLBP.Name = "btnLBP";
-            this.btnLBP.Size = new System.Drawing.Size(75, 23);
-            this.btnLBP.TabIndex = 52;
-            this.btnLBP.Text = "LBP";
-            this.btnLBP.UseVisualStyleBackColor = true;
-            this.btnLBP.Click += new System.EventHandler(this.btnLBP_Click);
             // 
             // Form1
             // 
