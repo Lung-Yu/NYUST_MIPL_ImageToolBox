@@ -8,15 +8,25 @@ using System.Threading.Tasks;
 
 namespace ImageProcessToolBox
 {
-    class TransformByLog :PointTemplate, IImageProcess
+    class TransformByLog : PointTemplate, IImageProcess
     {
         private Bitmap _SourceImage;
         private int _C = 100;
+        private static byte[] logs = null;
         public TransformByLog(int c)
         {
             _C = c;
+            init(_C);
         }
 
+        private static void init(int c)
+        {
+            logs = new byte[256];
+            for (int i = 0; i < 256; i++)
+            {
+                logs[i] = (byte)(c * Math.Log(i + 1, 10));
+            }
+        }
 
         public TransformByLog(int c, Bitmap bitmap)
         {
@@ -34,58 +44,20 @@ namespace ImageProcessToolBox
             return base.process(_SourceImage);
         }
 
-        private static Bitmap log(Bitmap bitmap, int c)
-        {
-
-            int width = bitmap.Width;
-            int height = bitmap.Height;
-
-            System.IntPtr srcScan, dstScan;
-            BitmapData srcBmData, dstBmData;
-            Bitmap dstBitmap = ImageExtract.InitPonitMethod(bitmap, width, height, out srcScan, out dstScan, out srcBmData, out dstBmData);
-
-            unsafe //啟動不安全代碼
-            {
-                byte* srcP = (byte*)srcScan;
-                byte* dstP = (byte*)dstScan;
-                int srcOffset = srcBmData.Stride - width * 3;
-                int dstOffset = dstBmData.Stride - width * 3;
-
-                for (int y = 0; y < height; y++)
-                {
-                    for (int x = 0; x < width; x++, srcP += 3, dstP += 3)
-                    {
-
-                        *dstP = (byte)(c * Math.Log(srcP[0] + 1, 10));
-                        *(dstP + 1) = (byte)(c * Math.Log(srcP[1] + 1, 10));
-                        *(dstP + 2) = (byte)(c * Math.Log(srcP[2] + 1, 10));
-                    }
-                    srcP += srcOffset;
-                    dstP += dstOffset;
-                }
-            }
-
-            bitmap.UnlockBits(srcBmData);
-            dstBitmap.UnlockBits(dstBmData);
-
-            return dstBitmap;
-        }
-
         protected override byte processColorR(byte r, byte g, byte b)
         {
-           return (byte)(_C * Math.Log(r + 1, 10));
+            return logs[r];
         }
 
         protected override byte processColorG(byte r, byte g, byte b)
         {
-            return (byte)(_C * Math.Log(g + 1, 10));
+            return logs[g];
         }
 
         protected override byte processColorB(byte r, byte g, byte b)
         {
-            return (byte)(_C * Math.Log(b + 1, 10));
+            return logs[b];
         }
-
 
         public void setResouceImage(Bitmap bitmap)
         {

@@ -8,22 +8,24 @@ using System.Threading.Tasks;
 
 namespace ImageProcessToolBox
 {
-    class TransformByExp :PointTemplate, IImageProcess
+    class TransformByExp : PointTemplate, IImageProcess
     {
         private Bitmap _SourceImage;
         private int _C = 1;
+        private static byte[] exps;
 
         public TransformByExp(int c)
         {
             _C = c;
+            init(_C);
         }
-
-        public TransformByExp(int c, Bitmap bitmap)
+        private static void init(int c)
         {
-            _SourceImage = bitmap;
-            _C = c;
-        }
+            exps = new byte[256];
+            for (int i = 0; i < 256; i++)
+                exps[i] = (byte)(c * Math.Exp(i + 1));
 
+        }
         public TransformByExp(Bitmap bitmap)
         {
             _SourceImage = bitmap;
@@ -55,9 +57,9 @@ namespace ImageProcessToolBox
                     for (int x = 0; x < width; x++, srcP += 3, dstP += 3)
                     {
 
-                        *dstP = (byte)(c * Math.Log(srcP[0] + 1));
-                        *(dstP + 1) = (byte)(c * Math.Log(srcP[1] + 1));
-                        *(dstP + 2) = (byte)(c * Math.Exp(srcP[2] + 1));
+                        *dstP = exps[srcP[0]];
+                        *(dstP + 1) = exps[srcP[1]];
+                        *(dstP + 2) = exps[srcP[2]];
                     }
                     srcP += srcOffset;
                     dstP += dstOffset;
@@ -72,7 +74,7 @@ namespace ImageProcessToolBox
 
         protected override byte processColorR(byte r, byte g, byte b)
         {
-            return (byte)(_C * Math.Log(r+ 1));
+            return (byte)(_C * Math.Log(r + 1));
         }
 
         protected override byte processColorG(byte r, byte g, byte b)
