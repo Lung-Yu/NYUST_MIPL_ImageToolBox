@@ -517,6 +517,7 @@ namespace ImageProcessToolBox
         private void btnTry_Click(object sender, EventArgs e)
         {
             actions(new Try(), "Mean Filter");
+            new ReaderTextFile();
         }
 
         private void btnVertical_Click(object sender, EventArgs e)

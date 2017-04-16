@@ -68,6 +68,7 @@
     <Compile Include="Feature\LocalBinaryPattern.cs" />
     <Compile Include="FFT.cs" />
     <Compile Include="Interface\IFeatureExtract.cs" />
+    <Compile Include="ReaderTextFile.cs" />
     <Compile Include="Template\FilterTemplate.cs" />
     <Compile Include="Grayscale.cs" />
     <Compile Include="HorizontalFilter.cs" />
@@ -165,6 +166,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Images\colors.png" />
+    <Content Include="TestFile.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
