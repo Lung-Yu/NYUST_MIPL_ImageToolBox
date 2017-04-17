@@ -64,6 +64,7 @@
     <Compile Include="BitOf8PlaneSlicing.cs" />
     <Compile Include="Degree45Filter.cs" />
     <Compile Include="DegreesNegative45Filter.cs" />
+    <Compile Include="DiscreteFourierTransform.cs" />
     <Compile Include="DiscreteWaveletTransformation.cs" />
     <Compile Include="Feature\LocalBinaryPattern.cs" />
     <Compile Include="FFT.cs" />
@@ -166,7 +167,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Images\colors.png" />
-    <Content Include="TestFile.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -90,7 +90,7 @@ namespace ImageProcessToolBox
         private void btnOpenFile_Click(object sender, EventArgs e)
         {
             OpenFileDialog opfDialog = new OpenFileDialog();
-            opfDialog.Filter = @"(*.bmp,*.jpg)|*.bmp;*.jpg;*.png";
+            opfDialog.Filter = @"(*.bmp,*.jpg,*.tif)|*.bmp;*.jpg;*.png;*.tif";
             opfDialog.FilterIndex = 3;
             opfDialog.RestoreDirectory = true;
             opfDialog.InitialDirectory = @"C:\\";
@@ -516,8 +516,8 @@ namespace ImageProcessToolBox
 
         private void btnTry_Click(object sender, EventArgs e)
         {
-            actions(new Try(), "Mean Filter");
-            new ReaderTextFile();
+            actions(new DiscreteFourierTransform(), "DiscreteFourierTransform");
+            //new ReaderTextFile();
         }
 
         private void btnVertical_Click(object sender, EventArgs e)

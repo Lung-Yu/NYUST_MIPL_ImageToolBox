@@ -5,6 +5,8 @@ VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageProcessToolBox", "ImageProcessToolBox\ImageProcessToolBox.csproj", "{35A2C665-8EAC-4BB7-8DFA-B3F7A94332E2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EulerFormula", "EulerFormula\EulerFormula.csproj", "{C1F6C61E-8F86-4DCE-9796-20E933F8FE90}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{35A2C665-8EAC-4BB7-8DFA-B3F7A94332E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{35A2C665-8EAC-4BB7-8DFA-B3F7A94332E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{35A2C665-8EAC-4BB7-8DFA-B3F7A94332E2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C1F6C61E-8F86-4DCE-9796-20E933F8FE90}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C1F6C61E-8F86-4DCE-9796-20E933F8FE90}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C1F6C61E-8F86-4DCE-9796-20E933F8FE90}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C1F6C61E-8F86-4DCE-9796-20E933F8FE90}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

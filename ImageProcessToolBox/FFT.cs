@@ -505,7 +505,7 @@ namespace Fast_Fourier_Transform
                      ---
                      k=0
             */
-        private void FFT1D(int dir, int m, ref double[] x, ref double[] y )
+        private void FFT1D(int dir, int m, ref double[] xReal, ref double[] yImage )
             {
                 long nn, i, i1, j, k, i2, l, l1, l2;
                 double c1, c2, tx, ty, t1, t2, u1, u2, z;
@@ -520,12 +520,12 @@ namespace Fast_Fourier_Transform
                 {
                     if (i < j)
                     {
-                        tx = x[i];
-                        ty = y[i];
-                        x[i] = x[j];
-                        y[i] = y[j];
-                        x[j] = tx;
-                        y[j] = ty;
+                        tx = xReal[i];
+                        ty = yImage[i];
+                        xReal[i] = xReal[j];
+                        yImage[i] = yImage[j];
+                        xReal[j] = tx;
+                        yImage[j] = ty;
                     }
                     k = i2;
                     while (k <= j)
@@ -550,12 +550,12 @@ namespace Fast_Fourier_Transform
                         for (i = j; i < nn; i += l2)
                         {
                             i1 = i + l1;
-                            t1 = u1 * x[i1] - u2 * y[i1];
-                            t2 = u1 * y[i1] + u2 * x[i1];
-                            x[i1] = x[i] - t1;
-                            y[i1] = y[i] - t2;
-                            x[i] += t1;
-                            y[i] += t2;
+                            t1 = u1 * xReal[i1] - u2 * yImage[i1];
+                            t2 = u1 * yImage[i1] + u2 * xReal[i1];
+                            xReal[i1] = xReal[i] - t1;
+                            yImage[i1] = yImage[i] - t2;
+                            xReal[i] += t1;
+                            yImage[i] += t2;
                         }
                         z = u1 * c1 - u2 * c2;
                         u2 = u1 * c2 + u2 * c1;
@@ -571,8 +571,8 @@ namespace Fast_Fourier_Transform
                 {
                     for (i = 0; i < nn; i++)
                     {
-                        x[i] /= (double)nn;
-                        y[i] /= (double)nn;
+                        xReal[i] /= (double)nn;
+                        yImage[i] /= (double)nn;
                        
                     }
                 }

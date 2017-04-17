@@ -1,0 +1,6 @@
+C:\Users\lungyu\Documents\GitHub\ImageToolBox\EulerFormula\bin\Debug\EulerFormula.exe.config
+C:\Users\lungyu\Documents\GitHub\ImageToolBox\EulerFormula\bin\Debug\EulerFormula.exe
+C:\Users\lungyu\Documents\GitHub\ImageToolBox\EulerFormula\bin\Debug\EulerFormula.pdb
+C:\Users\lungyu\Documents\GitHub\ImageToolBox\EulerFormula\obj\Debug\EulerFormula.exe
+C:\Users\lungyu\Documents\GitHub\ImageToolBox\EulerFormula\obj\Debug\EulerFormula.pdb
+C:\Users\lungyu\Documents\GitHub\ImageToolBox\EulerFormula\obj\Debug\EulerFormula.csprojResolveAssemblyReference.cache
