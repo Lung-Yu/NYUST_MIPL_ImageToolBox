@@ -19,7 +19,10 @@ namespace ImageProcessToolBox
         {
         }
 
-
+        public Negative(Bitmap bitmap)
+        {
+            _SourceImage = bitmap;
+        }
 
         public Bitmap Process()
         {

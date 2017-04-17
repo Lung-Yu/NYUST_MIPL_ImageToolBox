@@ -32,6 +32,7 @@ namespace ImageProcessToolBox
         {
             _SourceImage = bitmap;
             _C = c;
+            init(_C);
         }
         public TransformByLog(Bitmap bitmap)
         {
