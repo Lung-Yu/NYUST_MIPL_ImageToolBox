@@ -135,6 +135,9 @@
             this.panel14 = new System.Windows.Forms.Panel();
             this.label9 = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
+            this.panel26 = new System.Windows.Forms.Panel();
+            this.label15 = new System.Windows.Forms.Label();
+            this.btnGaussianNoise = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -158,6 +161,7 @@
             this.panel24.SuspendLayout();
             this.panel14.SuspendLayout();
             this.panel6.SuspendLayout();
+            this.panel26.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -1052,7 +1056,7 @@
             this.panel10.Controls.Add(this.label4);
             this.panel10.Location = new System.Drawing.Point(3, 46);
             this.panel10.Name = "panel10";
-            this.panel10.Size = new System.Drawing.Size(836, 555);
+            this.panel10.Size = new System.Drawing.Size(836, 560);
             this.panel10.TabIndex = 11;
             // 
             // panel23
@@ -1126,7 +1130,7 @@
             this.panel22.Controls.Add(this.panel19);
             this.panel22.Location = new System.Drawing.Point(430, 428);
             this.panel22.Name = "panel22";
-            this.panel22.Size = new System.Drawing.Size(399, 110);
+            this.panel22.Size = new System.Drawing.Size(399, 116);
             this.panel22.TabIndex = 15;
             // 
             // ResultGraphicsR
@@ -1200,13 +1204,14 @@
             this.panel11.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.panel11.Controls.Add(this.panel5);
             this.panel11.Controls.Add(this.label7);
-            this.panel11.Location = new System.Drawing.Point(3, 607);
+            this.panel11.Location = new System.Drawing.Point(3, 612);
             this.panel11.Name = "panel11";
             this.panel11.Size = new System.Drawing.Size(836, 155);
             this.panel11.TabIndex = 12;
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.panel26);
             this.panel2.Controls.Add(this.panel24);
             this.panel2.Controls.Add(this.panel14);
             this.panel2.Controls.Add(this.panel3);
@@ -1222,9 +1227,9 @@
             this.panel24.Controls.Add(this.btnLBP);
             this.panel24.Controls.Add(this.btnTry);
             this.panel24.Controls.Add(this.label13);
-            this.panel24.Location = new System.Drawing.Point(4, 403);
+            this.panel24.Location = new System.Drawing.Point(4, 620);
             this.panel24.Name = "panel24";
-            this.panel24.Size = new System.Drawing.Size(273, 350);
+            this.panel24.Size = new System.Drawing.Size(273, 133);
             this.panel24.TabIndex = 16;
             // 
             // btnLBP
@@ -1287,12 +1292,42 @@
             this.panel6.Size = new System.Drawing.Size(842, 766);
             this.panel6.TabIndex = 14;
             // 
+            // panel26
+            // 
+            this.panel26.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.panel26.Controls.Add(this.btnGaussianNoise);
+            this.panel26.Controls.Add(this.label15);
+            this.panel26.Location = new System.Drawing.Point(4, 402);
+            this.panel26.Name = "panel26";
+            this.panel26.Size = new System.Drawing.Size(273, 212);
+            this.panel26.TabIndex = 53;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("PMingLiU", 16F);
+            this.label15.Location = new System.Drawing.Point(9, 10);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(58, 22);
+            this.label15.TabIndex = 50;
+            this.label15.Text = "Noise";
+            // 
+            // btnGaussianNoise
+            // 
+            this.btnGaussianNoise.Location = new System.Drawing.Point(12, 35);
+            this.btnGaussianNoise.Name = "btnGaussianNoise";
+            this.btnGaussianNoise.Size = new System.Drawing.Size(75, 23);
+            this.btnGaussianNoise.TabIndex = 51;
+            this.btnGaussianNoise.Text = "Gaussian Noise";
+            this.btnGaussianNoise.UseVisualStyleBackColor = true;
+            this.btnGaussianNoise.Click += new System.EventHandler(this.btnGaussianNoise_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.ClientSize = new System.Drawing.Size(1426, 790);
+            this.ClientSize = new System.Drawing.Size(1426, 795);
             this.Controls.Add(this.panel6);
             this.Controls.Add(this.panel2);
             this.Name = "Form1";
@@ -1331,6 +1366,8 @@
             this.panel14.ResumeLayout(false);
             this.panel14.PerformLayout();
             this.panel6.ResumeLayout(false);
+            this.panel26.ResumeLayout(false);
+            this.panel26.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1443,6 +1480,9 @@
         private System.Windows.Forms.Button btnDWT;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Button btnLBP;
+        private System.Windows.Forms.Panel panel26;
+        private System.Windows.Forms.Button btnGaussianNoise;
+        private System.Windows.Forms.Label label15;
     }
 }
 

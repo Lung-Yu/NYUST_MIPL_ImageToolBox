@@ -256,10 +256,11 @@ namespace ImageProcessToolBox
         }
 
         private readonly static int DRAW_INTERVAL = 2;
+        private readonly static int GraphicsHieght = 100;
         private void draw(Graphics[] graphicses, Bitmap bitmap)
         {
             int[,] statistics = MyColouring.Statistics(bitmap);
-
+            
             // find Max value
             int MAX = 0;
             foreach (int value in statistics)
@@ -276,17 +277,18 @@ namespace ImageProcessToolBox
                 {
                     if (x % DRAW_INTERVAL == 0)
                     {
-                        value += (int)(((double)(MAX - statistics[c, x]) / MAX * 100));
-                        graphicses[c].DrawLine(pen, x / DRAW_INTERVAL, 100, x / 2, value / DRAW_INTERVAL);
+                        value += (int)(((double)(MAX - statistics[c, x]) / MAX * GraphicsHieght));
+                        graphicses[c].DrawLine(pen, x / DRAW_INTERVAL, GraphicsHieght, x / 2, value / DRAW_INTERVAL);
                     }
                     else
                     {
-                        value = (int)(((double)(MAX - statistics[c, x]) / MAX * 100));
+                        value = (int)(((double)(MAX - statistics[c, x]) / MAX * GraphicsHieght));
                     }
 
                 }
             }
         }
+    
 
         private void drawSource(Bitmap bitmap)
         {
@@ -558,6 +560,11 @@ namespace ImageProcessToolBox
                 IFeatureExtract extractor = (IFeatureExtract)actionObj;
                 //string str =  extractor.getFeaturesString();
             }
+        }
+
+        private void btnGaussianNoise_Click(object sender, EventArgs e)
+        {
+            actions(new NoiseGaussian(20, 5), "Gaussian Noise");
         }
     }
 }

@@ -69,6 +69,7 @@
     <Compile Include="Feature\LocalBinaryPattern.cs" />
     <Compile Include="FFT.cs" />
     <Compile Include="Interface\IFeatureExtract.cs" />
+    <Compile Include="NoiseGaussian.cs" />
     <Compile Include="ReaderTextFile.cs" />
     <Compile Include="Template\FilterTemplate.cs" />
     <Compile Include="Grayscale.cs" />
