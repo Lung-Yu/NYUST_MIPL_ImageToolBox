@@ -79,6 +79,8 @@ namespace ImageProcessToolBox
                                 btnK_Means,
 
                                 btnDWT,
+                                btnDFT,
+                                btnIDFT,
                                 btnLBP
                             };
 
@@ -568,6 +570,18 @@ namespace ImageProcessToolBox
             decimal sd = numericUpDown2.Value;
 
             actions(new NoiseGaussian((int)mean, (int)sd), "Gaussian Noise");
+        }
+
+        private void btnDFT_Click(object sender, EventArgs e)
+        {
+            actions(new DiscreteFourierTransform(), "Discrete Fourier Transform");
+        }
+
+        private void btnIDFT_Click(object sender, EventArgs e)
+        {
+            DiscreteFourierTransform dft = new DiscreteFourierTransform();
+            dft.setInverse(true);
+            actions(new DiscreteFourierTransform(), "Discrete Fourier Transform");
         }
     }
 }
