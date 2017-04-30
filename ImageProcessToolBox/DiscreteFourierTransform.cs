@@ -12,9 +12,7 @@ namespace ImageProcessToolBox
     {
         private Bitmap _SourceImage;
         private Complex[,] _pixels;
-        private Complex[] _pixels2;
         private Complex[,] _output;
-        private Complex[,] _shifted;
         private int _ImageWidth;
         private int _ImageHeight;
 
@@ -22,6 +20,7 @@ namespace ImageProcessToolBox
         private static int FFT_Inverst = -1;
         private static int _LOG_C = 1;
 
+        private double _MaxVal = 0;
 
         public Bitmap Process()
         {
@@ -29,9 +28,9 @@ namespace ImageProcessToolBox
             getPixelsFromImage();
             //showPixels();
             FFT2D();
-            //FFT1D();
-            //FFTShift();
-            return new TransformByLog(100, (new Negative(makeBitmapFromPixels()).Process())).Process();
+            Bitmap result = makeBitmapFromPixels();
+
+            return result;
         }
 
         private void showPixels()
@@ -45,58 +44,44 @@ namespace ImageProcessToolBox
                 Console.WriteLine();
             }
         }
-
-        public void FFTShift()
-        {
-            int yHelf = _ImageHeight / 2;
-            int xHelf = _ImageWidth / 2;
-
-            for (int i = 0; i < yHelf; i++)
-            {
-                for (int j = 0; j < xHelf; j++)
-                {
-                    _shifted[xHelf + j, yHelf + i] = _output[i, j]; //左上至右下
-                    _shifted[i, j] = _output[xHelf + j, yHelf + i]; //右下至左上
-                    _shifted[j, i + yHelf] = _output[xHelf + j, i]; //右上至左下
-                    _shifted[xHelf + j, i] = _output[j, i + yHelf]; //左下至右上
-                }
-            }
-        }
-
-        private void RowFFT()
+        private void RowFFT(ref Complex[,] inputs)
         {
             for (int i = 0; i < _ImageHeight; i++)
             {
                 Complex[] row = new Complex[_ImageWidth];
                 for (int j = 0; j < _ImageWidth; j++)
-                    row[j] = _pixels[j, i];
+                {
+                    row[j] = inputs[j, i];    
+                }
 
                 Complex[] outRow = FFT(row, FFT_Forward);
                 for (int j = 0; j < _ImageWidth; j++)
                 {
                     _output[j, i] = outRow[j];
-                    _shifted[j, i] = outRow[j];
+                    updateMaxVal(outRow[j].Real);
                 }
             }
         }
-
-        private void ColFFT()
+        private void ColFFT(ref Complex[,] inputs)
         {
             for (int i = 0; i < _ImageWidth; i++)
             {
                 Complex[] row = new Complex[_ImageHeight];
                 for (int j = 0; j < _ImageHeight; j++)
-                    row[j] = _pixels[i, j];
+                {
+                    row[j] = inputs[i, j];
+                    //Console.Write(row[j].Real + ",");
+                }
+                //Console.WriteLine();
 
                 Complex[] outRow = FFT(row, FFT_Forward);
                 for (int j = 0; j < _ImageHeight; j++)
                 {
                     _output[i, j] = outRow[j];
-                    _shifted[i, j] = outRow[j];
+                    updateMaxVal(outRow[j].Real);
                 }
             }
         }
-
         private void copyArray()
         {
             for (int i = 0; i < _ImageWidth; i++)
@@ -108,25 +93,10 @@ namespace ImageProcessToolBox
             }
 
         }
-
         private void FFT2D()
         {
-            ColFFT();
-            copyArray();
-            RowFFT();
-        }
-
-        private void FFT1D()
-        {
-            Complex[] pixelFFD = FFT(_pixels2, FFT_Forward);
-            for (int i = 0; i < _ImageHeight; i++)
-            {
-                for (int j = 0; j < _ImageWidth; j++)
-                {
-                    _output[j, i] = pixelFFD[j + i * _ImageWidth];
-                    _shifted[j, i] = _output[j, i];
-                }
-            }
+            RowFFT(ref _pixels);
+            ColFFT(ref _output);   
         }
 
         private static Complex[] FFT(Complex[] inputs, int dir)
@@ -172,17 +142,14 @@ namespace ImageProcessToolBox
             _ImageWidth = _SourceImage.Width;
             _pixels = new Complex[_ImageWidth, _ImageHeight];
             _output = new Complex[_ImageWidth, _ImageHeight];
-            _shifted = new Complex[_ImageWidth, _ImageHeight];
-            _pixels2 = new Complex[_ImageHeight * _ImageWidth];
         }
-
         private Bitmap makeBitmapFromPixels()
         {
             System.IntPtr srcScan, dstScan;
             BitmapData srcBmData, dstBmData;
             Bitmap dstBitmap = ImageExtract.InitPonitMethod(_SourceImage, _ImageWidth, _ImageHeight, out srcScan, out dstScan, out srcBmData, out dstBmData);
 
-
+            double maxVal = 0;
             unsafe //啟動不安全代碼
             {
                 byte* srcP = (byte*)srcScan;
@@ -195,20 +162,24 @@ namespace ImageProcessToolBox
                     for (int x = 0; x < _ImageWidth; x++, srcP += 3, dstP += 3)
                     {
                         //*(dstP) = *(dstP + 1) = *(dstP + 2) = (byte)(_LOG_C * Math.Log(Math.Abs(_shifted[x, y].spectralDensity())));
-                        double val = Math.Abs(_shifted[x, y].Magnitude());
-                        *(dstP) = *(dstP + 1) = *(dstP + 2) = (byte)(_LOG_C * Math.Log(val));
+                        double val = Math.Abs(_output[x, y].Magnitude());
+                        *(dstP) = *(dstP + 1) = *(dstP + 2) = (byte)val;
+
+                        if (maxVal < val)
+                            maxVal = val;
+
+                        //Console.WriteLine(val);
                         //*(dstP) = *(dstP + 1) = *(dstP + 2) = (byte)val;
                     }
                     srcP += srcOffset;
                     dstP += dstOffset;
                 }
             }
-
+            Console.WriteLine(maxVal);
             _SourceImage.UnlockBits(srcBmData);
             dstBitmap.UnlockBits(dstBmData);
             return dstBitmap;
         }
-
         private void getPixelsFromImage()
         {
             System.IntPtr srcScan;
@@ -224,11 +195,11 @@ namespace ImageProcessToolBox
                 {
                     for (int x = 0; x < _ImageWidth; x++, srcP += 3)
                     {
-                        byte gray = (byte)(.299 * srcP[2] + .587 * srcP[1] + .114 * srcP[0]);
+                        byte gray = calGray(srcP[2], srcP[1], srcP[0]);
                         double val = gray;
-                        val *= ((x + y) % 2 == 0) ? -1 : 1;
+                        //val *= ((x + y) % 2 == 0) ? -1 : 1;
                         _pixels[x, y] = new Complex(val);
-                        _pixels2[x + y * _ImageWidth] = new Complex(val);
+                        updateMaxVal(val);
                     }
                     srcP += srcOffset;
                 }
@@ -237,11 +208,28 @@ namespace ImageProcessToolBox
             _SourceImage.UnlockBits(srcBmData);
         }
 
+        private byte calGray(byte arv1, byte arv2, byte arv3)
+        {
+            double val = (0.299 * arv1 + 0.587 * arv2 + 0.114 * arv3);
+            if (val > 255)
+                return 255;
+            return (byte)val;
+        }
+
+        private void updateMaxVal(double val)
+        {
+            if (_MaxVal < val)
+                _MaxVal = val;
+        }
+
         public void setResouceImage(Bitmap bitmap)
         {
             _SourceImage = bitmap;
         }
+
+
     }
+
 
     class Complex
     {

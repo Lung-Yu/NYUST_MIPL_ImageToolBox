@@ -420,7 +420,7 @@ namespace ImageProcessToolBox
 
         private void btnLaplacian_Click(object sender, EventArgs e)
         {
-            actions(new Sobel(), "Laplacian");
+            actions(new Laplacian(), "Laplacian");
         }
 
         private void btnHistogramEqualization_Click(object sender, EventArgs e)
@@ -564,7 +564,10 @@ namespace ImageProcessToolBox
 
         private void btnGaussianNoise_Click(object sender, EventArgs e)
         {
-            actions(new NoiseGaussian(20, 5), "Gaussian Noise");
+            decimal mean = numericUpDown1.Value;
+            decimal sd = numericUpDown2.Value;
+
+            actions(new NoiseGaussian((int)mean, (int)sd), "Gaussian Noise");
         }
     }
 }
