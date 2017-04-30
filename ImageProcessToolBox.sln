@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageProcessToolBox", "Imag
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EulerFormula", "EulerFormula\EulerFormula.csproj", "{C1F6C61E-8F86-4DCE-9796-20E933F8FE90}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageProcessEfficacy", "ImageProcessEfficacy\ImageProcessEfficacy.csproj", "{7DF466D6-DE38-4F94-AB04-798EE4B4D0CE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{C1F6C61E-8F86-4DCE-9796-20E933F8FE90}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C1F6C61E-8F86-4DCE-9796-20E933F8FE90}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C1F6C61E-8F86-4DCE-9796-20E933F8FE90}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7DF466D6-DE38-4F94-AB04-798EE4B4D0CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7DF466D6-DE38-4F94-AB04-798EE4B4D0CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7DF466D6-DE38-4F94-AB04-798EE4B4D0CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7DF466D6-DE38-4F94-AB04-798EE4B4D0CE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -20,6 +20,8 @@ namespace ImageProcessToolBox
         private Random random;
         private int _noiseCount;
 
+
+
         public NoiseGaussian(int mean, int sd)
         {
             _mean = mean;

@@ -1,0 +1,18 @@
+c:\users\lungyu\documents\visual studio 2013\Projects\ImageProcessEfficacy\ImageProcessEfficacy\bin\Debug\ImageProcessEfficacy.exe.config
+c:\users\lungyu\documents\visual studio 2013\Projects\ImageProcessEfficacy\ImageProcessEfficacy\bin\Debug\ImageProcessEfficacy.exe
+c:\users\lungyu\documents\visual studio 2013\Projects\ImageProcessEfficacy\ImageProcessEfficacy\bin\Debug\ImageProcessEfficacy.pdb
+c:\users\lungyu\documents\visual studio 2013\Projects\ImageProcessEfficacy\ImageProcessEfficacy\obj\Debug\ImageProcessEfficacy.csprojResolveAssemblyReference.cache
+c:\users\lungyu\documents\visual studio 2013\Projects\ImageProcessEfficacy\ImageProcessEfficacy\obj\Debug\ImageProcessEfficacy.Form1.resources
+c:\users\lungyu\documents\visual studio 2013\Projects\ImageProcessEfficacy\ImageProcessEfficacy\obj\Debug\ImageProcessEfficacy.Properties.Resources.resources
+c:\users\lungyu\documents\visual studio 2013\Projects\ImageProcessEfficacy\ImageProcessEfficacy\obj\Debug\ImageProcessEfficacy.csproj.GenerateResource.Cache
+c:\users\lungyu\documents\visual studio 2013\Projects\ImageProcessEfficacy\ImageProcessEfficacy\obj\Debug\ImageProcessEfficacy.exe
+c:\users\lungyu\documents\visual studio 2013\Projects\ImageProcessEfficacy\ImageProcessEfficacy\obj\Debug\ImageProcessEfficacy.pdb
+C:\Users\lungyu\Documents\GitHub\ImageToolBox\ImageProcessEfficacy\bin\Debug\ImageProcessEfficacy.exe.config
+C:\Users\lungyu\Documents\GitHub\ImageToolBox\ImageProcessEfficacy\obj\Debug\ImageProcessEfficacy.exe
+C:\Users\lungyu\Documents\GitHub\ImageToolBox\ImageProcessEfficacy\obj\Debug\ImageProcessEfficacy.pdb
+C:\Users\lungyu\Documents\GitHub\ImageToolBox\ImageProcessEfficacy\bin\Debug\ImageProcessEfficacy.exe
+C:\Users\lungyu\Documents\GitHub\ImageToolBox\ImageProcessEfficacy\bin\Debug\ImageProcessEfficacy.pdb
+C:\Users\lungyu\Documents\GitHub\ImageToolBox\ImageProcessEfficacy\obj\Debug\ImageProcessEfficacy.csprojResolveAssemblyReference.cache
+C:\Users\lungyu\Documents\GitHub\ImageToolBox\ImageProcessEfficacy\obj\Debug\ImageProcessEfficacy.Form1.resources
+C:\Users\lungyu\Documents\GitHub\ImageToolBox\ImageProcessEfficacy\obj\Debug\ImageProcessEfficacy.Properties.Resources.resources
+C:\Users\lungyu\Documents\GitHub\ImageToolBox\ImageProcessEfficacy\obj\Debug\ImageProcessEfficacy.csproj.GenerateResource.Cache
