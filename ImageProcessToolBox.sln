@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EulerFormula", "EulerFormul
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageProcessEfficacy", "ImageProcessEfficacy\ImageProcessEfficacy.csproj", "{7DF466D6-DE38-4F94-AB04-798EE4B4D0CE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageSimilarity", "ImageSimilarity\ImageSimilarity.csproj", "{D08B6CD4-8DA7-45AF-B241-11E4E2CBC83B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{7DF466D6-DE38-4F94-AB04-798EE4B4D0CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7DF466D6-DE38-4F94-AB04-798EE4B4D0CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7DF466D6-DE38-4F94-AB04-798EE4B4D0CE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D08B6CD4-8DA7-45AF-B241-11E4E2CBC83B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D08B6CD4-8DA7-45AF-B241-11E4E2CBC83B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D08B6CD4-8DA7-45AF-B241-11E4E2CBC83B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D08B6CD4-8DA7-45AF-B241-11E4E2CBC83B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
