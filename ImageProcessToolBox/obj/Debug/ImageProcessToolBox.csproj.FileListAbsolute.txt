@@ -39,7 +39,6 @@ C:\Users\lungyu\Documents\GitHub\ImageToolBox\ImageProcessToolBox\obj\Debug\Imag
 C:\Users\lungyu\Documents\GitHub\ImageToolBox\ImageProcessToolBox\obj\Debug\ImageProcessToolBox.pdb
 C:\Users\lungyu\Documents\GitHub\ImageToolBox\ImageProcessToolBox\bin\Debug\ImageProcessToolBox.exe
 C:\Users\lungyu\Documents\GitHub\ImageToolBox\ImageProcessToolBox\bin\Debug\ImageProcessToolBox.pdb
-C:\Users\lungyu\Documents\GitHub\ImageToolBox\ImageProcessToolBox\obj\Debug\ImageProcessToolBox.csprojResolveAssemblyReference.cache
 C:\Users\lungyu\Documents\GitHub\ImageToolBox\ImageProcessToolBox\obj\Debug\ImageProcessToolBox.Form1.resources
 C:\Users\lungyu\Documents\GitHub\ImageToolBox\ImageProcessToolBox\obj\Debug\ImageProcessToolBox.Properties.Resources.resources
 C:\Users\lungyu\Documents\GitHub\ImageToolBox\ImageProcessToolBox\obj\Debug\ImageProcessToolBox.csproj.GenerateResource.Cache

@@ -16,7 +16,6 @@ namespace ImageProcessToolBox
         private int _ImageWidth;
         private int _ImageHeight;
         private bool _IsInverse = false;
-        private double _LOG_C = 1;
         private double _MaxVal = 0;
 
         public Bitmap Process()
@@ -24,7 +23,6 @@ namespace ImageProcessToolBox
             initPixels();
             getPixelsFromImage();
             FFT2D();
-            calculateConstantOflogConversion();
             Bitmap result = makeBitmapFromPixels();
             return result;
         }
@@ -168,7 +166,9 @@ namespace ImageProcessToolBox
                     {
                         double val = Math.Abs(_output[x, y].Magnitude());
 
-                        *(dstP) = *(dstP + 1) = *(dstP + 2) = (byte)(Math.Log(val, 2) * _LOG_C);
+                        //*(dstP) = *(dstP + 1) = *(dstP + 2) = (byte)(Math.Log(val, 2) * _LOG_C);
+                        double outVal = (val / _MaxVal) * 255;
+                        *(dstP) = *(dstP + 1) = *(dstP + 2) = (byte)outVal;
 
                     }
                     srcP += srcOffset;
@@ -179,19 +179,6 @@ namespace ImageProcessToolBox
             _SourceImage.UnlockBits(srcBmData);
             dstBitmap.UnlockBits(dstBmData);
             return dstBitmap;
-        }
-        private void calculateConstantOflogConversion()
-        {
-            double d = 0.5;
-            double c = 1 - d;
-            double testVal = 0;
-
-            while (testVal < 256)
-            {
-                c += d;
-                testVal = c * Math.Log(_MaxVal, 2);
-            }
-            _LOG_C = c - d;
         }
         public void setResouceImage(Bitmap bitmap)
         {
