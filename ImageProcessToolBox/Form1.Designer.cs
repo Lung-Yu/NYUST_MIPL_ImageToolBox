@@ -68,6 +68,8 @@
             this.label4 = new System.Windows.Forms.Label();
             this.panel8 = new System.Windows.Forms.Panel();
             this.panel25 = new System.Windows.Forms.Panel();
+            this.btnIDFT = new System.Windows.Forms.Button();
+            this.btnDFT = new System.Windows.Forms.Button();
             this.label14 = new System.Windows.Forms.Label();
             this.btnDWT = new System.Windows.Forms.Button();
             this.panel12 = new System.Windows.Forms.Panel();
@@ -89,7 +91,6 @@
             this.label12 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.btnFourierTransform = new System.Windows.Forms.Button();
             this.btnMeanFilter = new System.Windows.Forms.Button();
             this.btnAvgFiliter = new System.Windows.Forms.Button();
             this.btnHighPassFilters = new System.Windows.Forms.Button();
@@ -142,8 +143,7 @@
             this.panel14 = new System.Windows.Forms.Panel();
             this.label9 = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
-            this.btnDFT = new System.Windows.Forms.Button();
-            this.btnIDFT = new System.Windows.Forms.Button();
+            this.btnFourierTransform = new System.Windows.Forms.Button();
             labelMean = new System.Windows.Forms.Label();
             labelStandardDeviation = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
@@ -586,6 +586,26 @@
             this.panel25.Size = new System.Drawing.Size(264, 171);
             this.panel25.TabIndex = 17;
             // 
+            // btnIDFT
+            // 
+            this.btnIDFT.Location = new System.Drawing.Point(92, 73);
+            this.btnIDFT.Name = "btnIDFT";
+            this.btnIDFT.Size = new System.Drawing.Size(75, 23);
+            this.btnIDFT.TabIndex = 51;
+            this.btnIDFT.Text = "IDFT";
+            this.btnIDFT.UseVisualStyleBackColor = true;
+            this.btnIDFT.Click += new System.EventHandler(this.btnIDFT_Click);
+            // 
+            // btnDFT
+            // 
+            this.btnDFT.Location = new System.Drawing.Point(12, 73);
+            this.btnDFT.Name = "btnDFT";
+            this.btnDFT.Size = new System.Drawing.Size(75, 23);
+            this.btnDFT.TabIndex = 41;
+            this.btnDFT.Text = "DFT";
+            this.btnDFT.UseVisualStyleBackColor = true;
+            this.btnDFT.Click += new System.EventHandler(this.btnDFT_Click);
+            // 
             // label14
             // 
             this.label14.AutoSize = true;
@@ -849,16 +869,6 @@
             this.label6.Size = new System.Drawing.Size(105, 22);
             this.label6.TabIndex = 8;
             this.label6.Text = "Space filter";
-            // 
-            // btnFourierTransform
-            // 
-            this.btnFourierTransform.Location = new System.Drawing.Point(178, 199);
-            this.btnFourierTransform.Name = "btnFourierTransform";
-            this.btnFourierTransform.Size = new System.Drawing.Size(75, 23);
-            this.btnFourierTransform.TabIndex = 26;
-            this.btnFourierTransform.Text = "*Fourier Transform";
-            this.btnFourierTransform.UseVisualStyleBackColor = true;
-            this.btnFourierTransform.Click += new System.EventHandler(this.btnFourierTransform_Click);
             // 
             // btnMeanFilter
             // 
@@ -1402,25 +1412,15 @@
             this.panel6.Size = new System.Drawing.Size(842, 766);
             this.panel6.TabIndex = 14;
             // 
-            // btnDFT
+            // btnFourierTransform
             // 
-            this.btnDFT.Location = new System.Drawing.Point(12, 73);
-            this.btnDFT.Name = "btnDFT";
-            this.btnDFT.Size = new System.Drawing.Size(75, 23);
-            this.btnDFT.TabIndex = 41;
-            this.btnDFT.Text = "DFT";
-            this.btnDFT.UseVisualStyleBackColor = true;
-            this.btnDFT.Click += new System.EventHandler(this.btnDFT_Click);
-            // 
-            // btnIDFT
-            // 
-            this.btnIDFT.Location = new System.Drawing.Point(92, 73);
-            this.btnIDFT.Name = "btnIDFT";
-            this.btnIDFT.Size = new System.Drawing.Size(75, 23);
-            this.btnIDFT.TabIndex = 51;
-            this.btnIDFT.Text = "IDFT";
-            this.btnIDFT.UseVisualStyleBackColor = true;
-            this.btnIDFT.Click += new System.EventHandler(this.btnIDFT_Click);
+            this.btnFourierTransform.Location = new System.Drawing.Point(178, 199);
+            this.btnFourierTransform.Name = "btnFourierTransform";
+            this.btnFourierTransform.Size = new System.Drawing.Size(75, 23);
+            this.btnFourierTransform.TabIndex = 26;
+            this.btnFourierTransform.Text = "*Fourier Transform";
+            this.btnFourierTransform.UseVisualStyleBackColor = true;
+            this.btnFourierTransform.Click += new System.EventHandler(this.btnFourierTransform_Click);
             // 
             // Form1
             // 
@@ -1521,7 +1521,6 @@
         private System.Windows.Forms.Panel panel10;
         private System.Windows.Forms.Panel panel11;
         private System.Windows.Forms.Button btnLaplacian;
-        private System.Windows.Forms.Button btnFourierTransform;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button btnHighPassFilters;
         private System.Windows.Forms.Button btnLowPassFilters;
@@ -1589,6 +1588,7 @@
         private System.Windows.Forms.NumericUpDown numericUpDown2;
         private System.Windows.Forms.Button btnIDFT;
         private System.Windows.Forms.Button btnDFT;
+        private System.Windows.Forms.Button btnFourierTransform;
     }
 }
 

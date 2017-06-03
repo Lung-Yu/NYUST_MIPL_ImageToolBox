@@ -42,3 +42,4 @@ C:\Users\lungyu\Documents\GitHub\ImageToolBox\ImageProcessToolBox\bin\Debug\Imag
 C:\Users\lungyu\Documents\GitHub\ImageToolBox\ImageProcessToolBox\obj\Debug\ImageProcessToolBox.Form1.resources
 C:\Users\lungyu\Documents\GitHub\ImageToolBox\ImageProcessToolBox\obj\Debug\ImageProcessToolBox.Properties.Resources.resources
 C:\Users\lungyu\Documents\GitHub\ImageToolBox\ImageProcessToolBox\obj\Debug\ImageProcessToolBox.csproj.GenerateResource.Cache
+C:\Users\lungyu\Documents\GitHub\ImageToolBox\ImageProcessToolBox\obj\Debug\ImageProcessToolBox.csprojResolveAssemblyReference.cache
