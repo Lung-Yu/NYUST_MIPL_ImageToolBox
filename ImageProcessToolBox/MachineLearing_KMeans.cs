@@ -40,15 +40,15 @@ namespace ImageProcessToolBox
             int width = bitmap.Width;
             int height = bitmap.Height;
 
-            //随机在图中取K（这里K=2）个种子点。
+            //隨機在圖中取K（這裡K=2）個種子點。
             byte[,] ks = initializeK(k);
 
             byte[, ,] martix = pre(bitmap);  //取得圖像矩陣
 
-            //然后对图中的所有点求到这K个种子点的距离 
+            //然後對圖中的所有點求到這K個種子點的距離 
             k_means(iterationLevel, width, height, k, ref martix, ref ks);
 
-            ////寫出檔案
+            //輸出檔案
             writeBitmap(bitmap, martix, ks);
         }
 

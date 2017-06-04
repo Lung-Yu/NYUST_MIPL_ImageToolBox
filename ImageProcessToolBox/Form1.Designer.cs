@@ -143,7 +143,6 @@
             this.panel14 = new System.Windows.Forms.Panel();
             this.label9 = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
-            this.btnFourierTransform = new System.Windows.Forms.Button();
             labelMean = new System.Windows.Forms.Label();
             labelStandardDeviation = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
@@ -255,6 +254,7 @@
             this.panel3.Controls.Add(this.btnColouring);
             this.panel3.Controls.Add(this.btnBinarization);
             this.panel3.Controls.Add(this.btnPowerLaw);
+            this.panel3.Controls.Add(this.btnHistogramEqualization);
             this.panel3.Controls.Add(this.txtBinarization);
             this.panel3.Controls.Add(this.labelOtus);
             this.panel3.Controls.Add(this.btnOtus);
@@ -273,7 +273,7 @@
             // 
             // btnColorFunction
             // 
-            this.btnColorFunction.Location = new System.Drawing.Point(10, 219);
+            this.btnColorFunction.Location = new System.Drawing.Point(12, 244);
             this.btnColorFunction.Name = "btnColorFunction";
             this.btnColorFunction.Size = new System.Drawing.Size(94, 23);
             this.btnColorFunction.TabIndex = 4;
@@ -294,16 +294,16 @@
             // pictureBox3
             // 
             this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
-            this.pictureBox3.Location = new System.Drawing.Point(115, 190);
+            this.pictureBox3.Location = new System.Drawing.Point(116, 215);
             this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(123, 23);
+            this.pictureBox3.Size = new System.Drawing.Size(139, 23);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox3.TabIndex = 2;
             this.pictureBox3.TabStop = false;
             // 
             // btnColouring
             // 
-            this.btnColouring.Location = new System.Drawing.Point(12, 190);
+            this.btnColouring.Location = new System.Drawing.Point(13, 215);
             this.btnColouring.Name = "btnColouring";
             this.btnColouring.Size = new System.Drawing.Size(94, 23);
             this.btnColouring.TabIndex = 3;
@@ -702,11 +702,9 @@
             this.panel13.Controls.Add(this.label12);
             this.panel13.Controls.Add(this.label11);
             this.panel13.Controls.Add(this.label6);
-            this.panel13.Controls.Add(this.btnFourierTransform);
             this.panel13.Controls.Add(this.btnMeanFilter);
             this.panel13.Controls.Add(this.btnAvgFiliter);
             this.panel13.Controls.Add(this.btnHighPassFilters);
-            this.panel13.Controls.Add(this.btnHistogramEqualization);
             this.panel13.Controls.Add(this.btnLowPassFilters);
             this.panel13.Controls.Add(this.btnSobel);
             this.panel13.Controls.Add(this.btnGaussianFilter);
@@ -718,7 +716,7 @@
             // 
             // btnPrewittFilter
             // 
-            this.btnPrewittFilter.Location = new System.Drawing.Point(178, 170);
+            this.btnPrewittFilter.Location = new System.Drawing.Point(97, 170);
             this.btnPrewittFilter.Name = "btnPrewittFilter";
             this.btnPrewittFilter.Size = new System.Drawing.Size(75, 23);
             this.btnPrewittFilter.TabIndex = 40;
@@ -728,7 +726,7 @@
             // 
             // btnVertical
             // 
-            this.btnVertical.Location = new System.Drawing.Point(12, 142);
+            this.btnVertical.Location = new System.Drawing.Point(97, 113);
             this.btnVertical.Name = "btnVertical";
             this.btnVertical.Size = new System.Drawing.Size(75, 23);
             this.btnVertical.TabIndex = 39;
@@ -738,7 +736,7 @@
             // 
             // btnN45Degree
             // 
-            this.btnN45Degree.Location = new System.Drawing.Point(178, 113);
+            this.btnN45Degree.Location = new System.Drawing.Point(97, 142);
             this.btnN45Degree.Name = "btnN45Degree";
             this.btnN45Degree.Size = new System.Drawing.Size(75, 23);
             this.btnN45Degree.TabIndex = 38;
@@ -748,7 +746,7 @@
             // 
             // btn45Degree
             // 
-            this.btn45Degree.Location = new System.Drawing.Point(95, 113);
+            this.btn45Degree.Location = new System.Drawing.Point(12, 141);
             this.btn45Degree.Name = "btn45Degree";
             this.btn45Degree.Size = new System.Drawing.Size(75, 23);
             this.btn45Degree.TabIndex = 37;
@@ -902,11 +900,11 @@
             // 
             // btnHistogramEqualization
             // 
-            this.btnHistogramEqualization.Location = new System.Drawing.Point(12, 199);
+            this.btnHistogramEqualization.Location = new System.Drawing.Point(13, 190);
             this.btnHistogramEqualization.Name = "btnHistogramEqualization";
-            this.btnHistogramEqualization.Size = new System.Drawing.Size(159, 23);
+            this.btnHistogramEqualization.Size = new System.Drawing.Size(242, 23);
             this.btnHistogramEqualization.TabIndex = 11;
-            this.btnHistogramEqualization.Text = "histogramEqualization";
+            this.btnHistogramEqualization.Text = "Histogram Equalization";
             this.btnHistogramEqualization.UseVisualStyleBackColor = true;
             this.btnHistogramEqualization.Click += new System.EventHandler(this.btnHistogramEqualization_Click);
             // 
@@ -922,7 +920,7 @@
             // 
             // btnSobel
             // 
-            this.btnSobel.Location = new System.Drawing.Point(12, 170);
+            this.btnSobel.Location = new System.Drawing.Point(178, 113);
             this.btnSobel.Name = "btnSobel";
             this.btnSobel.Size = new System.Drawing.Size(75, 23);
             this.btnSobel.TabIndex = 16;
@@ -932,7 +930,7 @@
             // 
             // btnGaussianFilter
             // 
-            this.btnGaussianFilter.Location = new System.Drawing.Point(12, 230);
+            this.btnGaussianFilter.Location = new System.Drawing.Point(11, 199);
             this.btnGaussianFilter.Name = "btnGaussianFilter";
             this.btnGaussianFilter.Size = new System.Drawing.Size(75, 23);
             this.btnGaussianFilter.TabIndex = 21;
@@ -942,7 +940,7 @@
             // 
             // btnLaplacian
             // 
-            this.btnLaplacian.Location = new System.Drawing.Point(96, 170);
+            this.btnLaplacian.Location = new System.Drawing.Point(12, 170);
             this.btnLaplacian.Name = "btnLaplacian";
             this.btnLaplacian.Size = new System.Drawing.Size(75, 23);
             this.btnLaplacian.TabIndex = 20;
@@ -1412,16 +1410,6 @@
             this.panel6.Size = new System.Drawing.Size(842, 766);
             this.panel6.TabIndex = 14;
             // 
-            // btnFourierTransform
-            // 
-            this.btnFourierTransform.Location = new System.Drawing.Point(178, 199);
-            this.btnFourierTransform.Name = "btnFourierTransform";
-            this.btnFourierTransform.Size = new System.Drawing.Size(75, 23);
-            this.btnFourierTransform.TabIndex = 26;
-            this.btnFourierTransform.Text = "*Fourier Transform";
-            this.btnFourierTransform.UseVisualStyleBackColor = true;
-            this.btnFourierTransform.Click += new System.EventHandler(this.btnFourierTransform_Click);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1588,7 +1576,6 @@
         private System.Windows.Forms.NumericUpDown numericUpDown2;
         private System.Windows.Forms.Button btnIDFT;
         private System.Windows.Forms.Button btnDFT;
-        private System.Windows.Forms.Button btnFourierTransform;
     }
 }
 

@@ -1,5 +1,4 @@
-﻿using Fast_Fourier_Transform;
-using ImageProcessToolBox.Feature;
+﻿using ImageProcessToolBox.Feature;
 using ImageProcessToolBox.Interface;
 using System;
 using System.Collections.Generic;
@@ -48,7 +47,6 @@ namespace ImageProcessToolBox
                                 btnGaussianFilter,
                                 btnLowPassFilters,
                                 btnHighPassFilters,
-                                btnFourierTransform,
                                 btnSobel,
                                 btnLaplacian,
                                 btnHistogramEqualization,
@@ -403,18 +401,6 @@ namespace ImageProcessToolBox
             actions(new HighPassFilter(), "High Pass Filters");
         }
 
-        private void btnFourierTransform_Click(object sender, EventArgs e)
-        {
-            //1. Create FFT Object
-            //FFT ImgFFT = new FFT(new Bitmap(pictureBox1.Image));
-
-            //ImgFFT.ForwardFFT();// Finding 2D FFT of Image
-            //ImgFFT.FFTShift();
-            //ImgFFT.FFTPlot(ImgFFT.FFTShifted);
-            //pictureBox2.Image = (Image)ImgFFT.FourierPlot;
-            //pictureBox2.Image = (Image)ImgFFT.PhasePlot;
-        }
-
         private void btnSobel_Click(object sender, EventArgs e)
         {
             actions(new Sobel(), "Sobel");
@@ -579,9 +565,9 @@ namespace ImageProcessToolBox
 
         private void btnIDFT_Click(object sender, EventArgs e)
         {
-            //DiscreteFourierTransform dft = new DiscreteFourierTransform();
-            //dft.setInverse(true);
-            //actions(new DiscreteFourierTransform(), "Discrete Fourier Transform");
+            DiscreteFourierTransform dft = new DiscreteFourierTransform();
+            dft.setInverse(true);
+            actions(new DiscreteFourierTransform(), "Discrete Fourier Transform");
         }
     }
 }

@@ -67,7 +67,6 @@
     <Compile Include="DiscreteFourierTransform.cs" />
     <Compile Include="DiscreteWaveletTransformation.cs" />
     <Compile Include="Feature\LocalBinaryPattern.cs" />
-    <Compile Include="FFT.cs" />
     <Compile Include="Interface\IFeatureExtract.cs" />
     <Compile Include="NoiseGaussian.cs" />
     <Compile Include="ReaderTextFile.cs" />
