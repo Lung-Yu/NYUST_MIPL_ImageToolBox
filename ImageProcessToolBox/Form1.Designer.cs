@@ -31,11 +31,6 @@
             System.Windows.Forms.Label labelMean;
             System.Windows.Forms.Label labelStandardDeviation;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.btnDrawSource = new System.Windows.Forms.Button();
-            this.btnReplace = new System.Windows.Forms.Button();
-            this.btnSaveFile = new System.Windows.Forms.Button();
-            this.btnOpenFile = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.btnColorFunction = new System.Windows.Forms.Button();
             this.btnExp = new System.Windows.Forms.Button();
@@ -43,6 +38,7 @@
             this.btnColouring = new System.Windows.Forms.Button();
             this.btnBinarization = new System.Windows.Forms.Button();
             this.btnPowerLaw = new System.Windows.Forms.Button();
+            this.btnHistogramEqualization = new System.Windows.Forms.Button();
             this.txtBinarization = new System.Windows.Forms.TextBox();
             this.labelOtus = new System.Windows.Forms.Label();
             this.btnOtus = new System.Windows.Forms.Button();
@@ -54,18 +50,12 @@
             this.btnNegative = new System.Windows.Forms.Button();
             this.btnGrayscale = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.labelconsle = new System.Windows.Forms.Label();
             this.btnK_Means = new System.Windows.Forms.Button();
             this.panel7 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.txtIterationLevel = new System.Windows.Forms.TextBox();
             this.txtKValue = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.panel8 = new System.Windows.Forms.Panel();
             this.panel25 = new System.Windows.Forms.Panel();
             this.btnIDFT = new System.Windows.Forms.Button();
@@ -94,7 +84,6 @@
             this.btnMeanFilter = new System.Windows.Forms.Button();
             this.btnAvgFiliter = new System.Windows.Forms.Button();
             this.btnHighPassFilters = new System.Windows.Forms.Button();
-            this.btnHistogramEqualization = new System.Windows.Forms.Button();
             this.btnLowPassFilters = new System.Windows.Forms.Button();
             this.btnSobel = new System.Windows.Forms.Button();
             this.btnGaussianFilter = new System.Windows.Forms.Button();
@@ -111,25 +100,6 @@
             this.btnInstagram1977 = new System.Windows.Forms.Button();
             this.btnLomo = new System.Windows.Forms.Button();
             this.panel9 = new System.Windows.Forms.Panel();
-            this.label7 = new System.Windows.Forms.Label();
-            this.panel10 = new System.Windows.Forms.Panel();
-            this.panel23 = new System.Windows.Forms.Panel();
-            this.sourceGraphicsR = new System.Windows.Forms.Panel();
-            this.sourceGraphicsG = new System.Windows.Forms.Panel();
-            this.sourceGraphicsB = new System.Windows.Forms.Panel();
-            this.panel17 = new System.Windows.Forms.Panel();
-            this.panel15 = new System.Windows.Forms.Panel();
-            this.panel16 = new System.Windows.Forms.Panel();
-            this.panel22 = new System.Windows.Forms.Panel();
-            this.ResultGraphicsR = new System.Windows.Forms.Panel();
-            this.ResultGraphicsG = new System.Windows.Forms.Panel();
-            this.panel18 = new System.Windows.Forms.Panel();
-            this.ResultGraphicsB = new System.Windows.Forms.Panel();
-            this.panel20 = new System.Windows.Forms.Panel();
-            this.panel19 = new System.Windows.Forms.Panel();
-            this.resultImageSize = new System.Windows.Forms.Label();
-            this.labelImageSize = new System.Windows.Forms.Label();
-            this.panel11 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel26 = new System.Windows.Forms.Panel();
             this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
@@ -142,16 +112,43 @@
             this.label13 = new System.Windows.Forms.Label();
             this.panel14 = new System.Windows.Forms.Panel();
             this.label9 = new System.Windows.Forms.Label();
+            this.panel11 = new System.Windows.Forms.Panel();
+            this.label7 = new System.Windows.Forms.Label();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.labelconsle = new System.Windows.Forms.Label();
+            this.panel10 = new System.Windows.Forms.Panel();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.labelImageSize = new System.Windows.Forms.Label();
+            this.resultImageSize = new System.Windows.Forms.Label();
+            this.panel22 = new System.Windows.Forms.Panel();
+            this.panel19 = new System.Windows.Forms.Panel();
+            this.panel20 = new System.Windows.Forms.Panel();
+            this.ResultGraphicsB = new System.Windows.Forms.Panel();
+            this.panel18 = new System.Windows.Forms.Panel();
+            this.ResultGraphicsG = new System.Windows.Forms.Panel();
+            this.ResultGraphicsR = new System.Windows.Forms.Panel();
+            this.panel23 = new System.Windows.Forms.Panel();
+            this.panel16 = new System.Windows.Forms.Panel();
+            this.panel15 = new System.Windows.Forms.Panel();
+            this.panel17 = new System.Windows.Forms.Panel();
+            this.sourceGraphicsB = new System.Windows.Forms.Panel();
+            this.sourceGraphicsG = new System.Windows.Forms.Panel();
+            this.sourceGraphicsR = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.btnOpenFile = new System.Windows.Forms.Button();
+            this.btnSaveFile = new System.Windows.Forms.Button();
+            this.btnReplace = new System.Windows.Forms.Button();
+            this.btnDrawSource = new System.Windows.Forms.Button();
             this.panel6 = new System.Windows.Forms.Panel();
+            this.btnRestore = new System.Windows.Forms.Button();
             labelMean = new System.Windows.Forms.Label();
             labelStandardDeviation = new System.Windows.Forms.Label();
-            this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numeric8BitPlaneSlicing)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            this.panel5.SuspendLayout();
             this.panel7.SuspendLayout();
             this.panel8.SuspendLayout();
             this.panel25.SuspendLayout();
@@ -160,16 +157,20 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownY)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownX)).BeginInit();
             this.panel21.SuspendLayout();
-            this.panel10.SuspendLayout();
-            this.panel23.SuspendLayout();
-            this.panel22.SuspendLayout();
-            this.panel11.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel26.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.panel24.SuspendLayout();
             this.panel14.SuspendLayout();
+            this.panel11.SuspendLayout();
+            this.panel5.SuspendLayout();
+            this.panel10.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.panel22.SuspendLayout();
+            this.panel23.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.panel6.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -192,58 +193,6 @@
             labelStandardDeviation.Size = new System.Drawing.Size(18, 16);
             labelStandardDeviation.TabIndex = 54;
             labelStandardDeviation.Text = "st";
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.panel1.Controls.Add(this.btnDrawSource);
-            this.panel1.Controls.Add(this.btnReplace);
-            this.panel1.Controls.Add(this.btnSaveFile);
-            this.panel1.Controls.Add(this.btnOpenFile);
-            this.panel1.Location = new System.Drawing.Point(3, 5);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(836, 31);
-            this.panel1.TabIndex = 0;
-            // 
-            // btnDrawSource
-            // 
-            this.btnDrawSource.Location = new System.Drawing.Point(723, 5);
-            this.btnDrawSource.Name = "btnDrawSource";
-            this.btnDrawSource.Size = new System.Drawing.Size(106, 23);
-            this.btnDrawSource.TabIndex = 8;
-            this.btnDrawSource.Text = "draw graphics";
-            this.btnDrawSource.UseVisualStyleBackColor = true;
-            this.btnDrawSource.Click += new System.EventHandler(this.btnDrawSource_Click);
-            // 
-            // btnReplace
-            // 
-            this.btnReplace.Location = new System.Drawing.Point(165, 5);
-            this.btnReplace.Name = "btnReplace";
-            this.btnReplace.Size = new System.Drawing.Size(75, 23);
-            this.btnReplace.TabIndex = 6;
-            this.btnReplace.Text = "Replace";
-            this.btnReplace.UseVisualStyleBackColor = true;
-            this.btnReplace.Click += new System.EventHandler(this.btnReplace_Click);
-            // 
-            // btnSaveFile
-            // 
-            this.btnSaveFile.Location = new System.Drawing.Point(84, 5);
-            this.btnSaveFile.Name = "btnSaveFile";
-            this.btnSaveFile.Size = new System.Drawing.Size(75, 23);
-            this.btnSaveFile.TabIndex = 3;
-            this.btnSaveFile.Text = "Save File";
-            this.btnSaveFile.UseVisualStyleBackColor = true;
-            this.btnSaveFile.Click += new System.EventHandler(this.btnSaveFile_Click);
-            // 
-            // btnOpenFile
-            // 
-            this.btnOpenFile.Location = new System.Drawing.Point(3, 5);
-            this.btnOpenFile.Name = "btnOpenFile";
-            this.btnOpenFile.Size = new System.Drawing.Size(75, 23);
-            this.btnOpenFile.TabIndex = 2;
-            this.btnOpenFile.Text = "Open File";
-            this.btnOpenFile.UseVisualStyleBackColor = true;
-            this.btnOpenFile.Click += new System.EventHandler(this.btnOpenFile_Click);
             // 
             // panel3
             // 
@@ -330,6 +279,16 @@
             this.btnPowerLaw.Text = "Power Law";
             this.btnPowerLaw.UseVisualStyleBackColor = true;
             this.btnPowerLaw.Click += new System.EventHandler(this.btnPowerLaw_Click);
+            // 
+            // btnHistogramEqualization
+            // 
+            this.btnHistogramEqualization.Location = new System.Drawing.Point(13, 190);
+            this.btnHistogramEqualization.Name = "btnHistogramEqualization";
+            this.btnHistogramEqualization.Size = new System.Drawing.Size(242, 23);
+            this.btnHistogramEqualization.TabIndex = 11;
+            this.btnHistogramEqualization.Text = "Histogram Equalization";
+            this.btnHistogramEqualization.UseVisualStyleBackColor = true;
+            this.btnHistogramEqualization.Click += new System.EventHandler(this.btnHistogramEqualization_Click);
             // 
             // txtBinarization
             // 
@@ -445,46 +404,6 @@
             this.panel4.Size = new System.Drawing.Size(161, 47);
             this.panel4.TabIndex = 1;
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.SystemColors.Info;
-            this.pictureBox1.Location = new System.Drawing.Point(4, 30);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(400, 400);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 3;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.WaitOnLoad = true;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.BackColor = System.Drawing.SystemColors.Info;
-            this.pictureBox2.Location = new System.Drawing.Point(430, 30);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(400, 400);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 4;
-            this.pictureBox2.TabStop = false;
-            // 
-            // panel5
-            // 
-            this.panel5.BackColor = System.Drawing.SystemColors.HighlightText;
-            this.panel5.Controls.Add(this.labelconsle);
-            this.panel5.Font = new System.Drawing.Font("DFKai-SB", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.panel5.Location = new System.Drawing.Point(6, 39);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(824, 107);
-            this.panel5.TabIndex = 2;
-            // 
-            // labelconsle
-            // 
-            this.labelconsle.AutoSize = true;
-            this.labelconsle.Font = new System.Drawing.Font("DFKai-SB", 10F, System.Drawing.FontStyle.Italic);
-            this.labelconsle.Location = new System.Drawing.Point(3, 2);
-            this.labelconsle.Name = "labelconsle";
-            this.labelconsle.Size = new System.Drawing.Size(0, 14);
-            this.labelconsle.TabIndex = 0;
-            // 
             // btnK_Means
             // 
             this.btnK_Means.Location = new System.Drawing.Point(159, 6);
@@ -541,26 +460,6 @@
             this.txtKValue.Size = new System.Drawing.Size(67, 22);
             this.txtKValue.TabIndex = 6;
             this.txtKValue.Text = "3";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("PMingLiU", 14F);
-            this.label3.Location = new System.Drawing.Point(4, 7);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(109, 19);
-            this.label3.TabIndex = 6;
-            this.label3.Text = "Source Image";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("PMingLiU", 14F);
-            this.label4.Location = new System.Drawing.Point(426, 8);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(105, 19);
-            this.label4.TabIndex = 7;
-            this.label4.Text = "Result Image";
             // 
             // panel8
             // 
@@ -898,16 +797,6 @@
             this.btnHighPassFilters.UseVisualStyleBackColor = true;
             this.btnHighPassFilters.Click += new System.EventHandler(this.btnHighPassFilters_Click);
             // 
-            // btnHistogramEqualization
-            // 
-            this.btnHistogramEqualization.Location = new System.Drawing.Point(13, 190);
-            this.btnHistogramEqualization.Name = "btnHistogramEqualization";
-            this.btnHistogramEqualization.Size = new System.Drawing.Size(242, 23);
-            this.btnHistogramEqualization.TabIndex = 11;
-            this.btnHistogramEqualization.Text = "Histogram Equalization";
-            this.btnHistogramEqualization.UseVisualStyleBackColor = true;
-            this.btnHistogramEqualization.Click += new System.EventHandler(this.btnHistogramEqualization_Click);
-            // 
             // btnLowPassFilters
             // 
             this.btnLowPassFilters.Location = new System.Drawing.Point(95, 83);
@@ -1073,182 +962,6 @@
             this.panel9.Size = new System.Drawing.Size(161, 47);
             this.panel9.TabIndex = 1;
             // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("PMingLiU", 14F);
-            this.label7.Location = new System.Drawing.Point(6, 5);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(98, 19);
-            this.label7.TabIndex = 10;
-            this.label7.Text = "Log console";
-            // 
-            // panel10
-            // 
-            this.panel10.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.panel10.Controls.Add(this.panel23);
-            this.panel10.Controls.Add(this.panel22);
-            this.panel10.Controls.Add(this.resultImageSize);
-            this.panel10.Controls.Add(this.labelImageSize);
-            this.panel10.Controls.Add(this.pictureBox1);
-            this.panel10.Controls.Add(this.pictureBox2);
-            this.panel10.Controls.Add(this.label3);
-            this.panel10.Controls.Add(this.label4);
-            this.panel10.Location = new System.Drawing.Point(3, 46);
-            this.panel10.Name = "panel10";
-            this.panel10.Size = new System.Drawing.Size(836, 560);
-            this.panel10.TabIndex = 11;
-            // 
-            // panel23
-            // 
-            this.panel23.Controls.Add(this.sourceGraphicsR);
-            this.panel23.Controls.Add(this.sourceGraphicsG);
-            this.panel23.Controls.Add(this.sourceGraphicsB);
-            this.panel23.Controls.Add(this.panel17);
-            this.panel23.Controls.Add(this.panel15);
-            this.panel23.Controls.Add(this.panel16);
-            this.panel23.Location = new System.Drawing.Point(4, 428);
-            this.panel23.Name = "panel23";
-            this.panel23.Size = new System.Drawing.Size(400, 110);
-            this.panel23.TabIndex = 15;
-            // 
-            // sourceGraphicsR
-            // 
-            this.sourceGraphicsR.BackColor = System.Drawing.SystemColors.Control;
-            this.sourceGraphicsR.Location = new System.Drawing.Point(3, 3);
-            this.sourceGraphicsR.Name = "sourceGraphicsR";
-            this.sourceGraphicsR.Size = new System.Drawing.Size(128, 100);
-            this.sourceGraphicsR.TabIndex = 8;
-            // 
-            // sourceGraphicsG
-            // 
-            this.sourceGraphicsG.BackColor = System.Drawing.SystemColors.Control;
-            this.sourceGraphicsG.Location = new System.Drawing.Point(134, 3);
-            this.sourceGraphicsG.Name = "sourceGraphicsG";
-            this.sourceGraphicsG.Size = new System.Drawing.Size(128, 100);
-            this.sourceGraphicsG.TabIndex = 9;
-            // 
-            // sourceGraphicsB
-            // 
-            this.sourceGraphicsB.BackColor = System.Drawing.SystemColors.Control;
-            this.sourceGraphicsB.Location = new System.Drawing.Point(270, 3);
-            this.sourceGraphicsB.Name = "sourceGraphicsB";
-            this.sourceGraphicsB.Size = new System.Drawing.Size(128, 100);
-            this.sourceGraphicsB.TabIndex = 9;
-            // 
-            // panel17
-            // 
-            this.panel17.BackColor = System.Drawing.Color.Blue;
-            this.panel17.Location = new System.Drawing.Point(270, 106);
-            this.panel17.Name = "panel17";
-            this.panel17.Size = new System.Drawing.Size(129, 10);
-            this.panel17.TabIndex = 15;
-            // 
-            // panel15
-            // 
-            this.panel15.BackColor = System.Drawing.Color.Red;
-            this.panel15.Location = new System.Drawing.Point(2, 106);
-            this.panel15.Name = "panel15";
-            this.panel15.Size = new System.Drawing.Size(127, 10);
-            this.panel15.TabIndex = 13;
-            // 
-            // panel16
-            // 
-            this.panel16.BackColor = System.Drawing.Color.Lime;
-            this.panel16.Location = new System.Drawing.Point(135, 106);
-            this.panel16.Name = "panel16";
-            this.panel16.Size = new System.Drawing.Size(126, 10);
-            this.panel16.TabIndex = 14;
-            // 
-            // panel22
-            // 
-            this.panel22.Controls.Add(this.ResultGraphicsR);
-            this.panel22.Controls.Add(this.ResultGraphicsG);
-            this.panel22.Controls.Add(this.panel18);
-            this.panel22.Controls.Add(this.ResultGraphicsB);
-            this.panel22.Controls.Add(this.panel20);
-            this.panel22.Controls.Add(this.panel19);
-            this.panel22.Location = new System.Drawing.Point(430, 428);
-            this.panel22.Name = "panel22";
-            this.panel22.Size = new System.Drawing.Size(399, 116);
-            this.panel22.TabIndex = 15;
-            // 
-            // ResultGraphicsR
-            // 
-            this.ResultGraphicsR.BackColor = System.Drawing.SystemColors.Control;
-            this.ResultGraphicsR.Location = new System.Drawing.Point(3, 3);
-            this.ResultGraphicsR.Name = "ResultGraphicsR";
-            this.ResultGraphicsR.Size = new System.Drawing.Size(128, 100);
-            this.ResultGraphicsR.TabIndex = 10;
-            // 
-            // ResultGraphicsG
-            // 
-            this.ResultGraphicsG.BackColor = System.Drawing.SystemColors.Control;
-            this.ResultGraphicsG.Location = new System.Drawing.Point(137, 3);
-            this.ResultGraphicsG.Name = "ResultGraphicsG";
-            this.ResultGraphicsG.Size = new System.Drawing.Size(128, 100);
-            this.ResultGraphicsG.TabIndex = 11;
-            // 
-            // panel18
-            // 
-            this.panel18.BackColor = System.Drawing.Color.Blue;
-            this.panel18.Location = new System.Drawing.Point(270, 106);
-            this.panel18.Name = "panel18";
-            this.panel18.Size = new System.Drawing.Size(128, 10);
-            this.panel18.TabIndex = 18;
-            // 
-            // ResultGraphicsB
-            // 
-            this.ResultGraphicsB.BackColor = System.Drawing.SystemColors.Control;
-            this.ResultGraphicsB.Location = new System.Drawing.Point(271, 3);
-            this.ResultGraphicsB.Name = "ResultGraphicsB";
-            this.ResultGraphicsB.Size = new System.Drawing.Size(128, 100);
-            this.ResultGraphicsB.TabIndex = 12;
-            // 
-            // panel20
-            // 
-            this.panel20.BackColor = System.Drawing.Color.Red;
-            this.panel20.Location = new System.Drawing.Point(3, 106);
-            this.panel20.Name = "panel20";
-            this.panel20.Size = new System.Drawing.Size(128, 10);
-            this.panel20.TabIndex = 16;
-            // 
-            // panel19
-            // 
-            this.panel19.BackColor = System.Drawing.Color.Lime;
-            this.panel19.Location = new System.Drawing.Point(137, 106);
-            this.panel19.Name = "panel19";
-            this.panel19.Size = new System.Drawing.Size(128, 10);
-            this.panel19.TabIndex = 17;
-            // 
-            // resultImageSize
-            // 
-            this.resultImageSize.AutoSize = true;
-            this.resultImageSize.Location = new System.Drawing.Point(760, 12);
-            this.resultImageSize.Name = "resultImageSize";
-            this.resultImageSize.Size = new System.Drawing.Size(53, 12);
-            this.resultImageSize.TabIndex = 20;
-            this.resultImageSize.Text = "ImageSize";
-            // 
-            // labelImageSize
-            // 
-            this.labelImageSize.AutoSize = true;
-            this.labelImageSize.Location = new System.Drawing.Point(344, 12);
-            this.labelImageSize.Name = "labelImageSize";
-            this.labelImageSize.Size = new System.Drawing.Size(53, 12);
-            this.labelImageSize.TabIndex = 19;
-            this.labelImageSize.Text = "ImageSize";
-            // 
-            // panel11
-            // 
-            this.panel11.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.panel11.Controls.Add(this.panel5);
-            this.panel11.Controls.Add(this.label7);
-            this.panel11.Location = new System.Drawing.Point(3, 612);
-            this.panel11.Name = "panel11";
-            this.panel11.Size = new System.Drawing.Size(836, 155);
-            this.panel11.TabIndex = 12;
-            // 
             // panel2
             // 
             this.panel2.Controls.Add(this.panel26);
@@ -1400,6 +1113,295 @@
             this.label9.TabIndex = 16;
             this.label9.Text = "Segmention";
             // 
+            // panel11
+            // 
+            this.panel11.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.panel11.Controls.Add(this.panel5);
+            this.panel11.Controls.Add(this.label7);
+            this.panel11.Location = new System.Drawing.Point(3, 612);
+            this.panel11.Name = "panel11";
+            this.panel11.Size = new System.Drawing.Size(836, 155);
+            this.panel11.TabIndex = 12;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("PMingLiU", 14F);
+            this.label7.Location = new System.Drawing.Point(6, 5);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(98, 19);
+            this.label7.TabIndex = 10;
+            this.label7.Text = "Log console";
+            // 
+            // panel5
+            // 
+            this.panel5.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.panel5.Controls.Add(this.labelconsle);
+            this.panel5.Font = new System.Drawing.Font("DFKai-SB", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.panel5.Location = new System.Drawing.Point(6, 39);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(824, 107);
+            this.panel5.TabIndex = 2;
+            // 
+            // labelconsle
+            // 
+            this.labelconsle.AutoSize = true;
+            this.labelconsle.Font = new System.Drawing.Font("DFKai-SB", 10F, System.Drawing.FontStyle.Italic);
+            this.labelconsle.Location = new System.Drawing.Point(3, 2);
+            this.labelconsle.Name = "labelconsle";
+            this.labelconsle.Size = new System.Drawing.Size(0, 14);
+            this.labelconsle.TabIndex = 0;
+            // 
+            // panel10
+            // 
+            this.panel10.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.panel10.Controls.Add(this.panel23);
+            this.panel10.Controls.Add(this.panel22);
+            this.panel10.Controls.Add(this.resultImageSize);
+            this.panel10.Controls.Add(this.labelImageSize);
+            this.panel10.Controls.Add(this.pictureBox1);
+            this.panel10.Controls.Add(this.pictureBox2);
+            this.panel10.Controls.Add(this.label3);
+            this.panel10.Controls.Add(this.label4);
+            this.panel10.Location = new System.Drawing.Point(3, 46);
+            this.panel10.Name = "panel10";
+            this.panel10.Size = new System.Drawing.Size(836, 560);
+            this.panel10.TabIndex = 11;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("PMingLiU", 14F);
+            this.label4.Location = new System.Drawing.Point(426, 8);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(105, 19);
+            this.label4.TabIndex = 7;
+            this.label4.Text = "Result Image";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("PMingLiU", 14F);
+            this.label3.Location = new System.Drawing.Point(4, 7);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(109, 19);
+            this.label3.TabIndex = 6;
+            this.label3.Text = "Source Image";
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BackColor = System.Drawing.SystemColors.Info;
+            this.pictureBox2.Location = new System.Drawing.Point(430, 30);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(400, 400);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 4;
+            this.pictureBox2.TabStop = false;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.SystemColors.Info;
+            this.pictureBox1.Location = new System.Drawing.Point(4, 30);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(400, 400);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 3;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.WaitOnLoad = true;
+            // 
+            // labelImageSize
+            // 
+            this.labelImageSize.AutoSize = true;
+            this.labelImageSize.Location = new System.Drawing.Point(344, 12);
+            this.labelImageSize.Name = "labelImageSize";
+            this.labelImageSize.Size = new System.Drawing.Size(53, 12);
+            this.labelImageSize.TabIndex = 19;
+            this.labelImageSize.Text = "ImageSize";
+            // 
+            // resultImageSize
+            // 
+            this.resultImageSize.AutoSize = true;
+            this.resultImageSize.Location = new System.Drawing.Point(760, 12);
+            this.resultImageSize.Name = "resultImageSize";
+            this.resultImageSize.Size = new System.Drawing.Size(53, 12);
+            this.resultImageSize.TabIndex = 20;
+            this.resultImageSize.Text = "ImageSize";
+            // 
+            // panel22
+            // 
+            this.panel22.Controls.Add(this.ResultGraphicsR);
+            this.panel22.Controls.Add(this.ResultGraphicsG);
+            this.panel22.Controls.Add(this.panel18);
+            this.panel22.Controls.Add(this.ResultGraphicsB);
+            this.panel22.Controls.Add(this.panel20);
+            this.panel22.Controls.Add(this.panel19);
+            this.panel22.Location = new System.Drawing.Point(430, 428);
+            this.panel22.Name = "panel22";
+            this.panel22.Size = new System.Drawing.Size(399, 116);
+            this.panel22.TabIndex = 15;
+            // 
+            // panel19
+            // 
+            this.panel19.BackColor = System.Drawing.Color.Lime;
+            this.panel19.Location = new System.Drawing.Point(137, 106);
+            this.panel19.Name = "panel19";
+            this.panel19.Size = new System.Drawing.Size(128, 10);
+            this.panel19.TabIndex = 17;
+            // 
+            // panel20
+            // 
+            this.panel20.BackColor = System.Drawing.Color.Red;
+            this.panel20.Location = new System.Drawing.Point(3, 106);
+            this.panel20.Name = "panel20";
+            this.panel20.Size = new System.Drawing.Size(128, 10);
+            this.panel20.TabIndex = 16;
+            // 
+            // ResultGraphicsB
+            // 
+            this.ResultGraphicsB.BackColor = System.Drawing.SystemColors.Control;
+            this.ResultGraphicsB.Location = new System.Drawing.Point(271, 3);
+            this.ResultGraphicsB.Name = "ResultGraphicsB";
+            this.ResultGraphicsB.Size = new System.Drawing.Size(128, 100);
+            this.ResultGraphicsB.TabIndex = 12;
+            // 
+            // panel18
+            // 
+            this.panel18.BackColor = System.Drawing.Color.Blue;
+            this.panel18.Location = new System.Drawing.Point(270, 106);
+            this.panel18.Name = "panel18";
+            this.panel18.Size = new System.Drawing.Size(128, 10);
+            this.panel18.TabIndex = 18;
+            // 
+            // ResultGraphicsG
+            // 
+            this.ResultGraphicsG.BackColor = System.Drawing.SystemColors.Control;
+            this.ResultGraphicsG.Location = new System.Drawing.Point(137, 3);
+            this.ResultGraphicsG.Name = "ResultGraphicsG";
+            this.ResultGraphicsG.Size = new System.Drawing.Size(128, 100);
+            this.ResultGraphicsG.TabIndex = 11;
+            // 
+            // ResultGraphicsR
+            // 
+            this.ResultGraphicsR.BackColor = System.Drawing.SystemColors.Control;
+            this.ResultGraphicsR.Location = new System.Drawing.Point(3, 3);
+            this.ResultGraphicsR.Name = "ResultGraphicsR";
+            this.ResultGraphicsR.Size = new System.Drawing.Size(128, 100);
+            this.ResultGraphicsR.TabIndex = 10;
+            // 
+            // panel23
+            // 
+            this.panel23.Controls.Add(this.sourceGraphicsR);
+            this.panel23.Controls.Add(this.sourceGraphicsG);
+            this.panel23.Controls.Add(this.sourceGraphicsB);
+            this.panel23.Controls.Add(this.panel17);
+            this.panel23.Controls.Add(this.panel15);
+            this.panel23.Controls.Add(this.panel16);
+            this.panel23.Location = new System.Drawing.Point(4, 428);
+            this.panel23.Name = "panel23";
+            this.panel23.Size = new System.Drawing.Size(400, 110);
+            this.panel23.TabIndex = 15;
+            // 
+            // panel16
+            // 
+            this.panel16.BackColor = System.Drawing.Color.Lime;
+            this.panel16.Location = new System.Drawing.Point(135, 106);
+            this.panel16.Name = "panel16";
+            this.panel16.Size = new System.Drawing.Size(126, 10);
+            this.panel16.TabIndex = 14;
+            // 
+            // panel15
+            // 
+            this.panel15.BackColor = System.Drawing.Color.Red;
+            this.panel15.Location = new System.Drawing.Point(2, 106);
+            this.panel15.Name = "panel15";
+            this.panel15.Size = new System.Drawing.Size(127, 10);
+            this.panel15.TabIndex = 13;
+            // 
+            // panel17
+            // 
+            this.panel17.BackColor = System.Drawing.Color.Blue;
+            this.panel17.Location = new System.Drawing.Point(270, 106);
+            this.panel17.Name = "panel17";
+            this.panel17.Size = new System.Drawing.Size(129, 10);
+            this.panel17.TabIndex = 15;
+            // 
+            // sourceGraphicsB
+            // 
+            this.sourceGraphicsB.BackColor = System.Drawing.SystemColors.Control;
+            this.sourceGraphicsB.Location = new System.Drawing.Point(270, 3);
+            this.sourceGraphicsB.Name = "sourceGraphicsB";
+            this.sourceGraphicsB.Size = new System.Drawing.Size(128, 100);
+            this.sourceGraphicsB.TabIndex = 9;
+            // 
+            // sourceGraphicsG
+            // 
+            this.sourceGraphicsG.BackColor = System.Drawing.SystemColors.Control;
+            this.sourceGraphicsG.Location = new System.Drawing.Point(134, 3);
+            this.sourceGraphicsG.Name = "sourceGraphicsG";
+            this.sourceGraphicsG.Size = new System.Drawing.Size(128, 100);
+            this.sourceGraphicsG.TabIndex = 9;
+            // 
+            // sourceGraphicsR
+            // 
+            this.sourceGraphicsR.BackColor = System.Drawing.SystemColors.Control;
+            this.sourceGraphicsR.Location = new System.Drawing.Point(3, 3);
+            this.sourceGraphicsR.Name = "sourceGraphicsR";
+            this.sourceGraphicsR.Size = new System.Drawing.Size(128, 100);
+            this.sourceGraphicsR.TabIndex = 8;
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.panel1.Controls.Add(this.btnRestore);
+            this.panel1.Controls.Add(this.btnDrawSource);
+            this.panel1.Controls.Add(this.btnReplace);
+            this.panel1.Controls.Add(this.btnSaveFile);
+            this.panel1.Controls.Add(this.btnOpenFile);
+            this.panel1.Location = new System.Drawing.Point(3, 5);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(836, 31);
+            this.panel1.TabIndex = 0;
+            // 
+            // btnOpenFile
+            // 
+            this.btnOpenFile.Location = new System.Drawing.Point(3, 5);
+            this.btnOpenFile.Name = "btnOpenFile";
+            this.btnOpenFile.Size = new System.Drawing.Size(75, 23);
+            this.btnOpenFile.TabIndex = 2;
+            this.btnOpenFile.Text = "Open File";
+            this.btnOpenFile.UseVisualStyleBackColor = true;
+            this.btnOpenFile.Click += new System.EventHandler(this.btnOpenFile_Click);
+            // 
+            // btnSaveFile
+            // 
+            this.btnSaveFile.Location = new System.Drawing.Point(84, 5);
+            this.btnSaveFile.Name = "btnSaveFile";
+            this.btnSaveFile.Size = new System.Drawing.Size(75, 23);
+            this.btnSaveFile.TabIndex = 3;
+            this.btnSaveFile.Text = "Save File";
+            this.btnSaveFile.UseVisualStyleBackColor = true;
+            this.btnSaveFile.Click += new System.EventHandler(this.btnSaveFile_Click);
+            // 
+            // btnReplace
+            // 
+            this.btnReplace.Location = new System.Drawing.Point(246, 5);
+            this.btnReplace.Name = "btnReplace";
+            this.btnReplace.Size = new System.Drawing.Size(75, 23);
+            this.btnReplace.TabIndex = 6;
+            this.btnReplace.Text = "Replace";
+            this.btnReplace.UseVisualStyleBackColor = true;
+            this.btnReplace.Click += new System.EventHandler(this.btnReplace_Click);
+            // 
+            // btnDrawSource
+            // 
+            this.btnDrawSource.Location = new System.Drawing.Point(723, 5);
+            this.btnDrawSource.Name = "btnDrawSource";
+            this.btnDrawSource.Size = new System.Drawing.Size(106, 23);
+            this.btnDrawSource.TabIndex = 8;
+            this.btnDrawSource.Text = "draw graphics";
+            this.btnDrawSource.UseVisualStyleBackColor = true;
+            this.btnDrawSource.Click += new System.EventHandler(this.btnDrawSource_Click);
+            // 
             // panel6
             // 
             this.panel6.Controls.Add(this.panel1);
@@ -1409,6 +1411,16 @@
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(842, 766);
             this.panel6.TabIndex = 14;
+            // 
+            // btnRestore
+            // 
+            this.btnRestore.Location = new System.Drawing.Point(165, 5);
+            this.btnRestore.Name = "btnRestore";
+            this.btnRestore.Size = new System.Drawing.Size(75, 23);
+            this.btnRestore.TabIndex = 9;
+            this.btnRestore.Text = "Restore";
+            this.btnRestore.UseVisualStyleBackColor = true;
+            this.btnRestore.Click += new System.EventHandler(this.btnRestore_Click);
             // 
             // Form1
             // 
@@ -1420,15 +1432,10 @@
             this.Controls.Add(this.panel2);
             this.Name = "Form1";
             this.Text = "Image Process Tool Box";
-            this.panel1.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numeric8BitPlaneSlicing)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            this.panel5.ResumeLayout(false);
-            this.panel5.PerformLayout();
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
             this.panel8.ResumeLayout(false);
@@ -1442,12 +1449,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownX)).EndInit();
             this.panel21.ResumeLayout(false);
             this.panel21.PerformLayout();
-            this.panel10.ResumeLayout(false);
-            this.panel10.PerformLayout();
-            this.panel23.ResumeLayout(false);
-            this.panel22.ResumeLayout(false);
-            this.panel11.ResumeLayout(false);
-            this.panel11.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel26.ResumeLayout(false);
             this.panel26.PerformLayout();
@@ -1457,6 +1458,17 @@
             this.panel24.PerformLayout();
             this.panel14.ResumeLayout(false);
             this.panel14.PerformLayout();
+            this.panel11.ResumeLayout(false);
+            this.panel11.PerformLayout();
+            this.panel5.ResumeLayout(false);
+            this.panel5.PerformLayout();
+            this.panel10.ResumeLayout(false);
+            this.panel10.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.panel22.ResumeLayout(false);
+            this.panel23.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -1464,15 +1476,9 @@
 
         #endregion
 
-        private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.Button btnOpenFile;
         private System.Windows.Forms.Button btnGrayscale;
-        private System.Windows.Forms.Button btnSaveFile;
         private System.Windows.Forms.Button btnNegative;
         private System.Windows.Forms.Button btnK_Means;
         private System.Windows.Forms.Panel panel7;
@@ -1480,10 +1486,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtIterationLevel;
-        private System.Windows.Forms.Button btnReplace;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btnBinarization;
         private System.Windows.Forms.TextBox txtBinarization;
         private System.Windows.Forms.Label labelOtus;
@@ -1497,7 +1500,6 @@
         private System.Windows.Forms.Button btnMeanFilter;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Panel panel9;
-        private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button btnClosing;
         private System.Windows.Forms.Button btnOpening;
         private System.Windows.Forms.Button btnOtus;
@@ -1506,8 +1508,6 @@
         private System.Windows.Forms.Button btnPowerLaw;
         private System.Windows.Forms.Button btn8BitPlaneSlicing;
         private System.Windows.Forms.NumericUpDown numeric8BitPlaneSlicing;
-        private System.Windows.Forms.Panel panel10;
-        private System.Windows.Forms.Panel panel11;
         private System.Windows.Forms.Button btnLaplacian;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button btnHighPassFilters;
@@ -1515,28 +1515,9 @@
         private System.Windows.Forms.Button btnGaussianFilter;
         private System.Windows.Forms.Panel panel12;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Panel panel6;
-        private System.Windows.Forms.Label labelconsle;
         private System.Windows.Forms.Panel panel13;
         private System.Windows.Forms.Panel panel14;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Panel sourceGraphicsR;
-        private System.Windows.Forms.Panel panel18;
-        private System.Windows.Forms.Panel panel17;
-        private System.Windows.Forms.Panel panel19;
-        private System.Windows.Forms.Panel panel16;
-        private System.Windows.Forms.Panel panel20;
-        private System.Windows.Forms.Panel panel15;
-        private System.Windows.Forms.Panel ResultGraphicsB;
-        private System.Windows.Forms.Panel sourceGraphicsB;
-        private System.Windows.Forms.Panel ResultGraphicsG;
-        private System.Windows.Forms.Panel sourceGraphicsG;
-        private System.Windows.Forms.Panel ResultGraphicsR;
-        private System.Windows.Forms.Button btnDrawSource;
-        private System.Windows.Forms.Label labelImageSize;
-        private System.Windows.Forms.Label resultImageSize;
-        private System.Windows.Forms.Panel panel22;
-        private System.Windows.Forms.Panel panel23;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.Button btnColouring;
         private System.Windows.Forms.Button btnColorFunction;
@@ -1576,6 +1557,38 @@
         private System.Windows.Forms.NumericUpDown numericUpDown2;
         private System.Windows.Forms.Button btnIDFT;
         private System.Windows.Forms.Button btnDFT;
+        private System.Windows.Forms.Panel panel11;
+        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.Label labelconsle;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Panel panel10;
+        private System.Windows.Forms.Panel panel23;
+        private System.Windows.Forms.Panel sourceGraphicsR;
+        private System.Windows.Forms.Panel sourceGraphicsG;
+        private System.Windows.Forms.Panel sourceGraphicsB;
+        private System.Windows.Forms.Panel panel17;
+        private System.Windows.Forms.Panel panel15;
+        private System.Windows.Forms.Panel panel16;
+        private System.Windows.Forms.Panel panel22;
+        private System.Windows.Forms.Panel ResultGraphicsR;
+        private System.Windows.Forms.Panel ResultGraphicsG;
+        private System.Windows.Forms.Panel panel18;
+        private System.Windows.Forms.Panel ResultGraphicsB;
+        private System.Windows.Forms.Panel panel20;
+        private System.Windows.Forms.Panel panel19;
+        private System.Windows.Forms.Label resultImageSize;
+        private System.Windows.Forms.Label labelImageSize;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button btnDrawSource;
+        private System.Windows.Forms.Button btnReplace;
+        private System.Windows.Forms.Button btnSaveFile;
+        private System.Windows.Forms.Button btnOpenFile;
+        private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.Button btnRestore;
     }
 }
 

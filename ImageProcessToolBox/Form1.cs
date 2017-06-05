@@ -27,6 +27,7 @@ namespace ImageProcessToolBox
                                 btnSaveFile,
                                 btnReplace,
                                 btnDrawSource,
+                                btnRestore,
 
                                 //point
                                 btnGrayscale,
@@ -87,6 +88,8 @@ namespace ImageProcessToolBox
         }
 
         #region Menu
+        private string temporary_fileName = "";
+
         private void btnOpenFile_Click(object sender, EventArgs e)
         {
             OpenFileDialog opfDialog = new OpenFileDialog();
@@ -98,9 +101,23 @@ namespace ImageProcessToolBox
 
             if (opfDialog.ShowDialog() == DialogResult.OK)
             {
+                temporary_fileName = opfDialog.FileName;
                 pictureBox1.ImageLocation = opfDialog.FileName;
 
                 labelconsle.Text += String.Format(">> open file : {0}\n", opfDialog.FileName);
+            }
+        }
+
+        private void btnRestore_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(temporary_fileName))
+            {
+                MessageBox.Show("尚無開啟紀錄");
+            }
+            else
+            {
+                pictureBox1.ImageLocation = temporary_fileName;
+                UIMessage(String.Format(">> restore file : {0}", temporary_fileName));
             }
         }
 
@@ -235,11 +252,17 @@ namespace ImageProcessToolBox
             return bitmap;
         }
 
+        private void UIMessage(String action)
+        {
+            labelconsle.Text = action + "\n" + labelconsle.Text;
+        }
+
         private void UIMessage(String action, Stopwatch sw)
         {
             String time = TimeCountStop(sw);
             labelconsle.Text = ">> Image " + action + ". cost: " + time + "(ms)\n" + labelconsle.Text;
         }
+
 
         private void setResultBitmap(Bitmap bitmap)
         {
@@ -569,5 +592,8 @@ namespace ImageProcessToolBox
             dft.setInverse(true);
             actions(new DiscreteFourierTransform(), "Discrete Fourier Transform");
         }
+
+       
+
     }
 }
