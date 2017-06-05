@@ -28,6 +28,7 @@ namespace ImageProcessToolBox
                                 btnReplace,
                                 btnDrawSource,
                                 btnRestore,
+                                btnAnalysis,
 
                                 //point
                                 btnGrayscale,
@@ -160,7 +161,19 @@ namespace ImageProcessToolBox
                 }
             }
         }
+        private void btnAnalysis_Click(object sender, EventArgs e)
+        {
 
+            if (pictureBox1.Image == null)
+            {
+                MessageBox.Show("請先開啟圖片方可進行分析");
+                return;
+            }
+
+            Bitmap imageSource = new Bitmap(pictureBox1.Image);
+            AnalysisForm form = new AnalysisForm(imageSource);
+            form.Show();
+        }
         private void btnReplace_Click(object sender, EventArgs e)
         {
             Stopwatch sw = TimeCountStart();
@@ -592,6 +605,8 @@ namespace ImageProcessToolBox
             dft.setInverse(true);
             actions(new DiscreteFourierTransform(), "Discrete Fourier Transform");
         }
+
+        
 
        
 

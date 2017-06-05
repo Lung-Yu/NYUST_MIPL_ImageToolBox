@@ -144,6 +144,7 @@
             this.btnDrawSource = new System.Windows.Forms.Button();
             this.panel6 = new System.Windows.Forms.Panel();
             this.btnRestore = new System.Windows.Forms.Button();
+            this.btnAnalysis = new System.Windows.Forms.Button();
             labelMean = new System.Windows.Forms.Label();
             labelStandardDeviation = new System.Windows.Forms.Label();
             this.panel3.SuspendLayout();
@@ -1352,6 +1353,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.panel1.Controls.Add(this.btnAnalysis);
             this.panel1.Controls.Add(this.btnRestore);
             this.panel1.Controls.Add(this.btnDrawSource);
             this.panel1.Controls.Add(this.btnReplace);
@@ -1421,6 +1423,16 @@
             this.btnRestore.Text = "Restore";
             this.btnRestore.UseVisualStyleBackColor = true;
             this.btnRestore.Click += new System.EventHandler(this.btnRestore_Click);
+            // 
+            // btnAnalysis
+            // 
+            this.btnAnalysis.Location = new System.Drawing.Point(328, 5);
+            this.btnAnalysis.Name = "btnAnalysis";
+            this.btnAnalysis.Size = new System.Drawing.Size(75, 23);
+            this.btnAnalysis.TabIndex = 10;
+            this.btnAnalysis.Text = "Analysis";
+            this.btnAnalysis.UseVisualStyleBackColor = true;
+            this.btnAnalysis.Click += new System.EventHandler(this.btnAnalysis_Click);
             // 
             // Form1
             // 
@@ -1589,6 +1601,7 @@
         private System.Windows.Forms.Button btnOpenFile;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Button btnRestore;
+        private System.Windows.Forms.Button btnAnalysis;
     }
 }
 
