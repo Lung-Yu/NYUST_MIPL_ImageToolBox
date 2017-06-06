@@ -20,6 +20,7 @@ namespace ImageProcessToolBox
             pictureBox1.Image = source;
 
             Analysis();
+            
         }
 
         private void Analysis()
@@ -34,5 +35,26 @@ namespace ImageProcessToolBox
             pictureBox5.Image = separtion.ImageGray;
         }
 
+        private List<int> getResouce(Bitmap bitmap, out int oMax)
+        {
+            List<int> values = new List<int>();
+            int value = 0;
+            oMax = 0;
+
+            for (int y = 0; y < bitmap.Height; y++)
+            {
+                value = 0;
+                for (int x = 0; x < bitmap.Width; x++)
+                {
+                    value += bitmap.GetPixel(x, y).R;
+                }
+                if (value > oMax)
+                    oMax = value;
+
+                values.Add(value);
+            }
+
+            return values;
+        }
     }
 }
