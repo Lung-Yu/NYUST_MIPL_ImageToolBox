@@ -60,13 +60,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Analysis\ProjectionFactory.cs" />
     <Compile Include="FormAnalysis.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FormAnalysis.Designer.cs">
       <DependentUpon>FormAnalysis.cs</DependentUpon>
     </Compile>
-    <Compile Include="AnalysisSeparation.cs" />
+    <Compile Include="Analysis\AnalysisSeparation.cs" />
     <Compile Include="Binarization.cs" />
     <Compile Include="BitOf8PlaneSlicing.cs" />
     <Compile Include="Degree45Filter.cs" />
