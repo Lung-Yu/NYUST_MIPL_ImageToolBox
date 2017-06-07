@@ -30,6 +30,8 @@ namespace ImageProcessToolBox
             }
         }
 
+
+        
         private void button1_Click(object sender, EventArgs e)
         {
             Analysis();
@@ -98,7 +100,10 @@ namespace ImageProcessToolBox
 
         private void projection(Bitmap img, Graphics horizontal, Graphics vertical)
         {
+
             ProjectionFactory factory = new ProjectionFactory(img);
+            factory.Threshold = (int)numericUpDown1.Value;
+
             drawHorizontal(horizontal, factory.getHorizontalProject());
             drawVertical(vertical, factory.getVerticalProject());
         }
@@ -108,7 +113,7 @@ namespace ImageProcessToolBox
             Pen pen = new Pen(Color.Black, 1);
             pen.EndCap = System.Drawing.Drawing2D.LineCap.ArrowAnchor;  //EndCap設定 這支筆的結尾會是個箭頭 ArrowAnchor
 
-            int remainder = projection.Length / WIDTH_PROJECTION_PANEL;
+            int remainder = (projection.Length / WIDTH_PROJECTION_PANEL) + 1;
             int valTemp = 0;
 
             graphics.Clear(Color.White);
@@ -136,7 +141,7 @@ namespace ImageProcessToolBox
             pen.EndCap = System.Drawing.Drawing2D.LineCap.ArrowAnchor;  //EndCap設定 這支筆的結尾會是個箭頭 ArrowAnchor
 
             graphics.Clear(Color.White);
-            int remainder = projection.Length / WIDTH_PROJECTION_PANEL;
+            int remainder = (projection.Length / WIDTH_PROJECTION_PANEL) + 1;
             int valTemp = 0;
             for (int y = 0; y < projection.Length; y++)
             {
@@ -155,5 +160,16 @@ namespace ImageProcessToolBox
             }
 
         }
+
+        private void btnNegative_Click(object sender, EventArgs e)
+        {
+            pictureBox1.Image = new Negative(new Bitmap(pictureBox1.Image)).Process();
+        }
+
+        
+
+        
+
+
     }
 }

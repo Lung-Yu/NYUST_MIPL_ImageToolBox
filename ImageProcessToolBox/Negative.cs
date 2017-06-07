@@ -53,7 +53,7 @@ namespace ImageProcessToolBox
 
         public Bitmap Process()
         {
-            return base.process(_SourceImage);
+            return negative(_SourceImage);
         }
 
         private static Bitmap negative(Bitmap srcBitmap)
@@ -80,7 +80,7 @@ namespace ImageProcessToolBox
                         //*dstP = (byte)(COLOR_SIZE_RANGE - srcP[0]);  //blue
                         //*(dstP + 1) = (byte)(COLOR_SIZE_RANGE - srcP[1]);  //green
                         //*(dstP + 2) = (byte)(COLOR_SIZE_RANGE - srcP[2]);  //red
-
+                        
                         *dstP = negatives[srcP[0]];  //blue
                         *(dstP + 1) = negatives[srcP[1]];  //green
                         *(dstP + 2) = negatives[srcP[2]];  //red

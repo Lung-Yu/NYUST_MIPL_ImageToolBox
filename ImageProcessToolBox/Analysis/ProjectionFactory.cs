@@ -12,11 +12,25 @@ namespace ImageProcessToolBox.Analysis
     {
         Bitmap _srcImage;
         private int[] _horizontal;
-        private int _MaxHorizontal;
         private int[] _vertical;
-        private int _MaxVertical;
-        private int _Th = 0;
+
+        private int Max_horizontal = 0;
+        private int Max_vertical = 0;
+        private int _Threshold = 127;
+
+        public int Threshold
+        {
+            get { return _Threshold; }
+            set { _Threshold = value; }
+        }
         private byte[,] _imageMap;
+        private bool _IsInverse = false;
+
+        public bool IsInverse
+        {
+            get { return _IsInverse; }
+            set { _IsInverse = value; }
+        }
 
         public ProjectionFactory(Bitmap src)
         {
@@ -26,7 +40,7 @@ namespace ImageProcessToolBox.Analysis
         public ProjectionFactory(Bitmap src, int t)
         {
             init(src);
-            t = 10;
+            _Threshold = t;
             _Process();
         }
         private void init(Bitmap src)
@@ -46,7 +60,6 @@ namespace ImageProcessToolBox.Analysis
             BitmapData srcBmData;
             ImageExtract.InitPonitMethod(_srcImage, width, height, out srcScan, out srcBmData);
 
-            _MaxVertical = 0;
             unsafe
             {
                 byte* srcP = (byte*)srcScan;
@@ -66,6 +79,7 @@ namespace ImageProcessToolBox.Analysis
         }
         private void verticalProcess()
         {
+            Max_vertical = 0;
             int width = _srcImage.Width;
             int height = _srcImage.Height;
 
@@ -75,54 +89,68 @@ namespace ImageProcessToolBox.Analysis
                 count = 0;
                 for (int x = 0; x < width; x++)
                 {
-                    if (_imageMap[x, y] > _Th)
-                        count++;
+                    if (!_IsInverse)
+                    {
+                        if (_imageMap[x, y] > _Threshold)
+                            count++;
+                    }
+                    else
+                    {
+                        if (_imageMap[x, y] < _Threshold)
+                            count++;
+                    }
+
                 }
                 _vertical[y] = count;
-                if (count > _MaxVertical)
-                    _MaxVertical = count;
 
+                if (count > Max_vertical)
+                    Max_vertical = count;
             }
         }
         private void horizontalProcess()
         {
+            Max_horizontal = 0;
             int width = _srcImage.Width;
             int height = _srcImage.Height;
 
-            int hCount = 0;
+            int count = 0;
             for (int x = 0; x < width; x++)
             {
-                hCount = 0;
+                count = 0;
                 for (int y = 0; y < height; y++)
                 {
-                    if (_imageMap[x, y] > _Th)
-                        hCount++;
+                    if (!_IsInverse)
+                    {
+                        if (_imageMap[x, y] > _Threshold)
+                            count++;
+                    }
+                    else
+                    {
+                        if (_imageMap[x, y] < _Threshold)
+                            count++;
+                    }
                 }
-                _horizontal[x] = hCount;
-                if (hCount > _MaxHorizontal)
-                    _MaxHorizontal = hCount;
+                _horizontal[x] = count;
 
+                if (count > Max_horizontal)
+                    Max_horizontal = count;
             }
         }
         public int[] getVerticalProject()
         {
             verticalProcess();
-            if (_MaxVertical == 0)
-                return _vertical;
 
             for (int i = 0; i < _vertical.Length; i++)
-                _vertical[i] = (int)((((float)_vertical[i]) / _MaxVertical) * 100);
+                _vertical[i] = (int)((((float)_vertical[i]) / Max_vertical) * 100);
             return _vertical;
         }
 
         public int[] getHorizontalProject()
         {
             horizontalProcess();
-            if(_MaxHorizontal == 0)
-                return _horizontal;
 
             for (int i = 0; i < _horizontal.Length; i++)
-                _horizontal[i] = (int)((((float)_horizontal[i]) / _MaxHorizontal) * 100);
+                _horizontal[i] = (int)((((float)_horizontal[i]) / Max_horizontal) * 100);
             return _horizontal;
         }
     }

@@ -40,23 +40,29 @@
             this.label5 = new System.Windows.Forms.Label();
             this.GrayHorizontalProjection = new System.Windows.Forms.Panel();
             this.GrayVerticalProjection = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
             this.RedHorizontalProjection = new System.Windows.Forms.Panel();
             this.RedVerticalProjection = new System.Windows.Forms.Panel();
             this.GreenHorizontalProjection = new System.Windows.Forms.Panel();
             this.GreenVerticalProjection = new System.Windows.Forms.Panel();
             this.BlueHorizontalProjection = new System.Windows.Forms.Panel();
             this.BlueVerticalProjection = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
+            this.btnNegative = new System.Windows.Forms.Button();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.labelThreshold = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(224, 71);
+            this.pictureBox1.Location = new System.Drawing.Point(8, 71);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(350, 350);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -92,7 +98,7 @@
             // 
             // pictureBox5
             // 
-            this.pictureBox5.Location = new System.Drawing.Point(691, 71);
+            this.pictureBox5.Location = new System.Drawing.Point(419, 74);
             this.pictureBox5.Name = "pictureBox5";
             this.pictureBox5.Size = new System.Drawing.Size(256, 256);
             this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -103,7 +109,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("PMingLiU", 14F);
-            this.label2.Location = new System.Drawing.Point(687, 49);
+            this.label2.Location = new System.Drawing.Point(415, 52);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(45, 19);
             this.label2.TabIndex = 7;
@@ -143,7 +149,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("PMingLiU", 14F);
-            this.label5.Location = new System.Drawing.Point(224, 49);
+            this.label5.Location = new System.Drawing.Point(8, 49);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(69, 19);
             this.label5.TabIndex = 11;
@@ -152,7 +158,7 @@
             // GrayHorizontalProjection
             // 
             this.GrayHorizontalProjection.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.GrayHorizontalProjection.Location = new System.Drawing.Point(691, 327);
+            this.GrayHorizontalProjection.Location = new System.Drawing.Point(419, 330);
             this.GrayHorizontalProjection.Name = "GrayHorizontalProjection";
             this.GrayHorizontalProjection.Size = new System.Drawing.Size(256, 110);
             this.GrayHorizontalProjection.TabIndex = 12;
@@ -160,21 +166,10 @@
             // GrayVerticalProjection
             // 
             this.GrayVerticalProjection.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.GrayVerticalProjection.Location = new System.Drawing.Point(948, 71);
+            this.GrayVerticalProjection.Location = new System.Drawing.Point(676, 74);
             this.GrayVerticalProjection.Name = "GrayVerticalProjection";
-            this.GrayVerticalProjection.Size = new System.Drawing.Size(110, 256);
+            this.GrayVerticalProjection.Size = new System.Drawing.Size(100, 256);
             this.GrayVerticalProjection.TabIndex = 13;
-            // 
-            // button1
-            // 
-            this.button1.Font = new System.Drawing.Font("PMingLiU", 12F);
-            this.button1.Location = new System.Drawing.Point(12, 12);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 39);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "投影";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // RedHorizontalProjection
             // 
@@ -189,7 +184,7 @@
             this.RedVerticalProjection.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.RedVerticalProjection.Location = new System.Drawing.Point(262, 468);
             this.RedVerticalProjection.Name = "RedVerticalProjection";
-            this.RedVerticalProjection.Size = new System.Drawing.Size(110, 256);
+            this.RedVerticalProjection.Size = new System.Drawing.Size(100, 256);
             this.RedVerticalProjection.TabIndex = 14;
             // 
             // GreenHorizontalProjection
@@ -205,7 +200,7 @@
             this.GreenVerticalProjection.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.GreenVerticalProjection.Location = new System.Drawing.Point(675, 468);
             this.GreenVerticalProjection.Name = "GreenVerticalProjection";
-            this.GreenVerticalProjection.Size = new System.Drawing.Size(110, 256);
+            this.GreenVerticalProjection.Size = new System.Drawing.Size(100, 256);
             this.GreenVerticalProjection.TabIndex = 15;
             // 
             // BlueHorizontalProjection
@@ -221,21 +216,87 @@
             this.BlueVerticalProjection.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.BlueVerticalProjection.Location = new System.Drawing.Point(1063, 468);
             this.BlueVerticalProjection.Name = "BlueVerticalProjection";
-            this.BlueVerticalProjection.Size = new System.Drawing.Size(110, 256);
+            this.BlueVerticalProjection.Size = new System.Drawing.Size(100, 256);
             this.BlueVerticalProjection.TabIndex = 16;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.button1);
+            this.panel1.Controls.Add(this.btnNegative);
+            this.panel1.Controls.Add(this.numericUpDown1);
+            this.panel1.Controls.Add(this.labelThreshold);
+            this.panel1.Location = new System.Drawing.Point(807, 71);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(366, 350);
+            this.panel1.TabIndex = 20;
+            // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("PMingLiU", 12F);
+            this.button1.Location = new System.Drawing.Point(265, 73);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(91, 33);
+            this.button1.TabIndex = 25;
+            this.button1.Text = "投影";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // btnNegative
+            // 
+            this.btnNegative.Font = new System.Drawing.Font("PMingLiU", 12F);
+            this.btnNegative.Location = new System.Drawing.Point(265, 27);
+            this.btnNegative.Name = "btnNegative";
+            this.btnNegative.Size = new System.Drawing.Size(91, 33);
+            this.btnNegative.TabIndex = 24;
+            this.btnNegative.Text = "Negative";
+            this.btnNegative.UseVisualStyleBackColor = true;
+            this.btnNegative.Click += new System.EventHandler(this.btnNegative_Click);
+            // 
+            // numericUpDown1
+            // 
+            this.numericUpDown1.Font = new System.Drawing.Font("PMingLiU", 16F);
+            this.numericUpDown1.Location = new System.Drawing.Point(110, 75);
+            this.numericUpDown1.Maximum = new decimal(new int[] {
+            254,
+            0,
+            0,
+            0});
+            this.numericUpDown1.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.Size = new System.Drawing.Size(149, 33);
+            this.numericUpDown1.TabIndex = 22;
+            this.numericUpDown1.Value = new decimal(new int[] {
+            127,
+            0,
+            0,
+            0});
+            // 
+            // labelThreshold
+            // 
+            this.labelThreshold.AutoSize = true;
+            this.labelThreshold.Font = new System.Drawing.Font("PMingLiU", 18F);
+            this.labelThreshold.Location = new System.Drawing.Point(3, 80);
+            this.labelThreshold.Name = "labelThreshold";
+            this.labelThreshold.Size = new System.Drawing.Size(101, 24);
+            this.labelThreshold.TabIndex = 21;
+            this.labelThreshold.Text = "Threshold";
             // 
             // FormAnalysis
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1199, 849);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.BlueVerticalProjection);
             this.Controls.Add(this.BlueHorizontalProjection);
             this.Controls.Add(this.GreenVerticalProjection);
             this.Controls.Add(this.GreenHorizontalProjection);
             this.Controls.Add(this.RedVerticalProjection);
             this.Controls.Add(this.RedHorizontalProjection);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.GrayVerticalProjection);
             this.Controls.Add(this.GrayHorizontalProjection);
             this.Controls.Add(this.label5);
@@ -255,6 +316,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -274,12 +338,16 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Panel GrayHorizontalProjection;
         private System.Windows.Forms.Panel GrayVerticalProjection;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Panel RedHorizontalProjection;
         private System.Windows.Forms.Panel RedVerticalProjection;
         private System.Windows.Forms.Panel GreenHorizontalProjection;
         private System.Windows.Forms.Panel GreenVerticalProjection;
         private System.Windows.Forms.Panel BlueHorizontalProjection;
         private System.Windows.Forms.Panel BlueVerticalProjection;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label labelThreshold;
+        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.Button btnNegative;
+        private System.Windows.Forms.Button button1;
     }
 }
