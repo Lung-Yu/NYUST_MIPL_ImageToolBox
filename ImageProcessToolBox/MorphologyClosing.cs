@@ -20,10 +20,10 @@ namespace ImageProcessToolBox
 
         public Bitmap Process()
         {
-            Bitmap erosionBitmap = new MorphologyErosion(_SourceImage).Process();
-            Bitmap dilatBitmap = new MorphologyDilation(erosionBitmap).Process();
-            erosionBitmap.Dispose();
-            return dilatBitmap;
+            Bitmap img1 = new MorphologyDilation(_SourceImage).Process();
+            Bitmap img2 = new MorphologyErosion(img1).Process();
+            img1.Dispose();
+            return img2;
         }
 
 

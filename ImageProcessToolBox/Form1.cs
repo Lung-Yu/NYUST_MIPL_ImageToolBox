@@ -499,12 +499,12 @@ namespace ImageProcessToolBox
 
         private void btnErosion_Click(object sender, EventArgs e)
         {
-            actions(new MeanFilter(), "Erosion");
+            actions(new MorphologyErosion(), "Erosion");
         }
 
         private void btnSwell_Click(object sender, EventArgs e)
         {
-            actions(new MorphologyDilation(), "Mean Filter");
+            actions(new MorphologyDilation(), "Dilation");
         }
 
         private void btnOpening_Click(object sender, EventArgs e)
