@@ -19,9 +19,15 @@ namespace ImageProcessToolBox
         public FormAnalysis(Bitmap source)
         {
             InitializeComponent();
-
-            pictureBox1.Image = source;
-            Analysis();
+            try
+            {
+                pictureBox1.Image = source;
+                Analysis();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("目前無法分析處理此影像");
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
