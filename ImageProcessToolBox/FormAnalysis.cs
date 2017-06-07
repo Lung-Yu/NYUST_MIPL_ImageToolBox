@@ -1,4 +1,4 @@
-﻿using ImageProcessToolBox.MedicalImageFinal;
+﻿using ImageProcessToolBox.Analysis;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -163,7 +163,7 @@ namespace ImageProcessToolBox
                         for (int iy = y - remainder; iy < y; iy++)
                             graphics.DrawLine(pen, HEIGHT_PROJECTION_PANEL, iy, valTemp / remainder, iy);
                     else
-                        graphics.DrawLine(pen, HEIGHT_PROJECTION_PANEL, y, valTemp / remainder, y);
+                        graphics.DrawLine(pen, valTemp / remainder, y, HEIGHT_PROJECTION_PANEL, y);
 
                     valTemp = 0;
                 }

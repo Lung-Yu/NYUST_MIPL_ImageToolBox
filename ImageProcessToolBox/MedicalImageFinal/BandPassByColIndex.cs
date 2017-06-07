@@ -6,12 +6,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ImageProcessToolBox.Analysis
+namespace ImageProcessToolBox.MedicalImageFinal
 {
-    class ShitEdge : IImageProcess
+    class BandPassByColIndex : IImageProcess
     {
         private Bitmap _srcImage;
-        public System.Drawing.Bitmap Process()
+        private int _rejectStart = 0;
+        private int _rejectEnd = 0;
+
+
+        public BandPassByColIndex(int rejectStart, int rejectEnd)
+        {
+            _rejectStart = rejectStart;
+            _rejectEnd = rejectEnd;
+        }
+
+        public Bitmap Process()
         {
             int width = _srcImage.Width;
             int height = _srcImage.Height;
@@ -20,6 +30,7 @@ namespace ImageProcessToolBox.Analysis
             BitmapData srcBmData, dstBmData;
             Bitmap dstBitmap = ImageExtract.InitPonitMethod(_srcImage, width, height, out srcScan, out dstScan, out srcBmData, out dstBmData);
 
+
             unsafe //啟動不安全代碼
             {
                 byte* srcP = (byte*)srcScan;
@@ -27,18 +38,15 @@ namespace ImageProcessToolBox.Analysis
                 int srcOffset = srcBmData.Stride - width * 3;
                 int dstOffset = dstBmData.Stride - width * 3;
 
-                byte tempVal = 0;
                 for (int y = 0; y < height; y++)
                 {
-
-                    tempVal = srcP[ImageExtract.COLOR_R];
                     for (int x = 0; x < width; x++, srcP += 3, dstP += 3)
                     {
-                        int t = srcP[ImageExtract.COLOR_R] - tempVal;
-                        dstP[0] = dstP[1] = dstP[2] = (byte)((t < 0) ? 0 : t);
-                        tempVal = srcP[ImageExtract.COLOR_R];
+                        if (y >= _rejectStart && y <= _rejectEnd)
+                            dstP[0] = dstP[1] = dstP[2] = srcP[2];
+                        else
+                            dstP[0] = dstP[1] = dstP[2] = 0;
                     }
-
                     srcP += srcOffset;
                     dstP += dstOffset;
                 }
@@ -49,7 +57,7 @@ namespace ImageProcessToolBox.Analysis
             return dstBitmap;
         }
 
-        public void setResouceImage(System.Drawing.Bitmap bitmap)
+        public void setResouceImage(Bitmap bitmap)
         {
             _srcImage = bitmap;
         }

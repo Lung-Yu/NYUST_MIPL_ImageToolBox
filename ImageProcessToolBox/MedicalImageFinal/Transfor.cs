@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ImageProcessToolBox.MedicalImageFinal
+namespace ImageProcessToolBox.Analysis
 {
     class Transfor: PointTemplate, IImageProcess
     {

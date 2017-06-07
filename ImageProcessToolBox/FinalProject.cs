@@ -1,4 +1,4 @@
-﻿using ImageProcessToolBox.MedicalImageFinal;
+﻿using ImageProcessToolBox.Analysis;
 using System;
 using System.Collections.Generic;
 using System.Drawing;

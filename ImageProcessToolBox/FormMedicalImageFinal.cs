@@ -1,11 +1,12 @@
 ﻿using ImageProcessToolBox.Analysis;
 using ImageProcessToolBox.MedicalImageFinal;
-using ImageProcessToolBox.MedicalImageFinal;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Imaging;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -38,13 +39,13 @@ namespace ImageProcessToolBox
         }
         private void process()
         {
-            Bitmap src = _imageSource;
-            for (int i = 0; i < STEP_SIZE; i++)
-            {
-                labels[i].Text = labelsStr[i];
-                src = Process(src, iProcess[i], imageShow[i]);
-            }
-            step4(src);
+            //Bitmap src = _imageSource;
+            //for (int i = 0; i < STEP_SIZE; i++)
+            //{
+            //    labels[i].Text = labelsStr[i];
+            //    src = Process(src, iProcess[i], imageShow[i]);
+            //}
+            //step4(src);
             test5(_imageSource);
         }
 
@@ -52,6 +53,7 @@ namespace ImageProcessToolBox
         {
             label5.Text = "Step 5 : Test";
 
+            //step 1
             int th = ImagePretreatment.ThresholdingIterativeWithR(src);
             IImageProcess ipro1 = new Transfor(th);
             ipro1.setResouceImage(src);
@@ -60,15 +62,23 @@ namespace ImageProcessToolBox
             IImageProcess ipro2 = new SpiltImage();
             ipro2.setResouceImage(res1);
             Bitmap res2 = ipro2.Process();
+            pictureBox1.Image = res2;
 
+
+            //step 2
             IImageProcess ipro3 = new MachineLearing_KMeans(3, 10);
             ipro3.setResouceImage(res2);
             Bitmap res3 = ipro3.Process();
 
             byte[,] ks = ((MachineLearing_KMeans)ipro3).CenterPoints;
 
-            pictureBox6.Image = res3;
+            pictureBox2.Image = res3;
 
+
+
+
+
+            //step 3
             int maxIndex = rejectIndexByRow(res3, ks[2, 2]);
             IImageProcess ipro3_1 = new BandRejectByRowIndex(0, maxIndex);
             ipro3_1.setResouceImage(res3);
@@ -78,12 +88,117 @@ namespace ImageProcessToolBox
             IImageProcess ipro4 = new Bandpass(passVal, 0);
             ipro4.setResouceImage(res3_1);
             Bitmap res4 = ipro4.Process();
+            pictureBox3.Image = res4;
 
-            IImageProcess ipro5 = new MorphologyDilation();
-            ipro5.setResouceImage(res4);
-            Bitmap res5 = ipro5.Process();
+            //step 4
+            Bitmap res2_2 = rejectStains(res4);
+            pictureBox4.Image = res2_2;
 
-            pictureBox5.Image = res5;
+
+            //step 5
+            rectangleofInterested(src, res2_2);
+        }
+
+        private void rectangleofInterested(Bitmap src, Bitmap refImg)
+        {
+            ProjectionFactory factory = new ProjectionFactory(refImg, 1);
+            int[] hps = factory.getHorizontalProject();
+            int[] vps = factory.getVerticalProject();
+
+            int x1 = 0, x2 = 0, y1 = 0, y2 = 0;
+            for (int i = 0; i < hps.Length; i++)
+                if (hps[i] != 0)
+                {
+                    x1 = i;
+                    break;
+                }
+            for (int i = hps.Length - 1; i >= 0; i--)
+                if (hps[i] != 0)
+                {
+                    x2 = i;
+                    break;
+                }
+
+
+            for (int i = 0; i < vps.Length; i++)
+                if (vps[i] != 0)
+                {
+                    y1 = i;
+                    break;
+                }
+
+            for (int i = vps.Length - 1; i >= 0; i--)
+                if (vps[i] != 0)
+                {
+                    y2 = i;
+                    break;
+                }
+
+            Console.Write(string.Format("x1={0},x2={1},y1={2},y2={3}", x1, x2, y1, y2));
+
+            IImageProcess iprc = new BandPassByColIndex(y1, y2);
+            iprc.setResouceImage(src);
+            Bitmap res1 = iprc.Process();
+
+
+            IImageProcess iprc2 = new BandPassByRowIndex(x1, x2);
+            iprc2.setResouceImage(res1);
+            Bitmap res2 = iprc2.Process();
+
+            pictureBox5.Image = res2;
+
+        }
+
+        private Bitmap rejectStains(Bitmap src)
+        {
+            ProjectionFactory factory = new ProjectionFactory(src);
+            factory.Threshold = 1;
+            int[] h = factory.getHorizontalProject();
+            int x1 = 0, x2 = 0, ix1 = 0, ix2 = 0;
+            int median = h.Length / 2;
+
+            int t = 0;
+            for (int i = 0; i < median; i++)
+            {
+                if (t == 0 && h[i] != 0)
+                {
+                    t = 1;
+                    x1 = i - 1;
+                }
+                if (t == 1 && h[i] == 0)
+                {
+                    x2 = i;
+                    break;
+                }
+            }
+
+            t = 0;
+            for (int i = h.Length - 1; i >= median; i--)
+            {
+                if (t == 0 && h[i] != 0)
+                {
+                    t = 1;
+                    ix2 = i + 1;
+                }
+                if (t == 1 && h[i] == 0)
+                {
+                    ix1 = i;
+                    break;
+                }
+            }
+
+            IImageProcess iproc = new BandRejectByColIndex(x1, x2);
+            iproc.setResouceImage(src);
+            Bitmap res = iproc.Process();
+
+            IImageProcess iproc2 = new BandRejectByColIndex(ix1, ix2);
+            iproc2.setResouceImage(res);
+            Bitmap res2 = iproc2.Process();
+
+            return res2;
+
+            //Console.WriteLine(string.Format("x1={0},x2={1}", x1, x2));
+            //Console.WriteLine(string.Format("ix1={0},ix2={1}", ix1, ix2));
         }
 
         private int rejectIndexByRow(Bitmap src, byte rejectVal)
@@ -134,6 +249,52 @@ namespace ImageProcessToolBox
             Bitmap imageSource = new Bitmap(((PictureBox)sender).Image);
             Form form = new FormAnalysis(imageSource);
             form.Show();
+        }
+
+        private void pictureBox5_DoubleClick(object sender, EventArgs e)
+        {
+
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Bitmap bitmap = new Bitmap(pictureBox5.Image);
+
+            SaveFileDialog sfd = new SaveFileDialog();
+            sfd.Filter = @"(*.bmp,*.jpg)|*.bmp;*.jpg;*.png";
+
+            sfd.FilterIndex = 3;
+            sfd.RestoreDirectory = true;
+            if (DialogResult.OK == sfd.ShowDialog())
+            {
+                ImageFormat format = ImageFormat.Jpeg;
+                switch (Path.GetExtension(sfd.FileName).ToLower())
+                {
+                    case ".jpg":
+                        format = ImageFormat.Jpeg;
+                        break;
+                    case ".bmp":
+                        format = ImageFormat.Bmp;
+                        break;
+                    case ".png":
+                        format = ImageFormat.Png;
+                        break;
+                    default:
+                        MessageBox.Show(this, "Unsupported image format was specified", "Error",
+                                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                }
+                try
+                {
+                    bitmap.Save(sfd.FileName, format);
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show(this, "Failed writing image file", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
     }
 }
