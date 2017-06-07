@@ -46,8 +46,77 @@ namespace ImageProcessToolBox
             //    src = Process(src, iProcess[i], imageShow[i]);
             //}
             //step4(src);
-            test5(_imageSource);
+            test6(_imageSource);
         }
+
+        private void test6(Bitmap src)
+        {
+            label5.Text = "Step 6 : Ans";
+
+            //step 1
+            int th = ImagePretreatment.ThresholdingIterativeWithR(src);
+            IImageProcess ipro1 = new Transfor(th);
+            ipro1.setResouceImage(src);
+            Bitmap res1 = ipro1.Process();
+
+            IImageProcess ipro1_1 = new TransformPowerLaw(1.2);
+            ipro1_1.setResouceImage(res1);
+            Bitmap res1_1 = ipro1_1.Process();
+
+            IImageProcess ipro2 = new SpiltImage();
+            ipro2.setResouceImage(res1_1);
+            Bitmap res2 = ipro2.Process();
+            //pictureBox1.Image = res2;
+            pictureBox1.Image = new Mosaic(10, res2).Process();
+
+
+            //step 2
+            IImageProcess ipro3 = new MachineLearing_KMeans(3, 10);
+            ipro3.setResouceImage(res2);
+            Bitmap res3 = ipro3.Process();
+            pictureBox2.Image = res3;
+
+
+
+            //step 3
+            byte[,] ks = ((MachineLearing_KMeans)ipro3).CenterPoints;
+            int maxIndex = rejectIndexByRow(res3, ks[2, 2]);
+            IImageProcess ipro3_1 = new BandRejectByRowIndex(0, maxIndex);
+            ipro3_1.setResouceImage(res3);
+            Bitmap res3_1 = ipro3_1.Process();
+
+            byte passVal = ks[1, 2];
+            IImageProcess ipro4 = new Bandpass(passVal, 0);
+            ipro4.setResouceImage(res3_1);
+            Bitmap res4 = ipro4.Process();
+            pictureBox3.Image = res4;
+
+            //step 4
+            Bitmap res2_2 = rejectStains(res4);
+            pictureBox4.Image = res2_2;
+
+
+            //step 5
+            Bitmap run2_input = rectangleofInterested(src, res2_2);
+            pictureBox5.Image = run2_input;
+
+            Mosaic mosaic = new Mosaic(20, run2_input);
+            Bitmap moscaicImage = mosaic.Process();
+
+            IImageProcess k_mean = new MachineLearing_KMeans(3, 10);
+            k_mean.setResouceImage(moscaicImage);
+            Bitmap k_mean_result = k_mean.Process();
+            byte[,] ks2 = ((MachineLearing_KMeans)k_mean).CenterPoints;
+
+            IImageProcess bandPass = new Bandpass(ks2[1, 2], 0);
+            bandPass.setResouceImage(k_mean_result);
+            Bitmap bandPassAns = bandPass.Process();
+
+            //step 7
+            Bitmap ans = new MakeImageFrame(src, bandPassAns).Process();
+            pictureBox6.Image = ans;
+        }
+
 
         private void test5(Bitmap src)
         {
@@ -75,9 +144,6 @@ namespace ImageProcessToolBox
             pictureBox2.Image = res3;
 
 
-
-
-
             //step 3
             int maxIndex = rejectIndexByRow(res3, ks[2, 2]);
             IImageProcess ipro3_1 = new BandRejectByRowIndex(0, maxIndex);
@@ -96,10 +162,13 @@ namespace ImageProcessToolBox
 
 
             //step 5
-            rectangleofInterested(src, res2_2);
+            Bitmap run2_input = rectangleofInterested(src, res2_2);
+            pictureBox5.Image = run2_input;
+
+
         }
 
-        private void rectangleofInterested(Bitmap src, Bitmap refImg)
+        private Bitmap rectangleofInterested(Bitmap src, Bitmap refImg)
         {
             ProjectionFactory factory = new ProjectionFactory(refImg, 1);
             int[] hps = factory.getHorizontalProject();
@@ -140,13 +209,11 @@ namespace ImageProcessToolBox
             iprc.setResouceImage(src);
             Bitmap res1 = iprc.Process();
 
-
             IImageProcess iprc2 = new BandPassByRowIndex(x1, x2);
             iprc2.setResouceImage(res1);
             Bitmap res2 = iprc2.Process();
 
-            pictureBox5.Image = res2;
-
+            return res2;
         }
 
         private Bitmap rejectStains(Bitmap src)
@@ -208,14 +275,12 @@ namespace ImageProcessToolBox
             int range = v.Length / 4;
             int Max = 0;
             int Max_Index = 0;
-            for (int i = 0; i < range; i++)
+            for (int i = 100; i < range; i++)
                 if (Max < v[i])
                 {
                     Max = v[i];
                     Max_Index = i;
                 }
-
-
             return Max_Index;
         }
 
@@ -251,16 +316,24 @@ namespace ImageProcessToolBox
             form.Show();
         }
 
-        private void pictureBox5_DoubleClick(object sender, EventArgs e)
-        {
-
-
-        }
 
         private void button1_Click(object sender, EventArgs e)
         {
             Bitmap bitmap = new Bitmap(pictureBox5.Image);
-
+            saveFile(bitmap);
+        }
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Bitmap bitmap = new Bitmap(pictureBox6.Image);
+            saveFile(bitmap);
+        }
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Bitmap bitmap = new Bitmap(pictureBox7.Image);
+            saveFile(bitmap);
+        }
+        private void saveFile(Bitmap bitmap)
+        {
             SaveFileDialog sfd = new SaveFileDialog();
             sfd.Filter = @"(*.bmp,*.jpg)|*.bmp;*.jpg;*.png";
 
@@ -296,5 +369,9 @@ namespace ImageProcessToolBox
                 }
             }
         }
+
+
+
+
     }
 }

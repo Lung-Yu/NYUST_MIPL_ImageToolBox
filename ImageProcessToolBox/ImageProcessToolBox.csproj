@@ -68,6 +68,8 @@
     <Compile Include="MedicalImageFinal\BandRejectByColIndex.cs" />
     <Compile Include="MedicalImageFinal\BandRejectByRow.cs" />
     <Compile Include="MedicalImageFinal\BandRejectByRowIndex.cs" />
+    <Compile Include="MedicalImageFinal\Erosion.cs" />
+    <Compile Include="MedicalImageFinal\MakeImageFrame.cs" />
     <Compile Include="MedicalImageFinal\ShitEdge.cs" />
     <Compile Include="FormAnalysis.cs">
       <SubType>Form</SubType>
