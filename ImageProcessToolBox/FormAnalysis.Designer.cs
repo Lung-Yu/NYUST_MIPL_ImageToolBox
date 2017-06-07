@@ -1,6 +1,6 @@
 ﻿namespace ImageProcessToolBox
 {
-    partial class AnalysisForm
+    partial class FormAnalysis
     {
         /// <summary>
         /// Required designer variable.

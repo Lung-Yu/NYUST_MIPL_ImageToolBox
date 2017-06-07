@@ -60,11 +60,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AnalysisForm.cs">
+    <Compile Include="FormAnalysis.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AnalysisForm.Designer.cs">
-      <DependentUpon>AnalysisForm.cs</DependentUpon>
+    <Compile Include="FormAnalysis.Designer.cs">
+      <DependentUpon>FormAnalysis.cs</DependentUpon>
     </Compile>
     <Compile Include="AnalysisSeparation.cs" />
     <Compile Include="Binarization.cs" />
@@ -74,7 +74,17 @@
     <Compile Include="DiscreteFourierTransform.cs" />
     <Compile Include="DiscreteWaveletTransformation.cs" />
     <Compile Include="Feature\LocalBinaryPattern.cs" />
+    <Compile Include="FinalProject.cs" />
     <Compile Include="Interface\IFeatureExtract.cs" />
+    <Compile Include="FormMedicalImageFinal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormMedicalImageFinal.Designer.cs">
+      <DependentUpon>FormMedicalImageFinal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MedicalImageFinal\LaplacianBG.cs" />
+    <Compile Include="MedicalImageFinal\SpiltImage.cs" />
+    <Compile Include="MedicalImageFinal\Transfor.cs" />
     <Compile Include="NoiseGaussian.cs" />
     <Compile Include="ReaderTextFile.cs" />
     <Compile Include="Template\FilterTemplate.cs" />
@@ -129,11 +139,14 @@
     <Compile Include="TransformByLog.cs" />
     <Compile Include="Try.cs" />
     <Compile Include="VerticalFilter.cs" />
-    <EmbeddedResource Include="AnalysisForm.resx">
-      <DependentUpon>AnalysisForm.cs</DependentUpon>
+    <EmbeddedResource Include="FormAnalysis.resx">
+      <DependentUpon>FormAnalysis.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormMedicalImageFinal.resx">
+      <DependentUpon>FormMedicalImageFinal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

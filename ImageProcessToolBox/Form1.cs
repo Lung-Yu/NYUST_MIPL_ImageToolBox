@@ -171,7 +171,7 @@ namespace ImageProcessToolBox
             }
 
             Bitmap imageSource = new Bitmap(pictureBox1.Image);
-            AnalysisForm form = new AnalysisForm(imageSource);
+            Form form = new FormAnalysis(imageSource);
             form.Show();
         }
         private void btnReplace_Click(object sender, EventArgs e)
@@ -542,8 +542,19 @@ namespace ImageProcessToolBox
 
         private void btnTry_Click(object sender, EventArgs e)
         {
-            actions(new DiscreteFourierTransform(), "DiscreteFourierTransform");
+            //actions(new DiscreteFourierTransform(), "DiscreteFourierTransform");
+            //actions(new FinalProject(), "Final Project");
             //new ReaderTextFile();
+
+            if (pictureBox1.Image == null)
+            {
+                MessageBox.Show("請先開啟圖片方可進行分析");
+                return;
+            }
+
+            Bitmap imageSource = new Bitmap(pictureBox1.Image);
+            Form form = new FormMedicalImageFinal(imageSource);
+            form.Show();
         }
 
         private void btnVertical_Click(object sender, EventArgs e)

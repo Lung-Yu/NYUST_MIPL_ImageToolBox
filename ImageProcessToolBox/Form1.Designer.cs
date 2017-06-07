@@ -108,43 +108,43 @@
             this.label15 = new System.Windows.Forms.Label();
             this.panel24 = new System.Windows.Forms.Panel();
             this.btnLBP = new System.Windows.Forms.Button();
-            this.btnTry = new System.Windows.Forms.Button();
             this.label13 = new System.Windows.Forms.Label();
             this.panel14 = new System.Windows.Forms.Panel();
             this.label9 = new System.Windows.Forms.Label();
+            this.btnTry = new System.Windows.Forms.Button();
             this.panel11 = new System.Windows.Forms.Panel();
-            this.label7 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
             this.labelconsle = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.panel10 = new System.Windows.Forms.Panel();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.labelImageSize = new System.Windows.Forms.Label();
-            this.resultImageSize = new System.Windows.Forms.Label();
-            this.panel22 = new System.Windows.Forms.Panel();
-            this.panel19 = new System.Windows.Forms.Panel();
-            this.panel20 = new System.Windows.Forms.Panel();
-            this.ResultGraphicsB = new System.Windows.Forms.Panel();
-            this.panel18 = new System.Windows.Forms.Panel();
-            this.ResultGraphicsG = new System.Windows.Forms.Panel();
-            this.ResultGraphicsR = new System.Windows.Forms.Panel();
             this.panel23 = new System.Windows.Forms.Panel();
-            this.panel16 = new System.Windows.Forms.Panel();
-            this.panel15 = new System.Windows.Forms.Panel();
-            this.panel17 = new System.Windows.Forms.Panel();
-            this.sourceGraphicsB = new System.Windows.Forms.Panel();
-            this.sourceGraphicsG = new System.Windows.Forms.Panel();
             this.sourceGraphicsR = new System.Windows.Forms.Panel();
+            this.sourceGraphicsG = new System.Windows.Forms.Panel();
+            this.sourceGraphicsB = new System.Windows.Forms.Panel();
+            this.panel17 = new System.Windows.Forms.Panel();
+            this.panel15 = new System.Windows.Forms.Panel();
+            this.panel16 = new System.Windows.Forms.Panel();
+            this.panel22 = new System.Windows.Forms.Panel();
+            this.ResultGraphicsR = new System.Windows.Forms.Panel();
+            this.ResultGraphicsG = new System.Windows.Forms.Panel();
+            this.panel18 = new System.Windows.Forms.Panel();
+            this.ResultGraphicsB = new System.Windows.Forms.Panel();
+            this.panel20 = new System.Windows.Forms.Panel();
+            this.panel19 = new System.Windows.Forms.Panel();
+            this.resultImageSize = new System.Windows.Forms.Label();
+            this.labelImageSize = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btnOpenFile = new System.Windows.Forms.Button();
-            this.btnSaveFile = new System.Windows.Forms.Button();
-            this.btnReplace = new System.Windows.Forms.Button();
-            this.btnDrawSource = new System.Windows.Forms.Button();
-            this.panel6 = new System.Windows.Forms.Panel();
-            this.btnRestore = new System.Windows.Forms.Button();
             this.btnAnalysis = new System.Windows.Forms.Button();
+            this.btnRestore = new System.Windows.Forms.Button();
+            this.btnDrawSource = new System.Windows.Forms.Button();
+            this.btnReplace = new System.Windows.Forms.Button();
+            this.btnSaveFile = new System.Windows.Forms.Button();
+            this.btnOpenFile = new System.Windows.Forms.Button();
+            this.panel6 = new System.Windows.Forms.Panel();
             labelMean = new System.Windows.Forms.Label();
             labelStandardDeviation = new System.Windows.Forms.Label();
             this.panel3.SuspendLayout();
@@ -167,10 +167,10 @@
             this.panel11.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel10.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.panel22.SuspendLayout();
             this.panel23.SuspendLayout();
+            this.panel22.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel6.SuspendLayout();
             this.SuspendLayout();
@@ -984,9 +984,9 @@
             this.panel26.Controls.Add(labelMean);
             this.panel26.Controls.Add(this.btnGaussianNoise);
             this.panel26.Controls.Add(this.label15);
-            this.panel26.Location = new System.Drawing.Point(4, 402);
+            this.panel26.Location = new System.Drawing.Point(3, 549);
             this.panel26.Name = "panel26";
-            this.panel26.Size = new System.Drawing.Size(273, 212);
+            this.panel26.Size = new System.Drawing.Size(273, 97);
             this.panel26.TabIndex = 53;
             // 
             // numericUpDown2
@@ -1057,11 +1057,10 @@
             // 
             this.panel24.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.panel24.Controls.Add(this.btnLBP);
-            this.panel24.Controls.Add(this.btnTry);
             this.panel24.Controls.Add(this.label13);
-            this.panel24.Location = new System.Drawing.Point(4, 620);
+            this.panel24.Location = new System.Drawing.Point(4, 652);
             this.panel24.Name = "panel24";
-            this.panel24.Size = new System.Drawing.Size(273, 133);
+            this.panel24.Size = new System.Drawing.Size(273, 101);
             this.panel24.TabIndex = 16;
             // 
             // btnLBP
@@ -1073,16 +1072,6 @@
             this.btnLBP.Text = "LBP";
             this.btnLBP.UseVisualStyleBackColor = true;
             this.btnLBP.Click += new System.EventHandler(this.btnLBP_Click);
-            // 
-            // btnTry
-            // 
-            this.btnTry.Location = new System.Drawing.Point(11, 79);
-            this.btnTry.Name = "btnTry";
-            this.btnTry.Size = new System.Drawing.Size(75, 23);
-            this.btnTry.TabIndex = 51;
-            this.btnTry.Text = "try";
-            this.btnTry.UseVisualStyleBackColor = true;
-            this.btnTry.Click += new System.EventHandler(this.btnTry_Click);
             // 
             // label13
             // 
@@ -1101,7 +1090,7 @@
             this.panel14.Controls.Add(this.panel7);
             this.panel14.Location = new System.Drawing.Point(4, 288);
             this.panel14.Name = "panel14";
-            this.panel14.Size = new System.Drawing.Size(273, 108);
+            this.panel14.Size = new System.Drawing.Size(273, 255);
             this.panel14.TabIndex = 15;
             // 
             // label9
@@ -1114,6 +1103,16 @@
             this.label9.TabIndex = 16;
             this.label9.Text = "Segmention";
             // 
+            // btnTry
+            // 
+            this.btnTry.Location = new System.Drawing.Point(409, 5);
+            this.btnTry.Name = "btnTry";
+            this.btnTry.Size = new System.Drawing.Size(75, 23);
+            this.btnTry.TabIndex = 51;
+            this.btnTry.Text = "try";
+            this.btnTry.UseVisualStyleBackColor = true;
+            this.btnTry.Click += new System.EventHandler(this.btnTry_Click);
+            // 
             // panel11
             // 
             this.panel11.BackColor = System.Drawing.SystemColors.ActiveBorder;
@@ -1123,16 +1122,6 @@
             this.panel11.Name = "panel11";
             this.panel11.Size = new System.Drawing.Size(836, 155);
             this.panel11.TabIndex = 12;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("PMingLiU", 14F);
-            this.label7.Location = new System.Drawing.Point(6, 5);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(98, 19);
-            this.label7.TabIndex = 10;
-            this.label7.Text = "Log console";
             // 
             // panel5
             // 
@@ -1153,6 +1142,16 @@
             this.labelconsle.Size = new System.Drawing.Size(0, 14);
             this.labelconsle.TabIndex = 0;
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("PMingLiU", 14F);
+            this.label7.Location = new System.Drawing.Point(6, 5);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(98, 19);
+            this.label7.TabIndex = 10;
+            this.label7.Text = "Log console";
+            // 
             // panel10
             // 
             this.panel10.BackColor = System.Drawing.SystemColors.ActiveBorder;
@@ -1169,64 +1168,66 @@
             this.panel10.Size = new System.Drawing.Size(836, 560);
             this.panel10.TabIndex = 11;
             // 
-            // label4
+            // panel23
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("PMingLiU", 14F);
-            this.label4.Location = new System.Drawing.Point(426, 8);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(105, 19);
-            this.label4.TabIndex = 7;
-            this.label4.Text = "Result Image";
+            this.panel23.Controls.Add(this.sourceGraphicsR);
+            this.panel23.Controls.Add(this.sourceGraphicsG);
+            this.panel23.Controls.Add(this.sourceGraphicsB);
+            this.panel23.Controls.Add(this.panel17);
+            this.panel23.Controls.Add(this.panel15);
+            this.panel23.Controls.Add(this.panel16);
+            this.panel23.Location = new System.Drawing.Point(4, 428);
+            this.panel23.Name = "panel23";
+            this.panel23.Size = new System.Drawing.Size(400, 110);
+            this.panel23.TabIndex = 15;
             // 
-            // label3
+            // sourceGraphicsR
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("PMingLiU", 14F);
-            this.label3.Location = new System.Drawing.Point(4, 7);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(109, 19);
-            this.label3.TabIndex = 6;
-            this.label3.Text = "Source Image";
+            this.sourceGraphicsR.BackColor = System.Drawing.SystemColors.Control;
+            this.sourceGraphicsR.Location = new System.Drawing.Point(3, 3);
+            this.sourceGraphicsR.Name = "sourceGraphicsR";
+            this.sourceGraphicsR.Size = new System.Drawing.Size(128, 100);
+            this.sourceGraphicsR.TabIndex = 8;
             // 
-            // pictureBox2
+            // sourceGraphicsG
             // 
-            this.pictureBox2.BackColor = System.Drawing.SystemColors.Info;
-            this.pictureBox2.Location = new System.Drawing.Point(430, 30);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(400, 400);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 4;
-            this.pictureBox2.TabStop = false;
+            this.sourceGraphicsG.BackColor = System.Drawing.SystemColors.Control;
+            this.sourceGraphicsG.Location = new System.Drawing.Point(134, 3);
+            this.sourceGraphicsG.Name = "sourceGraphicsG";
+            this.sourceGraphicsG.Size = new System.Drawing.Size(128, 100);
+            this.sourceGraphicsG.TabIndex = 9;
             // 
-            // pictureBox1
+            // sourceGraphicsB
             // 
-            this.pictureBox1.BackColor = System.Drawing.SystemColors.Info;
-            this.pictureBox1.Location = new System.Drawing.Point(4, 30);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(400, 400);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 3;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.WaitOnLoad = true;
+            this.sourceGraphicsB.BackColor = System.Drawing.SystemColors.Control;
+            this.sourceGraphicsB.Location = new System.Drawing.Point(270, 3);
+            this.sourceGraphicsB.Name = "sourceGraphicsB";
+            this.sourceGraphicsB.Size = new System.Drawing.Size(128, 100);
+            this.sourceGraphicsB.TabIndex = 9;
             // 
-            // labelImageSize
+            // panel17
             // 
-            this.labelImageSize.AutoSize = true;
-            this.labelImageSize.Location = new System.Drawing.Point(344, 12);
-            this.labelImageSize.Name = "labelImageSize";
-            this.labelImageSize.Size = new System.Drawing.Size(53, 12);
-            this.labelImageSize.TabIndex = 19;
-            this.labelImageSize.Text = "ImageSize";
+            this.panel17.BackColor = System.Drawing.Color.Blue;
+            this.panel17.Location = new System.Drawing.Point(270, 106);
+            this.panel17.Name = "panel17";
+            this.panel17.Size = new System.Drawing.Size(129, 10);
+            this.panel17.TabIndex = 15;
             // 
-            // resultImageSize
+            // panel15
             // 
-            this.resultImageSize.AutoSize = true;
-            this.resultImageSize.Location = new System.Drawing.Point(760, 12);
-            this.resultImageSize.Name = "resultImageSize";
-            this.resultImageSize.Size = new System.Drawing.Size(53, 12);
-            this.resultImageSize.TabIndex = 20;
-            this.resultImageSize.Text = "ImageSize";
+            this.panel15.BackColor = System.Drawing.Color.Red;
+            this.panel15.Location = new System.Drawing.Point(2, 106);
+            this.panel15.Name = "panel15";
+            this.panel15.Size = new System.Drawing.Size(127, 10);
+            this.panel15.TabIndex = 13;
+            // 
+            // panel16
+            // 
+            this.panel16.BackColor = System.Drawing.Color.Lime;
+            this.panel16.Location = new System.Drawing.Point(135, 106);
+            this.panel16.Name = "panel16";
+            this.panel16.Size = new System.Drawing.Size(126, 10);
+            this.panel16.TabIndex = 14;
             // 
             // panel22
             // 
@@ -1241,37 +1242,13 @@
             this.panel22.Size = new System.Drawing.Size(399, 116);
             this.panel22.TabIndex = 15;
             // 
-            // panel19
+            // ResultGraphicsR
             // 
-            this.panel19.BackColor = System.Drawing.Color.Lime;
-            this.panel19.Location = new System.Drawing.Point(137, 106);
-            this.panel19.Name = "panel19";
-            this.panel19.Size = new System.Drawing.Size(128, 10);
-            this.panel19.TabIndex = 17;
-            // 
-            // panel20
-            // 
-            this.panel20.BackColor = System.Drawing.Color.Red;
-            this.panel20.Location = new System.Drawing.Point(3, 106);
-            this.panel20.Name = "panel20";
-            this.panel20.Size = new System.Drawing.Size(128, 10);
-            this.panel20.TabIndex = 16;
-            // 
-            // ResultGraphicsB
-            // 
-            this.ResultGraphicsB.BackColor = System.Drawing.SystemColors.Control;
-            this.ResultGraphicsB.Location = new System.Drawing.Point(271, 3);
-            this.ResultGraphicsB.Name = "ResultGraphicsB";
-            this.ResultGraphicsB.Size = new System.Drawing.Size(128, 100);
-            this.ResultGraphicsB.TabIndex = 12;
-            // 
-            // panel18
-            // 
-            this.panel18.BackColor = System.Drawing.Color.Blue;
-            this.panel18.Location = new System.Drawing.Point(270, 106);
-            this.panel18.Name = "panel18";
-            this.panel18.Size = new System.Drawing.Size(128, 10);
-            this.panel18.TabIndex = 18;
+            this.ResultGraphicsR.BackColor = System.Drawing.SystemColors.Control;
+            this.ResultGraphicsR.Location = new System.Drawing.Point(3, 3);
+            this.ResultGraphicsR.Name = "ResultGraphicsR";
+            this.ResultGraphicsR.Size = new System.Drawing.Size(128, 100);
+            this.ResultGraphicsR.TabIndex = 10;
             // 
             // ResultGraphicsG
             // 
@@ -1281,79 +1258,102 @@
             this.ResultGraphicsG.Size = new System.Drawing.Size(128, 100);
             this.ResultGraphicsG.TabIndex = 11;
             // 
-            // ResultGraphicsR
+            // panel18
             // 
-            this.ResultGraphicsR.BackColor = System.Drawing.SystemColors.Control;
-            this.ResultGraphicsR.Location = new System.Drawing.Point(3, 3);
-            this.ResultGraphicsR.Name = "ResultGraphicsR";
-            this.ResultGraphicsR.Size = new System.Drawing.Size(128, 100);
-            this.ResultGraphicsR.TabIndex = 10;
+            this.panel18.BackColor = System.Drawing.Color.Blue;
+            this.panel18.Location = new System.Drawing.Point(270, 106);
+            this.panel18.Name = "panel18";
+            this.panel18.Size = new System.Drawing.Size(128, 10);
+            this.panel18.TabIndex = 18;
             // 
-            // panel23
+            // ResultGraphicsB
             // 
-            this.panel23.Controls.Add(this.sourceGraphicsR);
-            this.panel23.Controls.Add(this.sourceGraphicsG);
-            this.panel23.Controls.Add(this.sourceGraphicsB);
-            this.panel23.Controls.Add(this.panel17);
-            this.panel23.Controls.Add(this.panel15);
-            this.panel23.Controls.Add(this.panel16);
-            this.panel23.Location = new System.Drawing.Point(4, 428);
-            this.panel23.Name = "panel23";
-            this.panel23.Size = new System.Drawing.Size(400, 110);
-            this.panel23.TabIndex = 15;
+            this.ResultGraphicsB.BackColor = System.Drawing.SystemColors.Control;
+            this.ResultGraphicsB.Location = new System.Drawing.Point(271, 3);
+            this.ResultGraphicsB.Name = "ResultGraphicsB";
+            this.ResultGraphicsB.Size = new System.Drawing.Size(128, 100);
+            this.ResultGraphicsB.TabIndex = 12;
             // 
-            // panel16
+            // panel20
             // 
-            this.panel16.BackColor = System.Drawing.Color.Lime;
-            this.panel16.Location = new System.Drawing.Point(135, 106);
-            this.panel16.Name = "panel16";
-            this.panel16.Size = new System.Drawing.Size(126, 10);
-            this.panel16.TabIndex = 14;
+            this.panel20.BackColor = System.Drawing.Color.Red;
+            this.panel20.Location = new System.Drawing.Point(3, 106);
+            this.panel20.Name = "panel20";
+            this.panel20.Size = new System.Drawing.Size(128, 10);
+            this.panel20.TabIndex = 16;
             // 
-            // panel15
+            // panel19
             // 
-            this.panel15.BackColor = System.Drawing.Color.Red;
-            this.panel15.Location = new System.Drawing.Point(2, 106);
-            this.panel15.Name = "panel15";
-            this.panel15.Size = new System.Drawing.Size(127, 10);
-            this.panel15.TabIndex = 13;
+            this.panel19.BackColor = System.Drawing.Color.Lime;
+            this.panel19.Location = new System.Drawing.Point(137, 106);
+            this.panel19.Name = "panel19";
+            this.panel19.Size = new System.Drawing.Size(128, 10);
+            this.panel19.TabIndex = 17;
             // 
-            // panel17
+            // resultImageSize
             // 
-            this.panel17.BackColor = System.Drawing.Color.Blue;
-            this.panel17.Location = new System.Drawing.Point(270, 106);
-            this.panel17.Name = "panel17";
-            this.panel17.Size = new System.Drawing.Size(129, 10);
-            this.panel17.TabIndex = 15;
+            this.resultImageSize.AutoSize = true;
+            this.resultImageSize.Location = new System.Drawing.Point(760, 12);
+            this.resultImageSize.Name = "resultImageSize";
+            this.resultImageSize.Size = new System.Drawing.Size(53, 12);
+            this.resultImageSize.TabIndex = 20;
+            this.resultImageSize.Text = "ImageSize";
             // 
-            // sourceGraphicsB
+            // labelImageSize
             // 
-            this.sourceGraphicsB.BackColor = System.Drawing.SystemColors.Control;
-            this.sourceGraphicsB.Location = new System.Drawing.Point(270, 3);
-            this.sourceGraphicsB.Name = "sourceGraphicsB";
-            this.sourceGraphicsB.Size = new System.Drawing.Size(128, 100);
-            this.sourceGraphicsB.TabIndex = 9;
+            this.labelImageSize.AutoSize = true;
+            this.labelImageSize.Location = new System.Drawing.Point(344, 12);
+            this.labelImageSize.Name = "labelImageSize";
+            this.labelImageSize.Size = new System.Drawing.Size(53, 12);
+            this.labelImageSize.TabIndex = 19;
+            this.labelImageSize.Text = "ImageSize";
             // 
-            // sourceGraphicsG
+            // pictureBox1
             // 
-            this.sourceGraphicsG.BackColor = System.Drawing.SystemColors.Control;
-            this.sourceGraphicsG.Location = new System.Drawing.Point(134, 3);
-            this.sourceGraphicsG.Name = "sourceGraphicsG";
-            this.sourceGraphicsG.Size = new System.Drawing.Size(128, 100);
-            this.sourceGraphicsG.TabIndex = 9;
+            this.pictureBox1.BackColor = System.Drawing.SystemColors.Info;
+            this.pictureBox1.Location = new System.Drawing.Point(4, 30);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(400, 400);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 3;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.WaitOnLoad = true;
             // 
-            // sourceGraphicsR
+            // pictureBox2
             // 
-            this.sourceGraphicsR.BackColor = System.Drawing.SystemColors.Control;
-            this.sourceGraphicsR.Location = new System.Drawing.Point(3, 3);
-            this.sourceGraphicsR.Name = "sourceGraphicsR";
-            this.sourceGraphicsR.Size = new System.Drawing.Size(128, 100);
-            this.sourceGraphicsR.TabIndex = 8;
+            this.pictureBox2.BackColor = System.Drawing.SystemColors.Info;
+            this.pictureBox2.Location = new System.Drawing.Point(430, 30);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(400, 400);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 4;
+            this.pictureBox2.TabStop = false;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("PMingLiU", 14F);
+            this.label3.Location = new System.Drawing.Point(4, 7);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(109, 19);
+            this.label3.TabIndex = 6;
+            this.label3.Text = "Source Image";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("PMingLiU", 14F);
+            this.label4.Location = new System.Drawing.Point(426, 8);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(105, 19);
+            this.label4.TabIndex = 7;
+            this.label4.Text = "Result Image";
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.panel1.Controls.Add(this.btnAnalysis);
+            this.panel1.Controls.Add(this.btnTry);
             this.panel1.Controls.Add(this.btnRestore);
             this.panel1.Controls.Add(this.btnDrawSource);
             this.panel1.Controls.Add(this.btnReplace);
@@ -1364,55 +1364,15 @@
             this.panel1.Size = new System.Drawing.Size(836, 31);
             this.panel1.TabIndex = 0;
             // 
-            // btnOpenFile
+            // btnAnalysis
             // 
-            this.btnOpenFile.Location = new System.Drawing.Point(3, 5);
-            this.btnOpenFile.Name = "btnOpenFile";
-            this.btnOpenFile.Size = new System.Drawing.Size(75, 23);
-            this.btnOpenFile.TabIndex = 2;
-            this.btnOpenFile.Text = "Open File";
-            this.btnOpenFile.UseVisualStyleBackColor = true;
-            this.btnOpenFile.Click += new System.EventHandler(this.btnOpenFile_Click);
-            // 
-            // btnSaveFile
-            // 
-            this.btnSaveFile.Location = new System.Drawing.Point(84, 5);
-            this.btnSaveFile.Name = "btnSaveFile";
-            this.btnSaveFile.Size = new System.Drawing.Size(75, 23);
-            this.btnSaveFile.TabIndex = 3;
-            this.btnSaveFile.Text = "Save File";
-            this.btnSaveFile.UseVisualStyleBackColor = true;
-            this.btnSaveFile.Click += new System.EventHandler(this.btnSaveFile_Click);
-            // 
-            // btnReplace
-            // 
-            this.btnReplace.Location = new System.Drawing.Point(246, 5);
-            this.btnReplace.Name = "btnReplace";
-            this.btnReplace.Size = new System.Drawing.Size(75, 23);
-            this.btnReplace.TabIndex = 6;
-            this.btnReplace.Text = "Replace";
-            this.btnReplace.UseVisualStyleBackColor = true;
-            this.btnReplace.Click += new System.EventHandler(this.btnReplace_Click);
-            // 
-            // btnDrawSource
-            // 
-            this.btnDrawSource.Location = new System.Drawing.Point(723, 5);
-            this.btnDrawSource.Name = "btnDrawSource";
-            this.btnDrawSource.Size = new System.Drawing.Size(106, 23);
-            this.btnDrawSource.TabIndex = 8;
-            this.btnDrawSource.Text = "draw graphics";
-            this.btnDrawSource.UseVisualStyleBackColor = true;
-            this.btnDrawSource.Click += new System.EventHandler(this.btnDrawSource_Click);
-            // 
-            // panel6
-            // 
-            this.panel6.Controls.Add(this.panel1);
-            this.panel6.Controls.Add(this.panel10);
-            this.panel6.Controls.Add(this.panel11);
-            this.panel6.Location = new System.Drawing.Point(12, 12);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(842, 766);
-            this.panel6.TabIndex = 14;
+            this.btnAnalysis.Location = new System.Drawing.Point(328, 5);
+            this.btnAnalysis.Name = "btnAnalysis";
+            this.btnAnalysis.Size = new System.Drawing.Size(75, 23);
+            this.btnAnalysis.TabIndex = 10;
+            this.btnAnalysis.Text = "Analysis";
+            this.btnAnalysis.UseVisualStyleBackColor = true;
+            this.btnAnalysis.Click += new System.EventHandler(this.btnAnalysis_Click);
             // 
             // btnRestore
             // 
@@ -1424,15 +1384,55 @@
             this.btnRestore.UseVisualStyleBackColor = true;
             this.btnRestore.Click += new System.EventHandler(this.btnRestore_Click);
             // 
-            // btnAnalysis
+            // btnDrawSource
             // 
-            this.btnAnalysis.Location = new System.Drawing.Point(328, 5);
-            this.btnAnalysis.Name = "btnAnalysis";
-            this.btnAnalysis.Size = new System.Drawing.Size(75, 23);
-            this.btnAnalysis.TabIndex = 10;
-            this.btnAnalysis.Text = "Analysis";
-            this.btnAnalysis.UseVisualStyleBackColor = true;
-            this.btnAnalysis.Click += new System.EventHandler(this.btnAnalysis_Click);
+            this.btnDrawSource.Location = new System.Drawing.Point(723, 5);
+            this.btnDrawSource.Name = "btnDrawSource";
+            this.btnDrawSource.Size = new System.Drawing.Size(106, 23);
+            this.btnDrawSource.TabIndex = 8;
+            this.btnDrawSource.Text = "draw graphics";
+            this.btnDrawSource.UseVisualStyleBackColor = true;
+            this.btnDrawSource.Click += new System.EventHandler(this.btnDrawSource_Click);
+            // 
+            // btnReplace
+            // 
+            this.btnReplace.Location = new System.Drawing.Point(246, 5);
+            this.btnReplace.Name = "btnReplace";
+            this.btnReplace.Size = new System.Drawing.Size(75, 23);
+            this.btnReplace.TabIndex = 6;
+            this.btnReplace.Text = "Replace";
+            this.btnReplace.UseVisualStyleBackColor = true;
+            this.btnReplace.Click += new System.EventHandler(this.btnReplace_Click);
+            // 
+            // btnSaveFile
+            // 
+            this.btnSaveFile.Location = new System.Drawing.Point(84, 5);
+            this.btnSaveFile.Name = "btnSaveFile";
+            this.btnSaveFile.Size = new System.Drawing.Size(75, 23);
+            this.btnSaveFile.TabIndex = 3;
+            this.btnSaveFile.Text = "Save File";
+            this.btnSaveFile.UseVisualStyleBackColor = true;
+            this.btnSaveFile.Click += new System.EventHandler(this.btnSaveFile_Click);
+            // 
+            // btnOpenFile
+            // 
+            this.btnOpenFile.Location = new System.Drawing.Point(3, 5);
+            this.btnOpenFile.Name = "btnOpenFile";
+            this.btnOpenFile.Size = new System.Drawing.Size(75, 23);
+            this.btnOpenFile.TabIndex = 2;
+            this.btnOpenFile.Text = "Open File";
+            this.btnOpenFile.UseVisualStyleBackColor = true;
+            this.btnOpenFile.Click += new System.EventHandler(this.btnOpenFile_Click);
+            // 
+            // panel6
+            // 
+            this.panel6.Controls.Add(this.panel1);
+            this.panel6.Controls.Add(this.panel10);
+            this.panel6.Controls.Add(this.panel11);
+            this.panel6.Location = new System.Drawing.Point(12, 12);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(842, 766);
+            this.panel6.TabIndex = 14;
             // 
             // Form1
             // 
@@ -1476,10 +1476,10 @@
             this.panel5.PerformLayout();
             this.panel10.ResumeLayout(false);
             this.panel10.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.panel22.ResumeLayout(false);
             this.panel23.ResumeLayout(false);
+            this.panel22.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
             this.ResumeLayout(false);

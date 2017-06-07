@@ -10,10 +10,10 @@ using System.Windows.Forms;
 
 namespace ImageProcessToolBox
 {
-    public partial class AnalysisForm : Form
+    public partial class FormAnalysis : Form
     {
 
-        public AnalysisForm(Bitmap source)
+        public FormAnalysis(Bitmap source)
         {
             InitializeComponent();
 
