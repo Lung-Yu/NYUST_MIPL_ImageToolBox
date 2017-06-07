@@ -10,7 +10,7 @@ namespace ImageProcessToolBox
 {
     abstract class PointTemplate
     {
-        public Bitmap process(Bitmap srcBitmap)
+        protected Bitmap process(Bitmap srcBitmap)
         {
             int width = srcBitmap.Width;
             int height = srcBitmap.Height;

@@ -15,6 +15,11 @@ namespace ImageProcessToolBox
         private Bitmap _SourceImage;
         private int _K = 1;
         private int _IterationLevel = 10;
+
+        private byte[,] _CenterPoints;
+
+        
+
         public MachineLearing_KMeans(int k, int iterationLevel)
         {
             _K = k;
@@ -30,12 +35,12 @@ namespace ImageProcessToolBox
 
         public Bitmap Process()
         {
-            K_Means(_K, _IterationLevel, _SourceImage);
+            _CenterPoints = K_Means(_K, _IterationLevel, _SourceImage);
             return _SourceImage;
         }
 
 
-        private static void K_Means(int k, int iterationLevel, Bitmap bitmap)
+        private static byte[,] K_Means(int k, int iterationLevel, Bitmap bitmap)
         {
             int width = bitmap.Width;
             int height = bitmap.Height;
@@ -50,6 +55,9 @@ namespace ImageProcessToolBox
 
             //輸出檔案
             writeBitmap(bitmap, martix, ks);
+
+            //紀錄中心點
+            return ks;
         }
 
         private static byte[,] initializeK(int k)
@@ -305,10 +313,16 @@ namespace ImageProcessToolBox
             return (int)Math.Sqrt(dr + db + dg);
         }
 
-
+        
         public void setResouceImage(Bitmap bitmap)
         {
             _SourceImage = bitmap;
+        }
+
+        public byte[,] CenterPoints
+        {
+            get { return _CenterPoints; }
+            set { _CenterPoints = value; }
         }
     }
 

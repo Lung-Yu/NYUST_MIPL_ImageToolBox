@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ImageProcessToolBox.Analysis
+namespace ImageProcessToolBox.MedicalImageFinal
 {
     class ProjectionFactory
     {
@@ -18,20 +18,11 @@ namespace ImageProcessToolBox.Analysis
         private int Max_vertical = 0;
         private int _Threshold = 127;
 
-        public int Threshold
-        {
-            get { return _Threshold; }
-            set { _Threshold = value; }
-        }
+        
         private byte[,] _imageMap;
         private bool _IsInverse = false;
 
-        public bool IsInverse
-        {
-            get { return _IsInverse; }
-            set { _IsInverse = value; }
-        }
-
+        
         public ProjectionFactory(Bitmap src)
         {
             init(src);
@@ -152,6 +143,17 @@ namespace ImageProcessToolBox.Analysis
             for (int i = 0; i < _horizontal.Length; i++)
                 _horizontal[i] = (int)((((float)_horizontal[i]) / Max_horizontal) * 100);
             return _horizontal;
+        }
+
+        public bool IsInverse
+        {
+            get { return _IsInverse; }
+            set { _IsInverse = value; }
+        }
+        public int Threshold
+        {
+            get { return _Threshold; }
+            set { _Threshold = value; }
         }
     }
 

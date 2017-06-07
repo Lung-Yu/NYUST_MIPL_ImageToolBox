@@ -1,4 +1,6 @@
-﻿using ImageProcessToolBox.MedicalImageFinal;
+﻿using ImageProcessToolBox.Analysis;
+using ImageProcessToolBox.MedicalImageFinal;
+using ImageProcessToolBox.MedicalImageFinal;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -55,8 +57,51 @@ namespace ImageProcessToolBox
             ipro1.setResouceImage(src);
             Bitmap res1 = ipro1.Process();
 
+            IImageProcess ipro2 = new SpiltImage();
+            ipro2.setResouceImage(res1);
+            Bitmap res2 = ipro2.Process();
 
-            pictureBox5.Image = res1;
+            IImageProcess ipro3 = new MachineLearing_KMeans(3, 10);
+            ipro3.setResouceImage(res2);
+            Bitmap res3 = ipro3.Process();
+
+            byte[,] ks = ((MachineLearing_KMeans)ipro3).CenterPoints;
+
+            pictureBox6.Image = res3;
+
+            int maxIndex = rejectIndexByRow(res3, ks[2, 2]);
+            IImageProcess ipro3_1 = new BandRejectByRowIndex(0, maxIndex);
+            ipro3_1.setResouceImage(res3);
+            Bitmap res3_1 = ipro3_1.Process();
+
+            byte passVal = ks[1, 2];
+            IImageProcess ipro4 = new Bandpass(passVal, 0);
+            ipro4.setResouceImage(res3_1);
+            Bitmap res4 = ipro4.Process();
+
+            IImageProcess ipro5 = new MorphologyDilation();
+            ipro5.setResouceImage(res4);
+            Bitmap res5 = ipro5.Process();
+
+            pictureBox5.Image = res5;
+        }
+
+        private int rejectIndexByRow(Bitmap src, byte rejectVal)
+        {
+            ProjectionWithValue factory = new ProjectionWithValue(src, rejectVal);
+            int[] v = factory.getVerticalProject();
+            int range = v.Length / 4;
+            int Max = 0;
+            int Max_Index = 0;
+            for (int i = 0; i < range; i++)
+                if (Max < v[i])
+                {
+                    Max = v[i];
+                    Max_Index = i;
+                }
+
+
+            return Max_Index;
         }
 
         private Bitmap step4(Bitmap src)
@@ -65,10 +110,10 @@ namespace ImageProcessToolBox
 
             IImageProcess process = new MorphologyDilation();
             process.setResouceImage(src);
-            return Process(src, process, pictureBox4);;
+            return Process(src, process, pictureBox4); ;
         }
 
-        
+
         private Bitmap Process(Bitmap src, IImageProcess Iprocess, PictureBox show)
         {
             Iprocess.setResouceImage(src);

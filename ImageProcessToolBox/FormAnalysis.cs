@@ -1,4 +1,4 @@
-﻿using ImageProcessToolBox.Analysis;
+﻿using ImageProcessToolBox.MedicalImageFinal;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -31,10 +31,18 @@ namespace ImageProcessToolBox
         }
 
 
-        
+
         private void button1_Click(object sender, EventArgs e)
         {
-            Analysis();
+            try
+            {
+                Analysis();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            
         }
 
         private void Analysis()
@@ -110,6 +118,7 @@ namespace ImageProcessToolBox
 
         private void drawHorizontal(Graphics graphics, int[] projection)
         {
+
             Pen pen = new Pen(Color.Black, 1);
             pen.EndCap = System.Drawing.Drawing2D.LineCap.ArrowAnchor;  //EndCap設定 這支筆的結尾會是個箭頭 ArrowAnchor
 
@@ -132,6 +141,9 @@ namespace ImageProcessToolBox
                 else
                     valTemp += projection[x];
             }
+
+
+
         }
 
 
@@ -166,9 +178,9 @@ namespace ImageProcessToolBox
             pictureBox1.Image = new Negative(new Bitmap(pictureBox1.Image)).Process();
         }
 
-        
 
-        
+
+
 
 
     }

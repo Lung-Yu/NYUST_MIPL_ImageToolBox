@@ -61,6 +61,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Analysis\ProjectionFactory.cs" />
+    <Compile Include="Analysis\ProjectionWithValue.cs" />
+    <Compile Include="MedicalImageFinal\Bandpass.cs" />
+    <Compile Include="MedicalImageFinal\BandRejectByRow.cs" />
+    <Compile Include="MedicalImageFinal\BandRejectByRowIndex.cs" />
+    <Compile Include="MedicalImageFinal\ShitEdge.cs" />
     <Compile Include="FormAnalysis.cs">
       <SubType>Form</SubType>
     </Compile>
