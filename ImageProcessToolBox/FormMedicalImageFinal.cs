@@ -67,7 +67,7 @@ namespace ImageProcessToolBox
             ipro2.setResouceImage(res1_1);
             Bitmap res2 = ipro2.Process();
             //pictureBox1.Image = res2;
-            pictureBox1.Image = new Mosaic(10, res2).Process();
+            pictureBox1.Image = new Mosaic(5, res2).Process();
 
 
             //step 2
