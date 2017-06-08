@@ -23,7 +23,6 @@ namespace ImageProcessToolBox
             _imageSource = imgSrc;
             pictureBoxOriginal.Image = _imageSource;
             init();
-            process();
         }
         private Label[] labels;
         private PictureBox[] imageShow;
@@ -47,8 +46,100 @@ namespace ImageProcessToolBox
             //}
             //step4(src);
             //test6_ok(_imageSource);
-            test7(_imageSource);
+            test8(_imageSource);
         }
+        private void test8(Bitmap src)
+        {
+            IImageProcess action;
+            Bitmap res;
+            #region MedianFilter
+            action = new MedianFilter(15, 15);
+            action.setResouceImage(src);
+            res = action.Process();
+
+            pictureBox1.Image = res;
+            label1.Text = "Filters";
+            #endregion
+
+
+            #region k - means + bandPass
+            action = new MachineLearing_KMeans(3, 10);
+            action.setResouceImage(new Bitmap(res));
+            res = action.Process();
+
+            byte[,] cp = ((MachineLearing_KMeans)action).CenterPoints;
+            action = new Bandpass(cp[1, 2], 0);
+            action.setResouceImage(res);
+            res = action.Process();
+
+            pictureBox2.Image = res;
+            label2.Text = "means + bandPass";
+            #endregion
+
+
+            #region
+            int th = ImagePretreatment.ThresholdingIterativeWithR(src);
+
+            ProjectionFactory factory = new ProjectionFactory(src, th);
+            int[] v = factory.getVerticalProject();
+            int vEnd = 0, vStart = 0;
+            for (int i = v.Length - 1; i >= 300; --i)
+                if (v[i] == 0)
+                    vEnd = i;
+
+            factory = new ProjectionFactory(src, th);
+
+            v = factory.getVerticalProject();
+            for (int i = v.Length - 1; i >= 300; --i)
+                if (v[i] == 0)
+                    vEnd = i;
+
+            IImageProcess pre_action = new BitOf8PlaneSlicing(8);
+            pre_action.setResouceImage(src);
+            Bitmap pre_res = pre_action.Process();
+
+
+            factory = new ProjectionFactory(pre_res, 10);
+            v = factory.getVerticalProject();
+
+            int tmax = 0;
+            for (int i = 0; i < v.Length / 2; ++i)
+                if (v[i] >= tmax)
+                {
+                    tmax = v[i];
+                    vStart = i;
+                }
+            #endregion
+
+            #region mean-shift
+
+            action = new Transfor(ImagePretreatment.ThresholdingIterativeWithR(res));
+            action.setResouceImage(res);
+            res = action.Process();
+
+            Point[] initCenters = { new Point(src.Width / 4, vStart + (vEnd - vStart) / 2), new Point((src.Width / 4) * 3, vStart + (vEnd - vStart) / 2) };
+            List<Point> targetCenters = new List<Point>();
+
+            foreach (Point center in initCenters)
+            {
+                MachineLearing_MeanShift meanShit = new MachineLearing_MeanShift(50, cp[1, 2]);
+                meanShit.Center = center;
+                meanShit.setResouceImage(res);
+                meanShit.Process();
+                targetCenters.Add(meanShit.Center);
+            }
+
+            action = new ImageHighLight(targetCenters.ToArray());
+            //action = new ImageHighLight(initCenters);
+            action.setResouceImage(res);
+            Bitmap tt = action.Process();
+
+            pictureBox3.Image = tt;
+            label3.Text = "Mean-shit Hight liht";
+
+            #endregion
+        }
+
 
         private void test7(Bitmap src)
         {
@@ -85,8 +176,7 @@ namespace ImageProcessToolBox
             action = new BandPassByColIndex(vStart, vEnd);
             action.setResouceImage(src);
             res = action.Process();
-            pictureBox1.Image = res;
-            label1.Text = "vertical projection + 8Bit of PlaneSlicing";
+
             #endregion
 
             #region k - means + bandPass
@@ -99,8 +189,7 @@ namespace ImageProcessToolBox
             action.setResouceImage(res);
             res = action.Process();
 
-            label2.Text = "K-means + band-pass";
-            pictureBox2.Image = res;
+
             #endregion
 
             #region Horizontal Projection
@@ -130,24 +219,30 @@ namespace ImageProcessToolBox
             action = new BandPassByRowIndex(hStart, hEnd);
             action.setResouceImage(res);
             res = action.Process();
-            label3.Text = "Horizontal Projection";
-            pictureBox3.Image = res;
+            label1.Text = "vertical projection \n 8Bit of PlaneSlicing \n K-means + band-pass \n Horizontal Projection";
+            pictureBox1.Image = res;
+
+
             #endregion
 
             #region rectangleof Interested
             res = rectangleofInterested(src, res);
-            pictureBox4.Image = res;
-            label4.Text = "rectangleof Interested";
+            pictureBox2.Image = res;
+            label2.Text = "rectangleof Interested";
             #endregion
 
             #region filter
-            action = new MeanFilter(5, 5);
-            //action = new Mosaic(5, res);
-            action.setResouceImage(res);
-            res = action.Process();
+            for (int i = 0; i < 3; i++)
+            {
+                action = new MeanFilter(15, 15);
+                //action = new Mosaic(5, res);
+                action.setResouceImage(res);
+                res = action.Process();
 
-            pictureBox5.Image = res;
-            label5.Text = "Filters";
+                pictureBox3.Image = res;
+                label3.Text = "Filters";
+            }
+
             #endregion
 
 
@@ -162,52 +257,62 @@ namespace ImageProcessToolBox
             res = action.Process();
 
 
-            action = new Binarization(10);
-            action.setResouceImage(res);
-            res = action.Process();
+            //action = new Binarization(10);
+            //action.setResouceImage(res);
+            //res = action.Process();
 
-            //for (int i = 0; i < 2; i++)
+            //for (int i = 0; i < 5; i++)
             //{
-            //    action = new MedianFilter(5, 5);
+            //    action = new MorphologyErosion();
+            //    action.setResouceImage(res);
+            //    res = action.Process();
+            //    if (i % 5 == 0)
+            //    {
+            //        action = new MedianFilter(5, 5);
+            //        action.setResouceImage(res);
+            //        res = action.Process();
+            //    }
+
+            //}
+
+            //for (int i = 0; i < 5; i++)
+            //{
+            //    action = new MorphologyDilation();
             //    action.setResouceImage(res);
             //    res = action.Process();
             //}
 
-            //action = new Negative();
-            //action.setResouceImage(res);
-            //res = action.Process();
-
-            for (int i = 0; i < 5; i++)
-            {
-                action = new MorphologyErosion();
-                action.setResouceImage(res);
-                res = action.Process();
-                if (i % 5 == 0)
-                {
-                    action = new MedianFilter(5, 5);
-                    action.setResouceImage(res);
-                    res = action.Process();
-                }
-
-            }
-
-            for (int i = 0; i < 5; i++)
-            {
-                action = new MorphologyDilation();
-                action.setResouceImage(res);
-                res = action.Process();
-            }
-
             MakeImageFrame ans = new MakeImageFrame(src, res);
-
-            pictureBox6.Image = ans.Process(); 
+            pictureBox6.Image = ans.Process();
             label6.Text = "3-means";
 
             #endregion
 
+            #region high light
+            action = new Transfor(ImagePretreatment.ThresholdingIterativeWithR(res));
+            action.setResouceImage(res);
+            res = action.Process();
 
+            Point[] initCenters = { new Point((hEnd - hStart) / 4, vStart + (vEnd - vStart) / 2), new Point(((hEnd - hStart) / 4) * 3, vStart + (vEnd - vStart) / 2) };
+            List<Point> targetCenters = new List<Point>();
 
+            foreach (Point center in initCenters)
+            {
+                MachineLearing_MeanShift meanShit = new MachineLearing_MeanShift(50, cp[1, 2]);
+                meanShit.Center = center;
+                meanShit.setResouceImage(res);
+                meanShit.Process();
+                targetCenters.Add(meanShit.Center);
+            }
 
+            action = new ImageHighLight(targetCenters.ToArray());
+            //action = new ImageHighLight(initCenters);
+            action.setResouceImage(res);
+            Bitmap tt = action.Process();
+
+            pictureBox4.Image = tt;
+            label4.Text = "Mean-shit Hight";
+            #endregion
         }
 
         private void test6_ok(Bitmap src)
@@ -529,6 +634,17 @@ namespace ImageProcessToolBox
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+        }
+
+        private void btnCalc_Click(object sender, EventArgs e)
+        {
+            btnCalc.Enabled = false;
+
+            test7(_imageSource);
+
+
+            btnCalc.Enabled = true;
+            MessageBox.Show("完成");
         }
 
 

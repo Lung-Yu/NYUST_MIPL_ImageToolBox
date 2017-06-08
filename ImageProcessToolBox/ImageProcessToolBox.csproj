@@ -62,6 +62,12 @@
   <ItemGroup>
     <Compile Include="Analysis\ProjectionFactory.cs" />
     <Compile Include="Analysis\ProjectionWithValue.cs" />
+    <Compile Include="FormShowImage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormShowImage.Designer.cs">
+      <DependentUpon>FormShowImage.cs</DependentUpon>
+    </Compile>
     <Compile Include="MachineLearing_MeanShift.cs" />
     <Compile Include="MedicalImageFinal\Bandpass.cs" />
     <Compile Include="MedicalImageFinal\BandPassByColIndex.cs" />
@@ -71,6 +77,7 @@
     <Compile Include="MedicalImageFinal\BandRejectByRowIndex.cs" />
     <Compile Include="MedicalImageFinal\Dilation.cs" />
     <Compile Include="MedicalImageFinal\Erosion.cs" />
+    <Compile Include="MedicalImageFinal\ImageHighLight.cs" />
     <Compile Include="MedicalImageFinal\MakeImageFrame.cs" />
     <Compile Include="MedicalImageFinal\ShitEdge.cs" />
     <Compile Include="FormAnalysis.cs">
@@ -160,6 +167,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormMedicalImageFinal.resx">
       <DependentUpon>FormMedicalImageFinal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormShowImage.resx">
+      <DependentUpon>FormShowImage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

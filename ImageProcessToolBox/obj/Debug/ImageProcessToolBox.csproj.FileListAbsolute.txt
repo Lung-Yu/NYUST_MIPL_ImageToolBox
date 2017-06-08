@@ -45,3 +45,4 @@ C:\Users\lungyu\Documents\GitHub\ImageToolBox\ImageProcessToolBox\obj\Debug\Imag
 C:\Users\lungyu\Documents\GitHub\ImageToolBox\ImageProcessToolBox\obj\Debug\ImageProcessToolBox.csprojResolveAssemblyReference.cache
 C:\Users\lungyu\Documents\GitHub\ImageToolBox\ImageProcessToolBox\obj\Debug\ImageProcessToolBox.FormAnalysis.resources
 C:\Users\lungyu\Documents\GitHub\ImageToolBox\ImageProcessToolBox\obj\Debug\ImageProcessToolBox.FormMedicalImageFinal.resources
+C:\Users\lungyu\Documents\GitHub\ImageToolBox\ImageProcessToolBox\obj\Debug\ImageProcessToolBox.FormShowImage.resources

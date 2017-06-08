@@ -178,6 +178,12 @@ namespace ImageProcessToolBox
             pictureBox1.Image = new Negative(new Bitmap(pictureBox1.Image)).Process();
         }
 
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            Form action = new FormShowImage(new Bitmap(pictureBox1.Image));
+            action.Show();
+        }
+
 
 
 
