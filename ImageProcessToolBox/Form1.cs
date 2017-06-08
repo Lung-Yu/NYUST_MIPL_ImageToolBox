@@ -617,6 +617,12 @@ namespace ImageProcessToolBox
             actions(new DiscreteFourierTransform(), "Discrete Fourier Transform");
         }
 
+        private void btnMeanShift_Click(object sender, EventArgs e)
+        {
+            int d = int.Parse(textBox1.Text);
+            actions(new MachineLearing_MeanShift(d), "Mean Shift");
+        }
+
         
 
        

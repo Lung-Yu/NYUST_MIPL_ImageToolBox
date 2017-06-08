@@ -62,6 +62,7 @@
   <ItemGroup>
     <Compile Include="Analysis\ProjectionFactory.cs" />
     <Compile Include="Analysis\ProjectionWithValue.cs" />
+    <Compile Include="MachineLearing_MeanShift.cs" />
     <Compile Include="MedicalImageFinal\Bandpass.cs" />
     <Compile Include="MedicalImageFinal\BandPassByColIndex.cs" />
     <Compile Include="MedicalImageFinal\BandPassByRowIndex.cs" />
