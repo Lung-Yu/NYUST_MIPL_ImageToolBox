@@ -17,6 +17,11 @@ namespace ImageProcessToolBox
 
         }
 
+        public Mosaic(int effectWidth)
+        {
+            _EffectWidth = effectWidth;
+        }
+
         public Mosaic(Bitmap bitmap)
         {
             _SourceImage = bitmap;

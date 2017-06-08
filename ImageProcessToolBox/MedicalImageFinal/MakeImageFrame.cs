@@ -76,8 +76,6 @@ namespace ImageProcessToolBox.MedicalImageFinal
 
                 for (int y = 0; y < height; y++)
                 {
-                    int count = 0;
-                    int size = 0;
                     for (int x = 0; x < width; x++, srcP += 3, dstP += 3)
                     {
                         if (_imageMap[x, y] > 0)

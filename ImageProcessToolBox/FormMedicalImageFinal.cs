@@ -46,10 +46,171 @@ namespace ImageProcessToolBox
             //    src = Process(src, iProcess[i], imageShow[i]);
             //}
             //step4(src);
-            test6(_imageSource);
+            //test6_ok(_imageSource);
+            test7(_imageSource);
         }
 
-        private void test6(Bitmap src)
+        private void test7(Bitmap src)
+        {
+            //step 1
+            IImageProcess action;
+            Bitmap res;
+
+            #region BandPassByCol
+
+            int th = ImagePretreatment.ThresholdingIterativeWithR(src);
+            ProjectionFactory factory = new ProjectionFactory(src, th);
+            int[] v = factory.getVerticalProject();
+            int vEnd = 0, vStart = 0;
+            for (int i = v.Length - 1; i >= 300; --i)
+                if (v[i] == 0)
+                    vEnd = i;
+
+            action = new BitOf8PlaneSlicing(8);
+            action.setResouceImage(src);
+            res = action.Process();
+
+
+            factory = new ProjectionFactory(res, 10);
+            v = factory.getVerticalProject();
+
+            int tmax = 0;
+            for (int i = 0; i < v.Length / 2; ++i)
+                if (v[i] >= tmax)
+                {
+                    tmax = v[i];
+                    vStart = i;
+                }
+
+            action = new BandPassByColIndex(vStart, vEnd);
+            action.setResouceImage(src);
+            res = action.Process();
+            pictureBox1.Image = res;
+            label1.Text = "vertical projection + 8Bit of PlaneSlicing";
+            #endregion
+
+            #region k - means + bandPass
+            action = new MachineLearing_KMeans(3, 10);
+            action.setResouceImage(new Bitmap(res));
+            res = action.Process();
+
+            byte[,] cp = ((MachineLearing_KMeans)action).CenterPoints;
+            action = new Bandpass(cp[1, 2], 0);
+            action.setResouceImage(res);
+            res = action.Process();
+
+            label2.Text = "K-means + band-pass";
+            pictureBox2.Image = res;
+            #endregion
+
+            #region Horizontal Projection
+            th = ImagePretreatment.ThresholdingIterativeWithR(src);
+            factory = new ProjectionFactory(res, th);
+            int[] h = factory.getHorizontalProject();
+
+            int hStart = 0, hEnd = 0;
+            for (int i = 50; i >= 0; i--)
+                if (h[i] == 0)
+                {
+                    hStart = i;
+                    break;
+                }
+            if (h.Length > 300)
+            {
+                for (int i = 600; i < h.Length; i++)
+                    if (h[i] == 0)
+                    {
+                        hEnd = i;
+                        break;
+                    }
+            }
+            else
+                hEnd = h.Length - 1;
+
+            action = new BandPassByRowIndex(hStart, hEnd);
+            action.setResouceImage(res);
+            res = action.Process();
+            label3.Text = "Horizontal Projection";
+            pictureBox3.Image = res;
+            #endregion
+
+            #region rectangleof Interested
+            res = rectangleofInterested(src, res);
+            pictureBox4.Image = res;
+            label4.Text = "rectangleof Interested";
+            #endregion
+
+            #region filter
+            action = new MeanFilter(5, 5);
+            //action = new Mosaic(5, res);
+            action.setResouceImage(res);
+            res = action.Process();
+
+            pictureBox5.Image = res;
+            label5.Text = "Filters";
+            #endregion
+
+
+            #region 3-means
+            action = new MachineLearing_KMeans(3, 10);
+            action.setResouceImage(new Bitmap(res));
+            res = action.Process();
+
+            cp = ((MachineLearing_KMeans)action).CenterPoints;
+            action = new Bandpass(cp[1, 2], 0);
+            action.setResouceImage(res);
+            res = action.Process();
+
+
+            action = new Binarization(10);
+            action.setResouceImage(res);
+            res = action.Process();
+
+            //for (int i = 0; i < 2; i++)
+            //{
+            //    action = new MedianFilter(5, 5);
+            //    action.setResouceImage(res);
+            //    res = action.Process();
+            //}
+
+            //action = new Negative();
+            //action.setResouceImage(res);
+            //res = action.Process();
+
+            for (int i = 0; i < 5; i++)
+            {
+                action = new MorphologyErosion();
+                action.setResouceImage(res);
+                res = action.Process();
+                if (i % 5 == 0)
+                {
+                    action = new MedianFilter(5, 5);
+                    action.setResouceImage(res);
+                    res = action.Process();
+                }
+
+            }
+
+            for (int i = 0; i < 5; i++)
+            {
+                action = new MorphologyDilation();
+                action.setResouceImage(res);
+                res = action.Process();
+            }
+
+            MakeImageFrame ans = new MakeImageFrame(src, res);
+
+            pictureBox6.Image = ans.Process(); 
+            label6.Text = "3-means";
+
+            #endregion
+
+
+
+
+        }
+
+        private void test6_ok(Bitmap src)
         {
             label5.Text = "Step 6 : Ans";
 
