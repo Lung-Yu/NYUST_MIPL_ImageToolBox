@@ -147,7 +147,7 @@
             this.panel6 = new System.Windows.Forms.Panel();
             this.panel27 = new System.Windows.Forms.Panel();
             this.label16 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnThyroid = new System.Windows.Forms.Button();
             labelMean = new System.Windows.Forms.Label();
             labelStandardDeviation = new System.Windows.Forms.Label();
             this.panel3.SuspendLayout();
@@ -1442,7 +1442,7 @@
             // panel27
             // 
             this.panel27.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.panel27.Controls.Add(this.button1);
+            this.panel27.Controls.Add(this.btnThyroid);
             this.panel27.Controls.Add(this.label16);
             this.panel27.Location = new System.Drawing.Point(4, 674);
             this.panel27.Name = "panel27";
@@ -1459,14 +1459,15 @@
             this.label16.TabIndex = 16;
             this.label16.Text = "醫學影像處理";
             // 
-            // button1
+            // btnThyroid
             // 
-            this.button1.Location = new System.Drawing.Point(174, 13);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(83, 50);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "K Means";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnThyroid.Location = new System.Drawing.Point(174, 13);
+            this.btnThyroid.Name = "btnThyroid";
+            this.btnThyroid.Size = new System.Drawing.Size(83, 50);
+            this.btnThyroid.TabIndex = 4;
+            this.btnThyroid.Text = "Thyroid";
+            this.btnThyroid.UseVisualStyleBackColor = true;
+            this.btnThyroid.Click += new System.EventHandler(this.btnThyroid_Click);
             // 
             // Form1
             // 
@@ -1639,7 +1640,7 @@
         private System.Windows.Forms.Button btnRestore;
         private System.Windows.Forms.Button btnAnalysis;
         private System.Windows.Forms.Panel panel27;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnThyroid;
         private System.Windows.Forms.Label label16;
     }
 }

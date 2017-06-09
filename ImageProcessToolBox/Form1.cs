@@ -546,15 +546,15 @@ namespace ImageProcessToolBox
             //actions(new FinalProject(), "Final Project");
             //new ReaderTextFile();
 
-            if (pictureBox1.Image == null)
-            {
-                MessageBox.Show("請先開啟圖片方可進行分析");
-                return;
-            }
+            //if (pictureBox1.Image == null)
+            //{
+            //    MessageBox.Show("請先開啟圖片方可進行分析");
+            //    return;
+            //}
 
-            Bitmap imageSource = new Bitmap(pictureBox1.Image);
-            Form form = new FormMedicalImageFinal(imageSource);
-            form.Show();
+            //Bitmap imageSource = new Bitmap(pictureBox1.Image);
+            //Form form = new FormMedicalImageFinal(imageSource);
+            //form.Show();
         }
 
         private void btnVertical_Click(object sender, EventArgs e)
@@ -623,9 +623,17 @@ namespace ImageProcessToolBox
             //actions(new MachineLearing_MeanShift(d), "Mean Shift");
         }
 
-        
+        private void btnThyroid_Click(object sender, EventArgs e)
+        {
+            if (pictureBox1.Image == null)
+            {
+                MessageBox.Show("請先開啟圖片方可進行分析");
+                return;
+            }
 
-       
-
+            Bitmap imageSource = new Bitmap(pictureBox1.Image);
+            Form form = new FormMedicalImageFinal(imageSource);
+            form.Show();
+        }
     }
 }
