@@ -80,6 +80,7 @@
     <Compile Include="MedicalImageFinal\Erosion.cs" />
     <Compile Include="MedicalImageFinal\ImageHighLight.cs" />
     <Compile Include="MedicalImageFinal\MakeImageFrame.cs" />
+    <Compile Include="MedicalImageFinal\RegionGrowpIn.cs" />
     <Compile Include="MedicalImageFinal\ShitEdge.cs" />
     <Compile Include="FormAnalysis.cs">
       <SubType>Form</SubType>

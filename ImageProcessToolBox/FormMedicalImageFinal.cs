@@ -256,42 +256,16 @@ namespace ImageProcessToolBox
             action.setResouceImage(res);
             res = action.Process();
 
-
-            //action = new Binarization(10);
-            //action.setResouceImage(res);
-            //res = action.Process();
-
-            //for (int i = 0; i < 5; i++)
-            //{
-            //    action = new MorphologyErosion();
-            //    action.setResouceImage(res);
-            //    res = action.Process();
-            //    if (i % 5 == 0)
-            //    {
-            //        action = new MedianFilter(5, 5);
-            //        action.setResouceImage(res);
-            //        res = action.Process();
-            //    }
-
-            //}
-
-            //for (int i = 0; i < 5; i++)
-            //{
-            //    action = new MorphologyDilation();
-            //    action.setResouceImage(res);
-            //    res = action.Process();
-            //}
-
             MakeImageFrame ans = new MakeImageFrame(src, res);
             pictureBox6.Image = ans.Process();
             label6.Text = "3-means";
 
             #endregion
 
-            IImageProcess tAction = new DilationWithValue(cp[1, 2],21,21);
+            IImageProcess tAction = new DilationWithValue(cp[1, 2], 21, 21);
             tAction.setResouceImage(new Bitmap(pictureBox2.Image));
-            
-            
+
+
             pictureBox5.Image = new MakeImageFrame(src, tAction.Process()).Process();
             label5.Text = "Test Dilation ";
 
@@ -320,6 +294,23 @@ namespace ImageProcessToolBox
 
             pictureBox4.Image = tt;
             label4.Text = "Mean-shit Hight";
+            #endregion
+            RegionGrowpIn growpIn = new RegionGrowpIn(targetCenters[0]);
+            MachineLearing_KMeans MachineLearing_KMeans = new MachineLearing_KMeans(3, 10);
+            MachineLearing_KMeans.setResouceImage(new Bitmap(pictureBox3.Image));
+
+            growpIn.setResouceImage(MachineLearing_KMeans.Process());
+            Bitmap grownRes = growpIn.Process();
+
+            Binarization binarization = new Binarization(254);
+            binarization.setResouceImage(grownRes);
+            Bitmap finalFrame = binarization.Process();
+
+            MakeImageFrame makeImageFrame = new MakeImageFrame(src, finalFrame);
+            pictureBox7.Image = makeImageFrame.Process();
+            label6.Text = "K-mean + Mean-shift";
+            #region growp in
+
             #endregion
         }
 
@@ -581,12 +572,12 @@ namespace ImageProcessToolBox
 
             if (((PictureBox)sender).Image == null)
             {
-                MessageBox.Show("請先開啟圖片方可進行分析");
+                MessageBox.Show("無法開啟影像");
                 return;
             }
 
             Bitmap imageSource = new Bitmap(((PictureBox)sender).Image);
-            Form form = new FormAnalysis(imageSource);
+            Form form = new FormShowImage(imageSource);
             form.Show();
         }
 
