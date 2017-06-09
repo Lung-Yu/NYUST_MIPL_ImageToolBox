@@ -412,9 +412,9 @@ namespace ImageProcessToolBox
         {
             btnCalc.Enabled = false;
 
-            test7(_imageSource);
+            //test7(_imageSource);
 
-            //final(_imageSource);
+            final(_imageSource);
             btnCalc.Enabled = true;
             MessageBox.Show("完成");
         }
@@ -447,7 +447,7 @@ namespace ImageProcessToolBox
             label2.Text = "Mean-shift";
 
 
-            MedianFilter medianFilter = new MedianFilter(25, 25);
+            MedianFilter medianFilter = new MedianFilter(20, 20);
             medianFilter.setResouceImage(kmean_Result);
             Bitmap medianFilterRes = medianFilter.Process();
             pictureBox3.Image = medianFilterRes;

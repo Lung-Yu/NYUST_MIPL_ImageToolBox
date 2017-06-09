@@ -66,7 +66,7 @@ namespace ImageProcessToolBox.MedicalImageFinal
                     tX = p.X;
                     tY = p.Y;
 
-                    if (tX < 0 || tX > _width || tY < 0 || tY > _height)
+                    if (tX < 0 || tX >= _width || tY < 0 || tY >= _height)
                         continue;
                     byte compVal = _imgMap[tX, tY];
                     if (compVal == target)
