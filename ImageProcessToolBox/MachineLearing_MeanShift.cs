@@ -14,7 +14,7 @@ namespace ImageProcessToolBox
 
         private int _distance = 0;
         private int _targetVal = 26;
-        private int _IterationLevel = 100;
+        private int _IterationLevel = 1000;
 
         private Point _center = new Point(-1, -1);
         private int _width = 0;
@@ -49,37 +49,59 @@ namespace ImageProcessToolBox
                 setDefalut();
 
             int executeCount = 0;
+            int shiftX = 0;
+            int shiftY = 0;
 
-            Point shiftVector = new Point(0, 0);
+            List<Point> shiftVectors = new List<Point>();
             do
             {
-                shiftVector = new Point(0, 0);
+                shiftVectors.Clear();
+
                 for (int y = 0; y < _height; y++)
                 {
                     for (int x = 0; x < _width; x++)
                     {
-                        int d = (int)Math.Sqrt((x - _center.X) * (x - _center.X) + (y - _center.Y) * (y - _center.Y));
+
                         int temTarget = _imgMap[y, x, 0];
-                        if (d <= _distance && temTarget != 0)
+
+                        if (temTarget != _targetVal)
+                            continue;
+
+                        int d = (int)Math.Sqrt((x - _center.X) * (x - _center.X) + (y - _center.Y) * (y - _center.Y));
+
+                        if (d <= _distance)
                         {
-                            Point p = new Point(x, y);
+                            int shift_X = x - _center.X;
+                            int shift_Y = y - _center.Y;
 
-                            int shiftX = p.X - _center.X;
-                            int shiftY = p.Y - _center.Y;
-
-                            shiftVector.X = (shiftX + shiftVector.X) / 2;
-                            shiftVector.Y = (shiftY + shiftVector.Y) / 2;
+                            shiftVectors.Add(new Point(shift_X, shift_Y));
                         }
                     }
                 }
 
-                _center.X = (_center.X + shiftVector.X);
-                _center.Y = (_center.Y + shiftVector.Y);
 
-            } while (++executeCount < _IterationLevel && isShift(shiftVector));
+                shiftX = 0;
+                shiftY = 0;
+                foreach (Point p in shiftVectors)
+                {
+                    shiftX += p.X;
+                    shiftY += p.Y;
+                }
+
+                shiftX = shiftX / shiftVectors.Count;
+                shiftY = shiftY / shiftVectors.Count;
+
+                _center.X = (_center.X + shiftX);
+                _center.Y = (_center.Y + shiftY);
+
+            } while (++executeCount < _IterationLevel && isShift(new Point(shiftX, shiftY)));
+
+            //_center.X -= (_distance / 2);
+            //_center.Y -= (_distance / 2);
 
             Console.WriteLine(_center);
         }
+
 
         private bool isShift(Point shiftVector)
         {

@@ -232,9 +232,9 @@ namespace ImageProcessToolBox
             #endregion
 
             #region filter
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < 1; i++)
             {
-                action = new MeanFilter(15, 15);
+                action = new MedianFilter(15, 15);
                 //action = new Mosaic(5, res);
                 action.setResouceImage(res);
                 res = action.Process();
@@ -288,17 +288,25 @@ namespace ImageProcessToolBox
 
             #endregion
 
+            IImageProcess tAction = new DilationWithValue(cp[1, 2],21,21);
+            tAction.setResouceImage(new Bitmap(pictureBox2.Image));
+            
+            
+            pictureBox5.Image = new MakeImageFrame(src, tAction.Process()).Process();
+            label5.Text = "Test Dilation ";
+
+
             #region high light
-            action = new Transfor(ImagePretreatment.ThresholdingIterativeWithR(res));
-            action.setResouceImage(res);
-            res = action.Process();
+            //action = new Transfor(ImagePretreatment.ThresholdingIterativeWithR(res));
+            //action.setResouceImage(res);
+            //res = action.Process();
 
             Point[] initCenters = { new Point((hEnd - hStart) / 4, vStart + (vEnd - vStart) / 2), new Point(((hEnd - hStart) / 4) * 3, vStart + (vEnd - vStart) / 2) };
             List<Point> targetCenters = new List<Point>();
 
             foreach (Point center in initCenters)
             {
-                MachineLearing_MeanShift meanShit = new MachineLearing_MeanShift(50, cp[1, 2]);
+                MachineLearing_MeanShift meanShit = new MachineLearing_MeanShift(150, cp[1, 2]);
                 meanShit.Center = center;
                 meanShit.setResouceImage(res);
                 meanShit.Process();
