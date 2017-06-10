@@ -62,6 +62,7 @@
   <ItemGroup>
     <Compile Include="Analysis\ProjectionFactory.cs" />
     <Compile Include="Analysis\ProjectionWithValue.cs" />
+    <Compile Include="CutHW.cs" />
     <Compile Include="FormShowImage.cs">
       <SubType>Form</SubType>
     </Compile>

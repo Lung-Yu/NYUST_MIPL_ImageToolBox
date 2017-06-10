@@ -555,6 +555,8 @@ namespace ImageProcessToolBox
             //Bitmap imageSource = new Bitmap(pictureBox1.Image);
             //Form form = new FormMedicalImageFinal(imageSource);
             //form.Show();
+
+            actions(new CutHW(), "CutHW Left");
         }
 
         private void btnVertical_Click(object sender, EventArgs e)
