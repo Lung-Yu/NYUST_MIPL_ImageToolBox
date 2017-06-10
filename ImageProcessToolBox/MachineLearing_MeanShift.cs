@@ -88,8 +88,11 @@ namespace ImageProcessToolBox
                     shiftY += p.Y;
                 }
 
-                shiftX = shiftX / shiftVectors.Count;
-                shiftY = shiftY / shiftVectors.Count;
+                if (shiftVectors.Count != 0)
+                {
+                    shiftX = shiftX / shiftVectors.Count;
+                    shiftY = shiftY / shiftVectors.Count;
+                }
 
                 _center.X = (_center.X + shiftX);
                 _center.Y = (_center.Y + shiftY);

@@ -433,7 +433,7 @@ namespace ImageProcessToolBox
 
             foreach (Point center in initCenters)
             {
-                MachineLearing_MeanShift meanShit = new MachineLearing_MeanShift(150, kmean.CenterPoints[1, 2]);
+                MachineLearing_MeanShift meanShit = new MachineLearing_MeanShift(50, kmean.CenterPoints[1, 2]);
                 meanShit.Center = center;
                 meanShit.setResouceImage(kmean_Result);
                 meanShit.Process();
@@ -447,18 +447,15 @@ namespace ImageProcessToolBox
             label2.Text = "Mean-shift";
 
 
-            MedianFilter medianFilter = new MedianFilter(20, 20);
+            MedianFilter medianFilter = new MedianFilter(25, 25);
             medianFilter.setResouceImage(kmean_Result);
             Bitmap medianFilterRes = medianFilter.Process();
             pictureBox3.Image = medianFilterRes;
             label3.Text = "MedianFilter - 5*5";
 
 
-            kmean.setResouceImage(medianFilterRes);
-
-
-            RegionGrowpIn growpIn = new RegionGrowpIn(targetCenters[0]);
-            growpIn.setResouceImage(kmean.Process());
+            RegionGrowpIn growpIn = new RegionGrowpIn(targetCenters);
+            growpIn.setResouceImage(medianFilterRes);
             Bitmap grownRes = growpIn.Process();
 
             Binarization binarization = new Binarization(254);
@@ -625,7 +622,7 @@ namespace ImageProcessToolBox
             pictureBox4.Image = tt;
             label4.Text = "Mean-shit Hight";
             #endregion
-            RegionGrowpIn growpIn = new RegionGrowpIn(targetCenters[0]);
+            RegionGrowpIn growpIn = new RegionGrowpIn(targetCenters);
             MachineLearing_KMeans MachineLearing_KMeans = new MachineLearing_KMeans(3, 10);
             MachineLearing_KMeans.setResouceImage(new Bitmap(pictureBox3.Image));
 
