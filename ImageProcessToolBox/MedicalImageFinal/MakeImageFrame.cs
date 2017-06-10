@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ImageProcessToolBox.Analysis;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Imaging;
@@ -13,24 +14,50 @@ namespace ImageProcessToolBox.MedicalImageFinal
         private Bitmap _srcImage;
         private Bitmap _frameImg;
 
-        private byte[,] _imageMap;
+        private byte[,] _frameImageMap;
+        private byte[,] _srcImageMap;
+
 
         public MakeImageFrame(Bitmap src, Bitmap frame)
         {
-            IImageProcess action = new Sobel();
+            IImageProcess action = new Laplacian();
             action.setResouceImage(frame);
             _frameImg = action.Process();
 
-            //action = new Erosion();
-            //action.setResouceImage(_frameImg);
-            //_frameImg = action.Process();
 
-            _imageMap = new byte[src.Width, src.Height];
+            _frameImageMap = new byte[src.Width, src.Height];
+            _srcImageMap = new byte[src.Width, src.Height];
             _srcImage = src;
-            _extraImage();
+            _extraFrameImage();
         }
 
-        private void _extraImage()
+        private void _extraSrcImage()
+        {
+            int width = _srcImage.Width;
+            int height = _srcImage.Height;
+
+            System.IntPtr srcScan;
+            BitmapData srcBmData;
+            ImageExtract.InitPonitMethod(_srcImage, width, height, out srcScan, out srcBmData);
+
+            unsafe
+            {
+                byte* srcP = (byte*)srcScan;
+                int srcOffset = srcBmData.Stride - width * 3;
+
+                for (int y = 0; y < height; y++)
+                {
+                    for (int x = 0; x < width; x++, srcP += 3)
+                    {
+                        _srcImageMap[x, y] = srcP[2];
+                    }
+                    srcP += srcOffset;
+                }
+            }
+            _srcImage.UnlockBits(srcBmData);
+        }
+
+        private void _extraFrameImage()
         {
             int width = _frameImg.Width;
             int height = _frameImg.Height;
@@ -49,7 +76,7 @@ namespace ImageProcessToolBox.MedicalImageFinal
                     for (int x = 0; x < width; x++, srcP += 3)
                     {
                         //byte gray = (byte)(.299 * srcP[2] + .587 * srcP[1] + .114 * srcP[0]);
-                        _imageMap[x, y] = srcP[2];
+                        _frameImageMap[x, y] = srcP[2];
                     }
                     srcP += srcOffset;
                 }
@@ -78,7 +105,7 @@ namespace ImageProcessToolBox.MedicalImageFinal
                 {
                     for (int x = 0; x < width; x++, srcP += 3, dstP += 3)
                     {
-                        if (_imageMap[x, y] > 0)
+                        if (_frameImageMap[x, y] > 0)
                         {
                             dstP[0] = 200;
                             dstP[1] = 255;

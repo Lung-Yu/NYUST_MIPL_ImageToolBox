@@ -7,13 +7,14 @@ using System.Threading.Tasks;
 
 namespace ImageProcessToolBox.MedicalImageFinal
 {
-    class DilationWithValue :FilterTemplate, IImageProcess
+    class ErosionWithValue:FilterTemplate, IImageProcess
     {
         private Bitmap _SourceImage;
         private int _efficWidth;
         private int _efficHeight;
         private int _targetVal = 0;
-        public DilationWithValue(byte val, int efficWidth, int efficHeight)
+
+        public ErosionWithValue(byte val, int efficWidth, int efficHeight)
         {
             _targetVal = val;
             _efficWidth = efficWidth;
@@ -28,16 +29,14 @@ namespace ImageProcessToolBox.MedicalImageFinal
         
         protected override byte maskFilter(byte[] gate)
         {
-            bool Is = false;  //假設其符合條件
+            bool Is = true;  //假設其符合條件
 
             foreach (byte item in gate)
-                if (item == _targetVal)
+                if (item != _targetVal)
                 {
-                    Is = true;
+                    Is = false;
                     break;
                 }
-                    
-            //return (byte)((Is) ? 0 : gate[gate.Length / 2]);
             return (byte)((Is) ? _targetVal : 0);
         }
 

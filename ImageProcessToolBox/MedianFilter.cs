@@ -41,9 +41,14 @@ namespace ImageProcessToolBox
         
         protected override byte maskFilter(byte[] gate)
         {
-            Heap heap = new Heap(gate, gate.Length);
-            heap.heapsort();
-            return (byte)heap.get()[gate.Length / 2];
+            //Heap heap = new Heap(gate, gate.Length);
+            //heap.heapsort();
+            //return (byte)heap.get()[gate.Length / 2];
+            //Console.Write((byte)heap.get()[gate.Length / 2]);
+
+            Array.Sort(gate);
+            //Console.Write((byte)(gate[gate.Length / 2]));
+            return gate[gate.Length / 2];
         }
 
         public void setResouceImage(Bitmap bitmap)

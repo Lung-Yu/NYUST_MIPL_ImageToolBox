@@ -421,23 +421,43 @@ namespace ImageProcessToolBox
 
         private void final(Bitmap src)
         {
-            MeanFilter meanFilter = new MeanFilter(25, 25);
-            meanFilter.setResouceImage(src);
-            Bitmap MeanRes = meanFilter.Process();
+            BitOf8PlaneSlicing bitPlane = new BitOf8PlaneSlicing(8);
+            bitPlane.setResouceImage(src);
+            Bitmap bitPlansRes = bitPlane.Process();
+            label1.Text = "meanFilter && 8-bit";
+            pictureBox1.Image = bitPlansRes;
 
-            MachineLearing_KMeans kmean = new MachineLearing_KMeans(3, 20);
-            kmean.setResouceImage(MeanRes);
+            int vStart = getBandPassVerticalStart(bitPlansRes);
+            BandRejectByColIndex bandPassByColIndex = new BandRejectByColIndex(0,vStart);
+            bandPassByColIndex.setResouceImage(src);
+            Bitmap bandpassRes = bandPassByColIndex.Process();
+            pictureBox2.Image = bandpassRes;
+            label2.Text = "Band Pass";
+
+            MedianFilter medianFilter = new MedianFilter(5, 15);
+            medianFilter.setResouceImage(bandpassRes);
+            Bitmap MedianRes = medianFilter.Process();
+            pictureBox3.Image = MedianRes;
+            label3.Text = "MedianFilter";
+
+
+            MachineLearing_KMeans kmean = new MachineLearing_KMeans(3, 10);
+            kmean.setResouceImage(new Bitmap(MedianRes));
             Bitmap kmean_Result = kmean.Process();
-            label1.Text = "k-Means";
-            pictureBox1.Image = kmean_Result;
+            label4.Text = "k-Means";
+            pictureBox4.Image = kmean_Result;
 
+            
+
+            //label4.Text = "(Dilation + Erosion)*5";
+            //pictureBox4.Image = closeRes;
 
             Point[] initCenters = { new Point(src.Width / 2, src.Height / 2) };
             List<Point> targetCenters = new List<Point>();
 
             foreach (Point center in initCenters)
             {
-                MachineLearing_MeanShift meanShit = new MachineLearing_MeanShift(50, kmean.CenterPoints[1, 2]);
+                MachineLearing_MeanShift meanShit = new MachineLearing_MeanShift(100, kmean.CenterPoints[1, 2]);
                 meanShit.Center = center;
                 meanShit.setResouceImage(kmean_Result);
                 meanShit.Process();
@@ -447,31 +467,43 @@ namespace ImageProcessToolBox
             ImageHighLight imgHighLiht = new ImageHighLight(targetCenters.ToArray());
             imgHighLiht.setResouceImage(kmean_Result);
             Bitmap meanShiftVisz = imgHighLiht.Process();
-            pictureBox2.Image = meanShiftVisz;
-            label2.Text = "Mean-shift";
-
-
-            //MedianFilter medianFilter = new MedianFilter(25, 25);
-            //medianFilter.setResouceImage(kmean_Result);
-            //Bitmap medianFilterRes = medianFilter.Process();
-            //pictureBox3.Image = medianFilterRes;
-            //label3.Text = "MedianFilter - 5*5";
+            pictureBox5.Image = meanShiftVisz;
+            label5.Text = "Mean-shift";
 
 
             RegionGrowpIn growpIn = new RegionGrowpIn(targetCenters);
-            growpIn.setResouceImage(meanShiftVisz);
+            growpIn.setResouceImage(kmean_Result);
             Bitmap grownRes = growpIn.Process();
 
             Binarization binarization = new Binarization(254);
             binarization.setResouceImage(grownRes);
             Bitmap finalFrame = binarization.Process();
+            pictureBox6.Image = finalFrame;
+            label6.Text = "RegionGrowpIn";
+
 
             MakeImageFrame makeImageFrame = new MakeImageFrame(src, finalFrame);
-            pictureBox4.Image = makeImageFrame.Process();
-            label4.Text = "Ans";
+            pictureBox7.Image = makeImageFrame.Process();
+            label7.Text = "Ans";
         }
 
+        private int getBandPassVerticalStart(Bitmap src)
+        {
+            ProjectionFactory factory = new ProjectionFactory(src);
+            int[] v = factory.getVerticalProject();
 
+            int countMax = 0;
+            int resIndex = 0;
+            for (int i = 0; i < v.Length; i++)
+            {
+                if (v[i] >= countMax)
+                {
+                    countMax = v[i];
+                    resIndex = i;
+                }
+            }
+            return resIndex;
+        }
 
         private void test7(Bitmap src)
         {

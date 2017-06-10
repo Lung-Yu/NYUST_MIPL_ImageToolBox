@@ -42,7 +42,7 @@ namespace ImageProcessToolBox.MedicalImageFinal
                 {
                     for (int x = 0; x < width; x++, srcP += 3, dstP += 3)
                     {
-                        if (x >= _rejectStart && x <= _rejectEnd)
+                        if (y >= _rejectStart && y <= _rejectEnd)
                             dstP[0] = dstP[1] = dstP[2] = 0;
                         else
                             dstP[0] = dstP[1] = dstP[2] = srcP[2];

@@ -79,6 +79,7 @@
     <Compile Include="MedicalImageFinal\Dilation.cs" />
     <Compile Include="MedicalImageFinal\DilationWithValue.cs" />
     <Compile Include="MedicalImageFinal\Erosion.cs" />
+    <Compile Include="MedicalImageFinal\ErosionWithValue.cs" />
     <Compile Include="MedicalImageFinal\ImageHighLight.cs" />
     <Compile Include="MedicalImageFinal\MakeImageFrame.cs" />
     <Compile Include="MedicalImageFinal\RegionGrowpIn.cs" />
