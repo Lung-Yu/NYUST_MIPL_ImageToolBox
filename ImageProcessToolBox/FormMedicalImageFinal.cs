@@ -421,14 +421,18 @@ namespace ImageProcessToolBox
 
         private void final(Bitmap src)
         {
+            MeanFilter meanFilter = new MeanFilter(25, 25);
+            meanFilter.setResouceImage(src);
+            Bitmap MeanRes = meanFilter.Process();
+
             MachineLearing_KMeans kmean = new MachineLearing_KMeans(3, 20);
-            kmean.setResouceImage(src);
+            kmean.setResouceImage(MeanRes);
             Bitmap kmean_Result = kmean.Process();
             label1.Text = "k-Means";
             pictureBox1.Image = kmean_Result;
 
 
-            Point[] initCenters = { new Point(src.Width / 4, src.Height / 2), new Point((src.Width / 4) * 3, src.Height / 2) };
+            Point[] initCenters = { new Point(src.Width / 2, src.Height / 2) };
             List<Point> targetCenters = new List<Point>();
 
             foreach (Point center in initCenters)
@@ -447,15 +451,15 @@ namespace ImageProcessToolBox
             label2.Text = "Mean-shift";
 
 
-            MedianFilter medianFilter = new MedianFilter(25, 25);
-            medianFilter.setResouceImage(kmean_Result);
-            Bitmap medianFilterRes = medianFilter.Process();
-            pictureBox3.Image = medianFilterRes;
-            label3.Text = "MedianFilter - 5*5";
+            //MedianFilter medianFilter = new MedianFilter(25, 25);
+            //medianFilter.setResouceImage(kmean_Result);
+            //Bitmap medianFilterRes = medianFilter.Process();
+            //pictureBox3.Image = medianFilterRes;
+            //label3.Text = "MedianFilter - 5*5";
 
 
             RegionGrowpIn growpIn = new RegionGrowpIn(targetCenters);
-            growpIn.setResouceImage(medianFilterRes);
+            growpIn.setResouceImage(meanShiftVisz);
             Bitmap grownRes = growpIn.Process();
 
             Binarization binarization = new Binarization(254);
