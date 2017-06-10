@@ -101,6 +101,9 @@
             this.btnLomo = new System.Windows.Forms.Button();
             this.panel9 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.panel27 = new System.Windows.Forms.Panel();
+            this.btnThyroid = new System.Windows.Forms.Button();
+            this.label16 = new System.Windows.Forms.Label();
             this.panel26 = new System.Windows.Forms.Panel();
             this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
@@ -145,9 +148,6 @@
             this.btnSaveFile = new System.Windows.Forms.Button();
             this.btnOpenFile = new System.Windows.Forms.Button();
             this.panel6 = new System.Windows.Forms.Panel();
-            this.panel27 = new System.Windows.Forms.Panel();
-            this.label16 = new System.Windows.Forms.Label();
-            this.btnThyroid = new System.Windows.Forms.Button();
             labelMean = new System.Windows.Forms.Label();
             labelStandardDeviation = new System.Windows.Forms.Label();
             this.panel3.SuspendLayout();
@@ -162,6 +162,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownX)).BeginInit();
             this.panel21.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.panel27.SuspendLayout();
             this.panel26.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
@@ -176,13 +177,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel6.SuspendLayout();
-            this.panel27.SuspendLayout();
             this.SuspendLayout();
             // 
             // labelMean
             // 
             labelMean.AutoSize = true;
-            labelMean.Font = new System.Drawing.Font("PMingLiU", 12F);
+            labelMean.Font = new System.Drawing.Font("新細明體", 12F);
             labelMean.Location = new System.Drawing.Point(13, 46);
             labelMean.Name = "labelMean";
             labelMean.Size = new System.Drawing.Size(43, 16);
@@ -192,7 +192,7 @@
             // labelStandardDeviation
             // 
             labelStandardDeviation.AutoSize = true;
-            labelStandardDeviation.Font = new System.Drawing.Font("PMingLiU", 12F);
+            labelStandardDeviation.Font = new System.Drawing.Font("新細明體", 12F);
             labelStandardDeviation.Location = new System.Drawing.Point(110, 48);
             labelStandardDeviation.Name = "labelStandardDeviation";
             labelStandardDeviation.Size = new System.Drawing.Size(18, 16);
@@ -375,7 +375,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("PMingLiU", 16F);
+            this.label5.Font = new System.Drawing.Font("新細明體", 16F);
             this.label5.Location = new System.Drawing.Point(3, 3);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(147, 22);
@@ -513,7 +513,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("PMingLiU", 16F);
+            this.label14.Font = new System.Drawing.Font("新細明體", 16F);
             this.label14.Location = new System.Drawing.Point(8, 8);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(167, 22);
@@ -555,7 +555,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("PMingLiU", 16F);
+            this.label8.Font = new System.Drawing.Font("新細明體", 16F);
             this.label8.Location = new System.Drawing.Point(4, 4);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(111, 22);
@@ -745,7 +745,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("PMingLiU", 10F);
+            this.label12.Font = new System.Drawing.Font("新細明體", 10F);
             this.label12.Location = new System.Drawing.Point(199, 13);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(14, 14);
@@ -755,7 +755,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("PMingLiU", 10F);
+            this.label11.Font = new System.Drawing.Font("新細明體", 10F);
             this.label11.Location = new System.Drawing.Point(139, 13);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(14, 14);
@@ -765,7 +765,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("PMingLiU", 16F);
+            this.label6.Font = new System.Drawing.Font("新細明體", 16F);
             this.label6.Location = new System.Drawing.Point(3, 8);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(105, 22);
@@ -863,7 +863,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("PMingLiU", 16F);
+            this.label10.Font = new System.Drawing.Font("新細明體", 16F);
             this.label10.Location = new System.Drawing.Point(7, 13);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(153, 22);
@@ -980,6 +980,36 @@
             this.panel2.Size = new System.Drawing.Size(562, 766);
             this.panel2.TabIndex = 13;
             // 
+            // panel27
+            // 
+            this.panel27.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.panel27.Controls.Add(this.btnThyroid);
+            this.panel27.Controls.Add(this.label16);
+            this.panel27.Location = new System.Drawing.Point(4, 674);
+            this.panel27.Name = "panel27";
+            this.panel27.Size = new System.Drawing.Size(273, 79);
+            this.panel27.TabIndex = 17;
+            // 
+            // btnThyroid
+            // 
+            this.btnThyroid.Location = new System.Drawing.Point(174, 13);
+            this.btnThyroid.Name = "btnThyroid";
+            this.btnThyroid.Size = new System.Drawing.Size(83, 50);
+            this.btnThyroid.TabIndex = 4;
+            this.btnThyroid.Text = "Thyroid";
+            this.btnThyroid.UseVisualStyleBackColor = true;
+            this.btnThyroid.Click += new System.EventHandler(this.btnThyroid_Click);
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("新細明體", 16F);
+            this.label16.Location = new System.Drawing.Point(12, 25);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(142, 22);
+            this.label16.TabIndex = 16;
+            this.label16.Text = "醫學影像處理";
+            // 
             // panel26
             // 
             this.panel26.BackColor = System.Drawing.SystemColors.ActiveBorder;
@@ -1051,7 +1081,7 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("PMingLiU", 16F);
+            this.label15.Font = new System.Drawing.Font("新細明體", 16F);
             this.label15.Location = new System.Drawing.Point(9, 10);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(58, 22);
@@ -1081,7 +1111,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("PMingLiU", 16F);
+            this.label13.Font = new System.Drawing.Font("新細明體", 16F);
             this.label13.Location = new System.Drawing.Point(9, 10);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(163, 22);
@@ -1101,7 +1131,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("PMingLiU", 16F);
+            this.label9.Font = new System.Drawing.Font("新細明體", 16F);
             this.label9.Location = new System.Drawing.Point(7, 4);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(107, 22);
@@ -1130,9 +1160,10 @@
             // 
             // panel5
             // 
+            this.panel5.AutoScroll = true;
             this.panel5.BackColor = System.Drawing.SystemColors.HighlightText;
             this.panel5.Controls.Add(this.labelconsle);
-            this.panel5.Font = new System.Drawing.Font("DFKai-SB", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.panel5.Font = new System.Drawing.Font("標楷體", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.panel5.Location = new System.Drawing.Point(6, 39);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(824, 107);
@@ -1141,7 +1172,7 @@
             // labelconsle
             // 
             this.labelconsle.AutoSize = true;
-            this.labelconsle.Font = new System.Drawing.Font("DFKai-SB", 10F, System.Drawing.FontStyle.Italic);
+            this.labelconsle.Font = new System.Drawing.Font("標楷體", 10F, System.Drawing.FontStyle.Italic);
             this.labelconsle.Location = new System.Drawing.Point(3, 2);
             this.labelconsle.Name = "labelconsle";
             this.labelconsle.Size = new System.Drawing.Size(0, 14);
@@ -1150,7 +1181,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("PMingLiU", 14F);
+            this.label7.Font = new System.Drawing.Font("新細明體", 14F);
             this.label7.Location = new System.Drawing.Point(6, 5);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(98, 19);
@@ -1337,7 +1368,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("PMingLiU", 14F);
+            this.label3.Font = new System.Drawing.Font("新細明體", 14F);
             this.label3.Location = new System.Drawing.Point(4, 7);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(109, 19);
@@ -1347,7 +1378,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("PMingLiU", 14F);
+            this.label4.Font = new System.Drawing.Font("新細明體", 14F);
             this.label4.Location = new System.Drawing.Point(426, 8);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(105, 19);
@@ -1439,36 +1470,6 @@
             this.panel6.Size = new System.Drawing.Size(842, 766);
             this.panel6.TabIndex = 14;
             // 
-            // panel27
-            // 
-            this.panel27.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.panel27.Controls.Add(this.btnThyroid);
-            this.panel27.Controls.Add(this.label16);
-            this.panel27.Location = new System.Drawing.Point(4, 674);
-            this.panel27.Name = "panel27";
-            this.panel27.Size = new System.Drawing.Size(273, 79);
-            this.panel27.TabIndex = 17;
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("PMingLiU", 16F);
-            this.label16.Location = new System.Drawing.Point(12, 25);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(142, 22);
-            this.label16.TabIndex = 16;
-            this.label16.Text = "醫學影像處理";
-            // 
-            // btnThyroid
-            // 
-            this.btnThyroid.Location = new System.Drawing.Point(174, 13);
-            this.btnThyroid.Name = "btnThyroid";
-            this.btnThyroid.Size = new System.Drawing.Size(83, 50);
-            this.btnThyroid.TabIndex = 4;
-            this.btnThyroid.Text = "Thyroid";
-            this.btnThyroid.UseVisualStyleBackColor = true;
-            this.btnThyroid.Click += new System.EventHandler(this.btnThyroid_Click);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1497,6 +1498,8 @@
             this.panel21.ResumeLayout(false);
             this.panel21.PerformLayout();
             this.panel2.ResumeLayout(false);
+            this.panel27.ResumeLayout(false);
+            this.panel27.PerformLayout();
             this.panel26.ResumeLayout(false);
             this.panel26.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
@@ -1517,8 +1520,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
-            this.panel27.ResumeLayout(false);
-            this.panel27.PerformLayout();
             this.ResumeLayout(false);
 
         }
