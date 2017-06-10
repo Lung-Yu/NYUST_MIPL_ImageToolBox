@@ -107,9 +107,9 @@ namespace ImageProcessToolBox.MedicalImageFinal
                     {
                         if (_frameImageMap[x, y] > 0)
                         {
-                            dstP[0] = 200;
+                            dstP[0] = 255;
                             dstP[1] = 255;
-                            dstP[2] = 120;
+                            dstP[2] = 255;
                         }
                         else
                         {

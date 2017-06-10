@@ -13,18 +13,24 @@ namespace ImageProcessToolBox
         private Bitmap _SourceImage;
         private int _C = 100;
         private static byte[] logs = null;
+        public TransformByLog(int c,double baseNum)
+        {
+            _C = c;
+            init(_C, baseNum);
+        }
+
         public TransformByLog(int c)
         {
             _C = c;
-            init(_C);
+            init(_C, 10);
         }
 
-        private static void init(int c)
+        private static void init(int c, double baseNum)
         {
             logs = new byte[256];
             for (int i = 0; i < 256; i++)
             {
-                logs[i] = (byte)(c * Math.Log(i + 1, 10));
+                logs[i] = (byte)(c * Math.Log(i + 1, baseNum));
             }
         }
 
@@ -32,7 +38,7 @@ namespace ImageProcessToolBox
         {
             _SourceImage = bitmap;
             _C = c;
-            init(_C);
+            init(_C,10);
         }
         public TransformByLog(Bitmap bitmap)
         {
