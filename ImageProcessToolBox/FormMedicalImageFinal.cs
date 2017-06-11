@@ -491,7 +491,7 @@ namespace ImageProcessToolBox
             pictureBox6.Image = finalFrameWithRegionFill;
             label6.Text = "Region Fill";
 
-            MakeImageFrame makeImageFrame = new MakeImageFrame(src, finalFrame);
+            MakeImageFrame makeImageFrame = new MakeImageFrame(src, finalFrameWithRegionFill);
             pictureBox7.Image = makeImageFrame.Process();
             label7.Text = "Ans";
         }

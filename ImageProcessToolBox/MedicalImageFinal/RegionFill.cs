@@ -20,8 +20,6 @@ namespace ImageProcessToolBox.MedicalImageFinal
 
         private byte[,] _srcMap;
 
-
-
         private int _regionfillStartWithVertical = 0;
         private int _regionfillEndWithVertical = 0;
 
@@ -83,7 +81,7 @@ namespace ImageProcessToolBox.MedicalImageFinal
                     isOutSize = false;
                     break;
                 }
-                    
+
                 list.Add(new Coordinate(x, p.Y));
             }
 
@@ -134,79 +132,6 @@ namespace ImageProcessToolBox.MedicalImageFinal
                 }
             }
         }
-
-        //private byte travalVale = 127;
-        //private List<Coordinate> TravelPointInRegion(int x, int y)
-        //{
-        //    Queue<Coordinate> traversalPoint = new Queue<Coordinate>();
-        //    List<Coordinate> candidatePoint = new List<Coordinate>();
-
-        //    Coordinate seedP = new Coordinate(x, y);
-        //    traversalPoint.Enqueue(seedP);
-        //    candidatePoint.Add(seedP);
-
-        //    bool result = true;
-
-        //    while (traversalPoint.Count > 0 )
-        //    {
-        //        if (traversalPoint.Count > 225)
-        //        {
-        //            result = false;
-        //            break;
-        //        }
-
-        //        Coordinate p = traversalPoint.Dequeue();
-
-        //        if (isOutOfImageSide(p))
-        //        {
-        //            result = false;                 
-        //            break;
-        //        }
-        //        else if (_travelMap[p.X, p.Y] == _edgeValue)
-        //            continue;
-        //        else if (_travelMap[p.X, p.Y] != travalVale)
-        //        {
-        //            _travelMap[p.X, p.Y] = travalVale;
-
-        //            Coordinate[] addItems = new Coordinate[] { 
-        //                //new Coordinate(x - 1, y-1),
-        //                //new Coordinate(x, y-1),
-        //                //new Coordinate(x+1, y-1),
-
-        //                new Coordinate(x - 1, y),
-        //                new Coordinate(x + 1, y),
-
-        //                //new Coordinate(x - 1, y+1),
-        //                new Coordinate(x, y+1),
-        //                //new Coordinate(x+1, y+1),                        
-        //            };
-
-        //            foreach (Coordinate addItem in addItems)
-        //            {
-        //                //尚未確認過之座標點，則加入候選名單並等候檢驗
-        //                if (!candidatePoint.Contains(addItem))
-        //                {
-        //                    traversalPoint.Enqueue(addItem);
-        //                    candidatePoint.Add(p);
-        //                }
-        //            }
-        //        }
-        //    }
-
-        //    //clear
-
-        //    traversalPoint.Clear();
-        //    traversalPoint = null;
-
-        //    foreach (Coordinate item in candidatePoint)
-        //        _travelMap[item.X, item.Y] = 0;
-
-        //    if (!result)
-        //        candidatePoint.Clear();
-
-        //    return candidatePoint;
-        //}
-
         private void fillIn(List<Coordinate> fillPoints)
         {
             foreach (Coordinate p in fillPoints)
@@ -220,8 +145,6 @@ namespace ImageProcessToolBox.MedicalImageFinal
         {
             if (p.X <= 0 || p.X >= _width || p.Y <= 0 || p.Y >= _height)
                 return true;
-            //else if (p.Y < _regionfillStartWithVertical || p.Y > _regionfillEndWithVertical)
-            //    return true;
             else
                 return false;
         }
