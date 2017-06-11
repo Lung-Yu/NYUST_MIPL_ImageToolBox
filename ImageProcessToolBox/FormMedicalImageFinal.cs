@@ -176,9 +176,83 @@ namespace ImageProcessToolBox
         {
             btnCalc.Enabled = false;
 
-            final2(_imageSource);
+            final3(_imageSource);
             btnCalc.Enabled = true;
             MessageBox.Show("完成");
+        }
+        private void final3(Bitmap src)
+        {
+            IImageProcess bitPlane = new BitOf8PlaneSlicing(8);
+            bitPlane.setResouceImage(src);
+            Bitmap bitPlansRes = bitPlane.Process();
+            label1.Text = "meanFilter && 8-bit";
+            pictureBox1.Image = bitPlansRes;
+
+
+            int vStart = getBandPassVerticalStart(bitPlansRes);
+            if (vStart > src.Height / 2)
+                vStart = 0;
+            int vEnd = getBandPassVerticalEnd(src);
+
+            Bitmap bandpassRes = src;
+            foreach (IImageProcess bandPassByColIndex in new IImageProcess[] { new BandRejectByColIndex(0, vStart), new BandRejectByColIndex(vEnd, src.Height - 1) })
+            {
+                bandPassByColIndex.setResouceImage(bandpassRes);
+                bandpassRes = bandPassByColIndex.Process();
+            }
+            pictureBox2.Image = bandpassRes;
+            label2.Text = "Band Pass";
+
+            IImageProcess medianFilter = new GaussianFilter();
+            medianFilter.setResouceImage(bandpassRes);
+            Bitmap MedianRes = medianFilter.Process();
+
+            MachineLearing_KMeans kmean = new MachineLearing_KMeans(3, 10);
+            kmean.setResouceImage(new Bitmap(MedianRes));
+            Bitmap kmean_Result = kmean.Process();
+            label3.Text = "k-Means";
+            pictureBox3.Image = kmean_Result;
+
+
+            Point[] initCenters = { new Point(src.Width / 2, src.Height / 2) };
+            List<Point> targetCenters = new List<Point>();
+
+            foreach (Point center in initCenters)
+            {
+                MachineLearing_MeanShift meanShit = new MachineLearing_MeanShift(100, kmean.CenterPoints[1, 2]);
+                meanShit.Center = center;
+                meanShit.setResouceImage(kmean_Result);
+                meanShit.Process();
+                targetCenters.Add(meanShit.Center);
+            }
+
+            ImageHighLight imgHighLiht = new ImageHighLight(targetCenters.ToArray());
+            imgHighLiht.setResouceImage(kmean_Result);
+            Bitmap meanShiftVisz = imgHighLiht.Process();
+            pictureBox4.Image = meanShiftVisz;
+            label4.Text = "Mean-shift";
+
+
+            RegionGrowpIn growpIn = new RegionGrowpIn(targetCenters, kmean.CenterPoints[1, 2]);
+            growpIn.setResouceImage(kmean_Result);
+            Bitmap grownRes = growpIn.Process();
+
+            Binarization binarization = new Binarization(254);
+            binarization.setResouceImage(grownRes);
+            Bitmap finalFrame = binarization.Process();
+            pictureBox5.Image = finalFrame;
+            label5.Text = "RegionGrowpIn";
+
+
+            IImageProcess regionFill = new RegionFill();
+            regionFill.setResouceImage(finalFrame);
+            Bitmap finalFrameWithRegionFill = regionFill.Process();
+            pictureBox6.Image = finalFrameWithRegionFill;
+            label6.Text = "Region Fill";
+
+            MakeImageFrame makeImageFrame = new MakeImageFrame(src, finalFrameWithRegionFill);
+            pictureBox7.Image = makeImageFrame.Process();
+            label7.Text = "Ans";
         }
 
         private void final2(Bitmap src)
@@ -254,17 +328,7 @@ namespace ImageProcessToolBox
             binarization.setResouceImage(grownRes);
             Bitmap finalFrame = binarization.Process();
 
-            int reverseCount = 0;
-            foreach (Point p in targetCenters)
-            {
-                if (finalFrame.GetPixel(p.X, p.Y).R == 0)
-                    reverseCount++;
-            }
 
-            if (reverseCount > targetCenters.Count / 2)
-            {
-                finalFrame = new Negative(finalFrame).Process();
-            }
 
             pictureBox4.Image = finalFrame;
             label4.Text = "RegionGrowpIn";
@@ -280,6 +344,9 @@ namespace ImageProcessToolBox
             IImageProcess regionFill = new RegionFill();
             regionFill.setResouceImage(morphology.Process());
             Bitmap finalFrameWithRegionFill = regionFill.Process();
+
+            
+
             pictureBox5.Image = finalFrameWithRegionFill;
             label5.Text = "Region Fill";
             #endregion
