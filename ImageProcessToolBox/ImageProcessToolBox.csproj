@@ -84,6 +84,7 @@
     <Compile Include="MedicalImageFinal\ImageHighLight.cs" />
     <Compile Include="MedicalImageFinal\MakeImageFrame.cs" />
     <Compile Include="MedicalImageFinal\RegionFill.cs" />
+    <Compile Include="MedicalImageFinal\RegionFillIn.cs" />
     <Compile Include="MedicalImageFinal\RegionGrowpIn.cs" />
     <Compile Include="MedicalImageFinal\ShitEdge.cs" />
     <Compile Include="FormAnalysis.cs">

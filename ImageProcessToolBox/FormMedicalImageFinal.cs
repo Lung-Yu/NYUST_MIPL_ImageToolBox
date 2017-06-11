@@ -484,10 +484,15 @@ namespace ImageProcessToolBox
             #endregion
 
             #region region fill
-            IImageProcess region_fill = new RegionFill();
+            IImageProcess region_fill = new RegionFillIn();
             region_fill.setResouceImage(finalFrame);
 
             Bitmap res_region_fill = region_fill.Process();
+            
+            binarization = new Binarization(128);
+            binarization.setResouceImage(res_region_fill);
+            res_region_fill = binarization.Process();
+
             pictureBox6.Image = res_region_fill;
             label6.Text = "Region fill";
             #endregion
