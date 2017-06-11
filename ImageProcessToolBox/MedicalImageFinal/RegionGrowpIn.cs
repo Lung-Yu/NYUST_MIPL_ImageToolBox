@@ -68,48 +68,54 @@ namespace ImageProcessToolBox.MedicalImageFinal
         private void growp()
         {
 
-            int target = _targetValue;
+            byte target = _targetValue;
 
             foreach (Point seed in _seeds)
             {
                 if (!IsSetTargetValue)
                     target = _imgMap[seed.X, seed.Y];
 
-
-                int x = seed.X, y = seed.Y;
-                Queue<Point> growPoints = new Queue<Point>();
-                growPoints.Enqueue(seed);
-
-                int tX, tY;
-                do
-                {
-                    Point p = growPoints.Dequeue();
-                    tX = p.X;
-                    tY = p.Y;
-
-                    if (tX < 0 || tX >= _width || tY < 0 || tY >= _height)
-                        continue;
-                    byte compVal = _imgMap[tX, tY];
-                    if (compVal == target)
-                    {
-                        _imgMap[tX, tY] = _fillColor;
-
-                        growPoints.Enqueue(new Point(tX + 1, tY - 1));
-                        growPoints.Enqueue(new Point(tX - 1, tY - 1));
-                        growPoints.Enqueue(new Point(tX, tY - 1));
-
-                        growPoints.Enqueue(new Point(tX + 1, tY));
-                        growPoints.Enqueue(new Point(tX - 1, tY));
-
-                        growPoints.Enqueue(new Point(tX + 1, tY + 1));
-                        growPoints.Enqueue(new Point(tX - 1, tY + 1));
-                        growPoints.Enqueue(new Point(tX, tY + 1));
-
-
-                    }
-                } while (growPoints.Count != 0);
+                growp(seed,target);
+                
             }
         }
+
+        private void growp(Point seed,byte target)
+        {
+            int x = seed.X, y = seed.Y;
+            Queue<Point> growPoints = new Queue<Point>();
+            growPoints.Enqueue(seed);
+
+            int tX, tY;
+            do
+            {
+                Point p = growPoints.Dequeue();
+                tX = p.X;
+                tY = p.Y;
+
+                if (tX < 0 || tX >= _width || tY < 0 || tY >= _height)
+                    continue;
+                byte compVal = _imgMap[tX, tY];
+                if (compVal == target)
+                {
+                    _imgMap[tX, tY] = _fillColor;
+
+                    growPoints.Enqueue(new Point(tX + 1, tY - 1));
+                    growPoints.Enqueue(new Point(tX - 1, tY - 1));
+                    growPoints.Enqueue(new Point(tX, tY - 1));
+
+                    growPoints.Enqueue(new Point(tX + 1, tY));
+                    growPoints.Enqueue(new Point(tX - 1, tY));
+
+                    growPoints.Enqueue(new Point(tX + 1, tY + 1));
+                    growPoints.Enqueue(new Point(tX - 1, tY + 1));
+                    growPoints.Enqueue(new Point(tX, tY + 1));
+
+
+                }
+            } while (growPoints.Count != 0);
+        }
+
 
         private static byte[,] extraPixels(Bitmap bitmap)
         {

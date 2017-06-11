@@ -160,7 +160,7 @@ namespace ImageProcessToolBox.MedicalImageFinal
             foreach (Coordinate item in candidatePoint)
                 _travelMap[item.X, item.Y] = 0;
 
-            if (result)
+            if (!result)
                 candidatePoint.Clear();
 
             return candidatePoint;
