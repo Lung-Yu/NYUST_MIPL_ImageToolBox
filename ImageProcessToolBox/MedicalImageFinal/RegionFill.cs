@@ -55,18 +55,40 @@ namespace ImageProcessToolBox.MedicalImageFinal
 
         private void FindFillRegion()
         {
-            for (int y = _regionfillStartWithVertical; y < _regionfillEndWithVertical; y++)
+            for (int x = _regionfillStartWithHorizontal; x < _regionfillEndWithHorizontal - 1; x++)
             {
-                for (int x = _regionfillStartWithHorizontal; x < _regionfillEndWithHorizontal - 1; x++)
+                for (int y = _regionfillStartWithVertical; y < _regionfillEndWithVertical; y++)
                 {
                     if (_srcMap[x, y] == _edgeValue)
                     {
-                        Coordinate p = new Coordinate(x + 1, y);
-                        if (fillRowAtFinalPoint(p))
+                        Coordinate p = new Coordinate(x, y+1);
+                        if (fillColAtFinalPoint(p))
                             break;
                     }
                 }
             }
+        }
+
+        private bool fillColAtFinalPoint(Coordinate p)
+        {
+            List<Coordinate> list = new List<Coordinate>();
+
+            bool isOutSize = true;
+            for (int y = p.Y; y < _regionfillEndWithVertical; y++)
+            {
+                if (_srcMap[p.X, y] == _edgeValue)
+                {
+                    isOutSize = false;
+                    break;
+                }
+
+                list.Add(new Coordinate(p.X, y));
+            }
+
+            if (!isOutSize)
+                fillIn(list);
+
+            return isOutSize;
         }
 
         private bool fillRowAtFinalPoint(Coordinate p)
