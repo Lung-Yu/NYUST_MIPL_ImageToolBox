@@ -15,11 +15,26 @@ namespace ImageProcessToolBox.MedicalImageFinal
         private int _width;
         private int _height;
         private byte _fillColor = 255;
+        private byte _targetValue;
+
+        
+        private bool isSetTargetValue = false;
+
+
         private byte[,] _imgMap;// x , y
         public RegionGrowpIn()
         {
 
         }
+
+        public RegionGrowpIn(int x, int y, byte targetValue)
+        {
+            _seeds = new List<Point>();
+            _seeds.Add(new Point(x, y));
+
+            TargetValue = targetValue;
+        }
+
         public RegionGrowpIn(int x, int y)
         {
             _seeds = new List<Point>();
@@ -30,9 +45,10 @@ namespace ImageProcessToolBox.MedicalImageFinal
             _seeds = new List<Point>();
             _seeds.Add(seed);
         }
-        public RegionGrowpIn(List<Point> seeds)
+        public RegionGrowpIn(List<Point> seeds, byte targetValue)
         {
             _seeds = seeds;
+            TargetValue = targetValue;
         }
 
         public Bitmap Process()
@@ -51,9 +67,14 @@ namespace ImageProcessToolBox.MedicalImageFinal
 
         private void growp()
         {
+
+            int target = _targetValue;
+
             foreach (Point seed in _seeds)
             {
-                int target = _imgMap[seed.X, seed.Y];
+                if (!IsSetTargetValue)
+                    target = _imgMap[seed.X, seed.Y];
+
 
                 int x = seed.X, y = seed.Y;
                 Queue<Point> growPoints = new Queue<Point>();
@@ -134,7 +155,7 @@ namespace ImageProcessToolBox.MedicalImageFinal
                 {
                     for (int x = 0; x < width; x++, srcP += 3)
                     {
-                        *(srcP + 2) = martix[x,y];
+                        *(srcP + 2) = martix[x, y];
                         *(srcP + 1) = martix[x, y];
                         *(srcP) = martix[x, y];
                     }
@@ -142,6 +163,22 @@ namespace ImageProcessToolBox.MedicalImageFinal
                 }
             }
             bitmap.UnlockBits(srcBmData);
+        }
+
+        public byte TargetValue
+        {
+            get { return _targetValue; }
+            set
+            {
+                //IsSetTargetValue = true;
+                _targetValue = value;
+            }
+        }
+
+        public bool IsSetTargetValue
+        {
+            get { return isSetTargetValue; }
+            set { isSetTargetValue = value; }
         }
         public void setResouceImage(Bitmap bitmap)
         {
