@@ -56,21 +56,19 @@ namespace ImageProcessToolBox.MedicalImageFinal
         {
             for (int y = _regionfillStartWithVertical; y < _regionfillEndWithVertical; y++)
             {
-                for (int x = 0; x < _width; x++)
+                for (int x = 145; x < _width; x++)
                 {
                     if (_travelMap[x, y] == _edgeValue)
                         continue;
 
                     List<Coordinate> fillPoints = TravelPointInRegion(x, y);
-                    if (fillPoints.Count == 0)
-                        continue;
-
+                    //Console.WriteLine(x + "," + y + ":" + fillPoints.Count);
                     fillIn(fillPoints);
                 }
             }
 
 
-            //List<Coordinate> fillPoints = TravelPointInRegion(10, _regionfillStartWithVertical+1);
+            //List<Coordinate> fillPoints = TravelPointInRegion(80, 90);
         }
 
         private void calcRegionRange()
@@ -102,55 +100,50 @@ namespace ImageProcessToolBox.MedicalImageFinal
             Queue<Coordinate> traversalPoint = new Queue<Coordinate>();
             List<Coordinate> candidatePoint = new List<Coordinate>();
 
-            traversalPoint.Enqueue(new Coordinate(x, y));
-
+            Coordinate seedP = new Coordinate(x, y);
+            traversalPoint.Enqueue(seedP);
+            candidatePoint.Add(seedP);
 
             bool result = true;
 
-            while (traversalPoint.Count > 0)
+            while (traversalPoint.Count > 0 )
             {
+                if (traversalPoint.Count > 225)
+                {
+                    result = false;
+                    break;
+                }
 
                 Coordinate p = traversalPoint.Dequeue();
 
                 if (isOutOfImageSide(p))
                 {
-                    result = false;
-                    //Console.WriteLine(string.Format("p({0},{1}) out of Image Side", p.X, p.Y));
+                    result = false;                 
                     break;
                 }
-                if (_travelMap[p.X, p.Y] == _edgeValue)
-                {
-                    //Console.WriteLine(string.Format("p({0},{1}) is edge",p.X,p.Y));
+                else if (_travelMap[p.X, p.Y] == _edgeValue)
                     continue;
-                }
-
-
-                if (_travelMap[p.X, p.Y] == travalVale)
-                {
-                    result = false;
-                    break;
-                }
                 else if (_travelMap[p.X, p.Y] != travalVale)
                 {
                     _travelMap[p.X, p.Y] = travalVale;
 
                     Coordinate[] addItems = new Coordinate[] { 
-                        new Coordinate(x - 1, y-1),
-                        new Coordinate(x, y-1),
-                        new Coordinate(x+1, y-1),
+                        //new Coordinate(x - 1, y-1),
+                        //new Coordinate(x, y-1),
+                        //new Coordinate(x+1, y-1),
 
                         new Coordinate(x - 1, y),
                         new Coordinate(x + 1, y),
                         
-                        new Coordinate(x - 1, y+1),
+                        //new Coordinate(x - 1, y+1),
                         new Coordinate(x, y+1),
-                        new Coordinate(x+1, y+1),                        
+                        //new Coordinate(x+1, y+1),                        
                     };
 
                     foreach (Coordinate addItem in addItems)
                     {
                         //尚未確認過之座標點，則加入候選名單並等候檢驗
-                        if (candidatePoint.IndexOf(addItem) == -1)
+                        if (!candidatePoint.Contains(addItem))
                         {
                             traversalPoint.Enqueue(addItem);
                             candidatePoint.Add(p);
@@ -164,12 +157,11 @@ namespace ImageProcessToolBox.MedicalImageFinal
             traversalPoint.Clear();
             traversalPoint = null;
 
-            if (!result)
-            {
-                foreach (Coordinate item in candidatePoint)
-                    _travelMap[item.X, item.Y] = 0;
+            foreach (Coordinate item in candidatePoint)
+                _travelMap[item.X, item.Y] = 0;
+
+            if (result)
                 candidatePoint.Clear();
-            }
 
             return candidatePoint;
         }
