@@ -73,6 +73,7 @@
     <Compile Include="MedicalImageFinal\Bandpass.cs" />
     <Compile Include="MedicalImageFinal\BandPassByColIndex.cs" />
     <Compile Include="MedicalImageFinal\BandPassByRowIndex.cs" />
+    <Compile Include="MedicalImageFinal\BandpassImage.cs" />
     <Compile Include="MedicalImageFinal\BandRejectByColIndex.cs" />
     <Compile Include="MedicalImageFinal\BandRejectByRow.cs" />
     <Compile Include="MedicalImageFinal\BandRejectByRowIndex.cs" />
