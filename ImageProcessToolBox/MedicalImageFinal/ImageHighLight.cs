@@ -48,7 +48,7 @@ namespace ImageProcessToolBox.MedicalImageFinal
                                 for (int i = 0; i < 5; i++)
                                 {
                                     int offset = i * 3;
-                                    dstP[0 + offset] = 255;
+                                    dstP[0 + offset] = 245;
                                     dstP[1 + offset] = 255;
                                     dstP[2 + offset] = 255;
                                 }
@@ -58,6 +58,7 @@ namespace ImageProcessToolBox.MedicalImageFinal
 
                         if (!isHightLight)
                         {
+                            
                             dstP[0] = srcP[0];
                             dstP[1] = srcP[1];
                             dstP[2] = srcP[2];
