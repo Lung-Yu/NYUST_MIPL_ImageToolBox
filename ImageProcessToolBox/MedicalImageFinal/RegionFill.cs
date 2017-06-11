@@ -19,12 +19,15 @@ namespace ImageProcessToolBox.MedicalImageFinal
         private byte _fillValue = 255;
 
         private byte[,] _srcMap;
-        private byte[,] _travelMap;
 
 
 
         private int _regionfillStartWithVertical = 0;
         private int _regionfillEndWithVertical = 0;
+
+        private int _regionfillStartWithHorizontal = 0;
+        private int _regionfillEndWithHorizontal = 0;
+
 
         public RegionFill()
         {
@@ -38,7 +41,6 @@ namespace ImageProcessToolBox.MedicalImageFinal
         public Bitmap Process()
         {
             _srcMap = extraPixels(_srcImg);
-            _travelMap = extraPixels(_srcImg);
 
             _width = _srcImg.Width;
             _height = _srcImg.Height;
@@ -52,23 +54,43 @@ namespace ImageProcessToolBox.MedicalImageFinal
             return dst;
         }
 
+
         private void FindFillRegion()
         {
             for (int y = _regionfillStartWithVertical; y < _regionfillEndWithVertical; y++)
             {
-                for (int x = 145; x < _width; x++)
+                for (int x = _regionfillStartWithHorizontal; x < _regionfillEndWithHorizontal - 1; x++)
                 {
-                    if (_travelMap[x, y] == _edgeValue)
-                        continue;
-
-                    List<Coordinate> fillPoints = TravelPointInRegion(x, y);
-                    //Console.WriteLine(x + "," + y + ":" + fillPoints.Count);
-                    fillIn(fillPoints);
+                    if (_srcMap[x, y] == _edgeValue)
+                    {
+                        Coordinate p = new Coordinate(x + 1, y);
+                        if (fillRowAtFinalPoint(p))
+                            break;
+                    }
                 }
             }
+        }
 
+        private bool fillRowAtFinalPoint(Coordinate p)
+        {
+            List<Coordinate> list = new List<Coordinate>();
 
-            //List<Coordinate> fillPoints = TravelPointInRegion(80, 90);
+            bool isOutSize = true;
+            for (int x = p.X; x < _regionfillEndWithHorizontal; x++)
+            {
+                if (_srcMap[x, p.Y] == _edgeValue)
+                {
+                    isOutSize = false;
+                    break;
+                }
+                    
+                list.Add(new Coordinate(x, p.Y));
+            }
+
+            if (!isOutSize)
+                fillIn(list);
+
+            return isOutSize;
         }
 
         private void calcRegionRange()
@@ -92,79 +114,98 @@ namespace ImageProcessToolBox.MedicalImageFinal
                     break;
                 }
             }
-        }
 
-        private byte travalVale = 127;
-        private List<Coordinate> TravelPointInRegion(int x, int y)
-        {
-            Queue<Coordinate> traversalPoint = new Queue<Coordinate>();
-            List<Coordinate> candidatePoint = new List<Coordinate>();
-
-            Coordinate seedP = new Coordinate(x, y);
-            traversalPoint.Enqueue(seedP);
-            candidatePoint.Add(seedP);
-
-            bool result = true;
-
-            while (traversalPoint.Count > 0 )
+            int[] h = factory.getHorizontalProject();
+            for (int i = 0; i < v.Length; i++)
             {
-                if (traversalPoint.Count > 225)
+                if (h[i] > 0)
                 {
-                    result = false;
+                    _regionfillStartWithHorizontal = i;
                     break;
-                }
-
-                Coordinate p = traversalPoint.Dequeue();
-
-                if (isOutOfImageSide(p))
-                {
-                    result = false;                 
-                    break;
-                }
-                else if (_travelMap[p.X, p.Y] == _edgeValue)
-                    continue;
-                else if (_travelMap[p.X, p.Y] != travalVale)
-                {
-                    _travelMap[p.X, p.Y] = travalVale;
-
-                    Coordinate[] addItems = new Coordinate[] { 
-                        //new Coordinate(x - 1, y-1),
-                        //new Coordinate(x, y-1),
-                        //new Coordinate(x+1, y-1),
-
-                        new Coordinate(x - 1, y),
-                        new Coordinate(x + 1, y),
-                        
-                        //new Coordinate(x - 1, y+1),
-                        new Coordinate(x, y+1),
-                        //new Coordinate(x+1, y+1),                        
-                    };
-
-                    foreach (Coordinate addItem in addItems)
-                    {
-                        //尚未確認過之座標點，則加入候選名單並等候檢驗
-                        if (!candidatePoint.Contains(addItem))
-                        {
-                            traversalPoint.Enqueue(addItem);
-                            candidatePoint.Add(p);
-                        }
-                    }
                 }
             }
 
-            //clear
-
-            traversalPoint.Clear();
-            traversalPoint = null;
-
-            foreach (Coordinate item in candidatePoint)
-                _travelMap[item.X, item.Y] = 0;
-
-            if (!result)
-                candidatePoint.Clear();
-
-            return candidatePoint;
+            for (int i = h.Length - 1; i >= 0; i--)
+            {
+                if (h[i] > 0)
+                {
+                    _regionfillEndWithHorizontal = i + 1;
+                    break;
+                }
+            }
         }
+
+        //private byte travalVale = 127;
+        //private List<Coordinate> TravelPointInRegion(int x, int y)
+        //{
+        //    Queue<Coordinate> traversalPoint = new Queue<Coordinate>();
+        //    List<Coordinate> candidatePoint = new List<Coordinate>();
+
+        //    Coordinate seedP = new Coordinate(x, y);
+        //    traversalPoint.Enqueue(seedP);
+        //    candidatePoint.Add(seedP);
+
+        //    bool result = true;
+
+        //    while (traversalPoint.Count > 0 )
+        //    {
+        //        if (traversalPoint.Count > 225)
+        //        {
+        //            result = false;
+        //            break;
+        //        }
+
+        //        Coordinate p = traversalPoint.Dequeue();
+
+        //        if (isOutOfImageSide(p))
+        //        {
+        //            result = false;                 
+        //            break;
+        //        }
+        //        else if (_travelMap[p.X, p.Y] == _edgeValue)
+        //            continue;
+        //        else if (_travelMap[p.X, p.Y] != travalVale)
+        //        {
+        //            _travelMap[p.X, p.Y] = travalVale;
+
+        //            Coordinate[] addItems = new Coordinate[] { 
+        //                //new Coordinate(x - 1, y-1),
+        //                //new Coordinate(x, y-1),
+        //                //new Coordinate(x+1, y-1),
+
+        //                new Coordinate(x - 1, y),
+        //                new Coordinate(x + 1, y),
+
+        //                //new Coordinate(x - 1, y+1),
+        //                new Coordinate(x, y+1),
+        //                //new Coordinate(x+1, y+1),                        
+        //            };
+
+        //            foreach (Coordinate addItem in addItems)
+        //            {
+        //                //尚未確認過之座標點，則加入候選名單並等候檢驗
+        //                if (!candidatePoint.Contains(addItem))
+        //                {
+        //                    traversalPoint.Enqueue(addItem);
+        //                    candidatePoint.Add(p);
+        //                }
+        //            }
+        //        }
+        //    }
+
+        //    //clear
+
+        //    traversalPoint.Clear();
+        //    traversalPoint = null;
+
+        //    foreach (Coordinate item in candidatePoint)
+        //        _travelMap[item.X, item.Y] = 0;
+
+        //    if (!result)
+        //        candidatePoint.Clear();
+
+        //    return candidatePoint;
+        //}
 
         private void fillIn(List<Coordinate> fillPoints)
         {
@@ -255,25 +296,17 @@ namespace ImageProcessToolBox.MedicalImageFinal
 
         class Coordinate
         {
+            public int X;
+            public int Y;
             public Coordinate(int x, int y)
             {
-                _X = x;
-                _Y = y;
+                X = x;
+                Y = y;
             }
 
-            int _X;
-
-            public int X
+            public string ToString()
             {
-                get { return _X; }
-                set { _X = value; }
-            }
-            int _Y;
-
-            public int Y
-            {
-                get { return _Y; }
-                set { _Y = value; }
+                return String.Format("[{0},{1}]", X, Y);
             }
         }
     }
