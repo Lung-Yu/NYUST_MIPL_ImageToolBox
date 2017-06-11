@@ -17,7 +17,7 @@ namespace ImageProcessToolBox.MedicalImageFinal
         private byte _fillColor = 255;
         private byte _targetValue;
 
-        
+
         private bool isSetTargetValue = false;
 
 
@@ -93,10 +93,19 @@ namespace ImageProcessToolBox.MedicalImageFinal
                     if (compVal == target)
                     {
                         _imgMap[tX, tY] = _fillColor;
+
+                        growPoints.Enqueue(new Point(tX + 1, tY - 1));
+                        growPoints.Enqueue(new Point(tX - 1, tY - 1));
+                        growPoints.Enqueue(new Point(tX, tY - 1));
+
                         growPoints.Enqueue(new Point(tX + 1, tY));
                         growPoints.Enqueue(new Point(tX - 1, tY));
+
+                        growPoints.Enqueue(new Point(tX + 1, tY + 1));
+                        growPoints.Enqueue(new Point(tX - 1, tY + 1));
                         growPoints.Enqueue(new Point(tX, tY + 1));
-                        growPoints.Enqueue(new Point(tX, tY - 1));
+
+
                     }
                 } while (growPoints.Count != 0);
             }
