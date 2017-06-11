@@ -176,11 +176,13 @@ namespace ImageProcessToolBox
         {
             btnCalc.Enabled = false;
 
-            final3(_imageSource);
+            finalProcess(_imageSource);
+
             btnCalc.Enabled = true;
             MessageBox.Show("完成");
         }
-        private void final3(Bitmap src)
+
+        private void finalProcess(Bitmap src)
         {
             IImageProcess bitPlane = new BitOf8PlaneSlicing(8);
             bitPlane.setResouceImage(src);
@@ -244,181 +246,12 @@ namespace ImageProcessToolBox
             label5.Text = "RegionGrowpIn";
 
 
-            IImageProcess regionFill = new RegionFill();
-            regionFill.setResouceImage(finalFrame);
-            Bitmap finalFrameWithRegionFill = regionFill.Process();
-            pictureBox6.Image = finalFrameWithRegionFill;
-            label6.Text = "Region Fill";
-
-            MakeImageFrame makeImageFrame = new MakeImageFrame(src, finalFrameWithRegionFill);
-            pictureBox7.Image = makeImageFrame.Process();
-            label7.Text = "Ans";
-        }
-
-        private void final2(Bitmap src)
-        {
-            #region step 1
-            IImageProcess bitPlane = new BitOf8PlaneSlicing(8);
-            bitPlane.setResouceImage(src);
-            Bitmap bitPlansRes = bitPlane.Process();
-
-            int vStart = getBandPassVerticalStart(bitPlansRes);
-            if (vStart > src.Height / 2)
-                vStart = 0;
-            int vEnd = getBandPassVerticalEnd(src);
-
-            Bitmap bandpassRes = src;
-            foreach (IImageProcess bandPassByColIndex in new IImageProcess[] { new BandRejectByColIndex(0, vStart + 50), new BandRejectByColIndex(vEnd, src.Height - 1) })
-            {
-                bandPassByColIndex.setResouceImage(bandpassRes);
-                bandpassRes = bandPassByColIndex.Process();
-            }
-
-            IImageProcess medianFilter = new MeanFilter();
-            medianFilter.setResouceImage(bandpassRes);
-            Bitmap MedianRes = medianFilter.Process();
-
-            MachineLearing_KMeans kmean = new MachineLearing_KMeans(2, 2);
-            kmean.setResouceImage(new Bitmap(MedianRes));
-            Bitmap kmean_Result = kmean.Process();
-            label1.Text = "k-Means";
-            pictureBox1.Image = kmean_Result;
-            #endregion
-
-            #region step 2
-            IImageProcess bandPassImg = new BandpassImage(kmean_Result, kmean.CenterPoints[0, 2]);
-            bandPassImg.setResouceImage(src);
-            Bitmap bandPassImgRes = bandPassImg.Process();
-
-            MachineLearing_KMeans segmentation = new MachineLearing_KMeans(3, 2);
-            segmentation.setResouceImage(new Bitmap(bandPassImgRes));
-            Bitmap segmentationRes = segmentation.Process();
-
-            pictureBox3.Image = segmentationRes;
-            label3.Text = "segmentation";
-            #endregion
-
-            #region step 3
-            Point[] initCenters = { new Point(src.Width / 2, src.Height / 2) };
-            List<Point> targetCenters = new List<Point>();
-
-            foreach (Point center in initCenters)
-            {
-                MachineLearing_MeanShift meanShit = new MachineLearing_MeanShift(100, segmentation.CenterPoints[1, 2]);
-                meanShit.Center = center;
-                meanShit.setResouceImage(segmentationRes);
-                meanShit.Process();
-                targetCenters.Add(meanShit.Center);
-            }
-
-            ImageHighLight imgHighLiht = new ImageHighLight(targetCenters.ToArray());
-            imgHighLiht.setResouceImage(segmentationRes);
-            Bitmap meanShiftVisz = imgHighLiht.Process();
-            pictureBox2.Image = meanShiftVisz;
-            label2.Text = "Mean-shift";
-            #endregion
-
-
-            #region step 4
-            RegionGrowpIn growpIn = new RegionGrowpIn(targetCenters, segmentation.CenterPoints[1, 2]);
-            growpIn.setResouceImage(segmentationRes);
-            Bitmap grownRes = growpIn.Process();
-
-            Binarization binarization = new Binarization(254);
-            binarization.setResouceImage(grownRes);
-            Bitmap finalFrame = binarization.Process();
-
-
-
-            pictureBox4.Image = finalFrame;
-            label4.Text = "RegionGrowpIn";
-
-            #endregion
-
-            #region step 5
-
             IImageProcess morphology = new MorphologyOpening();
-            morphology.setResouceImage(finalFrame);
-
-
-            IImageProcess regionFill = new RegionFill();
-            regionFill.setResouceImage(morphology.Process());
-            Bitmap finalFrameWithRegionFill = regionFill.Process();
-
-            
-
-            pictureBox5.Image = finalFrameWithRegionFill;
-            label5.Text = "Region Fill";
-            #endregion
-
-            #region step 6
-            MakeImageFrame makeImageFrame = new MakeImageFrame(src, finalFrameWithRegionFill);
-            pictureBox6.Image = makeImageFrame.Process();
-            label6.Text = "Ans";
-            #endregion
-
-        }
-
-
-
-        private void final1(Bitmap src)
-        {
-            IImageProcess bitPlane = new BitOf8PlaneSlicing(8);
-            bitPlane.setResouceImage(src);
-            Bitmap bitPlansRes = bitPlane.Process();
-            label1.Text = "meanFilter && 8-bit";
-            pictureBox1.Image = bitPlansRes;
-
-
-            int vStart = getBandPassVerticalStart(bitPlansRes);
-            if (vStart > src.Height / 2)
-                vStart = 0;
-            IImageProcess bandPassByColIndex = new BandRejectByColIndex(0, vStart);
-            bandPassByColIndex.setResouceImage(src);
-            Bitmap bandpassRes = bandPassByColIndex.Process();
-            pictureBox2.Image = bandpassRes;
-            label2.Text = "Band Pass";
-
-            IImageProcess medianFilter = new GaussianFilter();
-            medianFilter.setResouceImage(bandpassRes);
-            Bitmap MedianRes = medianFilter.Process();
-
-            MachineLearing_KMeans kmean = new MachineLearing_KMeans(3, 10);
-            kmean.setResouceImage(new Bitmap(MedianRes));
-            Bitmap kmean_Result = kmean.Process();
-            label3.Text = "k-Means";
-            pictureBox3.Image = kmean_Result;
-
-
-            Point[] initCenters = { new Point(src.Width / 2, src.Height / 2) };
-            List<Point> targetCenters = new List<Point>();
-
-            foreach (Point center in initCenters)
+            for (int i = 0; i < 10; i++)
             {
-                MachineLearing_MeanShift meanShit = new MachineLearing_MeanShift(100, kmean.CenterPoints[1, 2]);
-                meanShit.Center = center;
-                meanShit.setResouceImage(kmean_Result);
-                meanShit.Process();
-                targetCenters.Add(meanShit.Center);
+                morphology.setResouceImage(finalFrame);
+                finalFrame = morphology.Process();
             }
-
-            ImageHighLight imgHighLiht = new ImageHighLight(targetCenters.ToArray());
-            imgHighLiht.setResouceImage(kmean_Result);
-            Bitmap meanShiftVisz = imgHighLiht.Process();
-            pictureBox4.Image = meanShiftVisz;
-            label4.Text = "Mean-shift";
-
-
-            RegionGrowpIn growpIn = new RegionGrowpIn(targetCenters, kmean.CenterPoints[1, 2]);
-            growpIn.setResouceImage(kmean_Result);
-            Bitmap grownRes = growpIn.Process();
-
-            Binarization binarization = new Binarization(254);
-            binarization.setResouceImage(grownRes);
-            Bitmap finalFrame = binarization.Process();
-            pictureBox5.Image = finalFrame;
-            label5.Text = "RegionGrowpIn";
-
 
             IImageProcess regionFill = new RegionFill();
             regionFill.setResouceImage(finalFrame);

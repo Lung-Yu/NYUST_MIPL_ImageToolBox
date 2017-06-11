@@ -55,7 +55,7 @@ namespace ImageProcessToolBox.MedicalImageFinal
 
         private void FindFillRegion()
         {
-            for (int x = _regionfillStartWithHorizontal; x < _regionfillEndWithHorizontal - 1; x++)
+            for (int x = _regionfillStartWithHorizontal; x < _regionfillEndWithHorizontal; x++)
             {
                 for (int y = _regionfillStartWithVertical; y < _regionfillEndWithVertical; y++)
                 {
