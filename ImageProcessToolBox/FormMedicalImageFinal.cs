@@ -22,32 +22,8 @@ namespace ImageProcessToolBox
             InitializeComponent();
             _imageSource = imgSrc;
             pictureBoxOriginal.Image = _imageSource;
-            init();
         }
-        private Label[] labels;
-        private PictureBox[] imageShow;
-        private String[] labelsStr = { "Step1:", "Step2:", "Step3:", "Step4:" };
 
-        private IImageProcess[] iProcess = { new Transfor(25), new SpiltImage(), new LaplacianBG() };
-        private static int STEP_SIZE = 3;
-
-        private void init()
-        {
-            labels = new Label[] { label1, label2, label3, label4, label5, label6, label7 };
-            imageShow = new PictureBox[] { pictureBox1, pictureBox2, pictureBox3, pictureBox4, pictureBox5, pictureBox6, pictureBox7 };
-        }
-        private void process()
-        {
-            //Bitmap src = _imageSource;
-            //for (int i = 0; i < STEP_SIZE; i++)
-            //{
-            //    labels[i].Text = labelsStr[i];
-            //    src = Process(src, iProcess[i], imageShow[i]);
-            //}
-            //step4(src);
-            //test6_ok(_imageSource);
-            test8(_imageSource);
-        }
         private void test8(Bitmap src)
         {
             IImageProcess action;
@@ -140,24 +116,6 @@ namespace ImageProcessToolBox
             #endregion
         }
 
-        private Bitmap step4(Bitmap src)
-        {
-            label4.Text = "Step 4 : ";
-
-            IImageProcess process = new MorphologyDilation();
-            process.setResouceImage(src);
-            return Process(src, process, pictureBox4); ;
-        }
-
-
-        private Bitmap Process(Bitmap src, IImageProcess Iprocess, PictureBox show)
-        {
-            Iprocess.setResouceImage(src);
-            Bitmap res = Iprocess.Process();
-            show.Image = res;
-            return res;
-        }
-
         private void pictureBox_Click(object sender, EventArgs e)
         {
 
@@ -172,14 +130,25 @@ namespace ImageProcessToolBox
             form.Show();
         }
 
-        private void btnCalc_Click(object sender, EventArgs e)
+        private void onStart()
         {
             btnCalc.Enabled = false;
+            btnMedianFilter.Enabled = false;
+        }
 
-            finalProcess(_imageSource);
-
+        private void onEnd()
+        {
             btnCalc.Enabled = true;
+            btnMedianFilter.Enabled = true;
             MessageBox.Show("完成");
+        }
+
+
+        private void btnCalc_Click(object sender, EventArgs e)
+        {
+            onStart();
+            finalProcess(_imageSource);
+            onEnd();
         }
 
         private void finalProcess(Bitmap src)
@@ -303,6 +272,222 @@ namespace ImageProcessToolBox
                 }
             }
             return res;
+        }
+
+        private void test7(Bitmap src)
+        {
+            //step 1
+            #region BandPassByCol
+
+            int th = ImagePretreatment.ThresholdingIterativeWithR(src);
+            ProjectionFactory factory = new ProjectionFactory(src, th);
+            int[] v = factory.getVerticalProject();
+            int vEnd = 0, vStart = 0;
+            for (int i = v.Length - 1; i >= 300; --i)
+                if (v[i] == 0)
+                    vEnd = i;
+
+            IImageProcess bitOf8PlaneSlicing = new BitOf8PlaneSlicing(8);
+            bitOf8PlaneSlicing.setResouceImage(src);
+            Bitmap res_bitOf8PlaneSlicing = bitOf8PlaneSlicing.Process();
+
+
+            factory = new ProjectionFactory(res_bitOf8PlaneSlicing, 10);
+            v = factory.getVerticalProject();
+
+            int tmax = 0;
+            for (int i = 0; i < v.Length / 2; ++i)
+                if (v[i] >= tmax)
+                {
+                    tmax = v[i];
+                    vStart = i;
+                }
+
+            IImageProcess bandPassByColIndex = new BandPassByColIndex(vStart, vEnd);
+            bandPassByColIndex.setResouceImage(src);
+            Bitmap res_bandPassByColIndex = bandPassByColIndex.Process();
+
+            #endregion
+
+            #region k - means + bandPass
+            MachineLearing_KMeans kmeans_3 = new MachineLearing_KMeans(3, 10);
+            kmeans_3.setResouceImage(new Bitmap(res_bandPassByColIndex));
+            Bitmap res_kmeans = kmeans_3.Process();
+
+            byte[,] cp = kmeans_3.CenterPoints;
+            IImageProcess bandpass = new Bandpass(cp[1, 2], 0);
+            bandpass.setResouceImage(res_kmeans);
+            Bitmap res_bandpass = bandpass.Process();
+            #endregion
+
+            #region Horizontal Projection
+            th = ImagePretreatment.ThresholdingIterativeWithR(src);
+            factory = new ProjectionFactory(res_bandpass, th);
+            int[] h = factory.getHorizontalProject();
+
+            int hStart = 0, hEnd = 0;
+            for (int i = 50; i >= 0; i--)
+                if (h[i] == 0)
+                {
+                    hStart = i;
+                    break;
+                }
+            if (h.Length > 300)
+            {
+                for (int i = 600; i < h.Length; i++)
+                    if (h[i] == 0)
+                    {
+                        hEnd = i;
+                        break;
+                    }
+            }
+            else
+                hEnd = h.Length - 1;
+
+            IImageProcess bandPassByRowIndex = new BandPassByRowIndex(hStart, hEnd);
+            bandPassByRowIndex.setResouceImage(res_bandpass);
+            Bitmap res_bandPassByRowIndex = bandPassByRowIndex.Process();
+            label1.Text = "vertical projection \n 8Bit of PlaneSlicing \n K-means + band-pass \n Horizontal Projection";
+            pictureBox1.Image = res_bandPassByRowIndex;
+
+
+            #endregion
+
+            #region rectangleof Interested
+            Bitmap res_roi = rectangleofInterested(src, res_bandPassByRowIndex);
+            pictureBox2.Image = res_roi;
+            label2.Text = "ROI";
+            #endregion
+
+            #region filter
+
+            IImageProcess filterAction = new MedianFilter(25, 25);
+            filterAction.setResouceImage(res_roi);
+            Bitmap res_filterAction = filterAction.Process();
+
+            pictureBox3.Image = res_filterAction;
+            label3.Text = "Filters";
+
+
+            #endregion
+
+
+            #region 3-means
+            MachineLearing_KMeans kmean_afterFilter = new MachineLearing_KMeans(3, 10);
+            kmean_afterFilter.setResouceImage(new Bitmap(res_filterAction));
+            Bitmap res_3means_afterFilter = kmean_afterFilter.Process();
+
+            cp = kmean_afterFilter.CenterPoints;
+            bandpass = new Bandpass(cp[1, 2], 0);
+            bandpass.setResouceImage(res_3means_afterFilter);
+            Bitmap res_keams_afterBandpass = bandpass.Process();
+
+            #endregion
+
+            #region high light
+            Point[] initCenters = { new Point((hEnd - hStart) / 4, vStart + (vEnd - vStart) / 2), new Point(((hEnd - hStart) / 4) * 3, vStart + (vEnd - vStart) / 2) };
+            List<Point> targetCenters = new List<Point>();
+
+            foreach (Point center in initCenters)
+            {
+                MachineLearing_MeanShift meanShit = new MachineLearing_MeanShift(150, cp[1, 2]);
+                meanShit.Center = center;
+                meanShit.setResouceImage(res_keams_afterBandpass);
+                meanShit.Process();
+                targetCenters.Add(meanShit.Center);
+            }
+
+            IImageProcess imageHighLight = new ImageHighLight(targetCenters.ToArray());
+            imageHighLight.setResouceImage(res_keams_afterBandpass);
+            pictureBox4.Image = imageHighLight.Process(); ;
+            label4.Text = "Mean-shit Hight";
+            #endregion
+
+            #region growpIn
+            RegionGrowpIn growpIn = new RegionGrowpIn(targetCenters[0]);
+            MachineLearing_KMeans MachineLearing_KMeans = new MachineLearing_KMeans(3, 10);
+            MachineLearing_KMeans.setResouceImage(new Bitmap(pictureBox3.Image));
+
+            growpIn.setResouceImage(MachineLearing_KMeans.Process());
+            Bitmap grownRes = growpIn.Process();
+
+            Binarization binarization = new Binarization(254);
+            binarization.setResouceImage(grownRes);
+            Bitmap finalFrame = binarization.Process();
+
+            IImageProcess morphology = new MorphologyOpening();
+            for (int i = 0; i < 10; i++)
+            {
+                morphology.setResouceImage(finalFrame);
+                finalFrame = morphology.Process();
+            }
+
+            pictureBox5.Image = finalFrame;
+            label5.Text = "Growp In";
+            #endregion
+
+            #region Make Frame (Ans)
+            MakeImageFrame makeImageFrame = new MakeImageFrame(src, finalFrame);
+            pictureBox7.Image = makeImageFrame.Process();
+            label7.Text = "Ans";
+            #endregion 
+
+            
+        }
+
+        private Bitmap rectangleofInterested(Bitmap src, Bitmap refImg)
+        {
+            ProjectionFactory factory = new ProjectionFactory(refImg, 1);
+            int[] hps = factory.getHorizontalProject();
+            int[] vps = factory.getVerticalProject();
+
+            int x1 = 0, x2 = 0, y1 = 0, y2 = 0;
+            for (int i = 0; i < hps.Length; i++)
+                if (hps[i] != 0)
+                {
+                    x1 = i;
+                    break;
+                }
+            for (int i = hps.Length - 1; i >= 0; i--)
+                if (hps[i] != 0)
+                {
+                    x2 = i;
+                    break;
+                }
+
+
+            for (int i = 0; i < vps.Length; i++)
+                if (vps[i] != 0)
+                {
+                    y1 = i;
+                    break;
+                }
+
+            for (int i = vps.Length - 1; i >= 0; i--)
+                if (vps[i] != 0)
+                {
+                    y2 = i;
+                    break;
+                }
+
+            Console.Write(string.Format("x1={0},x2={1},y1={2},y2={3}", x1, x2, y1, y2));
+
+            IImageProcess iprc = new BandPassByColIndex(y1, y2);
+            iprc.setResouceImage(src);
+            Bitmap res1 = iprc.Process();
+
+            IImageProcess iprc2 = new BandPassByRowIndex(x1, x2);
+            iprc2.setResouceImage(res1);
+            Bitmap res2 = iprc2.Process();
+
+            return res2;
+        }
+
+        private void btnMedianFilter_Click(object sender, EventArgs e)
+        {
+            onStart();
+            test7(_imageSource);
+            onEnd();
         }
     }
 }

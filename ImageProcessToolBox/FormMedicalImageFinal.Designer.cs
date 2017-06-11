@@ -46,6 +46,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.btnCalc = new System.Windows.Forms.Button();
+            this.btnMedianFilter = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxOriginal)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -229,17 +230,28 @@
             // 
             this.btnCalc.Location = new System.Drawing.Point(312, 9);
             this.btnCalc.Name = "btnCalc";
-            this.btnCalc.Size = new System.Drawing.Size(75, 23);
+            this.btnCalc.Size = new System.Drawing.Size(136, 23);
             this.btnCalc.TabIndex = 23;
-            this.btnCalc.Text = "Calc";
+            this.btnCalc.Text = "Calc(non-MedianFilter)";
             this.btnCalc.UseVisualStyleBackColor = true;
             this.btnCalc.Click += new System.EventHandler(this.btnCalc_Click);
+            // 
+            // btnMedianFilter
+            // 
+            this.btnMedianFilter.Location = new System.Drawing.Point(461, 9);
+            this.btnMedianFilter.Name = "btnMedianFilter";
+            this.btnMedianFilter.Size = new System.Drawing.Size(137, 23);
+            this.btnMedianFilter.TabIndex = 24;
+            this.btnMedianFilter.Text = "Calc(MedianFilter)";
+            this.btnMedianFilter.UseVisualStyleBackColor = true;
+            this.btnMedianFilter.Click += new System.EventHandler(this.btnMedianFilter_Click);
             // 
             // FormMedicalImageFinal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1202, 717);
+            this.Controls.Add(this.btnMedianFilter);
             this.Controls.Add(this.btnCalc);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
@@ -293,5 +305,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button btnCalc;
+        private System.Windows.Forms.Button btnMedianFilter;
     }
 }
