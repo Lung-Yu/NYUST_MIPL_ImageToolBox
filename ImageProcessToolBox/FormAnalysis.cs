@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace ImageProcessToolBox
 {
@@ -24,26 +25,13 @@ namespace ImageProcessToolBox
                 pictureBox1.Image = source;
                 Analysis();
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                MessageBox.Show("目前無法分析處理此影像");
+                MessageBox.Show("目前無法分析處理此影像。\n" + e.Message);
             }
         }
 
 
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                Analysis();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            
-        }
 
         private void Analysis()
         {
@@ -61,27 +49,43 @@ namespace ImageProcessToolBox
         {
             Bitmap img = separtion.ImageGray;
             pictureBox5.Image = img;
-            projection(img, GrayHorizontalProjection.CreateGraphics(), GrayVerticalProjection.CreateGraphics());
+            projectionTest(verticalGrayChart, horizontalGrayChart, img);
         }
 
+        private void projectionTest(Chart VerticalChart, Chart HorizontalChart, Bitmap img)
+        {
+            HorizontalChart.Series["Series1"].IsVisibleInLegend = false;
+            HorizontalChart.Series["Series1"].IsValueShownAsLabel = false;
+            VerticalChart.Series["Series1"].IsVisibleInLegend = false;
+            VerticalChart.Series["Series1"].IsValueShownAsLabel = false;
 
+
+            ProjectionFactory factory = new ProjectionFactory(img);
+            factory.Threshold = (int)numericUpDown1.Value;
+            int[] horizontalProjection = factory.getHorizontalProject();
+            int[] verticalProjection = factory.getVerticalProject();
+            for (int i = 0; i < horizontalProjection.Length;i++ )
+                HorizontalChart.Series["Series1"].Points.AddXY(i, horizontalProjection[i]);
+            for (int i = 0; i < verticalProjection.Length; i++)
+                VerticalChart.Series["Series1"].Points.AddXY(i, verticalProjection[i]);
+        }
 
         private void RedProcess(AnalysisSeparation separtion)
         {
             pictureBox2.Image = separtion.ImageOfR;
-            projection(separtion.ImageOfR, RedHorizontalProjection.CreateGraphics(), RedVerticalProjection.CreateGraphics());
+            projectionTest(chart1, chart2, separtion.ImageOfR);
         }
 
         private void GeenProcess(AnalysisSeparation separtion)
         {
             pictureBox3.Image = separtion.ImageOfG;
-            projection(separtion.ImageOfG, GreenHorizontalProjection.CreateGraphics(), GreenVerticalProjection.CreateGraphics());
+            projectionTest(chart3, chart4, separtion.ImageOfG);
         }
 
         private void BlueProcess(AnalysisSeparation separtion)
         {
             pictureBox4.Image = separtion.ImageOfB;
-            projection(separtion.ImageOfG, BlueHorizontalProjection.CreateGraphics(), BlueVerticalProjection.CreateGraphics());
+            projectionTest(chart5, chart6, separtion.ImageOfB);
         }
 
         private List<int> getResouce(Bitmap bitmap, out int oMax)
@@ -182,6 +186,18 @@ namespace ImageProcessToolBox
         {
             Form action = new FormShowImage(new Bitmap(pictureBox1.Image));
             action.Show();
+        }
+
+        private void numericUpDown1_ValueChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                Analysis();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
 
