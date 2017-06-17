@@ -63,6 +63,8 @@
   <ItemGroup>
     <Compile Include="Analysis\ProjectionFactory.cs" />
     <Compile Include="Analysis\ProjectionWithValue.cs" />
+    <Compile Include="BasicModel\IImageProcessing.cs" />
+    <Compile Include="BasicModel\ImageBasic.cs" />
     <Compile Include="old\CutHW.cs" />
     <Compile Include="Forms\FormShowImage.cs">
       <SubType>Form</SubType>
