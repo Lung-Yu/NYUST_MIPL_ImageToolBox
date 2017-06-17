@@ -134,7 +134,7 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="old\GaussianFilter.cs" />
-    <Compile Include="Algorithm\Heap.cs" />
+    <Compile Include="Algorithm\HeapSort.cs" />
     <Compile Include="old\HighPassFilter.cs" />
     <Compile Include="old\HistogramEqualization.cs" />
     <Compile Include="Interface\IDistance.cs" />

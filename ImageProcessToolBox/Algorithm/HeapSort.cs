@@ -6,18 +6,18 @@ using System.Threading.Tasks;
 
 namespace ImageProcessToolBox
 {
-    class Heap
+    class HeapSort
     {
         private List<int> myList = new List<int>();
         private int myLen;
-        public Heap(byte[] myList, int myLen)
+        public HeapSort(byte[] myList, int myLen)
         {
             this.myLen = myLen;
             foreach (int item in myList)
                 this.myList.Add(item);
         }
 
-        public Heap(List<int> myList, int myLen)
+        public HeapSort(List<int> myList, int myLen)
         {
             this.myLen = myLen;
             this.myList = myList;

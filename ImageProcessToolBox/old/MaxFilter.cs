@@ -41,7 +41,7 @@ namespace ImageProcessToolBox
         
         protected override byte maskFilter(byte[] gate)
         {
-            Heap heap = new Heap(gate, gate.Length);
+            HeapSort heap = new HeapSort(gate, gate.Length);
             heap.heapsort();
             return (byte)heap.get()[gate.Length-1];
         }
