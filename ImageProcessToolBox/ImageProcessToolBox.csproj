@@ -117,6 +117,7 @@
     <Compile Include="MedicalImageFinal\Transfor.cs" />
     <Compile Include="old\NoiseGaussian.cs" />
     <Compile Include="old\ReaderTextFile.cs" />
+    <Compile Include="PoingProcessing\Grayscale.cs" />
     <Compile Include="Template\FilterTemplate.cs" />
     <Compile Include="old\Grayscale.cs" />
     <Compile Include="old\HorizontalFilter.cs" />

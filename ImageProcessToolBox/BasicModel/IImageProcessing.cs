@@ -11,7 +11,7 @@ namespace ImageProcessToolBox.BasicModel
     {
         void setImage(Bitmap src);
 
-        Bitmap getImage(Bitmap src);
+        Bitmap getImage();
 
         void process();
     }

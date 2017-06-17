@@ -8,12 +8,15 @@ using System.Threading.Tasks;
 
 namespace ImageProcessToolBox.BasicModel
 {
-    class ImageBasic : IImageProcessing
+    abstract class ImageBasic : IImageProcessing
     {
-        private static readonly int IMAGE_RED_INDEX = 0;
-        private static readonly int IMAGE_Green_INDEX = 1;
-        private static readonly int IMAGE_Blue_INDEX = 2;
-        private byte[, ,] _imgMap;
+        protected static readonly int IMAGE_RED_INDEX = 0;
+        protected static readonly int IMAGE_Green_INDEX = 1;
+        protected static readonly int IMAGE_Blue_INDEX = 2;
+
+        protected int _width;
+        protected int _height;
+        protected byte[, ,] _imgMap;
         public byte[, ,] ImageMap
         {
             get { return _imgMap; }
@@ -92,17 +95,16 @@ namespace ImageProcessToolBox.BasicModel
 
         public void setImage(Bitmap src)
         {
+            _width = src.Width;
+            _height = src.Height;
             _imgMap = extraPixels(src);
         }
 
-        public Bitmap getImage(Bitmap src)
+        public Bitmap getImage()
         {
             return buildBitmap(_imgMap);
         }
 
-        public void process()
-        {
-            throw new NotImplementedException();
-        }
+        public abstract void process();
     }
 }

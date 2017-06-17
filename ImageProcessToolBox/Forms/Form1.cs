@@ -1,4 +1,5 @@
-﻿using ImageProcessToolBox.Feature;
+﻿using ImageProcessToolBox.BasicModel;
+using ImageProcessToolBox.Feature;
 using ImageProcessToolBox.Interface;
 using System;
 using System.Collections.Generic;
@@ -210,6 +211,15 @@ namespace ImageProcessToolBox
             UIMessage(actionString, sw);
             setResultBitmap(resBitmap);
 
+            return action;
+        }
+
+        private IImageProcessing actions(IImageProcessing action, String actionString)
+        {
+            Stopwatch sw = TimeCountStart();
+            action.process();
+            UIMessage(actionString, sw);
+            setResultBitmap(action.getImage());
             return action;
         }
 
@@ -556,7 +566,19 @@ namespace ImageProcessToolBox
             //Form form = new FormMedicalImageFinal(imageSource);
             //form.Show();
 
-            actions(new CutHW(), "CutHW Left");
+            //actions(new CutHW(), "CutHW Left");
+            Bitmap bitmap = bitmapFromSource();
+
+            Stopwatch sw = TimeCountStart();
+            
+            PoingProcessing.Grayscale grayscale = new PoingProcessing.Grayscale();
+            grayscale.setImage(bitmapFromSource());
+            grayscale.process();
+
+
+            UIMessage("new gray", sw);
+            setResultBitmap(grayscale.getImage());
+
         }
 
         private void btnVertical_Click(object sender, EventArgs e)
