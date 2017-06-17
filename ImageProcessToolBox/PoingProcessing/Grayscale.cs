@@ -18,9 +18,9 @@ namespace ImageProcessToolBox.PoingProcessing
                     //red *0.299 + green*0.587 + blue*0.114
                     byte gray = (byte)(_imgMap[x, y, IMAGE_RED_INDEX] * 0.299 + _imgMap[x, y, IMAGE_Green_INDEX] * 0.587 + _imgMap[x, y, IMAGE_Blue_INDEX] * 0.114);
 
-                    _imgMap[x, y, IMAGE_RED_INDEX] = gray;
-                    _imgMap[x, y, IMAGE_Green_INDEX] = gray;
-                    _imgMap[x, y, IMAGE_Blue_INDEX] = gray;
+                    _resultMap[x, y, IMAGE_RED_INDEX] = gray;
+                    _resultMap[x, y, IMAGE_Green_INDEX] = gray;
+                    _resultMap[x, y, IMAGE_Blue_INDEX] = gray;
                 }
             }
         }

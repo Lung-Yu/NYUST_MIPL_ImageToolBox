@@ -30,9 +30,9 @@ namespace ImageProcessToolBox.PoingProcessing
             {
                 for (int x = 0; x < _width; x++)
                 {
-                    _imgMap[x, y, IMAGE_RED_INDEX] = _NEGATIVE_MAP[_imgMap[x, y, IMAGE_RED_INDEX]];
-                    _imgMap[x, y, IMAGE_Green_INDEX] = _NEGATIVE_MAP[_imgMap[x, y, IMAGE_Green_INDEX]];
-                    _imgMap[x, y, IMAGE_Blue_INDEX] = _NEGATIVE_MAP[_imgMap[x, y, IMAGE_Blue_INDEX]];
+                    _resultMap[x, y, IMAGE_RED_INDEX] = _NEGATIVE_MAP[_resultMap[x, y, IMAGE_RED_INDEX]];
+                    _resultMap[x, y, IMAGE_Green_INDEX] = _NEGATIVE_MAP[_resultMap[x, y, IMAGE_Green_INDEX]];
+                    _resultMap[x, y, IMAGE_Blue_INDEX] = _NEGATIVE_MAP[_resultMap[x, y, IMAGE_Blue_INDEX]];
                 }
             }
         }
