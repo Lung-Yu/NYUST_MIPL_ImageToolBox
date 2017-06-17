@@ -307,7 +307,7 @@ namespace ImageProcessToolBox
         private void draw(Graphics[] graphicses, Bitmap bitmap)
         {
             int[,] statistics = MyColouring.Statistics(bitmap);
-            
+
             // find Max value
             int MAX = 0;
             foreach (int value in statistics)
@@ -335,7 +335,7 @@ namespace ImageProcessToolBox
                 }
             }
         }
-    
+
 
         private void drawSource(Bitmap bitmap)
         {
@@ -569,15 +569,13 @@ namespace ImageProcessToolBox
 
             //actions(new CutHW(), "CutHW Left");
 
-            
-            PoingProcessing.Grayscale grayscale = new PoingProcessing.Grayscale();
-            if (_imageTemp == null){
-                grayscale.setImage(bitmapFromSource());
-                _imageTemp = grayscale.ImageMap;
-            }else{
-                grayscale.ImageMap = _imageTemp;
-            }
-            actions(grayscale, "new grayscale");
+
+            ImageBasic action = new PoingProcessing.Negative();
+
+            action.setImage(bitmapFromSource());
+            _imageTemp = action.ImageMap;
+
+            actions(action, "new grayscale");
         }
 
         private void btnVertical_Click(object sender, EventArgs e)
