@@ -19,6 +19,8 @@ namespace ImageProcessToolBox
     public partial class Form1 : Form
     {
         private List<Button> Buttons = new List<Button>();
+        private byte[, ,] _imageTemp;
+
 
         public Form1()
         {
@@ -88,7 +90,6 @@ namespace ImageProcessToolBox
             foreach (Button button in btns)
                 Buttons.Add(button);
         }
-
         #region Menu
         private string temporary_fileName = "";
 
@@ -567,18 +568,16 @@ namespace ImageProcessToolBox
             //form.Show();
 
             //actions(new CutHW(), "CutHW Left");
-            Bitmap bitmap = bitmapFromSource();
 
-            Stopwatch sw = TimeCountStart();
             
             PoingProcessing.Grayscale grayscale = new PoingProcessing.Grayscale();
-            grayscale.setImage(bitmapFromSource());
-            grayscale.process();
-
-
-            UIMessage("new gray", sw);
-            setResultBitmap(grayscale.getImage());
-
+            if (_imageTemp == null){
+                grayscale.setImage(bitmapFromSource());
+                _imageTemp = grayscale.ImageMap;
+            }else{
+                grayscale.ImageMap = _imageTemp;
+            }
+            actions(grayscale, "new grayscale");
         }
 
         private void btnVertical_Click(object sender, EventArgs e)
