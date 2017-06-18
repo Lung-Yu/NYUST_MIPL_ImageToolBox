@@ -374,14 +374,14 @@ namespace ImageProcessToolBox
         private void btnGrayscale_Click(object sender, EventArgs e)
         {
             Grayscale gray = new Grayscale();
-            gray.setImage(bitmapFromResource());
+            gray.setImage(bitmapFromSource());
             actions(gray, "Grayscale");
         }
 
         private void btnNegative_Click(object sender, EventArgs e)
         {
             Negative negative = new Negative();
-            negative.setImage(bitmapFromResource());
+            negative.setImage(bitmapFromSource());
             actions(negative, "Negative");
         }
 
@@ -594,7 +594,7 @@ namespace ImageProcessToolBox
             //actions(new CutHW(), "CutHW Left");
 
 
-            ImageBasic action = new Filter.FilterMin();
+            ImageBasic action = new Filter.FilterMax();
 
             action.setImage(bitmapFromSource());
             _imageTemp = action.ImageMap;
