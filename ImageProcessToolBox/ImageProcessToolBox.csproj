@@ -98,7 +98,6 @@
     </Compile>
     <Compile Include="Analysis\AnalysisSeparation.cs" />
     <Compile Include="old\Binarization.cs" />
-    <Compile Include="old\BitOf8PlaneSlicing.cs" />
     <Compile Include="old\Degree45Filter.cs" />
     <Compile Include="old\DegreesNegative45Filter.cs" />
     <Compile Include="old\DiscreteFourierTransform.cs" />

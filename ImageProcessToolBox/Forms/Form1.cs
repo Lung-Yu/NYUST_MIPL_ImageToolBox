@@ -400,7 +400,12 @@ namespace ImageProcessToolBox
         private void btn8BitPlaneSlicing_Click(object sender, EventArgs e)
         {
             int value = (int)numeric8BitPlaneSlicing.Value;
-            actions(new BitOf8PlaneSlicing(value), "8 Bit Plane Slicing by " + value);
+         
+            BitOf8PlaneSlicing action = new BitOf8PlaneSlicing();
+            action.setImage(bitmapFromSource());
+            action.BitNumber = value;
+
+            actions(action, "8 Bit Plane Slicing by " + value);
         }
 
         private void btnBinarization_Click(object sender, EventArgs e)
