@@ -19,17 +19,17 @@ namespace ImageProcessToolBox.Filter
 
                     //mask processing
                     byte[] temporary = new byte[] { 0, 0, 0 };
-                    for (int y = _mask_y_start; y < _mask_y_end; y++)
-                        for (int x = _mask_x_start; x < _mask_x_end; x++)
+                    for (int y = _mask_y_start; y <= _mask_y_end; y++)
+                        for (int x = _mask_x_start; x <= _mask_x_end; x++)
                         {
                             int new_x = x + imgX;
                             int new_y = y + imgY;
 
                             if (IsOutOfIndex(new_x, new_y))
                             {
-                                temporary[IMAGE_RED_INDEX] = 0;
-                                temporary[IMAGE_Green_INDEX] = 0;
-                                temporary[IMAGE_Blue_INDEX] = 0;
+                                temporary[IMAGE_RED_INDEX] = 255;
+                                temporary[IMAGE_Green_INDEX] = 255;
+                                temporary[IMAGE_Blue_INDEX] = 255;
                                 break;
                             }
                             else
