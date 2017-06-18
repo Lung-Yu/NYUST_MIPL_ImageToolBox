@@ -1,6 +1,7 @@
 ﻿using ImageProcessToolBox.BasicModel;
 using ImageProcessToolBox.Feature;
 using ImageProcessToolBox.Interface;
+using ImageProcessToolBox.PoingProcessing;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -371,12 +372,16 @@ namespace ImageProcessToolBox
         #region Point Processing
         private void btnGrayscale_Click(object sender, EventArgs e)
         {
-            actions(new Grayscale(), "Grayscale");
+            Grayscale gray = new Grayscale();
+            gray.setImage(bitmapFromResource());
+            actions(gray, "Grayscale");
         }
 
         private void btnNegative_Click(object sender, EventArgs e)
         {
-            actions(new Negative(), "Negative");
+            Negative negative = new Negative();
+            negative.setImage(bitmapFromResource());
+            actions(negative, "Negative");
         }
 
         private void btnOtus_Click(object sender, EventArgs e)
@@ -407,7 +412,10 @@ namespace ImageProcessToolBox
         private void btnPowerLaw_Click(object sender, EventArgs e)
         {
             double c = double.Parse(txtLog.Text);
-            actions(new TransformPowerLaw(c), "PowLaw");
+            TransformPowerLaw transfor = new TransformPowerLaw();
+            transfor.Pow = c;
+            transfor.setImage(bitmapFromSource());
+            actions(transfor, "PowLaw");
         }
 
         #endregion
@@ -531,13 +539,18 @@ namespace ImageProcessToolBox
         private void btnLog_Click(object sender, EventArgs e)
         {
             int c = (int)double.Parse(txtLog.Text);
-            actions(new TransformByLog(c), "Log Transform");
+            TransformLog transfor = new TransformLog();
+            transfor.C = c;
+            transfor.setImage(bitmapFromSource());
+            actions(transfor, "Log Transform");
         }
 
         private void btnExp_Click(object sender, EventArgs e)
         {
             int c = (int)double.Parse(txtLog.Text);
-            actions(new TransformByExp(c), "Exp Transform");
+            TransformExp transfor = new TransformExp();
+            transfor.setImage(bitmapFromSource());
+            actions(transfor, "Exp Transform");
         }
 
         #endregion
@@ -570,12 +583,12 @@ namespace ImageProcessToolBox
             //actions(new CutHW(), "CutHW Left");
 
 
-            ImageBasic action = new PoingProcessing.TransformLog();
+            //ImageBasic action = new PoingProcessing.TransformLog();
 
-            action.setImage(bitmapFromSource());
-            _imageTemp = action.ImageMap;
+            //action.setImage(bitmapFromSource());
+            //_imageTemp = action.ImageMap;
 
-            actions(action, "new grayscale");
+            //actions(action, "new grayscale");
         }
 
         private void btnVertical_Click(object sender, EventArgs e)

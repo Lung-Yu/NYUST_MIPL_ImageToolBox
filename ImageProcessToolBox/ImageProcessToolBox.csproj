@@ -120,10 +120,10 @@
     <Compile Include="PoingProcessing\BitOf8PlaneSlicing.cs" />
     <Compile Include="PoingProcessing\Grayscale.cs" />
     <Compile Include="PoingProcessing\Negative.cs" />
+    <Compile Include="PoingProcessing\TransformExp.cs" />
     <Compile Include="PoingProcessing\TransformLog.cs" />
     <Compile Include="PoingProcessing\TransformPowerLaw.cs" />
     <Compile Include="Template\FilterTemplate.cs" />
-    <Compile Include="old\Grayscale.cs" />
     <Compile Include="old\HorizontalFilter.cs" />
     <Compile Include="old\ImageProcess.cs" />
     <Compile Include="old\Instagram1977.cs" />
@@ -157,7 +157,6 @@
     <Compile Include="old\Mosaic.cs" />
     <Compile Include="old\MyColorFunction.cs" />
     <Compile Include="old\MyColouring.cs" />
-    <Compile Include="old\Negative.cs" />
     <Compile Include="old\OldStyleFilter.cs" />
     <Compile Include="Template\PointTemplate.cs" />
     <Compile Include="old\PrewittFilter.cs" />
@@ -166,13 +165,9 @@
     <Compile Include="old\SketchFilter.cs" />
     <Compile Include="old\SpherizeFilter.cs" />
     <Compile Include="old\SwirlFilter.cs" />
-    <Compile Include="old\TransformPowerLaw.cs" />
     <Compile Include="old\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="old\Sobel.cs" />
-    <Compile Include="old\TransformByExp.cs" />
-    <Compile Include="old\TransformByLog.cs" />
-    <Compile Include="old\Try.cs" />
     <Compile Include="old\VerticalFilter.cs" />
     <EmbeddedResource Include="Forms\FormAnalysis.resx">
       <DependentUpon>FormAnalysis.cs</DependentUpon>

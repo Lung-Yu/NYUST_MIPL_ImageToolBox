@@ -19,7 +19,8 @@ namespace ImageProcessToolBox
 
         public SketchFilter(Bitmap bitmap)
         {
-            _SourceImage = new Grayscale(bitmap).Process();
+            //_SourceImage = new Grayscale(bitmap).Process();
+            _SourceImage = bitmap;
         }
 
         public System.Drawing.Bitmap Process()

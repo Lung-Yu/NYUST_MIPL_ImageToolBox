@@ -1,4 +1,5 @@
 ﻿using ImageProcessToolBox.Analysis;
+using ImageProcessToolBox.PoingProcessing;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -179,7 +180,10 @@ namespace ImageProcessToolBox
 
         private void btnNegative_Click(object sender, EventArgs e)
         {
-            pictureBox1.Image = new Negative(new Bitmap(pictureBox1.Image)).Process();
+            Negative negative = new Negative();
+            negative.setImage(new Bitmap(pictureBox1.Image));
+            negative.process();
+            pictureBox1.Image = negative.getImage();
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
