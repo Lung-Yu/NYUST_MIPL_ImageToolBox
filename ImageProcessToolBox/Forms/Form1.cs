@@ -1,5 +1,6 @@
 ﻿using ImageProcessToolBox.BasicModel;
 using ImageProcessToolBox.Feature;
+using ImageProcessToolBox.Filter;
 using ImageProcessToolBox.Interface;
 using ImageProcessToolBox.PoingProcessing;
 using System;
@@ -433,7 +434,12 @@ namespace ImageProcessToolBox
 
         private void btnMinFilter_Click(object sender, EventArgs e)
         {
-            actions(new MinFilter((int)numericUpDownX.Value, (int)numericUpDownY.Value), "Min Filter");
+            FilterMin executor = new FilterMin();
+            executor.setImage(bitmapFromSource());
+            executor.EfficWidth = (int)numericUpDownX.Value;
+            executor.EfficHeigh = (int)numericUpDownY.Value;
+
+            actions(executor, "Min Filter");
         }
 
         private void btnMaxFilter_Click(object sender, EventArgs e)
