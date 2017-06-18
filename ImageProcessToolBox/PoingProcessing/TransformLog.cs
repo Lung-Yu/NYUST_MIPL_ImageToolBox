@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ImageProcessToolBox.PoingProcessing
 {
-    class TransformByLog : ImageBasic
+    class TransformLog : ImageBasic
     {
         private int _C = 100;
         private double _baseNum = 10;

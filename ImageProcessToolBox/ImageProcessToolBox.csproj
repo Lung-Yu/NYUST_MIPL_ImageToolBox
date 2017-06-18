@@ -120,7 +120,7 @@
     <Compile Include="PoingProcessing\BitOf8PlaneSlicing.cs" />
     <Compile Include="PoingProcessing\Grayscale.cs" />
     <Compile Include="PoingProcessing\Negative.cs" />
-    <Compile Include="PoingProcessing\TransformByLog.cs" />
+    <Compile Include="PoingProcessing\TransformLog.cs" />
     <Compile Include="Template\FilterTemplate.cs" />
     <Compile Include="old\Grayscale.cs" />
     <Compile Include="old\HorizontalFilter.cs" />
