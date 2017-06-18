@@ -146,7 +146,7 @@
     <Compile Include="old\HistogramEqualization.cs" />
     <Compile Include="Interface\IDistance.cs" />
     <Compile Include="Interface\IImageProcess.cs" />
-    <Compile Include="old\MachineLearing_KMeans.cs" />
+    <Compile Include="MachineLearing\MachineLearing_KMeans.cs" />
     <Compile Include="old\ImageExtract.cs" />
     <Compile Include="old\ImagePretreatment.cs" />
     <Compile Include="old\Laplacian.cs" />
