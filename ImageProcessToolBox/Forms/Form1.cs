@@ -102,7 +102,7 @@ namespace ImageProcessToolBox
             opfDialog.FilterIndex = 3;
             opfDialog.RestoreDirectory = true;
             opfDialog.InitialDirectory = @"C:\\";
-
+            _imageTemp = null;
 
             if (opfDialog.ShowDialog() == DialogResult.OK)
             {
@@ -122,6 +122,7 @@ namespace ImageProcessToolBox
             else
             {
                 pictureBox1.ImageLocation = temporary_fileName;
+                _imageTemp = null;
                 UIMessage(String.Format(">> restore file : {0}", temporary_fileName));
             }
         }
@@ -185,6 +186,7 @@ namespace ImageProcessToolBox
                 UIMessage("Replace Image error", sw);
                 return;
             }
+            _imageTemp = null;
 
             Bitmap bitmap = new Bitmap(pictureBox2.Image);
             pictureBox1.Image.Dispose();
