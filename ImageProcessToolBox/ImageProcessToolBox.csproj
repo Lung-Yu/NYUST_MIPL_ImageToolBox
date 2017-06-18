@@ -65,6 +65,7 @@
     <Compile Include="Analysis\ProjectionWithValue.cs" />
     <Compile Include="BasicModel\IImageProcessing.cs" />
     <Compile Include="BasicModel\ImageBasic.cs" />
+    <Compile Include="BasicModel\ImageBasicFilter.cs" />
     <Compile Include="Filter\FilterMin.cs" />
     <Compile Include="old\CutHW.cs" />
     <Compile Include="Forms\FormShowImage.cs">

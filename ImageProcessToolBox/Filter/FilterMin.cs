@@ -7,29 +7,11 @@ using System.Threading.Tasks;
 
 namespace ImageProcessToolBox.Filter
 {
-    class FilterMin : ImageBasic
+    class FilterMin : ImageBasicFilter
     {
-        private int _efficWidth = 3;
-        private int _efficHeigh = 3;
-
-        int _mask_x_start;
-        int _mask_x_end;
-
-        int _mask_y_start;
-        int _mask_y_end;
-
-        private void init()
-        {
-            _mask_x_start = (_efficWidth / 2) * -1;
-            _mask_x_end = _efficWidth / 2;
-
-            _mask_y_start = (_efficHeigh / 2) * -1;
-            _mask_y_end = _efficHeigh / 2;
-        }
-
         public override void process()
         {
-            init();
+            initMaskVal();
 
             for (int imgY = 0; imgY < _height; imgY++)
                 for (int imgX = 0; imgX < _width; imgX++)
@@ -42,7 +24,8 @@ namespace ImageProcessToolBox.Filter
                         {
                             int new_x = x + imgX;
                             int new_y = y + imgY;
-                            if (isOutOfIndex(new_x, new_y))
+
+                            if (IsOutOfIndex(new_x, new_y))
                             {
                                 minTemporary[IMAGE_RED_INDEX] = 0;
                                 minTemporary[IMAGE_Green_INDEX] = 0;
@@ -66,12 +49,6 @@ namespace ImageProcessToolBox.Filter
                 }
         }
 
-        protected bool isOutOfIndex(int x, int y)
-        {
-            if (x < 0 || x >= _width || y < 0 || y >= _height)
-                return true;
-            else
-                return false;
-        }
+        
     }
 }
