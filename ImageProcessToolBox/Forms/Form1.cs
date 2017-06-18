@@ -570,7 +570,7 @@ namespace ImageProcessToolBox
             //actions(new CutHW(), "CutHW Left");
 
 
-            ImageBasic action = new PoingProcessing.BitOf8PlaneSlicing();
+            ImageBasic action = new PoingProcessing.TransformByLog();
 
             action.setImage(bitmapFromSource());
             _imageTemp = action.ImageMap;
