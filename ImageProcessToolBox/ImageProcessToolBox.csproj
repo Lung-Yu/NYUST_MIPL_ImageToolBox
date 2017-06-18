@@ -121,6 +121,7 @@
     <Compile Include="PoingProcessing\Grayscale.cs" />
     <Compile Include="PoingProcessing\Negative.cs" />
     <Compile Include="PoingProcessing\TransformLog.cs" />
+    <Compile Include="PoingProcessing\TransformPowerLaw.cs" />
     <Compile Include="Template\FilterTemplate.cs" />
     <Compile Include="old\Grayscale.cs" />
     <Compile Include="old\HorizontalFilter.cs" />
