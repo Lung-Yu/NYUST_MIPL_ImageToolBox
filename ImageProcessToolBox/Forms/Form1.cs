@@ -21,7 +21,7 @@ namespace ImageProcessToolBox
     public partial class Form1 : Form
     {
         private List<Button> Buttons = new List<Button>();
-        private byte[, ,] _imageTemp;
+        private byte[, ,] _imageTemp = null;
 
 
         public Form1()
@@ -128,7 +128,7 @@ namespace ImageProcessToolBox
 
         private void btnSaveFile_Click(object sender, EventArgs e)
         {
-            Bitmap bitmap = bitmapFromResource();
+            Bitmap bitmap = bitmapFromResult();
 
             SaveFileDialog sfd = new SaveFileDialog();
             sfd.Filter = @"(*.bmp,*.jpg)|*.bmp;*.jpg;*.png";
@@ -167,7 +167,6 @@ namespace ImageProcessToolBox
         }
         private void btnAnalysis_Click(object sender, EventArgs e)
         {
-
             if (pictureBox1.Image == null)
             {
                 MessageBox.Show("請先開啟圖片方可進行分析");
@@ -260,8 +259,6 @@ namespace ImageProcessToolBox
             Image img = pictureBox1.Image;
             if (img == null) return new Bitmap(5, 5);
 
-
-
             Bitmap bitmap = new Bitmap(img);
             string labelStr = String.Format("{0}*{1}", img.Width, img.Height);
             labelImageSize.Text = labelStr;
@@ -269,7 +266,21 @@ namespace ImageProcessToolBox
             return bitmap;
         }
 
-        private Bitmap bitmapFromResource()
+        private void initSourceMap()
+        {
+            Image img = pictureBox1.Image;
+            if (img == null)
+                throw new NullReferenceException("Please Select Image File");
+
+            Bitmap bitmap = new Bitmap(img);
+            string labelStr = String.Format("{0}*{1}", img.Width, img.Height);
+            labelImageSize.Text = labelStr;
+
+            if (_imageTemp == null)
+                _imageTemp = ImageBasic.extraPixels(bitmap);
+        }
+
+        private Bitmap bitmapFromResult()
         {
             Image img = pictureBox2.Image;
             if (img == null) return null;
@@ -374,14 +385,17 @@ namespace ImageProcessToolBox
         private void btnGrayscale_Click(object sender, EventArgs e)
         {
             Grayscale gray = new Grayscale();
-            gray.setImage(bitmapFromSource());
+            initSourceMap();
+
+            gray.setImage(_imageTemp);
             actions(gray, "Grayscale");
         }
 
         private void btnNegative_Click(object sender, EventArgs e)
         {
             Negative negative = new Negative();
-            negative.setImage(bitmapFromSource());
+            initSourceMap();
+            negative.setImage(_imageTemp);
             actions(negative, "Negative");
         }
 
@@ -401,7 +415,7 @@ namespace ImageProcessToolBox
         private void btn8BitPlaneSlicing_Click(object sender, EventArgs e)
         {
             int value = (int)numeric8BitPlaneSlicing.Value;
-         
+
             BitOf8PlaneSlicing action = new BitOf8PlaneSlicing();
             action.setImage(bitmapFromSource());
             action.BitNumber = value;

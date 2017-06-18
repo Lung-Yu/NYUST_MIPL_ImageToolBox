@@ -17,14 +17,14 @@ namespace ImageProcessToolBox.BasicModel
         protected int _width;
         protected int _height;
         protected byte[, ,] _imgMap;
+
         protected byte[, ,] _resultMap;
         public byte[, ,] ImageMap
         {
             get { return _resultMap; }
             set { _resultMap = value; }
         }
-
-        private static byte[, ,] extraPixels(Bitmap bitmap)
+        public static byte[, ,] extraPixels(Bitmap bitmap)
         {
             int width = bitmap.Width;
             int height = bitmap.Height;
@@ -99,6 +99,14 @@ namespace ImageProcessToolBox.BasicModel
             _width = src.Width;
             _height = src.Height;
             _imgMap = extraPixels(src);
+            _resultMap = new byte[_width, _height, 3];
+        }
+
+        public void setImage(byte[, ,] src)
+        {
+            _width = src.GetUpperBound(0) + 1;
+            _height = src.GetUpperBound(1) + 1;
+            _imgMap = src;
             _resultMap = new byte[_width, _height, 3];
         }
 
