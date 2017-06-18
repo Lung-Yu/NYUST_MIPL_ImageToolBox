@@ -588,12 +588,12 @@ namespace ImageProcessToolBox
             //actions(new CutHW(), "CutHW Left");
 
 
-            //ImageBasic action = new PoingProcessing.TransformLog();
+            ImageBasic action = new Filter.FilterMin();
 
-            //action.setImage(bitmapFromSource());
-            //_imageTemp = action.ImageMap;
+            action.setImage(bitmapFromSource());
+            _imageTemp = action.ImageMap;
 
-            //actions(action, "new grayscale");
+            actions(action, "new grayscale");
         }
 
         private void btnVertical_Click(object sender, EventArgs e)
