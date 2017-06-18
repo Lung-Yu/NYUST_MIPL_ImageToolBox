@@ -594,7 +594,7 @@ namespace ImageProcessToolBox
             //actions(new CutHW(), "CutHW Left");
 
 
-            ImageBasic action = new Filter.FilterMax();
+            ImageBasic action = new Filter.FilterMedian();
 
             action.setImage(bitmapFromSource());
             _imageTemp = action.ImageMap;

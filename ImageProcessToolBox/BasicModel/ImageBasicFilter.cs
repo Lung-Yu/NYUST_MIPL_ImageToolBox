@@ -8,8 +8,8 @@ namespace ImageProcessToolBox.BasicModel
 {
     abstract class ImageBasicFilter : ImageBasic
     {
-        private int _efficWidth = 3;
-        private int _efficHeigh = 3;
+        protected int _efficWidth = 3;
+        protected int _efficHeigh = 3;
 
         protected int _mask_x_start;
         protected int _mask_x_end;
