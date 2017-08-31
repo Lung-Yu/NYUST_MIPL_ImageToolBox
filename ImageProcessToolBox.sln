@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageProcessEfficacy", "Ima
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageSimilarity", "ImageSimilarity\ImageSimilarity.csproj", "{D08B6CD4-8DA7-45AF-B241-11E4E2CBC83B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CuttingImage", "CuttingImage\CuttingImage.csproj", "{33058566-4F71-4A30-B69E-CE13EB9B22A8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{D08B6CD4-8DA7-45AF-B241-11E4E2CBC83B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D08B6CD4-8DA7-45AF-B241-11E4E2CBC83B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D08B6CD4-8DA7-45AF-B241-11E4E2CBC83B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{33058566-4F71-4A30-B69E-CE13EB9B22A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{33058566-4F71-4A30-B69E-CE13EB9B22A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{33058566-4F71-4A30-B69E-CE13EB9B22A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{33058566-4F71-4A30-B69E-CE13EB9B22A8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

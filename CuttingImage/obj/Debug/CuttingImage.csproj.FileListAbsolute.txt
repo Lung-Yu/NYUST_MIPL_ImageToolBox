@@ -1,0 +1,9 @@
+C:\Users\lungyu\Documents\GitHub\ImageToolBox\CuttingImage\bin\Debug\CuttingImage.exe.config
+C:\Users\lungyu\Documents\GitHub\ImageToolBox\CuttingImage\bin\Debug\CuttingImage.exe
+C:\Users\lungyu\Documents\GitHub\ImageToolBox\CuttingImage\bin\Debug\CuttingImage.pdb
+C:\Users\lungyu\Documents\GitHub\ImageToolBox\CuttingImage\obj\Debug\CuttingImage.csprojResolveAssemblyReference.cache
+C:\Users\lungyu\Documents\GitHub\ImageToolBox\CuttingImage\obj\Debug\CuttingImage.Form1.resources
+C:\Users\lungyu\Documents\GitHub\ImageToolBox\CuttingImage\obj\Debug\CuttingImage.Properties.Resources.resources
+C:\Users\lungyu\Documents\GitHub\ImageToolBox\CuttingImage\obj\Debug\CuttingImage.csproj.GenerateResource.Cache
+C:\Users\lungyu\Documents\GitHub\ImageToolBox\CuttingImage\obj\Debug\CuttingImage.exe
+C:\Users\lungyu\Documents\GitHub\ImageToolBox\CuttingImage\obj\Debug\CuttingImage.pdb
