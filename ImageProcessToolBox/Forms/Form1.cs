@@ -1,5 +1,8 @@
-﻿using ImageProcessToolBox.Feature;
+﻿using ImageProcessToolBox.BasicModel;
+using ImageProcessToolBox.Feature;
+using ImageProcessToolBox.Filter;
 using ImageProcessToolBox.Interface;
+using ImageProcessToolBox.PoingProcessing;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -18,6 +21,8 @@ namespace ImageProcessToolBox
     public partial class Form1 : Form
     {
         private List<Button> Buttons = new List<Button>();
+        private byte[, ,] _imageTemp = null;
+
 
         public Form1()
         {
@@ -87,7 +92,6 @@ namespace ImageProcessToolBox
             foreach (Button button in btns)
                 Buttons.Add(button);
         }
-
         #region Menu
         private string temporary_fileName = "";
 
@@ -98,7 +102,7 @@ namespace ImageProcessToolBox
             opfDialog.FilterIndex = 3;
             opfDialog.RestoreDirectory = true;
             opfDialog.InitialDirectory = @"C:\\";
-
+            _imageTemp = null;
 
             if (opfDialog.ShowDialog() == DialogResult.OK)
             {
@@ -118,13 +122,14 @@ namespace ImageProcessToolBox
             else
             {
                 pictureBox1.ImageLocation = temporary_fileName;
+                _imageTemp = null;
                 UIMessage(String.Format(">> restore file : {0}", temporary_fileName));
             }
         }
 
         private void btnSaveFile_Click(object sender, EventArgs e)
         {
-            Bitmap bitmap = bitmapFromResource();
+            Bitmap bitmap = bitmapFromResult();
 
             SaveFileDialog sfd = new SaveFileDialog();
             sfd.Filter = @"(*.bmp,*.jpg)|*.bmp;*.jpg;*.png";
@@ -163,7 +168,6 @@ namespace ImageProcessToolBox
         }
         private void btnAnalysis_Click(object sender, EventArgs e)
         {
-
             if (pictureBox1.Image == null)
             {
                 MessageBox.Show("請先開啟圖片方可進行分析");
@@ -182,6 +186,7 @@ namespace ImageProcessToolBox
                 UIMessage("Replace Image error", sw);
                 return;
             }
+            _imageTemp = null;
 
             Bitmap bitmap = new Bitmap(pictureBox2.Image);
             pictureBox1.Image.Dispose();
@@ -210,6 +215,15 @@ namespace ImageProcessToolBox
             UIMessage(actionString, sw);
             setResultBitmap(resBitmap);
 
+            return action;
+        }
+
+        private IImageProcessing actions(IImageProcessing action, String actionString)
+        {
+            Stopwatch sw = TimeCountStart();
+            action.process();
+            UIMessage(actionString, sw);
+            setResultBitmap(action.getImage());
             return action;
         }
 
@@ -247,8 +261,6 @@ namespace ImageProcessToolBox
             Image img = pictureBox1.Image;
             if (img == null) return new Bitmap(5, 5);
 
-
-
             Bitmap bitmap = new Bitmap(img);
             string labelStr = String.Format("{0}*{1}", img.Width, img.Height);
             labelImageSize.Text = labelStr;
@@ -256,7 +268,21 @@ namespace ImageProcessToolBox
             return bitmap;
         }
 
-        private Bitmap bitmapFromResource()
+        private void initSourceMap()
+        {
+            Image img = pictureBox1.Image;
+            if (img == null)
+                throw new NullReferenceException("Please Select Image File");
+
+            Bitmap bitmap = new Bitmap(img);
+            string labelStr = String.Format("{0}*{1}", img.Width, img.Height);
+            labelImageSize.Text = labelStr;
+
+            if (_imageTemp == null)
+                _imageTemp = ImageBasic.extraPixels(bitmap);
+        }
+
+        private Bitmap bitmapFromResult()
         {
             Image img = pictureBox2.Image;
             if (img == null) return null;
@@ -296,7 +322,7 @@ namespace ImageProcessToolBox
         private void draw(Graphics[] graphicses, Bitmap bitmap)
         {
             int[,] statistics = MyColouring.Statistics(bitmap);
-            
+
             // find Max value
             int MAX = 0;
             foreach (int value in statistics)
@@ -324,7 +350,7 @@ namespace ImageProcessToolBox
                 }
             }
         }
-    
+
 
         private void drawSource(Bitmap bitmap)
         {
@@ -360,12 +386,19 @@ namespace ImageProcessToolBox
         #region Point Processing
         private void btnGrayscale_Click(object sender, EventArgs e)
         {
-            actions(new Grayscale(), "Grayscale");
+            Grayscale gray = new Grayscale();
+            initSourceMap();
+
+            gray.setImage(_imageTemp);
+            actions(gray, "Grayscale");
         }
 
         private void btnNegative_Click(object sender, EventArgs e)
         {
-            actions(new Negative(), "Negative");
+            Negative negative = new Negative();
+            initSourceMap();
+            negative.setImage(_imageTemp);
+            actions(negative, "Negative");
         }
 
         private void btnOtus_Click(object sender, EventArgs e)
@@ -384,7 +417,12 @@ namespace ImageProcessToolBox
         private void btn8BitPlaneSlicing_Click(object sender, EventArgs e)
         {
             int value = (int)numeric8BitPlaneSlicing.Value;
-            actions(new BitOf8PlaneSlicing(value), "8 Bit Plane Slicing by " + value);
+
+            BitOf8PlaneSlicing action = new BitOf8PlaneSlicing();
+            action.setImage(bitmapFromSource());
+            action.BitNumber = value;
+
+            actions(action, "8 Bit Plane Slicing by " + value);
         }
 
         private void btnBinarization_Click(object sender, EventArgs e)
@@ -396,7 +434,10 @@ namespace ImageProcessToolBox
         private void btnPowerLaw_Click(object sender, EventArgs e)
         {
             double c = double.Parse(txtLog.Text);
-            actions(new TransformPowerLaw(c), "PowLaw");
+            TransformPowerLaw transfor = new TransformPowerLaw();
+            transfor.Pow = c;
+            transfor.setImage(bitmapFromSource());
+            actions(transfor, "PowLaw");
         }
 
         #endregion
@@ -409,7 +450,12 @@ namespace ImageProcessToolBox
 
         private void btnMinFilter_Click(object sender, EventArgs e)
         {
-            actions(new MinFilter((int)numericUpDownX.Value, (int)numericUpDownY.Value), "Min Filter");
+            FilterMin executor = new FilterMin();
+            executor.setImage(bitmapFromSource());
+            executor.EfficWidth = (int)numericUpDownX.Value;
+            executor.EfficHeigh = (int)numericUpDownY.Value;
+
+            actions(executor, "Min Filter");
         }
 
         private void btnMaxFilter_Click(object sender, EventArgs e)
@@ -520,13 +566,18 @@ namespace ImageProcessToolBox
         private void btnLog_Click(object sender, EventArgs e)
         {
             int c = (int)double.Parse(txtLog.Text);
-            actions(new TransformByLog(c), "Log Transform");
+            TransformLog transfor = new TransformLog();
+            transfor.C = c;
+            transfor.setImage(bitmapFromSource());
+            actions(transfor, "Log Transform");
         }
 
         private void btnExp_Click(object sender, EventArgs e)
         {
             int c = (int)double.Parse(txtLog.Text);
-            actions(new TransformByExp(c), "Exp Transform");
+            TransformExp transfor = new TransformExp();
+            transfor.setImage(bitmapFromSource());
+            actions(transfor, "Exp Transform");
         }
 
         #endregion
@@ -556,7 +607,15 @@ namespace ImageProcessToolBox
             //Form form = new FormMedicalImageFinal(imageSource);
             //form.Show();
 
-            actions(new CutHW(), "CutHW Left");
+            //actions(new CutHW(), "CutHW Left");
+
+
+            ImageBasic action = new Filter.FilterMedian();
+
+            action.setImage(bitmapFromSource());
+            _imageTemp = action.ImageMap;
+
+            actions(action, "new grayscale");
         }
 
         private void btnVertical_Click(object sender, EventArgs e)

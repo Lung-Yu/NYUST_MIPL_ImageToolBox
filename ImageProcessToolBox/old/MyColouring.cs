@@ -31,7 +31,9 @@ namespace ImageProcessToolBox
 
         private static Bitmap colouring(Bitmap source, Bitmap Colour)
         {
-            Bitmap grayImage = new Grayscale(source).Process();   // source image to gray
+            //Bitmap grayImage = new Grayscale(source).Process();   // source image to gray
+            Bitmap grayImage = source;
+
             int[,] statisticsColour = Statistics(Colour);
 
             int width = grayImage.Width;

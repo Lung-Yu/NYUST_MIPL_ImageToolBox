@@ -50,6 +50,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -62,14 +63,20 @@
   <ItemGroup>
     <Compile Include="Analysis\ProjectionFactory.cs" />
     <Compile Include="Analysis\ProjectionWithValue.cs" />
-    <Compile Include="CutHW.cs" />
-    <Compile Include="FormShowImage.cs">
+    <Compile Include="BasicModel\IImageProcessing.cs" />
+    <Compile Include="BasicModel\ImageBasic.cs" />
+    <Compile Include="BasicModel\ImageBasicFilter.cs" />
+    <Compile Include="Filter\FilterMax.cs" />
+    <Compile Include="Filter\FilterMedian.cs" />
+    <Compile Include="Filter\FilterMin.cs" />
+    <Compile Include="old\CutHW.cs" />
+    <Compile Include="Forms\FormShowImage.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormShowImage.Designer.cs">
+    <Compile Include="Forms\FormShowImage.Designer.cs">
       <DependentUpon>FormShowImage.cs</DependentUpon>
     </Compile>
-    <Compile Include="MachineLearing_MeanShift.cs" />
+    <Compile Include="old\MachineLearing_MeanShift.cs" />
     <Compile Include="MedicalImageFinal\Bandpass.cs" />
     <Compile Include="MedicalImageFinal\BandPassByColIndex.cs" />
     <Compile Include="MedicalImageFinal\BandPassByRowIndex.cs" />
@@ -87,95 +94,94 @@
     <Compile Include="MedicalImageFinal\RegionFillIn.cs" />
     <Compile Include="MedicalImageFinal\RegionGrowpIn.cs" />
     <Compile Include="MedicalImageFinal\ShitEdge.cs" />
-    <Compile Include="FormAnalysis.cs">
+    <Compile Include="Forms\FormAnalysis.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormAnalysis.Designer.cs">
+    <Compile Include="Forms\FormAnalysis.Designer.cs">
       <DependentUpon>FormAnalysis.cs</DependentUpon>
     </Compile>
     <Compile Include="Analysis\AnalysisSeparation.cs" />
-    <Compile Include="Binarization.cs" />
-    <Compile Include="BitOf8PlaneSlicing.cs" />
-    <Compile Include="Degree45Filter.cs" />
-    <Compile Include="DegreesNegative45Filter.cs" />
-    <Compile Include="DiscreteFourierTransform.cs" />
-    <Compile Include="DiscreteWaveletTransformation.cs" />
+    <Compile Include="old\Binarization.cs" />
+    <Compile Include="old\Degree45Filter.cs" />
+    <Compile Include="old\DegreesNegative45Filter.cs" />
+    <Compile Include="old\DiscreteFourierTransform.cs" />
+    <Compile Include="old\DiscreteWaveletTransformation.cs" />
     <Compile Include="Feature\LocalBinaryPattern.cs" />
-    <Compile Include="FinalProject.cs" />
+    <Compile Include="old\FinalProject.cs" />
     <Compile Include="Interface\IFeatureExtract.cs" />
-    <Compile Include="FormMedicalImageFinal.cs">
+    <Compile Include="Forms\FormMedicalImageFinal.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormMedicalImageFinal.Designer.cs">
+    <Compile Include="Forms\FormMedicalImageFinal.Designer.cs">
       <DependentUpon>FormMedicalImageFinal.cs</DependentUpon>
     </Compile>
     <Compile Include="MedicalImageFinal\LaplacianBG.cs" />
     <Compile Include="MedicalImageFinal\SpiltImage.cs" />
     <Compile Include="MedicalImageFinal\Transfor.cs" />
-    <Compile Include="NoiseGaussian.cs" />
-    <Compile Include="ReaderTextFile.cs" />
+    <Compile Include="old\NoiseGaussian.cs" />
+    <Compile Include="old\ReaderTextFile.cs" />
+    <Compile Include="PoingProcessing\BitOf8PlaneSlicing.cs" />
+    <Compile Include="PoingProcessing\Grayscale.cs" />
+    <Compile Include="PoingProcessing\Negative.cs" />
+    <Compile Include="PoingProcessing\TransformExp.cs" />
+    <Compile Include="PoingProcessing\TransformLog.cs" />
+    <Compile Include="PoingProcessing\TransformPowerLaw.cs" />
     <Compile Include="Template\FilterTemplate.cs" />
-    <Compile Include="Grayscale.cs" />
-    <Compile Include="HorizontalFilter.cs" />
-    <Compile Include="ImageProcess.cs" />
-    <Compile Include="Instagram1977.cs" />
-    <Compile Include="LomoFilter.cs" />
-    <Compile Include="MaxFilter.cs" />
-    <Compile Include="MinFilter.cs" />
-    <Compile Include="MorphologyClosing.cs" />
-    <Compile Include="ColorRGBModel.cs" />
-    <Compile Include="MorphologyDilation.cs" />
-    <Compile Include="MorphologyErosion.cs" />
-    <Compile Include="Form1.cs">
+    <Compile Include="old\HorizontalFilter.cs" />
+    <Compile Include="old\ImageProcess.cs" />
+    <Compile Include="old\Instagram1977.cs" />
+    <Compile Include="old\LomoFilter.cs" />
+    <Compile Include="old\MaxFilter.cs" />
+    <Compile Include="old\MinFilter.cs" />
+    <Compile Include="old\MorphologyClosing.cs" />
+    <Compile Include="old\ColorRGBModel.cs" />
+    <Compile Include="old\MorphologyDilation.cs" />
+    <Compile Include="old\MorphologyErosion.cs" />
+    <Compile Include="Forms\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
+    <Compile Include="Forms\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="GaussianFilter.cs" />
-    <Compile Include="Algorithm\Heap.cs" />
-    <Compile Include="HighPassFilter.cs" />
-    <Compile Include="HistogramEqualization.cs" />
+    <Compile Include="old\GaussianFilter.cs" />
+    <Compile Include="Algorithm\HeapSort.cs" />
+    <Compile Include="old\HighPassFilter.cs" />
+    <Compile Include="old\HistogramEqualization.cs" />
     <Compile Include="Interface\IDistance.cs" />
     <Compile Include="Interface\IImageProcess.cs" />
-    <Compile Include="MachineLearing_KMeans.cs" />
-    <Compile Include="ImageExtract.cs" />
-    <Compile Include="ImagePretreatment.cs" />
-    <Compile Include="Laplacian.cs" />
-    <Compile Include="LowPassFilter.cs" />
-    <Compile Include="MeanFilter.cs" />
-    <Compile Include="MedianFilter.cs" />
-    <Compile Include="MorphologyOpening.cs" />
-    <Compile Include="Mosaic.cs" />
-    <Compile Include="MyColorFunction.cs" />
-    <Compile Include="MyColouring.cs" />
-    <Compile Include="Negative.cs" />
-    <Compile Include="OldStyleFilter.cs" />
+    <Compile Include="MachineLearing\MachineLearing_KMeans.cs" />
+    <Compile Include="old\ImageExtract.cs" />
+    <Compile Include="old\ImagePretreatment.cs" />
+    <Compile Include="old\Laplacian.cs" />
+    <Compile Include="old\LowPassFilter.cs" />
+    <Compile Include="old\MeanFilter.cs" />
+    <Compile Include="old\MedianFilter.cs" />
+    <Compile Include="old\MorphologyOpening.cs" />
+    <Compile Include="old\Mosaic.cs" />
+    <Compile Include="old\MyColorFunction.cs" />
+    <Compile Include="old\MyColouring.cs" />
+    <Compile Include="old\OldStyleFilter.cs" />
     <Compile Include="Template\PointTemplate.cs" />
-    <Compile Include="PrewittFilter.cs" />
-    <Compile Include="ReliefFilter.cs" />
-    <Compile Include="RippleEffect.cs" />
-    <Compile Include="SketchFilter.cs" />
-    <Compile Include="SpherizeFilter.cs" />
-    <Compile Include="SwirlFilter.cs" />
-    <Compile Include="TransformPowerLaw.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="old\PrewittFilter.cs" />
+    <Compile Include="old\ReliefFilter.cs" />
+    <Compile Include="old\RippleEffect.cs" />
+    <Compile Include="old\SketchFilter.cs" />
+    <Compile Include="old\SpherizeFilter.cs" />
+    <Compile Include="old\SwirlFilter.cs" />
+    <Compile Include="old\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Sobel.cs" />
-    <Compile Include="TransformByExp.cs" />
-    <Compile Include="TransformByLog.cs" />
-    <Compile Include="Try.cs" />
-    <Compile Include="VerticalFilter.cs" />
-    <EmbeddedResource Include="FormAnalysis.resx">
+    <Compile Include="old\Sobel.cs" />
+    <Compile Include="old\VerticalFilter.cs" />
+    <EmbeddedResource Include="Forms\FormAnalysis.resx">
       <DependentUpon>FormAnalysis.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form1.resx">
+    <EmbeddedResource Include="Forms\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormMedicalImageFinal.resx">
+    <EmbeddedResource Include="Forms\FormMedicalImageFinal.resx">
       <DependentUpon>FormMedicalImageFinal.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormShowImage.resx">
+    <EmbeddedResource Include="Forms\FormShowImage.resx">
       <DependentUpon>FormShowImage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -217,9 +223,6 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Images\colors.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
